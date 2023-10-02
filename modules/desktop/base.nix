@@ -7,7 +7,6 @@
 
   users.users.liperium = {
     packages = with pkgs; [
-      barrier
       github-desktop
       python3
       kate
