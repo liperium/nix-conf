@@ -51,7 +51,9 @@
     };
   };
 
-
+  environment.systemPackages = with pkgs; [
+    (import ./conservationmode.nix {})
+  ];
 
   # Nvidia
   # Enable OpenGL
