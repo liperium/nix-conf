@@ -14,7 +14,7 @@
         nixos-lenovo = lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/nixos-lenovo
+            ./hosts/lenovo
           ];
         };
 
