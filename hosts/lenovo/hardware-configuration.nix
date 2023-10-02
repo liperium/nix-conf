@@ -21,6 +21,15 @@
 
   boot.initrd.luks.devices."luks-397b9746-9090-4926-aafe-f51d52b42faa".device = "/dev/disk/by-uuid/397b9746-9090-4926-aafe-f51d52b42faa";
 
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
+  };
+
+  # Enable swap on luks
+  boot.initrd.luks.devices."luks-7561ef5f-fb63-45cf-acc9-19d0275eceb3".device = "/dev/disk/by-uuid/7561ef5f-fb63-45cf-acc9-19d0275eceb3";
+  boot.initrd.luks.devices."luks-7561ef5f-fb63-45cf-acc9-19d0275eceb3".keyFile = "/crypto_keyfile.bin";
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/C996-55F1";
       fsType = "vfat";

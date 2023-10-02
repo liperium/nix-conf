@@ -27,17 +27,6 @@
     "acpi_backlight=native" #native/video/vendor, maybe depending if nvidia is installed?
   ];
 
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  # Enable swap on luks
-  boot.initrd.luks.devices."luks-12772946-336b-4704-bd68-6d21410cbd7e".device = "/dev/disk/by-uuid/12772946-336b-4704-bd68-6d21410cbd7e";
-  boot.initrd.luks.devices."luks-12772946-336b-4704-bd68-6d21410cbd7e".keyFile = "/crypto_keyfile.bin";
-
-
-
   # --- Laptop settings ---
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
