@@ -19,4 +19,17 @@ let
   '';
 in {
   environment.systemPackages = [ conservationmode ];
+
+  security.sudo = {
+    enable = true;
+    extraRules = [{
+      commands = [
+        {
+          command = "tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\\:00/conservation_mode";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+      groups = [ "wheel" ];
+    }];
+  };
 }

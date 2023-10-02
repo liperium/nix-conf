@@ -96,16 +96,4 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-  security.sudo = {
-    enable = true;
-    extraRules = [{
-      commands = [
-        {
-          command = "${pkgs.coreutils}/bin/tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004\\:00/conservation_mode";
-          options = [ "NOPASSWD" ];
-        }
-      ];
-      groups = [ "wheel" ];
-    }];
-  };
 }

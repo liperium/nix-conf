@@ -1,8 +1,8 @@
 # TODO
 - Nextcloud auto-sync cmd? or client? Think cmd would be more seemless? But conflict resoltion :o (Force-Pull on start?)
-- conservationmodeeeeee
 
 
+- conservationmodeeeeee DONEZ
 - powerlevel10k??? DONEZ
 - Windows boot option - Good, had to reinstall efi
 - Wayland? - Good
