@@ -18,6 +18,5 @@ let
     fi
   '';
 in {
-
   environment.systemPackages = [ conservationmode ];
 }

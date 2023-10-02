@@ -10,6 +10,6 @@ in
       "${modDesktop}/base.nix"
       "${modDesktop}/plasma.nix"
       "${modDesktop}/coding.nix"
-      "./conservationmode.nix"
+      "${modDesktop}/conservationmode.nix"
     ];
 }
