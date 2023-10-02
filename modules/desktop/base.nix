@@ -15,10 +15,7 @@
       webcord
       qownnotes
       nextcloud-client#? cmd
-      gparted
-      #Coding
-      vscode
-      jetbrains.pycharm-professional
+      gparted      
       (vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = false;
