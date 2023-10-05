@@ -7,6 +7,7 @@
 
   users.users.liperium = {
     packages = with pkgs; [
+      flameshot
       github-desktop
       python3
       kate
