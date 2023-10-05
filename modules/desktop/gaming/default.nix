@@ -8,7 +8,7 @@
       goverlay
       gamemode
       starsector
-      {./protonup-rs}
+      
     ];
   };
 }
