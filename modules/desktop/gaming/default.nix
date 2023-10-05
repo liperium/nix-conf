@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
-
-{
+let
+  currentDir = ./.;
+in {
   users.users.liperium = {
     packages = with pkgs; [
       steam
@@ -11,4 +12,9 @@
       
     ];
   };
+  imports =
+    [ 
+      # Base
+      "${currentDir}/protonup-rs.nix"
+    ];
 }
