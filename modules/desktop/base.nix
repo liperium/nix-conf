@@ -1,11 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  # Enable automatic login for the user.
-  #services.xserver.displayManager.autoLogin.enable = true;
-  #services.xserver.displayManager.autoLogin.user = "liperium";
-  #services.xserver.displayManager.defaultSession = "plasmawayland";
-
   users.users.liperium = {
     packages = with pkgs; [
       flameshot
