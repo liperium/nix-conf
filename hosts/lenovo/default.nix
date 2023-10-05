@@ -28,10 +28,12 @@
   ];
 
   # --- Laptop settings ---
+  services.power-profiles-daemon.enable = false; # Don't know why it enables itself
+
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
-       governor = "powersave";
+       governor = "schedutil";
        turbo = "never";
     };
     charger = {
