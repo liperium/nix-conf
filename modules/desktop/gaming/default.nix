@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   currentDir = ./.;
+  protonup-rs = pkgs.callPackage ././protonup-rs.nix {};
 in {
   users.users.liperium = {
     packages = with pkgs; [
@@ -9,12 +10,7 @@ in {
       goverlay
       gamemode
       starsector
-      
+      protonup-rs
     ];
   };
-  imports =
-    [ 
-      # Base
-      "${currentDir}/protonup-rs.nix"
-    ];
 }

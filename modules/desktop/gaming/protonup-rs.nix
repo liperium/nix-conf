@@ -1,40 +1,30 @@
-{ config,
-pkgs,
-lib,
-fetchFromGitHub,
-rustPlatform
+{ config
+, pkgs
+, lib
+, fetchFromGitHub
+, rustPlatform
 }:
-let
-  protonup-rs = rustPlatform.buildRustPackage rec {
-    pname = "protonup-rs";
-    version = "0.6.0";
+rustPlatform.buildRustPackage rec {
+  pname = "protonup-rs";
+  version = "0.6.0";
 
-    src = fetchFromGitHub {
-      owner = "auyer";
-      repo = "Protonup-rs";
-      rev = "main";
-      sha256 = "sha256-IDxFK0+p5OFycKJHpw+QNCEIIF0bRRLO7tZzwiQ4IaA=";
-    };
-
-    cargoLock = {
-      lockFile = ./Cargo.lock;
-      allowBuiltinFetchGit = true;
+  src = fetchFromGitHub {
+    owner = "auyer";
+    repo = "Protonup-rs";
+    rev = "main";
+    sha256 = "sha256-IDxFK0+p5OFycKJHpw+QNCEIIF0bRRLO7tZzwiQ4IaA=";
   };
+  cargoSha256 = "sha256-0oaE5ZmKozEr41SNOcyz0yynUov+ynu2RlSUNLsv4yE=";
 
-    # Can't seem to make test work when enabled? Network access?
-    #github::tests::test_fetch_data_from_tag
-    doCheck = false;
+  # Can't seem to make test work when enabled? Network access?
+  #github::tests::test_fetch_data_from_tag
+  doCheck = false;
 
-    meta = with lib; {
-      description = "Lib, CLI and GUI(wip) program to automate the installation and update of Proton-GE";
-      homepage = "https://github.com/auyer/Protonup-rs/";
-      license = licenses.asl20;
-      maintainers = with maintainers; [];
-      platforms = platforms.linux;
-    };
-  };
-in {
-  users.users.liperium = {
-    packages = with pkgs; [ protonup-rs ];
+  meta = with lib; {
+    description = "Lib, CLI and GUI(wip) program to automate the installation and update of Proton-GE";
+    homepage = "https://github.com/auyer/Protonup-rs/";
+    license = licenses.asl20;
+    maintainers = with maintainers; [];
+    platforms = platforms.linux;
   };
 }
