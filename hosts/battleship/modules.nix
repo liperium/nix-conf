@@ -2,7 +2,6 @@ let
   modDir = ../../modules;
   modDesktop = ../../modules/desktop;
   currentDir = ./.;
-  protonup-rsDir = /home/liperium/Programming/Personnal/Protonup-rs;
 in
 {
   imports =
@@ -21,6 +20,5 @@ in
       # Desktop Additionals
       "${modDesktop}/coding.nix"
       "${modDesktop}/gaming/default.nix"
-      "${protonup-rsDir}/default.nix"
     ];
 }
