@@ -8,6 +8,7 @@ in
     [ # Include the results of the hardware scan.
       "${modDir}/base.nix"
       "${modDir}/docker.nix"
+      "${modDir}/dual-boot.nix"
       "${currentDir}/conservationmode.nix"
       
       "${modDesktop}/base.nix"

@@ -10,24 +10,14 @@
       ./hardware-configuration.nix
       ./modules.nix
     ];
-  networking.hostName = "nixos-lenovo";
+  networking.hostName = "frigate";
 
-  # Bootloader.
-  boot.supportedFilesystems = ["ntfs"];
-  #boot.loader.systemd-boot.enable = true;
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub.enable = true;
-    grub.devices = ["nodev"];
-    grub.efiSupport = true;
-    grub.useOSProber = true;
-  };
+  # --- Laptop settings ---
 
   boot.kernelParams = [
     "acpi_backlight=native" #native/video/vendor, maybe depending if nvidia is installed?
   ];
 
-  # --- Laptop settings ---
   services.power-profiles-daemon.enable = false; # Don't know why it enables itself
 
   services.auto-cpufreq.enable = true;

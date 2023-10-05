@@ -11,19 +11,19 @@
     in
     {
       nixosConfigurations = {
-        nixos-lenovo = lib.nixosSystem {
+        frigate = lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/lenovo
+            ./hosts/frigate
           ];
         };
 
-        #nixos-pc = lib.nixosSystem {
-          #inherit system;
-          #modules = [
-            #./nixos-pc.nix
-          #];
-        #};
+        battleship = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/battleship
+          ];
+        };
       };
     };
 }
