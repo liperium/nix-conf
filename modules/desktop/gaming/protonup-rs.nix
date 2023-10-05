@@ -24,7 +24,7 @@ rustPlatform.buildRustPackage rec {
     description = "Lib, CLI and GUI(wip) program to automate the installation and update of Proton-GE";
     homepage = "https://github.com/auyer/Protonup-rs/";
     license = licenses.asl20;
-    maintainers = with maintainers; [];
+    maintainers = with maintainers; [ liperium ];
     platforms = platforms.linux;
   };
 }
