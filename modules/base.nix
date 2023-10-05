@@ -51,6 +51,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    docker
+    docker-compose
     os-prober # Probes for windows for grub
     util-linux
     lshw # Debugging nvidia prime
