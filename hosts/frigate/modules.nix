@@ -8,6 +8,7 @@ in
     [
       # Base
       "${modDir}/base.nix"
+      "${currentDir}/conservationmode.nix"
 
       # Additional System
       "${modDir}/docker.nix"

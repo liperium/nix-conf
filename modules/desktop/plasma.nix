@@ -10,8 +10,8 @@
   services.xserver.displayManager.defaultSession = "plasmawayland";
 
   # Enable automatic login for the user.
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "liperium";
+  #services.xserver.displayManager.autoLogin.enable = true;
+  #services.xserver.displayManager.autoLogin.user = "liperium";
 
   # Configure keymap in X11
   services.xserver = {
@@ -25,6 +25,6 @@
       accents = ["teal"];
       winDecStyles = ["classic"];
     })
-
   ];
+  
 }

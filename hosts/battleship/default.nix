@@ -12,5 +12,4 @@
     ];
 
   networking.hostName = "battleship"; # Define your hostname.
-  system.stateVersion = "23.11";
 }
