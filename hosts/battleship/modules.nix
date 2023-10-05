@@ -14,10 +14,11 @@ in
       "${modDir}/dual-boot.nix"
       
       # Desktop env
-      "${modDesktop}/base.nix"
+      "${modDesktop}/default.nix"
       "${modDesktop}/plasma.nix"
 
       # Desktop Additionals
       "${modDesktop}/coding.nix"
+      "${modDesktop}/gaming/default.nix"
     ];
 }
