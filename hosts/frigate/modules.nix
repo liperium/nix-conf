@@ -17,6 +17,7 @@ in
       # Desktop env
       "${modDesktop}/default.nix"
       "${modDesktop}/plasma.nix"
+      "${modDesktop}/godot-mono.nix"
 
       # Desktop Additionals
       "${modDesktop}/coding.nix"
