@@ -1,3 +1,4 @@
+{ config, pkgs, lib, ... }:
 {
   # Bootloader.
   boot.supportedFilesystems = ["ntfs"];
@@ -9,4 +10,7 @@
     grub.efiSupport = true;
     grub.useOSProber = true;
   };
+  environment.systemPackages = with pkgs; [
+    os-prober # Probes for windows for grub
+  ];
 }
