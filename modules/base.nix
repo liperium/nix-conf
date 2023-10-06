@@ -53,17 +53,35 @@
   environment.systemPackages = with pkgs; [
     docker
     docker-compose
-    os-prober # Probes for windows for grub
     util-linux
     lshw # Debugging nvidia prime
     thefuck
     gcc
     git
-    neovim
     tree
+    
+    #Terminal
     zsh
     zsh-powerlevel10k
+
+    
+    
   ];
+  programs.tmux = {
+    enable = true;
+    plugins = [pkgs.tmuxPlugins.catppuccin]; 
+  };
+  programs.neovim = {
+    enable = true;
+    configure = {
+      packages.myVimPackage = with pkgs.vimPlugins; {
+        # loaded on launch
+        start = [ catppuccin-nvim ];
+        # manually loadable by calling `:packadd $plugin-name`
+        opt = [ ];
+      };
+    };
+  };
 
   environment.variables.EDITOR = "nvim";
 
@@ -80,6 +98,9 @@
   };
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
+
+
+  #Fonts
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [

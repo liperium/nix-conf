@@ -8,6 +8,7 @@
       python3
       kate
       krita
+      zoom-us
       webcord
       qownnotes
       nextcloud-client#? cmd
