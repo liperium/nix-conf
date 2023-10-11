@@ -8,6 +8,7 @@
       python3
       kate
       krita
+      onlyoffice-bin
       zoom-us
       webcord
       qownnotes
