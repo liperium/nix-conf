@@ -20,5 +20,6 @@ in
       # Desktop Additionals
       "${modDesktop}/coding.nix"
       "${modDesktop}/gaming/default.nix"
+      "${modDesktop}/godot-mono.nix"
     ];
 }
