@@ -5,6 +5,7 @@
     packages = with pkgs; [
       steam-run
       dotnet-sdk
+      jetbrains.rider
     ];
   };
 }

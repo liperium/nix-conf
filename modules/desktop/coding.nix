@@ -5,7 +5,6 @@
     packages = with pkgs; [
       vscode
       cargo
-      jetbrains.pycharm-professional
     ];
   };
 }

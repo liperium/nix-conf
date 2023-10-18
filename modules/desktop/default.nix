@@ -3,9 +3,8 @@
 {
   users.users.liperium = {
     packages = with pkgs; [
-      flameshot
       github-desktop
-      python3
+      gimp
       kate
       krita
       onlyoffice-bin
@@ -14,6 +13,7 @@
       qownnotes
       nextcloud-client#? cmd
       gparted      
+      spot
       (vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = false;
