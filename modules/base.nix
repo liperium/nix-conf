@@ -6,7 +6,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than +5";
   };
   nix.settings.auto-optimise-store = true;
 
@@ -51,8 +51,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    docker
-    docker-compose
     util-linux
     lshw # Debugging nvidia prime
     gcc

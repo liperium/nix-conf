@@ -6,6 +6,7 @@
       github-desktop
       gimp
       kate
+      libsForQt5.kcalc
       krita
       onlyoffice-bin
       zoom-us
@@ -20,6 +21,7 @@
         commandLineArgs = "--force-dark-mode";
       })
       vivaldi-ffmpeg-codecs
+      vlc
       widevine-cdm
     ];
   };

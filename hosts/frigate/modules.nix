@@ -19,13 +19,10 @@ in
       # Desktop env
       "${modDesktop}/default.nix"
       "${modDesktop}/plasma.nix"
-      "${modDesktop}/godot-mono.nix"
-      "${modDesktop}/universidad.nix"
-
+      
       # Desktop Additionals
       "${modDesktop}/coding.nix"
-
-      # Godot Mono Testing
-      #"${godotMonoTesting}/default.nix"
+      "${modDesktop}/godot-mono.nix"
+      "${modDesktop}/universidad.nix"
     ];
 }

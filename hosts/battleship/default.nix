@@ -12,4 +12,8 @@
     ];
 
   networking.hostName = "battleship"; # Define your hostname.
+
+  environment.systemPackages = with pkgs; [
+    nvtop-amd
+  ];
 }
