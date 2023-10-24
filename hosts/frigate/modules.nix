@@ -14,6 +14,7 @@ in
       # Additional System
       "${modDir}/docker.nix"
       "${modDir}/dual-boot.nix"
+      "${modDir}/wireguard.nix"
       
       # Desktop env
       "${modDesktop}/default.nix"
