@@ -9,6 +9,8 @@
       libsForQt5.kcalc
       krita
       onlyoffice-bin
+      obs-studio
+      libsForQt5.kdenlive
       zoom-us
       webcord
       qownnotes
