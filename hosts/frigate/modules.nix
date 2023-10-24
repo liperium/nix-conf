@@ -25,6 +25,6 @@ in
       "${modDesktop}/coding.nix"
 
       # Godot Mono Testing
-      "${godotMonoTesting}/default.nix"
+      #"${godotMonoTesting}/default.nix"
     ];
 }
