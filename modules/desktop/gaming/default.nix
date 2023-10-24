@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   currentDir = ./.;
-  protonup-rs = pkgs.callPackage ././protonup-rs.nix {};
+  protonup-rs = pkgs.callPackage ./.../../pkgs/protonup-rs/default.nix {};
 in {
   users.users.liperium = {
     packages = with pkgs; [
