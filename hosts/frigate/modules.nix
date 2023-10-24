@@ -2,6 +2,7 @@ let
   modDir = ../../modules;
   modDesktop = ../../modules/desktop;
   currentDir = ./.;
+  godotMonoTesting = ../../pkgs/godot/4/mono;
 in
 {
   imports =
@@ -18,8 +19,12 @@ in
       "${modDesktop}/default.nix"
       "${modDesktop}/plasma.nix"
       "${modDesktop}/godot-mono.nix"
+      "${modDesktop}/universidad.nix"
 
       # Desktop Additionals
       "${modDesktop}/coding.nix"
+
+      # Godot Mono Testing
+      "${godotMonoTesting}/default.nix"
     ];
 }

@@ -55,17 +55,14 @@
     docker-compose
     util-linux
     lshw # Debugging nvidia prime
-    thefuck
     gcc
     git
     tree
     
     #Terminal
+    thefuck
     zsh
     zsh-powerlevel10k
-
-    
-    
   ];
   programs.tmux = {
     enable = true;
