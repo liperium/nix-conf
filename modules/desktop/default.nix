@@ -14,8 +14,8 @@
       zoom-us
       webcord
       qownnotes
-      nextcloud-client#? cmd
-      gparted      
+      nextcloud-client # ? cmd
+      gparted
       spot
       (vivaldi.override {
         proprietaryCodecs = true;

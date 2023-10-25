@@ -56,7 +56,7 @@
     gcc
     git
     tree
-    
+
     #Terminal
     thefuck
     zsh
@@ -64,7 +64,7 @@
   ];
   programs.tmux = {
     enable = true;
-    plugins = [pkgs.tmuxPlugins.catppuccin]; 
+    plugins = [ pkgs.tmuxPlugins.catppuccin ];
   };
   programs.neovim = {
     enable = true;
@@ -89,17 +89,17 @@
       enable = true;
       plugins = [ "git" "thefuck" ];
     };
-    promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    promptInit =
+      "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
   };
   users.defaultUserShell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
-
 
   #Fonts
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
-      (nerdfonts.override { fonts = ["JetBrainsMono"]; })
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
@@ -107,9 +107,9 @@
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = ["Noto Serif"];
-        sansSerif = ["Noto Sans"];
-        monospace = ["JetBrainsMono Nerd Font"];
+        serif = [ "Noto Serif" ];
+        sansSerif = [ "Noto Sans" ];
+        monospace = [ "JetBrainsMono Nerd Font" ];
       };
     };
   };

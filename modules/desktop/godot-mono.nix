@@ -2,10 +2,6 @@
 
 {
   users.users.liperium = {
-    packages = with pkgs; [
-      steam-run
-      dotnet-sdk
-      jetbrains.rider
-    ];
+    packages = with pkgs; [ steam-run dotnet-sdk jetbrains.rider ];
   };
 }

@@ -19,12 +19,13 @@
     xkbVariant = "alt-intl";
   };
 
-  environment.systemPackages = with pkgs; [
-    (catppuccin-kde.override {
-      flavour = ["macchiato"];
-      accents = ["teal"];
-      winDecStyles = ["classic"];
-    })
-  ];
-  
+  environment.systemPackages = with pkgs;
+    [
+      (catppuccin-kde.override {
+        flavour = [ "macchiato" ];
+        accents = [ "teal" ];
+        winDecStyles = [ "classic" ];
+      })
+    ];
+
 }

@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  conservationmode = pkgs.writeShellScriptBin "conservationmode"''
+  conservationmode = pkgs.writeShellScriptBin "conservationmode" ''
     #!/bin/sh
     conservationmode_file=/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
     if [ "$1" = "status" ]
@@ -33,12 +33,10 @@ in {
   security.sudo = {
     enable = true;
     extraRules = [{
-      commands = [
-        {
-          command = "/run/current-system/sw/bin/conservationmode";
-          options = [ "NOPASSWD" ];
-        }
-      ];
+      commands = [{
+        command = "/run/current-system/sw/bin/conservationmode";
+        options = [ "NOPASSWD" ];
+      }];
       groups = [ "wheel" ];
     }];
   };

@@ -1,10 +1,5 @@
 { config, pkgs, lib, ... }:
 
 {
-  users.users.liperium = {
-    packages = with pkgs; [
-      vscode
-      cargo
-    ];
-  };
+  users.users.liperium = { packages = with pkgs; [ vscode cargo nixfmt ]; };
 }

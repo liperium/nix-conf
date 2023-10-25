@@ -5,15 +5,12 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules.nix
+  ];
 
   networking.hostName = "battleship"; # Define your hostname.
 
-  environment.systemPackages = with pkgs; [
-    nvtop-amd
-  ];
+  environment.systemPackages = with pkgs; [ nvtop-amd ];
 }

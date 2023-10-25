@@ -5,30 +5,30 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./modules.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./modules.nix
+  ];
   networking.hostName = "frigate";
 
   # --- Laptop settings ---
 
   boot.kernelParams = [
-    "acpi_backlight=native" #native/video/vendor, maybe depending if nvidia is installed?
+    "acpi_backlight=native" # native/video/vendor, maybe depending if nvidia is installed?
   ];
 
-  services.power-profiles-daemon.enable = false; # Don't know why it enables itself
+  services.power-profiles-daemon.enable =
+    false; # Don't know why it enables itself
 
   services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     battery = {
-       governor = "schedutil";
-       turbo = "never";
+      governor = "schedutil";
+      turbo = "never";
     };
     charger = {
-       governor = "performance";
-       turbo = "auto";
+      governor = "performance";
+      turbo = "auto";
     };
   };
 
@@ -41,7 +41,7 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
 
@@ -64,7 +64,7 @@
     open = true;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.

@@ -1,16 +1,20 @@
 { config, pkgs, lib, ... }:
 
 {
-
-  # Enable the X11 windowing system
-  services.xserver.enable = true;
-  # Enable Hyprland
-  programs.hyprland.enable = true;
-
-  # Configure keymap in X11
+  # Enable the X11 windowing system - Configure keymap in X11
   services.xserver = {
+    enable = true;
     layout = "us";
     xkbVariant = "alt-intl";
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
   };
-  
+
+  # Enable Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 }
