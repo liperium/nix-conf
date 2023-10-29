@@ -5,10 +5,12 @@ let
 in {
   users.users.liperium = {
     packages = with pkgs; [
-      steam
+      gamescope
       mangohud
       goverlay
       gamemode
+      lutris
+      steam
       starsector
       protonup-rs
     ];
