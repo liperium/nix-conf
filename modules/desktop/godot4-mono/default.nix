@@ -1,10 +1,14 @@
-{ stdenv
-, lib
+{ lib
+, stdenv
 , fetchFromGitHub
 , pkg-config
 , autoPatchelfHook
 , installShellFiles
 , scons
+, python3
+, mkNugetDeps
+, mkNugetSource
+, writeText
 , vulkan-loader
 , libGL
 , libX11
@@ -24,20 +28,17 @@
 , udev
 , withPlatform ? "linuxbsd"
 , withTarget ? "editor"
-, withPrecision ? "single"
+, withPrecision ? "double"
 , withPulseaudio ? true
 , withDbus ? true
 , withSpeechd ? true
 , withFontconfig ? true
 , withUdev ? true
 , withTouch ? true
-, godot_4
-, callPackage
-, mkNugetDeps
-, mkNugetSource
-, mono
 , dotnet-sdk
-, writeText
+, mono
+, dotnet-runtime
+, callPackage
 }:
 
 assert lib.asserts.assertOneOf "withPrecision" withPrecision [ "single" "double" ];
@@ -50,18 +51,42 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "godot4-mono";
+  version = "4.1.1";
+  commitHash = "bd6af8e0ea69167dd0627f3bd54f9105bda0f8b5";
+
+  nugetDeps = mkNugetDeps { name = "deps"; nugetDeps = import ./deps.nix; };
+
+  nugetSource =
+    mkNugetSource {
+      name = "${pname}-nuget-source";
+      description = "A Nuget source with dependencies for ${pname}";
+      deps = [ nugetDeps ];
+  };
+
+  nugetConfig = writeText "NuGet.Config" ''
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+      <packageSources>
+        <add key="${pname}-deps" value="${nugetSource}/lib" />
+      </packageSources>
+    </configuration>
+  '';
 
   src = fetchFromGitHub {
     owner = "godotengine";
     repo = "godot";
     rev = commitHash;
-    hash = "";
+    hash = "sha256-0CErsMTrBC/zYcabAtjYn8BWAZ1HxgozKdgiqdsn3q8=";
   };
 
   nativeBuildInputs = [
     pkg-config
     autoPatchelfHook
     installShellFiles
+    python3
+    mono
+  dotnet-sdk
+  dotnet-runtime
   ];
 
   buildInputs = [
@@ -81,6 +106,9 @@ stdenv.mkDerivation rec {
     libXfixes
     libxkbcommon
     alsa-lib
+    mono
+  dotnet-sdk
+  dotnet-runtime
   ]
   ++ lib.optional withPulseaudio libpulseaudio
   ++ lib.optional withDbus dbus
@@ -114,45 +142,45 @@ stdenv.mkDerivation rec {
     echo ${commitHash} > .git/HEAD
   '';
 
-  sconsFlags = mkSconsFlagsFromAttrSet {
-    # Options from 'SConstruct'
-    production = true; # Set defaults to build Godot for use in production
-    platform = withPlatform;
-    target = withTarget;
-    precision = withPrecision; # Floating-point precision level
-
-    # Options from 'platform/linuxbsd/detect.py'
-    pulseaudio = withPulseaudio; # Use PulseAudio
-    dbus = withDbus; # Use D-Bus to handle screensaver and portal desktop settings
-    speechd = withSpeechd; # Use Speech Dispatcher for Text-to-Speech support
-    fontconfig = withFontconfig; # Use fontconfig for system fonts support
-    udev = withUdev; # Use udev for gamepad connection callbacks
-    touch = withTouch; # Enable touch events
-  };
-
   outputs = [ "out" "man" ];
+
+  postConfigure = ''
+  echo "Configuring NuGet."
+  mkdir -p ~/.nuget/NuGet
+  ln -s "$nugetConfig" ~/.nuget/NuGet/NuGet.Config
+  '';
+
+  buildPhase = ''
+    echo "Starting Build"
+    scons p=${withPlatform} target=${withTarget} precision=${withPrecision} module_mono_enabled=yes module_text_server_fb_enabled=yes mono_glue=no
+    echo "Generating Glue"
+    bin/godot.${withPlatform}.${withTarget}.${withPrecision}.x86_64.mono --headless --generate-mono-glue modules/mono/glue
+    echo "Building Assemblies"
+    scons p=${withPlatform} target=${withTarget} precision=${withPrecision} module_mono_enabled=yes module_text_server_fb_enabled=yes mono_glue=yes
+  echo "Building C#/.NET Assemblies"
+  python modules/mono/build_scripts/build_assemblies.py --godot-output-dir bin --precision=${withPrecision}
+    '';
 
   installPhase = ''
     mkdir -p "$out/bin"
     cp bin/godot.* $out/bin/godot4
-
+    cp -r bin/GodotSharp/ $out/bin/
     installManPage misc/dist/linux/godot.6
-
     mkdir -p "$out"/share/{applications,icons/hicolor/scalable/apps}
     cp misc/dist/linux/org.godotengine.Godot.desktop "$out/share/applications/org.godotengine.Godot4.desktop"
-    substituteInPlace "$out/share/applications/org.godotengine.Godot4-Mono.desktop" \
+    substituteInPlace "$out/share/applications/org.godotengine.Godot4.desktop" \
       --replace "Exec=godot" "Exec=$out/bin/godot4" \
       --replace "Godot Engine" "Godot Engine 4"
     cp icon.svg "$out/share/icons/hicolor/scalable/apps/godot.svg"
     cp icon.png "$out/share/icons/godot.png"
-  '';
+    '';
 
   meta = with lib; {
     homepage = "https://godotengine.org";
     description = "Free and Open Source 2D and 3D game engine";
     license = licenses.mit;
     platforms = [ "i686-linux" "x86_64-linux" "aarch64-linux" ];
-    maintainers = with maintainers; [ liperium ];
-    mainProgram = "godot4";
+    maintainers = with maintainers; [ ilikefrogs101 ];
+    mainProgram = "godot4-mono";
   };
 }
