@@ -58,7 +58,6 @@
     tree
 
     #Terminal
-    thefuck
     zsh
     zsh-powerlevel10k
   ];
