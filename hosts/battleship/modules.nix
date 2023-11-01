@@ -13,13 +13,13 @@ in {
     "${modDir}/dual-boot.nix"
 
     # Desktop env
-    "${modDesktop}/default.nix"
+    "${modDesktop}"
     "${modEnvironments}/plasma"
 
     # Desktop Additionals
-    "${modDev}/default.nix"
+    "${modDev}"
     "${modDev}/godot4-mono"
+    "${modDev}/dev/universidad.nix"
     "${modDesktop}/gaming/default.nix"
-    "${modDesktop}/dev/universidad.nix"
   ];
 }

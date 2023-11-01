@@ -1,7 +1,7 @@
 let
   modDir = ../../modules;
   modDesktop = ../../modules/desktop;
-  modDesktop = ../../modules/desktop/dev;
+  modDev = ../../modules/desktop/dev;
   modEnvironments = ../../modules/desktop/environment;
   currentDir = ./.;
 in {
@@ -24,6 +24,6 @@ in {
     # Desktop Additionals
     "${modDev}"
     "${modDev}/godot4-mono"
-    "${modDesktop}/universidad.nix"
+    "${modDev}/universidad.nix"
   ];
 }
