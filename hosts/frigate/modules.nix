@@ -1,13 +1,13 @@
 let
   modDir = ../../modules;
   modDesktop = ../../modules/desktop;
+  modDesktop = ../../modules/desktop/dev;
   modEnvironments = ../../modules/desktop/environment;
   currentDir = ./.;
-  godotMonoTesting = ../../pkgs/godot/4/mono;
 in {
   imports = [
     # Base
-    "${modDir}/base.nix"
+    "${modDir}/default.nix"
     "${currentDir}/conservationmode"
 
     # Additional System
@@ -22,8 +22,8 @@ in {
     "${modDesktop}/default.nix"
 
     # Desktop Additionals
-    "${modDesktop}/dev"
-    "${modDesktop}/godot-mono.nix"
+    "${modDev}"
+    "${modDev}/godot4-mono"
     "${modDesktop}/universidad.nix"
   ];
 }

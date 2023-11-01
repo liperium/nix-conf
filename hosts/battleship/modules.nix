@@ -1,8 +1,8 @@
 let
   modDir = ../../modules;
   modDesktop = ../../modules/desktop;
+  modDev = ../../modules/desktop/dev;
   modEnvironments = ../../modules/desktop/environment;
-  godotMonoTesting = ../../pkgs/godot/4/mono;
 in {
   imports = [
     # Base
@@ -14,12 +14,12 @@ in {
 
     # Desktop env
     "${modDesktop}/default.nix"
-    "${modEnvironments}/plasma.nix"
+    "${modEnvironments}/plasma"
 
     # Desktop Additionals
-    "${modDesktop}/coding.nix"
+    "${modDev}/default.nix"
+    "${modDev}/godot4-mono"
     "${modDesktop}/gaming/default.nix"
-    "${modDesktop}/godot-mono"
-    "${modDesktop}/universidad.nix"
+    "${modDesktop}/dev/universidad.nix"
   ];
 }
