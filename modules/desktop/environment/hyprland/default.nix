@@ -17,4 +17,11 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  #wayland.windowManager.hyprland.settings = {
+  #};
+
+  environment.systemPackages = with pkgs; [
+    kitty
+  ];
 }
