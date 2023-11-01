@@ -51,8 +51,8 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "godot4-mono";
-  version = "4.1.1";
-  commitHash = "bd6af8e0ea69167dd0627f3bd54f9105bda0f8b5";
+  version = "4.1.2";
+  commitHash = "";
 
   nugetDeps = mkNugetDeps { name = "deps"; nugetDeps = import ./deps.nix; };
 
