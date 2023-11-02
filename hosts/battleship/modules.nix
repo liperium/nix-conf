@@ -19,7 +19,7 @@ in {
     # Desktop Additionals
     "${modDev}"
     "${modDev}/godot4-mono"
-    "${modDev}/dev/universidad.nix"
+    "${modDev}/universidad.nix"
     "${modDesktop}/gaming/default.nix"
   ];
 }

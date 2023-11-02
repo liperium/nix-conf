@@ -23,5 +23,9 @@
 
   environment.systemPackages = with pkgs; [
     kitty
+    libsecret
+    
+    libsForQt5.dolphin
+    
   ];
 }

@@ -56,6 +56,8 @@
     gcc
     git
     tree
+    btop
+    ranger
 
     #Terminal
     zsh
@@ -86,7 +88,7 @@
     syntaxHighlighting.enable = true;
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" "thefuck" ];
+      plugins = [ "git" ];
     };
     promptInit =
       "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
