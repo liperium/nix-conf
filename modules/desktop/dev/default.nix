@@ -15,4 +15,8 @@
     #libxkbcommon wayland
     ]; 
     };
+  environment.systemPackages = with pkgs; [
+    minikube
+    vulkan-tools
+  ];
 }
