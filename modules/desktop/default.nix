@@ -3,6 +3,7 @@
 {
   users.users.liperium = {
     packages = with pkgs; [
+      firefox-bin
       github-desktop
       gimp
       kate
@@ -27,6 +28,7 @@
       widevine-cdm
     ];
   };
+  
   environment.systemPackages = with pkgs; [
     beauty-line-icon-theme
     papirus-icon-theme

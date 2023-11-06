@@ -53,6 +53,7 @@
   environment.systemPackages = with pkgs; [
     util-linux
     lshw # Debugging nvidia prime
+    libva-utils # Debugging vaapi
     gcc
     git
     tree
@@ -77,6 +78,13 @@
         opt = [ ];
       };
     };
+  };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
   };
 
   environment.variables.EDITOR = "nvim";
