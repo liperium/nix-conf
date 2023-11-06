@@ -6,6 +6,11 @@
       #sqldeveloper
       jetbrains.datagrip
       jetbrains.pycharm-professional
+      android-studio
     ];
   };
+  environment.systemPackages = with pkgs; [
+    minikube
+    kubectl
+  ];
 }
