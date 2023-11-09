@@ -19,7 +19,7 @@
       gparted
       spot
       steam-run
-      thundebird-bin
+      thunderbird-bin
       (vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = false;
