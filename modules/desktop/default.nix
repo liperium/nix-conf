@@ -18,12 +18,15 @@
       nextcloud-client # ? cmd
       gparted
       spot
+      steam-run
+      thundebird-bin
       (vivaldi.override {
         proprietaryCodecs = true;
         enableWidevine = false;
         commandLineArgs = "--force-dark-mode";
       })
       vivaldi-ffmpeg-codecs
+      qbittorrent
       vlc
       widevine-cdm
     ];

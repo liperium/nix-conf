@@ -12,5 +12,13 @@
 
   networking.hostName = "battleship"; # Define your hostname.
 
-  environment.systemPackages = with pkgs; [ nvtop-amd ];
+  environment.systemPackages = with pkgs; [ 
+    nvtop-amd
+    amdvlk
+    vulkan-tools
+    pkg-config 
+    udev
+    vulkan-tools
+    vulkan-loader
+    ];
 }
