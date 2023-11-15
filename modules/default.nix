@@ -70,10 +70,14 @@
   };
   programs.neovim = {
     enable = true;
+    
+    viAlias = true;
+    vimAlias = true;
+
     configure = {
       packages.myVimPackage = with pkgs.vimPlugins; {
         # loaded on launch
-        start = [ catppuccin-nvim ];
+        start = [ catppuccin-nvim nvchad ];
         # manually loadable by calling `:packadd $plugin-name`
         opt = [ ];
       };
