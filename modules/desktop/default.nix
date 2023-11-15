@@ -3,7 +3,7 @@
 {
   users.users.liperium = {
     packages = with pkgs; [
-      firefox-bin
+      #firefox
       github-desktop
       gimp
       kate
@@ -31,6 +31,14 @@
       widevine-cdm
     ];
   };
+  # Firefox stuff
+  programs.firefox = {
+    enable = true;
+    preferences = {
+      "widget.use-xdg-desktop-portal.file-picker" = 1;
+    };
+  };
+  programs.dconf.enable = true; #Firefox cursor theme https://github.com/NixOS/nixpkgs/issues/207339#issuecomment-1747101887
   
   environment.systemPackages = with pkgs; [
     beauty-line-icon-theme
