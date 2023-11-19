@@ -11,6 +11,7 @@
       krita
       onlyoffice-bin
       obs-studio
+      chatterino2
       libsForQt5.kdenlive
       zoom-us
       webcord

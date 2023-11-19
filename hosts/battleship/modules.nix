@@ -14,7 +14,7 @@ in {
 
     # Desktop env
     "${modDesktop}"
-    "${modEnvironments}/plasma"
+    "${modEnvironments}/hyprland"
 
     # Desktop Additionals
     "${modDev}"
