@@ -6,5 +6,5 @@
         ".config/waybar/macchiato.css".source = ./macchiato.css;
         ".config/waybar/style.css".source = ./style.css;
     };
-    programs.rofi-wayland.enable = true;
+    programs.waybar.enable = true;
 }

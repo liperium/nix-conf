@@ -13,5 +13,5 @@
         package = pkgs.hyprland;
         # Whether to enable XWayland
         xwayland.enable = true;
-    }
+    };
 }

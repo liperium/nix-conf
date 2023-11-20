@@ -4,5 +4,5 @@
     home.file = {
         ".config/rofi/config.conf".source = ./config.rasi;
     };
-    programs.rofi-wayland.enable = true;
+    home.packages = with pkgs;[rofi-wayland];
 }
