@@ -21,12 +21,6 @@
       spot
       steam-run
       thunderbird-bin
-      (vivaldi.override {
-        proprietaryCodecs = true;
-        enableWidevine = false;
-        commandLineArgs = "--force-dark-mode";
-      })
-      vivaldi-ffmpeg-codecs
       qbittorrent
       vlc
       widevine-cdm
