@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./rofi
+    ./hypr
+    ./waybar
+  ];
+}

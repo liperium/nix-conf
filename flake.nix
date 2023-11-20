@@ -29,7 +29,7 @@ outputs = { self, nixpkgs, home-manager, ... }@inputs:
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.josiah = import ./home/default.nix;
+            home-manager.users.liperium = import ./home/home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
