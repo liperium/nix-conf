@@ -1,11 +1,9 @@
 { config, pkgs, ... }:
 
 {
-    home.file = {
-        ".config/hypr/hyprland.conf".source = ./hyprland.conf;
-        ".config/hypr/macchiato.conf".source = ./macchiato.conf;
-        ".config/hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;
-    };
+    xdg.configFile."hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink ./hyprland.conf;
+    xdg.configFile."hypr/macchiato.conf".source = config.lib.file.mkOutOfStoreSymlink ./macchiato.conf;
+    xdg.configFile."hypr/scripts/waybar/start.sh".source = config.lib.file.mkOutOfStoreSymlink ./scripts/waybar/start.sh;
     wayland.windowManager.hyprland = {
         # Whether to enable Hyprland wayland compositor
         enable = true;
