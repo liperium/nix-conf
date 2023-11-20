@@ -12,12 +12,6 @@
     };
   };
 
-  # Enable Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
   hardware = {
     opengl.enable = true;
   };
@@ -32,8 +26,6 @@
     #gnome.dconf-editor
     
     libsForQt5.dolphin
-    
-    waybar # Top status bar
 
     mako # Notifications
     libnotify # Required by mako
@@ -47,8 +39,6 @@
     grimblast # Screenshots
     xfce.thunar
     #hyprpicker # Color picker, doesn't work?
-
-    rofi-wayland # App Search
   ];
 
   # Portal to make it easy

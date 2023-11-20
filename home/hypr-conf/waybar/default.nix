@@ -2,9 +2,9 @@
 
 {
     home.file = {
-        ".config/waybar/config.jsonc".source = ./config.jsonc;
-        ".config/waybar/macchiato.css".source = ./macchiato.css;
-        ".config/waybar/style.css".source = ./style.css;
+        ".config/waybar/config.jsonc".source = config.lib.file.mkOutOfStoreSymlink ./config.jsonc;
+        ".config/waybar/macchiato.css".source = config.lib.file.mkOutOfStoreSymlink ./macchiato.css;
+        ".config/waybar/style.css".source = config.lib.file.mkOutOfStoreSymlink ./style.css;
     };
-    programs.waybar.enable = true;
+    home.packages = with pkgs;[waybar];
 }
