@@ -44,7 +44,7 @@
     pavucontrol # Audio panel
 
     grimblast # Screenshots
-    #xfce.thunar
+    xfce.thunar
     #hyprpicker # Color picker, doesn't work?
 
     rofi-wayland # App Search
