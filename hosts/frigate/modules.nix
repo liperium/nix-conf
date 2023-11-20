@@ -16,7 +16,8 @@ in {
     "${modDir}/wireguard.nix"
 
     # Desktop env
-    "${modEnvironments}/plasma"
+    "${modEnvironments}/hyprland"
+    "${modEnvironments}/hyprland/laptop.nix"
 
     # Basic apps
     "${modDesktop}/default.nix"
