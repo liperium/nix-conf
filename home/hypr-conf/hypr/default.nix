@@ -2,9 +2,9 @@
 
 {
     home.file = {
-        "hypr/hyprland.conf".source = ./hyprland.conf;
-        "hypr/macchiato.conf".source = ./macchiato.conf;
-        "hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;
+        ".config/hypr/hyprland.conf".source = ./hyprland.conf;
+        ".config/hypr/macchiato.conf".source = ./macchiato.conf;
+        ".config/hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;
     };
     wayland.windowManager.hyprland = {
         # Whether to enable Hyprland wayland compositor
