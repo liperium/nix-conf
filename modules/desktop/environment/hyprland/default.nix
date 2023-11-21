@@ -45,6 +45,10 @@
     gnome.eog # Image viewer
     #hyprpicker # Color picker, doesn't work?
   ];
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
 
   #Thunar services
   services.gvfs.enable = true; # Mount, trash, and other functionalities
