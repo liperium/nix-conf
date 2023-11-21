@@ -9,6 +9,7 @@
   users.users.liperium = {
     packages = with pkgs; [
       #firefox
+      libsForQt5.polkit-kde-agent
       github-desktop
       gimp
       kate
@@ -44,4 +45,8 @@
     beauty-line-icon-theme
     papirus-icon-theme
   ];
+  security.pam.services.kwallet = {
+    name = "kwallet";
+    enableKwallet = true;
+  };
 }

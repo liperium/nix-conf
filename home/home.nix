@@ -23,7 +23,6 @@
   home.packages = with pkgs;[
     neofetch
     dconf
-    nwg-look
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -68,6 +67,7 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
+    GTK_CSD = 0;
     # EDITOR = "emacs";
   };
 
@@ -96,7 +96,7 @@
       name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
-        variant = "mocha";
+        variant = "mocha"; # Since gtk are applications, I like Mocha for apps and Macchiato for OS
       };
     };
     iconTheme = {
