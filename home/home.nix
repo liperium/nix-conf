@@ -79,7 +79,12 @@
       };
     };
   };
-  
+  home.pointerCursor = {
+    package = pkgs.libsForQt5.breeze-gtk;
+    name = "breeze_cursors";
+    size = 24;
+  };
+
   gtk = {
     enable = true;
     cursorTheme = {
