@@ -17,7 +17,6 @@ in {
 
     # Desktop env
     "${modEnvironments}/hyprland"
-    "${modEnvironments}/hyprland/laptop.nix"
 
     # Basic apps
     "${modDesktop}/default.nix"
