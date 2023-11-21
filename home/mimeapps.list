@@ -1,0 +1,29 @@
+[Added Associations]
+inode/directory=org.kde.dolphin.desktop;
+text/plain=org.kde.kate.desktop;nvim.desktop;org.kde.kwrite.desktop;code.desktop;okularApplication_txt.desktop;
+x-scheme-handler/geo=google-maps-geo-handler.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/mailto=firefox.desktop;userapp-Thunderbird-PG56D2.desktop;userapp-Thunderbird-0BK2D2.desktop;
+x-scheme-handler/tel=Zoom.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-PG56D2.desktop;userapp-Thunderbird-0BK2D2.desktop;
+application/x-zerosize=org.kde.kate.desktop;
+application/octet-stream=ranger.desktop;
+application/pdf=firefox.desktop;
+image/png=org.gnome.eog.desktop;
+
+[Default Applications]
+inode/directory=org.kde.dolphin.desktop;
+text/plain=org.kde.kate.desktop;
+x-scheme-handler/geo=google-maps-geo-handler.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-0BK2D2.desktop
+x-scheme-handler/tel=Zoom.desktop;
+x-scheme-handler/x-github-client=github-desktop.desktop
+x-scheme-handler/x-github-desktop-auth=github-desktop.desktop
+message/rfc822=userapp-Thunderbird-0BK2D2.desktop
+x-scheme-handler/mid=userapp-Thunderbird-0BK2D2.desktop
+application/x-zerosize=org.kde.kate.desktop
+application/octet-stream=ranger.desktop
+application/pdf=firefox.desktop

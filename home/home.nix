@@ -67,9 +67,20 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    GTK_CSD = 0;
     # EDITOR = "emacs";
   };
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = ["gnome.thunar.desktop"];
+      "application/pdf" = ["firefox.desktop"];
+      "x-scheme-handler/http" = ["firefox.desktop"];
+      "x-scheme-handler/https" = ["firefox.desktop"];
+      "x-scheme-handler/x-github-client" = ["github-desktop.desktop"];
+      "x-scheme-handler/x-github-desktop-auth" = ["github-desktop.desktop"];
+    };
+  };
+
 
   dconf = {
     enable = true;
