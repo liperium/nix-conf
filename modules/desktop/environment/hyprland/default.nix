@@ -12,7 +12,7 @@
     };
   };
 
-  # Enable Hyprland
+  # Enable Hyprland - Need it here + home-manager
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -21,9 +21,6 @@
   hardware = {
     opengl.enable = true;
   };
-
-  #wayland.windowManager.hyprland.settings = {
-  #};
 
   environment.systemPackages = with pkgs; [
     alacritty

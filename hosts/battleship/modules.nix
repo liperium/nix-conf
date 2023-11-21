@@ -13,8 +13,10 @@ in {
     "${modDir}/dual-boot.nix"
 
     # Desktop env
-    "${modDesktop}"
     "${modEnvironments}/hyprland"
+
+    # Basic apps
+    "${modDesktop}"
 
     # Desktop Additionals
     "${modDev}"
