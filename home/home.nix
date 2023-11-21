@@ -82,6 +82,11 @@
   
   gtk = {
     enable = true;
+    cursorTheme = {
+      package = pkgs.libsForQt5.breeze-gtk;
+      name = "breeze_cursors";
+      size = 24;
+    };
     theme = {
       name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
