@@ -26,6 +26,9 @@
     #gnome.dconf-editor
     
     libsForQt5.dolphin
+    
+    waybar # Top status bar
+    wlogout
 
     mako # Notifications
     libnotify # Required by mako
