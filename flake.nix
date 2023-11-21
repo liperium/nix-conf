@@ -18,7 +18,16 @@ outputs = { self, nixpkgs, home-manager, ... }@inputs:
     nixosConfigurations = {
       frigate = lib.nixosSystem {
         inherit system;
-        modules = [ ./hosts/frigate ];
+        modules = [ 
+          ./hosts/frigate
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.liperium = import ./home/home.nix;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+          }
+        ];
       };
 
       battleship = lib.nixosSystem {

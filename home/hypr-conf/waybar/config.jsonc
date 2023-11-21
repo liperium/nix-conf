@@ -9,28 +9,28 @@
         "hyprland/workspaces",
         "cpu",
         "memory",
-        "disk",
-        "network"
+        "disk"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
         "tray",
+        "network",
         //"mpd",
         "pulseaudio",
-        "temperature",
         "backlight",
         "keyboard-state",
-        "battery"
+        "battery",
+        "custom/wlogout"
     ],
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
         "format": "{name} {icon}",
         "format-icons": {
-            "locked": " ",
-            "unlocked": " "
+            "locked": "",
+            "unlocked": ""
         }
     },
     "mpd": {
@@ -44,17 +44,17 @@
         },
         "random-icons": {
             "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
+            "on": ""
         },
         "repeat-icons": {
-            "on": " "
+            "on": ""
         },
         "single-icons": {
-            "on": "1 "
+            "on": "1"
         },
         "state-icons": {
-            "paused": " ",
-            "playing": " "
+            "paused": "",
+            "playing": ""
         },
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
@@ -69,14 +69,14 @@
         "format-alt": "{:%d/%m/%Y}"
     },
     "cpu": {
-        "format": "{usage}%  ",
+        "format": "{usage}% ",
         "tooltip": false
     },
     "disk": {
-        "format": "{percentage_used}%  "
+        "format": "{percentage_used}% 󰋊"
     },
     "memory": {
-        "format": "{}%  "
+        "format": "{}% "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -113,35 +113,42 @@
         },
         "format": "{capacity}% {icon}",
         "format-charging": "{capacity}% {icon} 󱐋",
-        "format-plugged": "{capacity}%  ",
+        "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": [
-            " ",
-            " ",
-            " ",
-            " ",
-            " "
+            "",
+            "",
+            "",
+            "",
+            ""
         ]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%)  ",
-        "format-ethernet": "{ipaddr} 󰈀 ",
-        "tooltip-format": "{ifname} via {gwaddr} 󱘖 ",
-        "format-linked": "{ifname} (No IP) 󱘖 ",
+        "format-wifi": "{essid} {icon}",
+        "format-ethernet": "{ipaddr} 󰈀",
+        "tooltip-format": "{ifname} via {gwaddr} 󱘖",
+        "format-linked": "{ifname} (No IP) 󱘖",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}%  ",
-        "format-source-muted": " ",
+        "format-bluetooth-muted": "󰖁 {icon} {format_source}",
+        "format-muted": "󰖁 {format_source}",
+        "format-source": "{volume}% 󰍬",
+        "format-source-muted": "󰍭",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -168,5 +175,13 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/wlogout": {
+        "format": " {icon} ",
+        "format-icons": {
+            "default": ""
+        },
+        "interval": "once",
+        "on-click": "wlogout"
     }
 }
