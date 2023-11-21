@@ -74,6 +74,10 @@
     defaultApplications = {
       "inode/directory" = ["gnome.thunar.desktop"];
       "application/pdf" = ["firefox.desktop"];
+      "application/gzip" = ["file-roller"];
+      "application/zip" = ["file-roller"];
+      "application/x-7z-compressed" = ["file-roller"];
+      "application/x-compressed-tar" = ["file-roller"];
       "x-scheme-handler/http" = ["firefox.desktop"];
       "x-scheme-handler/https" = ["firefox.desktop"];
       "x-scheme-handler/x-github-client" = ["github-desktop.desktop"];
