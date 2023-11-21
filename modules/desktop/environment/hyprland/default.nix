@@ -32,6 +32,7 @@
     
     waybar # Top status bar
     wlogout
+    networkmanagerapplet
 
     mako # Notifications
     libnotify # Required by mako
