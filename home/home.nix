@@ -68,6 +68,13 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Catppuccin Macchiato";
+      package = pkgs.catppuccin-gtk;
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

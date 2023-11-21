@@ -26,7 +26,6 @@
     alacritty
     kitty
     libsecret
-    #gnome.dconf-editor
     
     libsForQt5.dolphin
     
