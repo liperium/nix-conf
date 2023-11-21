@@ -1,17 +1,22 @@
 { config, pkgs, lib, ... }:
 
 {
+  qt = { 
+    enable = true; 
+    style = lib.mkForce "gtk2"; 
+    platformTheme = lib.mkForce "gtk2"; 
+  }; 
   users.users.liperium = {
     packages = with pkgs; [
       #firefox
       github-desktop
       gimp
       kate
-      libsForQt5.kcalc
       krita
       onlyoffice-bin
       obs-studio
       chatterino2
+      galculator
       libsForQt5.kdenlive
       zoom-us
       webcord

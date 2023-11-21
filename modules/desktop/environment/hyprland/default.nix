@@ -26,8 +26,7 @@
     alacritty
     kitty
     libsecret
-    
-    libsForQt5.dolphin
+  
     
     waybar # Top status bar
     wlogout

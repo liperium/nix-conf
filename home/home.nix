@@ -22,6 +22,8 @@
   # environment.
   home.packages = with pkgs;[
     neofetch
+    dconf
+    nwg-look
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -68,11 +70,39 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
+    };
+  };
+  
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin Macchiato";
-      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "mauve" ];
+        variant = "mocha";
+      };
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    font = {
+      name = "Noto Sans";
+      package = pkgs.noto-fonts;
+      size = 10;
+    };
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
     };
   };
 
