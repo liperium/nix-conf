@@ -26,31 +26,9 @@
 window#waybar {
     background-color: alpha(@mantle, 0.9);
     border-bottom: 2px solid alpha(@overlay0, 0.9);
-    color: #ffffff;
+    color: @text;
     transition-property: background-color;
     transition-duration: .5s;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.kitty {
-    background-color: #ff0000;
-    border: none;
 }
 
 button {
@@ -99,6 +77,8 @@ button:hover {
 #network,
 #pulseaudio,
 #wireplumber,
+#window,
+#custom-logout,
 #custom-media,
 #tray,
 #mode,

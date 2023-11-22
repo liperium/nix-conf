@@ -7,3 +7,4 @@
 - [ ] NVChad - Locally
 - [ ] Make thunderbird config save somewhere (secret)
 - [ ] Numlock startup - <https://www.reddit.com/r/NixOS/comments/u8vwz0/how_to_turn_on_numlock_on_boot/>
+- [ ] Make custom power white too
