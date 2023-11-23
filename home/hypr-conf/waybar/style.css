@@ -78,7 +78,7 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #window,
-#custom-logout,
+#custom-wlogout,
 #custom-media,
 #tray,
 #mode,
@@ -111,8 +111,7 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: rgb(255, 243, 78);
 }
 
 @keyframes blink {

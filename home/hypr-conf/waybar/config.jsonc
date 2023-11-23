@@ -6,23 +6,23 @@
     "spacing": 4, // Gaps between modules (4px)
     "layer": "top",
     "modules-left": [
-        "hyprland/workspaces",
+        "network",
         "cpu",
         "memory",
         "disk",
-        "hyprland/window"
     ],
     "modules-center": [
-        "clock"
+        "hyprland/workspaces",
+        "hyprland/window",
     ],
     "modules-right": [
         "tray",
-        "network",
         //"mpd",
         "pulseaudio",
         "backlight",
         "keyboard-state",
         "battery",
+        "clock",
         "custom/wlogout"
     ],
     "keyboard-state": {
@@ -178,7 +178,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/wlogout": {
-        "format": " {icon} ",
+        "format": "{icon}",
         "return-type": "json",
         "format-icons": {
             "default": ""
