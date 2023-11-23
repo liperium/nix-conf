@@ -11,6 +11,7 @@ in {
     # Additional System
     "${modDir}/docker.nix"
     "${modDir}/dual-boot.nix"
+    "${modDir}/nix-quick-update"
 
     # Desktop env
     "${modEnvironments}/hyprland"

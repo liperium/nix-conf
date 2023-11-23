@@ -14,6 +14,7 @@ in {
     "${modDir}/docker.nix"
     "${modDir}/dual-boot.nix"
     "${modDir}/wireguard.nix"
+    "${modDir}/nix-quick-update"
 
     # Desktop env
     "${modEnvironments}/hyprland"
