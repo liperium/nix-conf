@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  conservationmode = pkgs.writeShellScriptBin "nix-quick-update" ''
+  nix-quick-update = pkgs.writeShellScriptBin "nix-quick-update" ''
     #!/bin/sh
     git pull && sudo nixos-rebuild switch --flake /home/liperium/nix-conf
   '';
