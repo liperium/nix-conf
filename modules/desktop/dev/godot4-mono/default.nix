@@ -5,10 +5,10 @@ in
 {
   users.users.liperium = {
     packages = with pkgs; [ 
-      #steam-run 
-      #dotnet-sdk 
+      steam-run 
+      dotnet-sdk 
       jetbrains.rider 
-      godot4-mono 
+      #godot4-mono 
       ];
   };
 }
