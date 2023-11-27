@@ -18,6 +18,7 @@ in {
 
     # Basic apps
     "${modDesktop}"
+    "${modDesktop}/virt.nix"
 
     # Desktop Additionals
     "${modDev}"
