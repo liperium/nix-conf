@@ -6,13 +6,13 @@
     "spacing": 4, // Gaps between modules (4px)
     "layer": "top",
     "modules-left": [
+        "hyprland/workspaces",
         "network",
         "cpu",
         "memory",
         "disk",
     ],
     "modules-center": [
-        "hyprland/workspaces",
         "hyprland/window",
     ],
     "modules-right": [
@@ -185,5 +185,27 @@
         },
         "interval": "once",
         "on-click": "wlogout"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true,
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+        },
     }
 }
