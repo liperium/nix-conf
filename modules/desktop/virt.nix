@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, dconf, ... }:
 
 {
     virtualisation.libvirtd.enable = true;
@@ -6,4 +6,5 @@
     environment.systemPackages = with pkgs; [
         qemu
     ];
+    users.users.liperium.extraGroups = [ "libvirtd" ];
 }
