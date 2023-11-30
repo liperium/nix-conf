@@ -24,8 +24,6 @@
 
   environment.systemPackages = with pkgs; [
     kitty
-    libsecret
-  
     
     waybar # Top status bar
     wlogout
