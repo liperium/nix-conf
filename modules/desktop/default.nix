@@ -45,5 +45,4 @@
     beauty-line-icon-theme
     papirus-icon-theme
   ];
-  services.gnome-keyring.enable = true;
 }
