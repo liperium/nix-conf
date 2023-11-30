@@ -45,8 +45,4 @@
     beauty-line-icon-theme
     papirus-icon-theme
   ];
-  security.pam.services.kwallet = {
-    name = "kwallet";
-    enableKwallet = true;
-  };
 }

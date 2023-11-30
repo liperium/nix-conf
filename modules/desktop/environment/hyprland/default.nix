@@ -24,8 +24,8 @@
 
   environment.systemPackages = with pkgs; [
     kitty
+    #gnome.gnome-keyring # secrets manager
     libsecret
-  
     
     waybar # Top status bar
     wlogout
@@ -55,6 +55,9 @@
   services.tumbler.enable = true; # Thumbnail support for images
 
   programs.file-roller.enable = true; # archive manager
+
+  programs.seahorse.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   # Portal to make it easy
   xdg.portal.enable = true;
