@@ -45,6 +45,8 @@
     xfce.thunar # File explorer
     gnome.eog # Image viewer
     #hyprpicker # Color picker, doesn't work?
+    
+    xarchiver
   ];
   security.polkit.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [

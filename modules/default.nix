@@ -70,18 +70,10 @@
   };
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     
     viAlias = true;
     vimAlias = true;
-
-    configure = {
-      packages.myVimPackage = with pkgs.vimPlugins; {
-        # loaded on launch
-        start = [ catppuccin-nvim nvchad ];
-        # manually loadable by calling `:packadd $plugin-name`
-        opt = [ ];
-      };
-    };
   };
   hardware.opengl = {
     enable = true;
