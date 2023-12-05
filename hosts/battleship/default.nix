@@ -15,4 +15,12 @@
   environment.systemPackages = with pkgs; [ 
     nvtop-amd
     ];
+  services.openssh = {
+    enable = true;
+    ports = [5252];
+    # require public key authentication for better security
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
+    #settings.PermitRootLogin = "yes";
+  };
 }
