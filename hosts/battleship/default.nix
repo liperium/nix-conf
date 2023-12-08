@@ -14,7 +14,8 @@
 
   environment.systemPackages = with pkgs; [ 
     nvtop-amd
-    ];
+    path-of-building
+  ];
   services.openssh = {
     enable = true;
     ports = [5252];

@@ -3,10 +3,12 @@
 {
   users.users.liperium = { packages = with pkgs; [ 
     vscode 
-    nixfmt 
+    #nixfmt 
     cargo 
-    rust-analyzer 
-    rustfmt
+    rust-analyzer-unwrapped
+    rustup
+    #nodejs-slim_21
+    #rustfmt
     ]; 
     };
 }

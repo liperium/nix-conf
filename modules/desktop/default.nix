@@ -20,7 +20,8 @@
       galculator
       libsForQt5.kdenlive
       zoom-us
-      webcord
+      #webcord
+      discord
       qownnotes
       nextcloud-client # ? cmd
       gparted
@@ -28,6 +29,7 @@
       steam-run
       thunderbird-bin
       qbittorrent
+      xwaylandvideobridge
       vlc
       widevine-cdm
     ];
