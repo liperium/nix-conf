@@ -2,7 +2,7 @@
 
 {
     home.file = {
-        ".config/waybar/config".source = config.lib.file.mkOutOfStoreSymlink ./config;
+        ".config/mako/config".source = config.lib.file.mkOutOfStoreSymlink ./config;
     };
     home.packages = with pkgs;[mako];
 }
