@@ -1,0 +1,7 @@
+font=monospace 14
+width=400
+height=160
+background-color=#363a4faa
+border-color=#c6a0f6aa
+border-radius=10
+default-timeout=5000

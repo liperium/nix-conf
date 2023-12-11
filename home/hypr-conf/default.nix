@@ -3,5 +3,6 @@
     ./rofi
     ./hypr
     ./waybar
+    ./mako
   ];
 }
