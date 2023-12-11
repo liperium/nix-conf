@@ -99,6 +99,9 @@
         autoconnect = ["qemu:///system"]  ;
         uris = ["qemu:///system"];
       };
+      "org/gnome/nautilus/preferences" = {
+        always-use-location-entry= true; #shows dir in nautilus
+      };
     };        
   };
   home.pointerCursor = {

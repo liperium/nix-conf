@@ -4,5 +4,6 @@
     ./hypr
     ./waybar
     ./mako
+    ./wlogout
   ];
 }

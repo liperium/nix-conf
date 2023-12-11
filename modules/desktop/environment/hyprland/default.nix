@@ -29,14 +29,14 @@
     libsecret
     polkit_gnome
     
-    waybar # Top status bar
-    wlogout
+    waybar # Top status bar # Home
+    wlogout # Home
     networkmanagerapplet
 
-    mako # Notifications
+    mako # Notifications # Home
     libnotify # Required by mako
 
-    swww # Wallpaper server
+    swww # Wallpaper server # Home
 
     pulseaudio
     killall # Restart processes
