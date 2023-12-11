@@ -74,7 +74,8 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory" = ["gnome.thunar.desktop"];
+      #"inode/directory" = ["gnome.thunar.desktop"];
+      "inode/directory" = ["gnome.nautilus.desktop"];
       "application/pdf" = ["firefox.desktop"];
       "application/gzip" = ["file-roller"];
       "application/zip" = ["file-roller"];
