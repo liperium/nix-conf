@@ -5,4 +5,3 @@ background-color=#363a4faa
 border-color=#c6a0f6aa
 border-radius=10
 default-timeout=5000
-on-notify=exec nvlc /home/liperium/nix-conf/home/hypr-conf/mako/sound.mp3
