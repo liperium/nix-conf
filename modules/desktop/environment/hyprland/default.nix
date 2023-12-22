@@ -48,7 +48,7 @@
     gnome.eog # Image viewer
     #hyprpicker # Color picker, doesn't work?
     
-    xarchiver
+    #xarchiver
   ];
   security.polkit.enable = true;
   #programs.thunar.plugins = with pkgs.xfce; [
@@ -58,7 +58,7 @@
 
   #Thunar services
   services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
+  #services.tumbler.enable = true; # Thumbnail support for images
 
   programs.file-roller.enable = true; # archive manager
 

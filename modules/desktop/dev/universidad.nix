@@ -4,13 +4,15 @@
   users.users.liperium = {
     packages = with pkgs; [
       #sqldeveloper
-      jetbrains.datagrip
-      jetbrains.pycharm-professional
+      #jetbrains.datagrip
+      #jetbrains.pycharm-professional
       android-studio
     ];
   };
-  environment.systemPackages = with pkgs; [
-    minikube
-    kubectl
-  ];
+
+  # TP Final Cloud
+  #environment.systemPackages = with pkgs; [
+    #minikube
+    #kubectl
+  #];
 }

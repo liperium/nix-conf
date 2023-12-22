@@ -52,8 +52,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     util-linux
-    lshw # Debugging nvidia prime
-    libva-utils # Debugging vaapi
+    #lshw # Debugging nvidia prime
+    #libva-utils # Debugging vaapi
     gcc
     git
     tree

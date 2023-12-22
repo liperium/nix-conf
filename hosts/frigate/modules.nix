@@ -24,7 +24,7 @@ in {
 
     # Desktop Additionals
     "${modDev}"
-    "${modDev}/godot4-mono"
+    #"${modDev}/godot4-mono"
     "${modDev}/universidad.nix"
   ];
 }
