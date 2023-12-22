@@ -13,6 +13,7 @@ in {
       steam
       starsector
       protonup-rs
+      prismlauncher
     ];
 
   };

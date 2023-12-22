@@ -8,7 +8,7 @@
   }; 
   users.users.liperium = {
     packages = with pkgs; [
-      #firefox
+      firefox
       libsForQt5.polkit-kde-agent
       github-desktop
       gimp
@@ -20,7 +20,7 @@
       galculator
       libsForQt5.kdenlive
       zoom-us
-      #webcord
+      webcord
       discord
       qownnotes
       nextcloud-client # ? cmd
@@ -33,13 +33,6 @@
       vlc
       widevine-cdm
     ];
-  };
-  # Firefox stuff
-  programs.firefox = {
-    enable = true;
-    preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
-    };
   };
   programs.dconf.enable = true; #Firefox cursor theme https://github.com/NixOS/nixpkgs/issues/207339#issuecomment-1747101887
   
