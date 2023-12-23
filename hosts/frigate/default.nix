@@ -17,7 +17,7 @@
     "acpi_backlight=native" # native/video/vendor, maybe depending if nvidia is installed?
   ];
 
-  programs.hyprland.enableNvidiaPatches = true;
+  #programs.hyprland.enableNvidiaPatches = true;
 
   services.power-profiles-daemon.enable =
     false; # Don't know why it enables itself
