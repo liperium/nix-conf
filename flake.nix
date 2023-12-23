@@ -43,6 +43,10 @@ outputs = { self, nixpkgs, home-manager, ... }@inputs:
           }
         ];
       };
+      atlas = lib.nixosSystem {
+        inherit system;
+        modules = [ ./hosts/atlas ];
+      };
     };
   };
 }
