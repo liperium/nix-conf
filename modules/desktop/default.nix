@@ -8,30 +8,41 @@
   }; 
   users.users.liperium = {
     packages = with pkgs; [
+      #Basic Needs
       firefox
-      libsForQt5.polkit-kde-agent
-      github-desktop
+      steam-run
+      gparted
+      vlc
+      widevine-cdm
+      galculator
+
+      #Personnal
+      qownnotes
+      webcord
+      discord
+      xwaylandvideobridge
+      thunderbird-bin
+      qbittorrent
+
+      #Media-Streams
+      obs-studio
+      chatterino2
+      streamlink
+      streamlink-twitch-gui-bin
+
+      #Creative
       gimp
       kate
       krita
-      onlyoffice-bin
-      obs-studio
-      chatterino2
-      galculator
       libsForQt5.kdenlive
-      zoom-us
-      webcord
-      discord
-      qownnotes
-      nextcloud-client # ? cmd
-      gparted
+
+      #Misc
       spot
-      steam-run
-      thunderbird-bin
-      qbittorrent
-      xwaylandvideobridge
-      vlc
-      widevine-cdm
+      nextcloud-client # ? cmd
+
+      # Office
+      onlyoffice-bin
+      zoom-us
     ];
   };
   programs.dconf.enable = true; #Firefox cursor theme https://github.com/NixOS/nixpkgs/issues/207339#issuecomment-1747101887
