@@ -7,7 +7,7 @@ let
 in {
   imports = [
     # Base
-    "${modDir}/default.nix"
+    "${modDir}"
     "${currentDir}/conservationmode"
 
     # Additional System
@@ -20,7 +20,8 @@ in {
     "${modEnvironments}/hyprland"
 
     # Basic apps
-    "${modDesktop}/default.nix"
+    "${modDesktop}"
+    "${modDesktop}/virt.nix"
 
     # Desktop Additionals
     "${modDev}"
