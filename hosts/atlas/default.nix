@@ -18,4 +18,14 @@
   environment.systemPackages = with pkgs; [
     zfs
   ];
+  
+  # ZFS
+
+  # basics
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+
+  # config
+  boot.zfs.extraPools = [ "zfs-data" ];
+  services.zfs.autoScrub.enable = true;
 }
