@@ -11,6 +11,10 @@
   ];
   networking.hostName = "frigate";
 
+  virtualisation.docker= {
+    storageDriver = null;
+  };
+
   # --- Laptop settings ---
 
   boot.kernelParams = [

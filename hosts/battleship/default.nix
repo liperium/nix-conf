@@ -24,4 +24,7 @@
     settings.KbdInteractiveAuthentication = false;
     #settings.PermitRootLogin = "yes";
   };
+  virtualisation.docker= {
+    storageDriver = null;
+  };
 }
