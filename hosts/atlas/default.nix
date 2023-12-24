@@ -16,6 +16,6 @@
   };
 
   virtualisation.docker= {
-    storageDriver = "ext4";
+    storageDriver = "null";
   };
 }
