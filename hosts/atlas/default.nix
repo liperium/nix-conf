@@ -18,12 +18,13 @@
   environment.systemPackages = with pkgs; [
     zfs
   ];
-  
+
   # ZFS
 
   # basics
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
+  networking.hostId = "86e27f43";
 
   # config
   boot.zfs.extraPools = [ "zfs-data" ];
