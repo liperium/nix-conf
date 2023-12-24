@@ -9,9 +9,13 @@
     ./modules.nix
   ];
   networking.hostName = "atlas";
-  
+
   services.openssh = {
     enable = true;
     ports = [5252];
+  };
+
+  virtualisation.docker= {
+    storageDriver = "ext4";
   };
 }
