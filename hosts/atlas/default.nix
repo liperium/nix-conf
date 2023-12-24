@@ -15,7 +15,7 @@
     ports = [5252];
   };
 
-  virtualisation.docker= {
-    storageDriver = null;
-  };
+  environment.systemPackages = with pkgs; [
+    zfs
+  ];
 }
