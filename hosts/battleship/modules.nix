@@ -9,6 +9,7 @@ in {
     "${modDir}/default.nix"
 
     # Additional System
+    "${modDir}/btrfs.nix"
     "${modDir}/docker.nix"
     "${modDir}/dual-boot.nix"
     "${modDir}/nix-quick-update"

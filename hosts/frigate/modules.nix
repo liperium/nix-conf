@@ -11,6 +11,7 @@ in {
     "${currentDir}/conservationmode"
 
     # Additional System
+    "${modDir}/btrfs.nix"
     "${modDir}/docker.nix"
     "${modDir}/dual-boot.nix"
     "${modDir}/wireguard.nix"
