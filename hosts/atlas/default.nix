@@ -19,6 +19,16 @@
     zfs
   ];
 
+  networking = {
+    interfaces.eno1.useDHCP = false;
+    interfaces.eno1.ipv4.addresses = [{
+      address = "192.168.1.10";
+      prefixLength = 24;
+    }];
+    defaultGateway = "192.168.1.1";
+    nameservers = [ "192.168.0.10" ];
+  };
+
   # ZFS
 
   # basics
