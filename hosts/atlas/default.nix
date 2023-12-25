@@ -17,8 +17,11 @@
 
   environment.systemPackages = with pkgs; [
     zfs
+
+    unzip
+    zip
   ];
-  
+
   # ZFS
 
   # basics
