@@ -17,7 +17,6 @@
 
   environment.systemPackages = with pkgs; [
     zfs
-    temurin-bin-17
     unzip
     zip
   ];
