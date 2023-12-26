@@ -24,7 +24,7 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPortsRanges = [ 
+    allowedTCPPortRanges = [ 
       {from = 1000; to = 10000;}
       ];
     allowedUDPPortRanges = [
