@@ -28,7 +28,7 @@
       {from = 1000; to = 10000;}
       ];
     allowedUDPPortRanges = [
-      {from = 1000; to = 10000;},
+      {from = 1000; to = 10000;}
       {from = 25565; to = 25570;}
     ];
   };
