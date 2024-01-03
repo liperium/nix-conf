@@ -18,6 +18,7 @@
 
       #Personnal
       qownnotes
+      betterdiscordctl
       webcord
       discord
       xwaylandvideobridge
