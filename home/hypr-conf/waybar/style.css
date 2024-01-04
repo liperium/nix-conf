@@ -11,8 +11,7 @@
 }
 
 .modules-left>*,
-.modules-right>*,
-.modules-center>* {
+.modules-right>* {
     background-color: alpha(@surface0, 0.7);
     border: 2px solid @mauve;
 }

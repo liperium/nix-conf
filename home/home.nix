@@ -21,7 +21,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs;[
-    neofetch
+    fastfetch
     dconf
     nodejs # NVChad dependency
     unzip # NVChad dependency
@@ -41,6 +41,47 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    # From default config modules 
+    #Basic Needs
+    firefox
+    steam-run
+    gparted
+    vlc
+    widevine-cdm
+    galculator
+
+    #Theming
+    beauty-line-icon-theme
+    papirus-icon-theme
+
+    #Personnal
+    qownnotes
+    betterdiscordctl
+    webcord
+    discord
+    xwaylandvideobridge
+    thunderbird-bin
+    qbittorrent
+
+    #Media-Streams
+    obs-studio
+    chatterino2
+    streamlink
+    streamlink-twitch-gui-bin
+
+    #Creative
+    gimp
+    kate
+    krita
+    libsForQt5.kdenlive
+
+    #Misc
+    spot
+    nextcloud-client # ? cmd
+
+    # Office
+    onlyoffice-bin
+    zoom-us
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -77,12 +118,15 @@
       #"inode/directory" = ["gnome.thunar.desktop"];
       "inode/directory" = ["gnome.nautilus.desktop"];
       "application/pdf" = ["firefox.desktop"];
-      "application/gzip" = ["file-roller"];
-      "application/zip" = ["file-roller"];
-      "application/x-7z-compressed" = ["file-roller"];
-      "application/x-compressed-tar" = ["file-roller"];
+
+      "application/gzip" = ["file-roller.desktop"];
+      "application/zip" = ["file-roller.desktop"];
+      "application/x-7z-compressed" = ["file-roller.desktop"];
+      "application/x-compressed-tar" = ["file-roller.desktop"];
+
       "x-scheme-handler/http" = ["firefox.desktop"];
       "x-scheme-handler/https" = ["firefox.desktop"];
+
       "x-scheme-handler/x-github-client" = ["github-desktop.desktop"];
       "x-scheme-handler/x-github-desktop-auth" = ["github-desktop.desktop"];
     };
@@ -131,7 +175,7 @@
     font = {
       name = "Noto Sans";
       package = pkgs.noto-fonts;
-      size = 10;
+      size = 12;
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
