@@ -6,11 +6,19 @@
     enable = true;
     layout = "us";
     xkbVariant = "alt-intl";
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
+    
+    displayManager = {
+      autoLogin.enable = true;
+      autoLogin.user = "liperium";
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
     };
   };
+  # BC of autologin - https://github.com/NixOS/nixpkgs/issues/103746
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 
   # Enable Hyprland - Need it here + home-manager
   programs.hyprland = {
