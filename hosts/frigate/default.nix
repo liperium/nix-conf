@@ -26,17 +26,7 @@
   services.power-profiles-daemon.enable =
     false; # Don't know why it enables itself
 
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "schedutil";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
+  services.tlp.enable = true;
 
   # Nvidia
   # Enable OpenGL
