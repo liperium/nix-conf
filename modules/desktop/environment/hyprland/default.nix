@@ -25,7 +25,6 @@
   environment.sessionVariables.GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
   environment.systemPackages = with pkgs; [
     kitty
-    #gnome.gnome-keyring # secrets manager
     libsecret
     polkit_gnome
     
@@ -43,22 +42,12 @@
     pavucontrol # Audio panel
 
     grimblast # Screenshots
-    #xfce.thunar # File explorer
     gnome.nautilus # File explorer
     gnome.eog # Image viewer
-    #hyprpicker # Color picker, doesn't work?
-    
-    #xarchiver
   ];
   security.polkit.enable = true;
-  #programs.thunar.plugins = with pkgs.xfce; [
-  #  thunar-archive-plugin
-  #  thunar-volman
-  #];
 
-  #Thunar services
   services.gvfs.enable = true; # Mount, trash, and other functionalities
-  #services.tumbler.enable = true; # Thumbnail support for images
 
   programs.file-roller.enable = true; # archive manager
 
