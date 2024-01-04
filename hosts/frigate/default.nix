@@ -11,6 +11,10 @@
   ];
   networking.hostName = "frigate";
 
+  environment.systemPackages = with pkgs; [ 
+    nvtop-nvidia
+  ];
+
   # --- Laptop settings ---
 
   boot.kernelParams = [
