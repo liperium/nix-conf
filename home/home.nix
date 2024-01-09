@@ -59,7 +59,6 @@
     betterdiscordctl
     webcord
     discord
-    xwaylandvideobridge
     thunderbird-bin
     qbittorrent
 
