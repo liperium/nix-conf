@@ -77,6 +77,7 @@
     #Misc
     spot
     nextcloud-client # ? cmd
+    via
 
     # Office
     onlyoffice-bin
