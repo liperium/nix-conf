@@ -4,7 +4,7 @@
   users.users.liperium = {
     packages = with pkgs; [
       #sqldeveloper
-      #jetbrains.datagrip
+      jetbrains.datagrip
       #jetbrains.pycharm-professional
       android-studio
     ];
