@@ -35,6 +35,9 @@
     pulse.enable = true;
   };
 
+  # Enables microcode updates
+  hardware.enableRedistributableFirmware = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
