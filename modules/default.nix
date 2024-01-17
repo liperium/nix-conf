@@ -98,8 +98,12 @@
     };
     promptInit =
       "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    shellAliases = {
+      nixd = "nix develop -c zsh";
+    };
   };
   users.defaultUserShell = pkgs.zsh;
+  users.users.liperium.shell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
 
   #Fonts
