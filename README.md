@@ -23,4 +23,9 @@ Still need to transfer my server to NixOs, but not ready to do so *YET*, thinkin
 I update whenever, cause I've never had any problem with upgrades. Mostly every ~2 weeks.
 
 ## Cheat sheet for Nix stuff
+
 commit hash : ```git rev-parse HEAD```
+
+## Fake hash
+
+```lib.fakeHash```
