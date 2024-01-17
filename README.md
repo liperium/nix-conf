@@ -2,7 +2,7 @@
 
 My nixos configurations. I am still pretty new to NixOs, and I've mostly tried to keep an architecture that makes sense for me, I do love my modularity and the portability of my files, so it can feel quite hard to grasp at a glance without being familiar with Nix.
 
-Running *unstable* branch, I like the newest packages, and NixOs has never bricked a package, or a behavior for me as of now.
+Running *unstable* branch, I like the newest packages, and NixOs has never bricked a package, or a behavior for me as of now. (Which can always be reverted by changing back to previous state)
 
 Currently running Hyprland, never configured a DE from scratch, still learning a lot.
 
