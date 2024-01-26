@@ -60,6 +60,7 @@
     webcord
     discord
     thunderbird-bin
+    evolution
     qbittorrent
 
     #Media-Streams
