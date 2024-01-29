@@ -11,7 +11,7 @@ in {
     # Additional System
     "${modDir}/btrfs.nix"
     "${modDir}/docker.nix"
-    "${modDir}/dual-boot.nix"
+    #"${modDir}/dual-boot.nix" Using grub instead of systemd
     "${modDir}/nix-quick-update"
     #"${modDir}/wireguard.nix"
 

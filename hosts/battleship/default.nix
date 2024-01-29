@@ -15,6 +15,7 @@
   environment.systemPackages = with pkgs; [ 
     nvtop-amd
     path-of-building
+    os-prober # Probes for windows for grub
   ];
   networking.firewall = {
     enable = true;
@@ -32,5 +33,14 @@
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
     #settings.PermitRootLogin = "yes";
+  };
+
+  #Dual boot, systemd can't see other EFI partition, use grub instead
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub.enable = true;
+    grub.devices = [ "nodev" ];
+    grub.efiSupport = true;
+    grub.useOSProber = true;
   };
 }
