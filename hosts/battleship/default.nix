@@ -16,6 +16,15 @@
     nvtop-amd
     path-of-building
   ];
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      5252
+    ];
+    allowedUDPPorts = [
+      5252
+    ];
+  };
   services.openssh = {
     enable = true;
     ports = [5252];

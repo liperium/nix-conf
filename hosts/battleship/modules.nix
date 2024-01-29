@@ -23,6 +23,7 @@ in {
     "${modDesktop}"
     "${modDesktop}/virt.nix"
     "${modDesktop}/gaming/default.nix"
+    "${modDesktop}/kdeconnect"
 
     # Desktop Additionals
     "${modDev}"
