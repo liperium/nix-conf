@@ -59,8 +59,9 @@
     betterdiscordctl
     webcord
     discord
-    thunderbird-bin
-    evolution
+    thunderbird
+    mailspring # Works but needs approval
+     
     qbittorrent
 
     #Media-Streams
@@ -130,6 +131,9 @@
 
       "x-scheme-handler/x-github-client" = ["github-desktop.desktop"];
       "x-scheme-handler/x-github-desktop-auth" = ["github-desktop.desktop"];
+    };
+    associations.added = {
+      "text/plain" = ["org.kde.kate.desktop"];
     };
   };
 
