@@ -17,6 +17,8 @@
     path-of-building
     os-prober # Probes for windows for grub
   ];
+
+  services.xserver.displayManager.defaultSession = "plasmawayland";
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
