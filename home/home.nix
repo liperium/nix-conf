@@ -60,7 +60,7 @@
     webcord
     discord
     thunderbird
-    mailspring # Works but needs approval
+  
      
     qbittorrent
 
@@ -85,6 +85,13 @@
     onlyoffice-bin
     zoom-us
   ];
+  #Direnv
+  programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -121,10 +128,10 @@
       "inode/directory" = ["gnome.nautilus.desktop"];
       "application/pdf" = ["firefox.desktop"];
 
-      "application/gzip" = ["file-roller.desktop"];
-      "application/zip" = ["file-roller.desktop"];
-      "application/x-7z-compressed" = ["file-roller.desktop"];
-      "application/x-compressed-tar" = ["file-roller.desktop"];
+      "application/gzip" = ["org.gnome.FileRoller.desktop"];
+      "application/zip" = ["org.gnome.FileRoller.desktop"];
+      "application/x-7z-compressed" = ["org.gnome.FileRoller.desktop"];
+      "application/x-compressed-tar" = ["org.gnome.FileRoller.desktop"];
 
       "x-scheme-handler/http" = ["firefox.desktop"];
       "x-scheme-handler/https" = ["firefox.desktop"];
