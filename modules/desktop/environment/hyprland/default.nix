@@ -4,10 +4,10 @@
   # Enable the X11 windowing system - Configure keymap in X11
   services.xserver = {
     enable = true;
-    services.xserver.xkb = {
-    layout = "us";
-    variant = "alt-intl";
-  };
+    xkb = {
+      layout = "us";
+      variant = "alt-intl";
+    };
     
     displayManager = {
       autoLogin.enable = true;
