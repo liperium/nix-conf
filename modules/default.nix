@@ -61,6 +61,7 @@
     tree
     btop
     ranger
+    zoxide
 
     #Terminal
     zsh

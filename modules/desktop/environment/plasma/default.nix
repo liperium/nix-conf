@@ -15,6 +15,7 @@
 
   environment.systemPackages = with pkgs;
     [
+      xwaylandvideobridge
       gnome.seahorse
       (catppuccin-kde.override {
         flavour = [ "macchiato" ];
