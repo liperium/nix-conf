@@ -46,6 +46,8 @@
     # '')
     # From default config modules 
     #Basic Needs
+    neovim
+    wl-clipboard
     firefox
     steam-run
     gparted
