@@ -1,4 +1,5 @@
 configuration {
+    modi: "drun,run,filebrowser,window";
     display-drun: "Apps";
     icon-theme: "Papirus-Dark";
     terminal: "kitty";
@@ -59,6 +60,8 @@ entry {
     margin: 20px 0px 0px 10px;
     text-color: @fg-col;
     background-color: @bg-col;
+    placeholder: "  Search";
+    placeholder-color: @bg-col-light;
 }
 
 listview {
