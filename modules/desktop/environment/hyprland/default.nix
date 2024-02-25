@@ -46,6 +46,7 @@
     libnotify # Required by mako
 
     #swww # Wallpaper server # Home
+    hyprpaper # Wallpaper server # Home
 
     pulseaudio
     killall # Restart processes
