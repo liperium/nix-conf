@@ -5,5 +5,6 @@
     ./waybar
     ./mako
     ./wlogout
+    ./hyprpaper
   ];
 }
