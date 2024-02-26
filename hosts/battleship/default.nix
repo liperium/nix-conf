@@ -18,7 +18,7 @@
     os-prober # Probes for windows for grub
   ];
 
-  #services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.xserver.displayManager.defaultSession = "hyprland";
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
