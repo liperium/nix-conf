@@ -6,7 +6,7 @@
       #sqldeveloper
       jetbrains.datagrip
       #jetbrains.pycharm-professional
-      android-studio
+      androidStudioPackages.canary
     ];
   };
 
