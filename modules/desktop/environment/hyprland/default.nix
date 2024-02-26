@@ -10,8 +10,8 @@
     };
     
     displayManager = {
-      autoLogin.enable = true;
-      autoLogin.user = "liperium";
+      #autoLogin.enable = true;
+      #autoLogin.user = "liperium";
       gdm = {
         enable = true;
         wayland = true;
