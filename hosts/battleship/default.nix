@@ -16,6 +16,7 @@
     nvtop-amd
     path-of-building
     os-prober # Probes for windows for grub
+    prusa-slicer
   ];
 
   services.xserver.displayManager.defaultSession = "hyprland";
