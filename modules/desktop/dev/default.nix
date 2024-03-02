@@ -8,6 +8,8 @@
     cargo 
     rust-analyzer-unwrapped
     rustup
+    #godot4-mono
+    godot_4
     #nodejs-slim_21
     #rustfmt
     ]; 
