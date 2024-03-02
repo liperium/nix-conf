@@ -26,6 +26,9 @@ I update whenever, cause I've never had any problem with upgrades. Mostly every 
 
 commit hash : ```git rev-parse HEAD```
 
+### Direnv
+echo "use flake" >> .envrc && direnv allow
+
 ## Fake hash
 
 ```lib.fakeHash```
