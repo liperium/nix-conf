@@ -36,7 +36,9 @@
   environment.systemPackages = with pkgs; [
     kitty
     libsecret
-    polkit_gnome
+    #polkit_gnome
+    kdePackages.polkit-qt-1
+    kdePackages.polkit-kde-agent-1
     
     waybar # Top status bar # Home
     wlogout # Home
@@ -53,7 +55,8 @@
     pavucontrol # Audio panel
 
     grimblast # Screenshots
-    gnome.nautilus # File explorer
+    #gnome.nautilus # File explorer
+    kdePackages.dolphin
     gnome.eog # Image viewer
 
     #xwaylandvideobridge #not working... works for 5s
@@ -65,9 +68,13 @@
 
   programs.file-roller.enable = true; # archive manager
 
+
+  # Enable a keyring
+
   #programs.seahorse.enable = true;
   #services.gnome.gnome-keyring.enable = true;
   #security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.gdm.kwallet.enable = true;
 
   # Portal to make it easy
   xdg.portal.enable = true;
