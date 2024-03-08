@@ -65,9 +65,9 @@
 
   programs.file-roller.enable = true; # archive manager
 
-  programs.seahorse.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
+  #programs.seahorse.enable = true;
+  #services.gnome.gnome-keyring.enable = true;
+  #security.pam.services.gdm.enableGnomeKeyring = true;
 
   # Portal to make it easy
   xdg.portal.enable = true;

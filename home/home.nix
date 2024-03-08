@@ -81,7 +81,7 @@
     gimp
     kate
     krita
-    libsForQt5.kdenlive
+    kdePackages.kdenlive
 
     #Misc
     spot
@@ -131,14 +131,14 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      #"inode/directory" = ["gnome.thunar.desktop"];
-      "inode/directory" = ["gnome.nautilus.desktop"];
+      "inode/directory" = ["org.kde.dolphin.desktop"];
+      #"inode/directory" = ["gnome.nautilus.desktop"];
       "application/pdf" = ["firefox.desktop"];
 
-      "application/gzip" = ["org.gnome.FileRoller.desktop"];
-      "application/zip" = ["org.gnome.FileRoller.desktop"];
-      "application/x-7z-compressed" = ["org.gnome.FileRoller.desktop"];
-      "application/x-compressed-tar" = ["org.gnome.FileRoller.desktop"];
+      "application/gzip" = ["org.kde.ark.desktop"];
+      "application/zip" = ["org.kde.ark.desktop"];
+      "application/x-7z-compressed" = ["org.kde.ark.desktop"];
+      "application/x-compressed-tar" = ["org.kde.ark.desktop"];
 
       "x-scheme-handler/http" = ["firefox.desktop"];
       "x-scheme-handler/https" = ["firefox.desktop"];
@@ -147,7 +147,7 @@
       "x-scheme-handler/x-github-desktop-auth" = ["github-desktop.desktop"];
     };
     associations.added = {
-      "text/plain" = ["org.kde.kate.desktop"];
+      "text/plain" = ["Helix.desktop"];
     };
   };
 
@@ -168,7 +168,7 @@
     };        
   };
   home.pointerCursor = {
-    package = pkgs.libsForQt5.breeze-gtk;
+    package = pkgs.kdePackages.breeze-gtk;
     name = "breeze_cursors";
     size = 24;
   };
@@ -176,7 +176,7 @@
   gtk = {
     enable = true;
     cursorTheme = {
-      package = pkgs.libsForQt5.breeze-gtk;
+      package = pkgs.kdePackages.breeze-gtk;
       name = "breeze_cursors";
       size = 24;
     };
