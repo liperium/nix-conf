@@ -69,7 +69,6 @@
   ];
   programs.tmux = {
     enable = true;
-    plugins = [ pkgs.tmuxPlugins.catppuccin ];
   };
   programs.neovim = {
     enable = true;
