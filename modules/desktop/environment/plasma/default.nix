@@ -16,7 +16,7 @@
   environment.systemPackages = with pkgs;
     [
       xwaylandvideobridge
-      gnome.seahorse
+      #gnome.seahorse
       (catppuccin-kde.override {
         flavour = [ "macchiato" ];
         accents = [ "teal" ];
@@ -27,8 +27,7 @@
     plasma-browser-integration
     konsole
     oxygen
-    ksshaskpass
   ];
-  programs.ssh.askPassword = "${pkgs.gnome.seahorse}/libexec/seahorse/ssh-askpass"; # Hyprland with seahorse, thus try to make kde use seahorse instead of ksshaskpass
+  #programs.ssh.askPassword = "${pkgs.gnome.seahorse}/libexec/seahorse/ssh-askpass"; # Hyprland with seahorse, thus try to make kde use seahorse instead of ksshaskpass
 
 }
