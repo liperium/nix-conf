@@ -27,6 +27,7 @@
           vulkan-tools
           vulkan-validation-layers
           xorg.libX11
+          wayland
         ]);
         appRuntimeInputs = with pkgs; [
           vulkan-loader
