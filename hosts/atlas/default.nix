@@ -79,7 +79,7 @@
         browseable = "yes";
         "read only" = "yes";
         "guest ok" = "no";
-        "inherit permissions" = yes
+        "inherit permissions" = "yes";
         "force user" = "username";
         "force group" = "groupname";
       };
