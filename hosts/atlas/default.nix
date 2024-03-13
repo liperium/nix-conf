@@ -45,7 +45,8 @@
   boot.zfs.extraPools = [ "zfs-data" ];
   services.zfs.autoScrub.enable = true;
 
-  # Samba
+  # Samba - need to setup a user for the private share
+  # sudo smbpasswd -a myuser
   services.samba = {
     enable = true;
     securityType = "user";
@@ -64,13 +65,6 @@
       map to guest = bad user
     '';
     shares = {
-      public = {
-        path = "/zfs-data";
-        browseable = "yes";
-        "read only" = "yes";
-        "guest ok" = "yes";
-        "inherit permissions" = "yes";
-      };
       private = {
         path = "/zfs-data";
         browseable = "yes";
