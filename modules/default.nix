@@ -62,6 +62,7 @@
     btop
     ranger
     zoxide
+    helix
 
     #Terminal
     zsh
@@ -85,7 +86,7 @@
     ];
   };
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "hx";
 
   # zsh default
   programs.zsh = {
