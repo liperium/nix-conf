@@ -64,6 +64,13 @@
       map to guest = bad user
     '';
     shares = {
+      public = {
+        path = "/zfs-data";
+        browseable = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "inherit permissions" = "yes";
+      };
       private = {
         path = "/zfs-data";
         browseable = "yes";
