@@ -52,8 +52,8 @@
     openFirewall = true;
     extraConfig = ''
       workgroup = WORKGROUP
-      server string = smbnix
-      netbios name = smbnix
+      server string = atlas
+      netbios name = atlas
       security = user 
       #use sendfile = yes
       #max protocol = smb2
@@ -64,24 +64,12 @@
       map to guest = bad user
     '';
     shares = {
-      #public = {
-        #path = "/mnt/Shares/Public";
-        #browseable = "yes";
-        #"read only" = "no";
-        #"guest ok" = "yes";
-        #"create mask" = "0644";
-        #"directory mask" = "0755";
-        #"force user" = "username";
-        #"force group" = "groupname";
-      #};
       private = {
         path = "/zfs-data";
         browseable = "yes";
         "read only" = "yes";
         "guest ok" = "no";
         "inherit permissions" = "yes";
-        "force user" = "username";
-        "force group" = "groupname";
       };
     };
   };
