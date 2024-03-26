@@ -1,7 +1,7 @@
 { fetchNuGet }: [
   (fetchNuGet { pname = "EnvDTE"; version = "8.0.2"; sha256 = "1wdvjzdmqbqyqlaijpjc959vvdic12vqr3c5sffhbxi7m1si5k63"; })
   (fetchNuGet { pname = "JetBrains.Annotations"; version = "2019.1.3"; sha256 = "188b0qw6lih0k3ddnmimadzr3y1y6vh6ramgkjnyskqd43prjzc2"; })
-  (fetchNuGet { pname = "JetBrains.Rider.PathLocator"; version = "1.0.1"; sha256 = "1bxxmcwin5769mdm04j9p9bljns6qrgix76gzybg5h3p0ag6zm47"; })
+  (fetchNuGet { pname = "JetBrains.Rider.PathLocator"; version = "1.0.4"; sha256 = "1s3jwhc7sxbx0240jfaclnqz28mxp9q8qqwp1fgh9g3vd111kby5"; })
   (fetchNuGet { pname = "Microsoft.Build"; version = "15.1.548"; sha256 = "1aqb5rv71zvx7a49kk83ra5xbsj2mwzfszaabqqa8kxdzhcx7amz"; })
   (fetchNuGet { pname = "Microsoft.Build.Framework"; version = "15.1.548"; sha256 = "1f7p6ry58b70q88frnmiv8wldvir44gxfcgcyj9a7d4zs409fkni"; })
   (fetchNuGet { pname = "Microsoft.Build.Locator"; version = "1.2.6"; sha256 = "1rnfd7wq2bkynqj767xmq9ha38mz010fmqvvvrgb4v86gd537737"; })

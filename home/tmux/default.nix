@@ -2,7 +2,7 @@
 
 {
     home.file = {
-        ".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink ./.tmux.conf;
+        ".tmux.conf".source =  ./.tmux.conf;
     };
     home.packages = with pkgs;[tmux];
 }

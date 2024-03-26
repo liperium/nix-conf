@@ -2,7 +2,7 @@
 
 {
   home.file = {
-        ".config/hypr/hyprpaper.conf".source = config.lib.file.mkOutOfStoreSymlink ./hyprpaper.conf;
+        ".config/hypr/hyprpaper.conf".source = ./hyprpaper.conf;
     };
   home.packages = with pkgs;[hyprpaper];
 }

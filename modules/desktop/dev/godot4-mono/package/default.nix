@@ -28,7 +28,7 @@
 , udev
 , withPlatform ? "linuxbsd"
 , withTarget ? "editor"
-, withPrecision ? "double"
+, withPrecision ? "single"
 , withPulseaudio ? true
 , withDbus ? true
 , withSpeechd ? true
@@ -51,10 +51,12 @@ let
 in
 stdenv.mkDerivation rec {
   pname = "godot4-mono";
-  version = "4.1.3-stable";
-  commitHash = "fc79201851a16215f9554884aa242ed957801b10";
+  version = "4.2.1-stable";
+  commitHash = "b09f793f564a6c95dc76acc654b390e68441bd01";
 
   nugetDeps = mkNugetDeps { name = "deps"; nugetDeps = import ./deps.nix; };
+
+  shouldConfigureNuget = true;
 
   nugetSource =
     mkNugetSource {
@@ -76,7 +78,7 @@ stdenv.mkDerivation rec {
     owner = "godotengine";
     repo = "godot";
     rev = commitHash;
-    hash = "sha256-z5JRPhdEO20AodS12MApgur0BMHGToUjo2r2eI77nNc=";
+    hash = "sha256-Q6Og1H4H2ygOryMPyjm6kzUB6Su6T9mJIp0alNAxvjQ";
   };
 
   nativeBuildInputs = [
@@ -85,8 +87,8 @@ stdenv.mkDerivation rec {
     installShellFiles
     python3
     mono
-  dotnet-sdk
-  dotnet-runtime
+    dotnet-sdk
+    dotnet-runtime
   ];
 
   buildInputs = [
@@ -107,8 +109,8 @@ stdenv.mkDerivation rec {
     libxkbcommon
     alsa-lib
     mono
-  dotnet-sdk
-  dotnet-runtime
+    dotnet-sdk
+    dotnet-runtime
   ]
   ++ lib.optional withPulseaudio libpulseaudio
   ++ lib.optional withDbus dbus
@@ -145,32 +147,47 @@ stdenv.mkDerivation rec {
   outputs = [ "out" "man" ];
 
   postConfigure = ''
-  echo "Configuring NuGet."
-  mkdir -p ~/.nuget/NuGet
-  ln -s "$nugetConfig" ~/.nuget/NuGet/NuGet.Config
+    echo "Setting up buildhome."
+    mkdir buildhome
+    export HOME="$PWD"/buildhome
+
+    if [ -n "$shouldConfigureNuget" ]; then
+      echo "Configuring NuGet."
+      mkdir -p ~/.nuget/NuGet
+      ln -s "$nugetConfig" ~/.nuget/NuGet/NuGet.Config
+    fi
   '';
 
   buildPhase = ''
     echo "Starting Build"
-    scons p=${withPlatform} target=${withTarget} precision=${withPrecision} module_mono_enabled=yes module_text_server_fb_enabled=yes mono_glue=no
+    scons p=${withPlatform} target=${withTarget} precision=${withPrecision} module_mono_enabled=yes mono_glue=no
+
     echo "Generating Glue"
-    bin/godot.${withPlatform}.${withTarget}.${withPrecision}.x86_64.mono --headless --generate-mono-glue modules/mono/glue
+    if [[ ${withPrecision} == *double* ]]; then
+        bin/godot.${withPlatform}.${withTarget}.${withPrecision}.x86_64.mono --headless --generate-mono-glue modules/mono/glue
+    else
+        bin/godot.${withPlatform}.${withTarget}.x86_64.mono --headless --generate-mono-glue modules/mono/glue
+    fi
+
     echo "Building Assemblies"
-    scons p=${withPlatform} target=${withTarget} precision=${withPrecision} module_mono_enabled=yes module_text_server_fb_enabled=yes mono_glue=yes
-  echo "Building C#/.NET Assemblies"
-  python modules/mono/build_scripts/build_assemblies.py --godot-output-dir bin --precision=${withPrecision}
+    scons p=${withPlatform} target=${withTarget} precision=${withPrecision} module_mono_enabled=yes mono_glue=yes
+
+    echo "Building C#/.NET Assemblies"
+    python modules/mono/build_scripts/build_assemblies.py --godot-output-dir bin --precision=${withPrecision}
     '';
 
   installPhase = ''
     mkdir -p "$out/bin"
-    cp bin/godot.* $out/bin/godot4
+    cp bin/godot.* $out/bin/godot4-mono
     cp -r bin/GodotSharp/ $out/bin/
+
     installManPage misc/dist/linux/godot.6
+
     mkdir -p "$out"/share/{applications,icons/hicolor/scalable/apps}
-    cp misc/dist/linux/org.godotengine.Godot.desktop "$out/share/applications/org.godotengine.Godot4.desktop"
-    substituteInPlace "$out/share/applications/org.godotengine.Godot4.desktop" \
-      --replace "Exec=godot" "Exec=$out/bin/godot4" \
-      --replace "Godot Engine" "Godot Engine 4"
+    cp misc/dist/linux/org.godotengine.Godot.desktop "$out/share/applications/org.godotengine.Godot4-Mono.desktop"
+    substituteInPlace "$out/share/applications/org.godotengine.Godot4-Mono.desktop" \
+      --replace "Exec=godot" "Exec=$out/bin/godot4-mono" \
+      --replace "Godot Engine" "Godot Engine ${version} (Mono, $(echo "${withPrecision}" | sed 's/.*/\u&/') Precision)"
     cp icon.svg "$out/share/icons/hicolor/scalable/apps/godot.svg"
     cp icon.png "$out/share/icons/godot.png"
     '';
@@ -182,5 +199,9 @@ stdenv.mkDerivation rec {
     platforms = [ "i686-linux" "x86_64-linux" "aarch64-linux" ];
     maintainers = with maintainers; [ ilikefrogs101 ];
     mainProgram = "godot4-mono";
+  };
+
+  passthru = {
+    make-deps = callPackage ./make-deps.nix {};
   };
 }

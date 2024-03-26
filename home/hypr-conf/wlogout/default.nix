@@ -2,8 +2,8 @@
 
 {
     home.file = {
-        ".config/wlogout/layout".source = config.lib.file.mkOutOfStoreSymlink ./layout;
-        ".config/wlogout/style.css".source = config.lib.file.mkOutOfStoreSymlink ./style.css;
+        ".config/wlogout/layout".source = ./layout;
+        ".config/wlogout/style.css".source = ./style.css;
     };
     home.packages = with pkgs;[wlogout];
 }

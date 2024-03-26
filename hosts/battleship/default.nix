@@ -18,7 +18,19 @@
     os-prober # Probes for windows for grub
   ];
 
-  services.xserver.displayManager.defaultSession = "hyprland";
+  services.xserver.displayManager.defaultSession = "plasma";
+  services.xserver.displayManager = {
+    
+    gdm = {
+        enable = true;
+        wayland = true;
+      };    
+    sddm = {
+      #enable = true;
+      #wayland.enable = true;
+      #autoNumlock = true;
+    };
+  };
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
