@@ -2,7 +2,7 @@
 let
   conservationmode = pkgs.writeShellScriptBin "conservationmode" ''
     #!/bin/sh
-    echo $RANDOM % 2 | bc
+    echo $((RANDOM % 2))
   '';
 in {
   environment.systemPackages = [ conservationmode ];
