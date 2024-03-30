@@ -29,6 +29,7 @@ in {
     "${modDev}"
     "${modDev}/godot4-mono"
     "${modDev}/universidad.nix"
+    "./dummy-conservationmode"
     
   ];
 }
