@@ -6,5 +6,6 @@
     ./mako
     ./wlogout
     ./hyprpaper
+    ./helix
   ];
 }
