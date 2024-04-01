@@ -5,14 +5,15 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules.nix
   ];
 
   networking.hostName = "battleship"; # Define your hostname.
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     nvtopPackages.amd
     path-of-building
     os-prober # Probes for windows for grub
@@ -20,11 +21,11 @@
 
   services.xserver.displayManager.defaultSession = "plasma";
   services.xserver.displayManager = {
-    
+
     gdm = {
-        enable = true;
-        wayland = true;
-      };    
+      enable = true;
+      wayland = true;
+    };
     sddm = {
       #enable = true;
       #wayland.enable = true;
@@ -44,7 +45,7 @@
   };
   services.openssh = {
     enable = true;
-    ports = [5252];
+    ports = [ 5252 ];
     # require public key authentication for better security
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;

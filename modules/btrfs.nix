@@ -2,7 +2,7 @@
 
 {
   # Btrfs special configs for apps
-  virtualisation.docker= {
+  virtualisation.docker = {
     storageDriver = "btrfs";
   };
 }

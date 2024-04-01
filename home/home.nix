@@ -67,8 +67,8 @@
     webcord
     discord
     thunderbird
-  
-     
+
+
     qbittorrent
 
     #Media-Streams
@@ -131,23 +131,23 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory" = ["org.kde.dolphin.desktop"];
+      "inode/directory" = [ "org.kde.dolphin.desktop" ];
       #"inode/directory" = ["gnome.nautilus.desktop"];
-      "application/pdf" = ["firefox.desktop"];
+      "application/pdf" = [ "firefox.desktop" ];
 
-      "application/gzip" = ["org.kde.ark.desktop"];
-      "application/zip" = ["org.kde.ark.desktop"];
-      "application/x-7z-compressed" = ["org.kde.ark.desktop"];
-      "application/x-compressed-tar" = ["org.kde.ark.desktop"];
+      "application/gzip" = [ "org.kde.ark.desktop" ];
+      "application/zip" = [ "org.kde.ark.desktop" ];
+      "application/x-7z-compressed" = [ "org.kde.ark.desktop" ];
+      "application/x-compressed-tar" = [ "org.kde.ark.desktop" ];
 
-      "x-scheme-handler/http" = ["firefox.desktop"];
-      "x-scheme-handler/https" = ["firefox.desktop"];
+      "x-scheme-handler/http" = [ "firefox.desktop" ];
+      "x-scheme-handler/https" = [ "firefox.desktop" ];
 
-      "x-scheme-handler/x-github-client" = ["github-desktop.desktop"];
-      "x-scheme-handler/x-github-desktop-auth" = ["github-desktop.desktop"];
+      "x-scheme-handler/x-github-client" = [ "github-desktop.desktop" ];
+      "x-scheme-handler/x-github-desktop-auth" = [ "github-desktop.desktop" ];
     };
     associations.added = {
-      "text/plain" = ["Helix.desktop"];
+      "text/plain" = [ "Helix.desktop" ];
     };
   };
 
@@ -159,13 +159,13 @@
         color-scheme = "prefer-dark";
       };
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"]  ;
-        uris = ["qemu:///system"];
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
       "org/gnome/nautilus/preferences" = {
-        always-use-location-entry= true; #shows dir in nautilus
+        always-use-location-entry = true; #shows dir in nautilus
       };
-    };        
+    };
   };
   home.pointerCursor = {
     package = pkgs.kdePackages.breeze-gtk;

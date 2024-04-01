@@ -4,11 +4,11 @@ let
 in
 {
   users.users.liperium = {
-    packages = with pkgs; [ 
-      steam-run 
-      dotnet-sdk 
-      jetbrains.rider 
-      godot4-mono 
-      ];
+    packages = with pkgs; [
+      steam-run
+      dotnet-sdk
+      jetbrains.rider
+      godot4-mono
+    ];
   };
 }

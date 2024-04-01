@@ -31,11 +31,12 @@
         ]);
         appRuntimeInputs = with pkgs; [
           vulkan-loader
-          xorg.libXcursor 
-          xorg.libXi 
+          xorg.libXcursor
+          xorg.libXi
           xorg.libXrandr
         ];
-      in {
+      in
+      {
         packages.${packageName} = naersk.lib.${system}.buildPackage {
           pname = packageName;
           root = ./.;

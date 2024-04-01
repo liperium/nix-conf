@@ -2,7 +2,8 @@
 let
   currentDir = ./.;
   protonup-rs = pkgs.callPackage ./protonup-rs/default.nix { };
-in {
+in
+{
   programs.gamemode.enable = true;
   users.users.liperium = {
     packages = with pkgs; [

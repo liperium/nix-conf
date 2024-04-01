@@ -4,7 +4,8 @@ let
     #!/bin/sh
     echo $((RANDOM % 2))
   '';
-in {
+in
+{
   environment.systemPackages = [ conservationmode ];
 
   security.sudo = {

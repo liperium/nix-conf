@@ -8,13 +8,13 @@
       layout = "us";
       variant = "alt-intl";
     };
-    
+
     displayManager = {
       #autoLogin.enable = true;
       #autoLogin.user = "liperium";
       #gdm = {
-        #enable = true;
-        #wayland = true;
+      #enable = true;
+      #wayland = true;
       #};
     };
   };
@@ -41,7 +41,7 @@
     kdePackages.polkit-kde-agent-1
     kdePackages.kwallet
     kdePackages.kwallet-pam
-    
+
     waybar # Top status bar # Home
     wlogout # Home
     networkmanagerapplet
@@ -80,7 +80,7 @@
 
   # Portal to make it easy
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [ 
+  xdg.portal.extraPortals = with pkgs; [
     kdePackages.xdg-desktop-portal-kde
     #xdg-desktop-portal-hyprland already applied?
   ];

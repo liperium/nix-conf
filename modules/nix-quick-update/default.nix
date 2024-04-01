@@ -7,6 +7,7 @@ let
     git pull; 
     sudo nixos-rebuild switch --flake /home/liperium/nix-conf;
   '';
-in {
+in
+{
   environment.systemPackages = [ nix-quick-update ];
 }

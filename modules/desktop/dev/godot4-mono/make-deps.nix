@@ -1,6 +1,6 @@
 { pkgs, nuget-to-nix }:
 
-let godot4-mono = pkgs.callPackage ./default.nix {}; in
+let godot4-mono = pkgs.callPackage ./default.nix { }; in
 
 godot4-mono.overrideAttrs (self: base: {
   pname = "godot4-mono-make-deps";

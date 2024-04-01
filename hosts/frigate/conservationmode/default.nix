@@ -27,7 +27,8 @@ let
         printf " -h/-help : help \n on : turns conservation_mode on \n off : turns conservation_mode off \n status : returns on/off (1/0)\n"
     fi
   '';
-in {
+in
+{
   environment.systemPackages = [ conservationmode ];
 
   security.sudo = {

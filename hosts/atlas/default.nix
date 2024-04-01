@@ -4,7 +4,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false; # Or can't install boot loader
 
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules.nix
   ];
@@ -12,7 +13,7 @@
 
   services.openssh = {
     enable = true;
-    ports = [5252];
+    ports = [ 5252 ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -23,13 +24,13 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPortRanges = [ 
-      {from = 1000; to = 10000;}
-      {from = 25565; to = 25570;}
+    allowedTCPPortRanges = [
+      { from = 1000; to = 10000; }
+      { from = 25565; to = 25570; }
     ];
     allowedUDPPortRanges = [
-      {from = 1000; to = 10000;}
-      {from = 25565; to = 25570;}
+      { from = 1000; to = 10000; }
+      { from = 25565; to = 25570; }
     ];
     allowPing = true; # Samba?
   };

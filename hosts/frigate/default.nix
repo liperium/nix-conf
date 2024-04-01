@@ -5,13 +5,14 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules.nix
   ];
   networking.hostName = "frigate";
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     nvtopPackages.nvidia
   ];
 
@@ -68,9 +69,9 @@
 
     prime = {
       offload = {
-			enable = true;
-			enableOffloadCmd = true;
-		};
+        enable = true;
+        enableOffloadCmd = true;
+      };
       # Make sure to use the correct Bus ID values for your system!
       amdgpuBusId = "PCI:6:0:0";
       nvidiaBusId = "PCI:1:0:0";

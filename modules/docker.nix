@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  virtualisation.docker= {
+  virtualisation.docker = {
     enable = true;
   };
   users.users.liperium.extraGroups = [ "docker" ];

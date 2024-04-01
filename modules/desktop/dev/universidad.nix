@@ -13,7 +13,7 @@
 
   # TP Final Cloud
   #environment.systemPackages = with pkgs; [
-    #minikube
-    #kubectl
+  #minikube
+  #kubectl
   #];
 }

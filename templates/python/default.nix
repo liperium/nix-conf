@@ -1,6 +1,6 @@
 # This creates a venv to use with your IDE of choice.
 let
-  pkgs = import <nixpkgs> {};
+  pkgs = import <nixpkgs> { };
   azuremlpkgs = import ./.;
   python = pkgs.python310;
   pythonPackages = python.pkgs;

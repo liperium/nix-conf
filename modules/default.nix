@@ -63,6 +63,7 @@
     ranger
     zoxide
     helix
+    nixpkgs-fmt
 
     #Terminal
     zsh
@@ -74,7 +75,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    
+
     viAlias = true;
     vimAlias = true;
   };

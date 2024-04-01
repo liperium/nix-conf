@@ -4,7 +4,8 @@ let
   modDev = ../../modules/desktop/dev;
   modEnvironments = ../../modules/desktop/environment;
   currentDir = ./.;
-in {
+in
+{
   imports = [
     # Base
     "${modDir}/default.nix"

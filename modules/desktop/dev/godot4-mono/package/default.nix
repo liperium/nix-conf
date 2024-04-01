@@ -63,7 +63,7 @@ stdenv.mkDerivation rec {
       name = "${pname}-nuget-source";
       description = "A Nuget source with dependencies for ${pname}";
       deps = [ nugetDeps ];
-  };
+    };
 
   nugetConfig = writeText "NuGet.Config" ''
     <?xml version="1.0" encoding="utf-8"?>
@@ -174,7 +174,7 @@ stdenv.mkDerivation rec {
 
     echo "Building C#/.NET Assemblies"
     python modules/mono/build_scripts/build_assemblies.py --godot-output-dir bin --precision=${withPrecision}
-    '';
+  '';
 
   installPhase = ''
     mkdir -p "$out/bin"
@@ -190,7 +190,7 @@ stdenv.mkDerivation rec {
       --replace "Godot Engine" "Godot Engine ${version} (Mono, $(echo "${withPrecision}" | sed 's/.*/\u&/') Precision)"
     cp icon.svg "$out/share/icons/hicolor/scalable/apps/godot.svg"
     cp icon.png "$out/share/icons/godot.png"
-    '';
+  '';
 
   meta = with lib; {
     homepage = "https://godotengine.org";
@@ -202,6 +202,6 @@ stdenv.mkDerivation rec {
   };
 
   passthru = {
-    make-deps = callPackage ./make-deps.nix {};
+    make-deps = callPackage ./make-deps.nix { };
   };
 }
