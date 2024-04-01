@@ -57,7 +57,7 @@
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Do not disable this unless your GPU is unsupported or if you have a good reason to.
-    open = true;
+    open = false;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
@@ -67,7 +67,10 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     prime = {
-      offload.enable = true;
+      offload = {
+			enable = true;
+			enableOffloadCmd = true;
+		};
       # Make sure to use the correct Bus ID values for your system!
       amdgpuBusId = "PCI:6:0:0";
       nvidiaBusId = "PCI:1:0:0";
