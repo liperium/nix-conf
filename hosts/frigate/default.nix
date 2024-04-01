@@ -16,6 +16,17 @@
     nvtopPackages.nvidia
   ];
 
+  services.xserver.displayManager.defaultSession = "plasma";
+
+  displayManager = {
+    #autoLogin.enable = true;
+    #autoLogin.user = "liperium";
+    gdm = {
+      enable = true;
+      wayland = true;
+    };
+  };
+
   # --- Laptop settings ---
 
   boot.kernelParams = [
