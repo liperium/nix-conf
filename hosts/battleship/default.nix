@@ -13,7 +13,7 @@
   networking.hostName = "battleship"; # Define your hostname.
 
   environment.systemPackages = with pkgs; [ 
-    nvtop-amd
+    nvtopPackages.amd
     path-of-building
     os-prober # Probes for windows for grub
   ];

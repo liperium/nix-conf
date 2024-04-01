@@ -12,7 +12,7 @@
   networking.hostName = "frigate";
 
   environment.systemPackages = with pkgs; [ 
-    nvtop-nvidia
+    nvtopPackages.nvidia
   ];
 
   # --- Laptop settings ---
