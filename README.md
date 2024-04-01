@@ -27,8 +27,11 @@ I update whenever, cause I've never had any problem with upgrades. Mostly every 
 commit hash : ```git rev-parse HEAD```
 
 ### Direnv
+
 echo "use flake" >> .envrc && direnv allow
 
-## Fake hash
+## Deving for nixpkgs
 
-```lib.fakeHash```
+[Running and building from local nixpkgs](https://nixos.wiki/wiki/Nixpkgs/Create_and_debug_packages)
+
+Get hashes while debugging : ```lib.fakeHash```
