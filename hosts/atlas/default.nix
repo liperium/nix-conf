@@ -80,4 +80,28 @@
     enable = true;
     openFirewall = true;
   };
+
+  # Nextcloud config
+  #environment.etc."nextcloud-admin-pass".text = "RANDOM_PASSWORD";
+  services.nextcloud = {
+    enable = true;
+    configureRedis = true;
+    package = pkgs.nextcloud28;
+    hostName = "localhost";
+    datadir = "/zfs-data/nextcloud"; # Make sure /zfs-data is mounted as root (systemd stuff), and that ./nextcloud folder is owned by nextcloud
+    config = {
+      adminpassFile = "/etc/nextcloud-admin-pass";
+    };
+    settings = {
+      trusted_domains = 
+      [
+        "nextcloud.mattysgervais.com" 
+        "192.168.0.20" # Trust itself/calls from the proxy
+        ];
+      trusted_proxies = ["192.168.0.10"]; # Needed to accept from proxy
+      overwriteprotocol = "https"; # Needed to understand comm between proxy
+    };
+  };
+  services.nginx.virtualHosts."localhost".listen = [ { addr = "0.0.0.0"; port = 8002; } ];
+  
 }
