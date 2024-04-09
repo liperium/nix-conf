@@ -148,6 +148,8 @@
     };
     associations.added = {
       "text/plain" = [ "Helix.desktop" ];
+      "image/png" = [ "org.kde.gwenview.desktop" ];
+      "image/jpeg" = [ "org.kde.gwenview.desktop" ];
     };
   };
 

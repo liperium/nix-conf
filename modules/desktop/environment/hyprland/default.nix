@@ -32,6 +32,7 @@
     opengl.enable = true;
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1"; #Ozone/discord/wayland
   environment.sessionVariables.GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
   environment.systemPackages = with pkgs; [
     kitty
@@ -82,7 +83,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
     kdePackages.xdg-desktop-portal-kde
-    #xdg-desktop-portal-hyprland already applied?
+    xdg-desktop-portal-hyprland
   ];
 
   # Sound stuff
