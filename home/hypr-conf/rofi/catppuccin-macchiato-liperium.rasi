@@ -15,7 +15,7 @@ configuration {
     fg-col2: #cba6f7;
     grey: #11111b;
 
-    width: 700;
+    width: 500;
     font: "JetBrainsMono Nerd Font 14";
 }
 
@@ -25,8 +25,9 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 500px;
+    height: 400px;
     border: 3px;
+    border-radius: 8px;
     border-color: @border-col;
     background-color: @bg-col;
 }
