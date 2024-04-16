@@ -20,6 +20,7 @@ in
     # Desktop env
     "${modEnvironments}/hyprland"
     "${modEnvironments}/plasma"
+    "${modEnvironments}/i3"
 
     # Basic apps
     "${modDesktop}"
