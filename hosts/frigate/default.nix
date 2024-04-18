@@ -16,7 +16,7 @@
     nvtopPackages.nvidia
   ];
 
-  services.xserver.displayManager.defaultSession = "plasma";
+  services.displayManager.defaultSession = "plasma";
 
   services.xserver.displayManager = {
     gdm = {
