@@ -8,7 +8,7 @@ in
 {
   imports = [
     # Base
-    "${modDir}/default.nix"
+    "${modDir}"
 
     # Additional System
     "${modDir}/btrfs.nix"
@@ -20,7 +20,6 @@ in
     # Desktop env
     "${modEnvironments}/hyprland"
     "${modEnvironments}/plasma"
-    "${modEnvironments}/i3"
 
     # Basic apps
     "${modDesktop}"
@@ -32,6 +31,6 @@ in
     "${modDev}"
     "${modDev}/godot4-mono"
     "${modDev}/universidad.nix"
-    "${currentDir}/dummy-conservationmode"
+    #"${currentDir}/dummy-conservationmode"
   ];
 }

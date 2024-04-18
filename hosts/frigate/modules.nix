@@ -25,6 +25,7 @@ in
     # Basic apps
     "${modDesktop}"
     "${modDesktop}/virt.nix"
+    "${modDesktop}/gaming"
 
     # Desktop Additionals
     "${modDev}"
