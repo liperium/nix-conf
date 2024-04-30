@@ -91,6 +91,14 @@
     # Office
     onlyoffice-bin
     zoom-us
+
+    #Theming
+    (catppuccin-kvantum.override {
+      accent = "Mauve";
+      variant = "Mocha";
+    })
+    qt6Packages.qtstyleplugin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
   ];
   #Direnv
   programs = {
@@ -167,6 +175,14 @@
     name = "breeze_cursors";
     size = 24;
   };
+
+  qt =
+    {
+      enable = true;
+      # disabled cause crashes KDE I think?
+      #platformTheme.name = "qtct";
+      #style.name = "kvantum";
+    };
 
   gtk = {
     enable = true;

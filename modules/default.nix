@@ -63,6 +63,7 @@
     ranger
     zoxide
     helix
+    nil
     nixpkgs-fmt
 
     #Terminal

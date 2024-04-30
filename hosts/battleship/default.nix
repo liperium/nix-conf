@@ -37,10 +37,12 @@
     allowedTCPPorts = [
       8080
       5252
+      24800#Barrier
     ];
     allowedUDPPorts = [
       8080
       5252
+      24800#Barrier
     ];
   };
   services.openssh = {
