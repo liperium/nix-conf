@@ -4,7 +4,7 @@ let
     #!/bin/sh
     rm /home/liperium/.gtkrc-2.0
     cd /home/liperium/nix-conf; 
-    git pull; 
+    sudo -u liperium bash -c 'git pull'; 
     sudo nixos-rebuild switch --flake /home/liperium/nix-conf;
   '';
 in
