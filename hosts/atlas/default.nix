@@ -69,7 +69,7 @@
       private = {
         path = "/zfs-data";
         browseable = "yes";
-        "read only" = "yes";
+        "read only" = "no";
         "guest ok" = "no";
         "inherit permissions" = "yes";
       };

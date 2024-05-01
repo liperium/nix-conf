@@ -5,9 +5,11 @@ let
 in
 {
   programs.gamemode.enable = true;
+  #programs.steam.gamescopeSession.enable = true;
+  programs.gamescope.enable = true;
+  programs.steam.gamescopeSession.enable = true;
   users.users.liperium = {
     packages = with pkgs; [
-      gamescope
       mangohud
       goverlay
       lutris
@@ -17,6 +19,22 @@ in
       prismlauncher
     ];
 
+  };
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+      ];
+    };
   };
   programs.steam = {
     enable = true;
