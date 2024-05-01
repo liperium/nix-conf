@@ -71,6 +71,7 @@
         browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";
+        "writeable" = "yes";
         "inherit permissions" = "yes";
       };
     };
