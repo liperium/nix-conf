@@ -17,6 +17,8 @@ in
       starsector
       protonup-rs
       prismlauncher
+      wineWowPackages.waylandFull
+      winetricks
     ];
 
   };
