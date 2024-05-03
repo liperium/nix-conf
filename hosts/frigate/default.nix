@@ -30,11 +30,10 @@
       "acpi_backlight=native" # native/video/vendor, maybe depending if nvidia is installed?
       "amd_pstate=active" # amd pstate - https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/pstate.nix
     ];
+    initrd.kernelModules = [ "amdgpu" ];
     extraModulePackages = with config.boot.kernelPackages; [ acpi_call ];
   };
-
-  hardware.cpu.amd.updateMicrocode =
-    lib.mkDefault config.hardware.enableRedistributableFirmware; # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/default.nix
+  hardware.cpu.amd.updateMicrocode = true; # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/default.nix
 
   #Power/Cooling
   services.power-profiles-daemon.enable = false; # Don't know why it enables itself
@@ -48,51 +47,6 @@
 
   # SSD
   services.fstrim.enable = lib.mkDefault true;
-
-  # AMD
-  options.hardware.amdgpu.loadInInitrd = lib.mkEnableOption (lib.mdDoc
-    "loading `amdgpu` kernelModule at stage 1. (Add `amdgpu` to `boot.initrd.kernelModules`)"
-  ) // {
-    default = true;
-  };
-  boot.initrd.kernelModules = [ "amdgpu" ];
-  options.hardware.amdgpu.amdvlk = lib.mkEnableOption (lib.mdDoc
-    "use amdvlk drivers instead mesa radv drivers"
-  );
-  options.hardware.amdgpu.opencl = lib.mkEnableOption (lib.mdDoc
-    "rocm opencl runtime (Install rocmPackages.clr and rocmPackages.clr.icd)"
-  ) // {
-    default = true;
-  };
-
-  config = lib.mkMerge [
-    {
-      services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
-
-      hardware.opengl = {
-        driSupport = lib.mkDefault true;
-        driSupport32Bit = lib.mkDefault true;
-      };
-    }
-    (lib.mkIf config.hardware.amdgpu.loadInInitrd {
-      boot.initrd.kernelModules = [ "amdgpu" ];
-    })
-    (lib.mkIf config.hardware.amdgpu.amdvlk {
-      hardware.opengl.extraPackages = with pkgs; [
-        amdvlk
-      ];
-
-      hardware.opengl.extraPackages32 = with pkgs; [
-        driversi686Linux.amdvlk
-      ];
-    })
-    (lib.mkIf config.hardware.amdgpu.opencl {
-      hardware.opengl.extraPackages =
-        if pkgs ? rocmPackages.clr
-        then with pkgs.rocmPackages; [ clr clr.icd ]
-        else with pkgs; [ rocm-opencl-icd rocm-opencl-runtime ];
-    })
-  ];
 
   # Nvidia
   # Enable OpenGL
@@ -108,6 +62,7 @@
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
+  #services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
 
   hardware.nvidia = {
 
