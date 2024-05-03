@@ -65,6 +65,7 @@
     helix
     nil
     nixpkgs-fmt
+    nh # Better nixos manager
 
     #Terminal
     zsh
