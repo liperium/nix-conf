@@ -28,8 +28,9 @@
   home.packages = with pkgs;[
     fastfetch
     dconf
-    nodejs # NVChad dependency
-    unzip # NVChad dependency
+    # needed for ark archives
+    p7zip 
+    rar
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -48,17 +49,15 @@
     # '')
     # From default config modules 
     #Basic Needs
-    neovim
     wl-clipboard
     firefox
     steam-run
     gparted
     vlc
     widevine-cdm
-    galculator
+    libsForQt5.kalk
 
     #Theming
-    beauty-line-icon-theme
     papirus-icon-theme
 
     #Personnal
@@ -66,8 +65,6 @@
     betterdiscordctl
     webcord
     discord
-    thunderbird
-
 
     qbittorrent
 
@@ -86,7 +83,7 @@
     #Misc
     spot
     nextcloud-client # ? cmd
-    via
+    feishin
 
     # Office
     onlyoffice-bin

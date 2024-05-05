@@ -69,9 +69,6 @@
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
 
-  programs.file-roller.enable = true; # archive manager
-
-
   # Enable a keyring
 
   #programs.seahorse.enable = true;
