@@ -65,6 +65,7 @@
     betterdiscordctl
     webcord
     discord
+    vesktop
 
     qbittorrent
 

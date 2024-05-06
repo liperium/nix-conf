@@ -27,6 +27,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.liperium = import ./home/home.nix;
               home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.backupFileExtension = "hm_backup";
             }
           ];
         };
@@ -41,6 +42,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.liperium = import ./home/home.nix;
               home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.backupFileExtension = "hm_backup";
             }
           ];
         };
