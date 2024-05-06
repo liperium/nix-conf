@@ -13,6 +13,7 @@
       godot_4
       #nodejs-slim_21
       #rustfmt
+      zls zig
     ];
   };
 }
