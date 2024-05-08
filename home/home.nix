@@ -151,7 +151,23 @@
       "image/jpeg" = [ "org.kde.gwenview.desktop" ];
     };
   };
-
+  
+  xdg.desktopEntries = {
+    firefox-fusion = {
+      name = "Firefox FJ";
+      genericName = "Web Browser Fusion";
+      exec = "firefox %U -p fusion";
+      terminal = false;
+      categories = [ "Application" "Network" "WebBrowser" ];
+      mimeType = [ "text/html" "text/xml" ];
+    };
+    android-studio-env = {
+      name = "Android Studio Patched Envs";
+      genericName = "Coding For Android";
+      exec = "env -u QT_QPA_PLATFORM android-studio %U";
+      terminal = false;
+    };
+  };
 
   dconf = {
     enable = true;
