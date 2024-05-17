@@ -61,7 +61,7 @@
     papirus-icon-theme
 
     #Personnal
-    qownnotes
+    logseq #qownnotes replacement, rip.
     betterdiscordctl
     webcord
     discord
