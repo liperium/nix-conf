@@ -7,7 +7,7 @@
       jetbrains.datagrip
       #jetbrains.pycharm-professional
       android-studio
-      #androidStudioPackages.canary
+      androidStudioPackages.canary
     ];
   };
 
