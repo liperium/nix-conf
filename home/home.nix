@@ -68,6 +68,7 @@
     vesktop
 
     qbittorrent
+    bitwarden
 
     #Media-Streams
     obs-studio
