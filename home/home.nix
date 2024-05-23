@@ -169,8 +169,8 @@
       terminal = false;
     };
     android-studio-canary-env = {
-      name = "Android Studio Patched Envs";
-      genericName = "Coding For Android";
+      name = "Android Studio Canary with Patched Envs";
+      genericName = "Coding For Android, Canary version";
       exec = "env -u QT_QPA_PLATFORM android-studio-canary %U";
       terminal = false;
     };

@@ -22,6 +22,8 @@
     };
   };
 
+  hardware.bluetooth.enable = true;
+
   # --- Laptop settings ---
   
   boot = {
