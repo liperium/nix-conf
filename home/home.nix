@@ -61,7 +61,7 @@
     papirus-icon-theme
 
     #Personnal
-    qownnotes
+    logseq #qownnotes replacement, rip.
     betterdiscordctl
     webcord
     discord
@@ -165,6 +165,12 @@
       name = "Android Studio Patched Envs";
       genericName = "Coding For Android";
       exec = "env -u QT_QPA_PLATFORM android-studio %U";
+      terminal = false;
+    };
+    android-studio-canary-env = {
+      name = "Android Studio Patched Envs";
+      genericName = "Coding For Android";
+      exec = "env -u QT_QPA_PLATFORM android-studio-canary %U";
       terminal = false;
     };
   };

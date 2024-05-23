@@ -19,7 +19,7 @@
     os-prober # Probes for windows for grub
   ];
 
-  services.displayManager.defaultSession = "plasma";
+  services.displayManager.defaultSession = "hyprland";
   services.xserver.displayManager = {
 
     gdm = {
