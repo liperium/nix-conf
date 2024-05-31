@@ -10,5 +10,7 @@
 - [X] Numlock startup - <https://www.reddit.com/r/NixOS/comments/u8vwz0/how_to_turn_on_numlock_on_boot/>
 - [ ] hblock system wide
 - [ ] insert GF config?
-- [ ] frigate bluetooth
+- [X] frigate bluetooth
 - [X] Make custom power white too
+- [ ] Change ls for lsd
+- [ ] Waypipe to get into desktops?

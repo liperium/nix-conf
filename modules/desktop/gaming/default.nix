@@ -17,6 +17,7 @@ in
       starsector
       protonup-rs
       prismlauncher
+      temurin-bin-8
       wineWowPackages.waylandFull
       winetricks
     ];
