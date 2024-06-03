@@ -14,6 +14,7 @@
       #nodejs-slim_21
       #rustfmt
       zls zig
+      gh
     ];
   };
 }
