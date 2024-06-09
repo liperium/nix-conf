@@ -66,6 +66,7 @@
     nil
     nixpkgs-fmt
     nh # Better nixos manager
+    lsd # Better ls
 
     #Terminal
     zsh
@@ -104,6 +105,7 @@
       "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     shellAliases = {
       nixd = "nix develop -c zsh";
+      ls = "lsd";
     };
   };
   users.defaultUserShell = pkgs.zsh;

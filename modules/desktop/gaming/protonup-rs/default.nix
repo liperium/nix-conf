@@ -5,21 +5,21 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "protonup-rs";
-  version = "0.6.0";
+  version = "0.8.2";
 
   src = fetchFromGitHub {
     owner = "auyer";
     repo = "Protonup-rs";
     rev = "v${version}";
-    hash = "sha256-IE8QO9LaEllTYRRDA704SNWp4Ap2NQmoYMaKX4l9McY=";
+    hash = "sha256-nBSrY4DAHRphzJ3VfausBAJcLKNxSVR0VNSzWreCs8E=";
   };
 
-  cargoSha256 = "sha256-04EabrIlLwKPbrNIaJXi1WEDOdX3ojZrds5izzOymIg=";
+  cargoSha256 = "sha256-nzwWYHMY3IMi3S+x1IqHpaZks9Tv5saFJTWect62elg=";
 
-  # Can't seem to make test work when enabled? Network access?
-  # github::tests::test_fetch_data_from_tag, github::tests::test_get_release, github::tests::test_list_releases
+  # Can't seem to pass these tests? Network access?
+  # github::tests::test_get_release, github::tests::test_list_releases
   checkFlags = [
-    "--skip={github::tests::test_fetch_data_from_tag, github::tests::test_get_release, github::tests::test_list_releases}"
+    "--skip={github::tests::test_get_release, github::tests::test_list_releases}"
   ];
 
   meta = with lib; {

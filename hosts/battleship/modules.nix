@@ -15,7 +15,7 @@ in
     "${modDir}/docker.nix"
     #"${modDir}/dual-boot.nix" Using grub instead of systemd
     "${modDir}/nix-quick-update"
-    #"${modDir}/wireguard.nix"
+    "${modDir}/wireguard.nix"
 
     # Desktop env
     "${modEnvironments}/hyprland"
