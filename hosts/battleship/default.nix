@@ -19,17 +19,23 @@
     os-prober # Probes for windows for grub
   ];
 
-  services.displayManager.defaultSession = "hyprland";
+  services.displayManager.defaultSession = "plasma";
   services.xserver.displayManager = {
 
-    gdm = {
-      enable = true;
-      wayland = true;
-    };
+    #gdm = {
+    #  enable = true;
+    #  wayland = true;
+    #};
     sddm = {
-      #enable = true;
-      #wayland.enable = true;
-      #autoNumlock = true;
+      enable = true;
+      wayland.enable = false;
+      autoNumlock = true;
+      settings = {
+        Autologin = {
+          Session = "plasma.desktop";
+          User = "liperium";
+        };
+      };
     };
   };
   networking.firewall = {
