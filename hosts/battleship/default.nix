@@ -28,7 +28,7 @@
     #};
     sddm = {
       enable = true;
-      wayland.enable = false;
+      wayland.enable = true;
       autoNumlock = true;
       settings = {
         Autologin = {
