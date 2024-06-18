@@ -18,6 +18,7 @@
     path-of-building
     os-prober # Probes for windows for grub
   ];
+  services.fstrim.enable = true;
 
   services.displayManager.defaultSession = "plasma";
   services.xserver.displayManager = {

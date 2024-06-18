@@ -106,4 +106,11 @@
   };
   services.nginx.virtualHosts."localhost".listen = [{ addr = "0.0.0.0"; port = 8002; }];
 
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "0 2 * * *      root    /opt/backup-hdpdb.sh"
+    ];
+  };
+
 }
