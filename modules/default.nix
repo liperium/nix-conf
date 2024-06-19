@@ -1,6 +1,14 @@
-{ config, pkgs, lib, ... }:
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   nix.gc = {
     automatic = true;
@@ -44,7 +52,10 @@
   users.users.liperium = {
     isNormalUser = true;
     description = "Mattys Gervais";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   # Allow unfree packages
@@ -67,6 +78,7 @@
     nixpkgs-fmt
     nh # Better nixos manager
     lsd # Better ls
+    wget
 
     #Terminal
     zsh
@@ -101,8 +113,7 @@
       enable = true;
       plugins = [ "git" ];
     };
-    promptInit =
-      "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    promptInit = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     shellAliases = {
       nixd = "nix develop -c zsh";
       ls = "lsd";

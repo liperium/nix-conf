@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.adb.enable = true;
@@ -10,7 +15,10 @@
       android-studio
       androidStudioPackages.canary
     ];
-    extraGroups = ["adbusers" "kvm"];
+    extraGroups = [
+      "adbusers"
+      "kvm"
+    ];
   };
 
   # TP Final Cloud

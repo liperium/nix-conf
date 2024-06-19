@@ -11,7 +11,8 @@ in
     "${modDir}"
 
     # Additional System
-    "${modDir}/btrfs.nix"
+    "${modDir}/hardware/btrfs.nix"
+    "${modDir}/hardware/ssd.nix"
     "${modDir}/docker.nix"
     #"${modDir}/dual-boot.nix" Using grub instead of systemd
     "${modDir}/nix-quick-update"

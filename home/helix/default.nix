@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
 {
-  home.packages = with pkgs;[ helix ];
-
+  home.packages = with pkgs; [ helix ];
 }

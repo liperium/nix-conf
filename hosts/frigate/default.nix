@@ -1,7 +1,12 @@
 # Based on (not exactly) :
 # https://github.com/NixOS/nixos-hardware/blob/master/lenovo/ideapad/15arh05/default.nix
 
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     # Include the results of the hardware scan.
@@ -10,9 +15,7 @@
   ];
   networking.hostName = "frigate";
 
-  environment.systemPackages = with pkgs; [
-    nvtopPackages.nvidia
-  ];
+  environment.systemPackages = with pkgs; [ nvtopPackages.nvidia ];
 
   services.displayManager.defaultSession = "plasma";
 
@@ -27,10 +30,8 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-
-
   # --- Laptop settings ---
-  
+
   boot = {
     kernelModules = [ "acpi_call" ];
     kernelParams = [
@@ -52,9 +53,6 @@
     CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
   };
 
-  # SSD
-  services.fstrim.enable = lib.mkDefault true;
-
   # Nvidia
   # Enable OpenGL
   hardware.opengl = {
@@ -63,9 +61,7 @@
     driSupport32Bit = true;
   };
 
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiVdpau
-  ];
+  hardware.opengl.extraPackages = with pkgs; [ vaapiVdpau ];
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];

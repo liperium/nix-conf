@@ -4,5 +4,5 @@
   home.file = {
     ".tmux.conf".source = ./.tmux.conf;
   };
-  home.packages = with pkgs;[ tmux ];
+  home.packages = with pkgs; [ tmux ];
 }

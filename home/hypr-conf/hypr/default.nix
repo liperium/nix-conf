@@ -5,7 +5,7 @@
   xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;
   xdg.configFile."hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;
 
-  home.packages = with pkgs;[
+  home.packages = with pkgs; [
     pamixer
     playerctl
   ];

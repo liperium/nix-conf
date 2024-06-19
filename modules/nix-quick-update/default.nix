@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   nix-quick-update = pkgs.writeShellScriptBin "nix-quick-update" ''
     #!/bin/sh
@@ -6,6 +11,8 @@ let
     rm /home/liperium/.gtkrc-2.0
     git pull; 
     nh os switch ./;
+    git commit
+    git push
   '';
 in
 {

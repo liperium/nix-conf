@@ -12,9 +12,12 @@ in
     "${currentDir}/conservationmode"
 
     # Additional System
-    "${modDir}/btrfs.nix"
+    "${modDir}/hardware/btrfs.nix"
+    "${modDir}/hardware/ssd.nix"
+    "${modDir}/hardware/dual-boot.nix"
+
     "${modDir}/docker.nix"
-    "${modDir}/dual-boot.nix"
+
     "${modDir}/wireguard.nix"
     "${modDir}/nix-quick-update"
 

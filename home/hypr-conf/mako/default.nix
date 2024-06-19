@@ -4,5 +4,5 @@
   home.file = {
     ".config/mako/config".source = ./config;
   };
-  home.packages = with pkgs;[ mako ];
+  home.packages = with pkgs; [ mako ];
 }

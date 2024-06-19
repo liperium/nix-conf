@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   users.users.liperium = {
@@ -13,7 +18,8 @@
       godot_4
       #nodejs-slim_21
       #rustfmt
-      zls zig
+      zls
+      zig
       gh
     ];
   };

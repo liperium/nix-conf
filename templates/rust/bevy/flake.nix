@@ -7,8 +7,15 @@
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, naersk, utils }:
-    utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      naersk,
+      utils,
+    }:
+    utils.lib.eachDefaultSystem (
+      system:
       let
         packageName = "mygame";
         pkgs = nixpkgs.legacyPackages.${system};
@@ -17,18 +24,18 @@
           clang
           rustc
         ];
-        appNativeBuildInputs = with pkgs; [
-          pkg-config
-        ];
-        appBuildInputs = appRuntimeInputs ++ (with pkgs; [
-          alsaLib
-          udev
-          vulkan-headers
-          vulkan-tools
-          vulkan-validation-layers
-          xorg.libX11
-          wayland
-        ]);
+        appNativeBuildInputs = with pkgs; [ pkg-config ];
+        appBuildInputs =
+          appRuntimeInputs
+          ++ (with pkgs; [
+            alsaLib
+            udev
+            vulkan-headers
+            vulkan-tools
+            vulkan-validation-layers
+            xorg.libX11
+            wayland
+          ]);
         appRuntimeInputs = with pkgs; [
           vulkan-loader
           xorg.libXcursor
@@ -45,9 +52,7 @@
         };
         defaultPackage = self.packages.${packageName};
 
-        apps.${packageName} = utils.lib.mkApp {
-          drv = self.packages.${packageName};
-        };
+        apps.${packageName} = utils.lib.mkApp { drv = self.packages.${packageName}; };
         defaultApp = self.apps.${packageName};
 
         devShells.${packageName} = pkgs.mkShell {

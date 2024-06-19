@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -25,12 +30,24 @@
   networking.firewall = {
     enable = true;
     allowedTCPPortRanges = [
-      { from = 1000; to = 10000; }
-      { from = 25565; to = 25570; }
+      {
+        from = 1000;
+        to = 10000;
+      }
+      {
+        from = 25565;
+        to = 25570;
+      }
     ];
     allowedUDPPortRanges = [
-      { from = 1000; to = 10000; }
-      { from = 25565; to = 25570; }
+      {
+        from = 1000;
+        to = 10000;
+      }
+      {
+        from = 25565;
+        to = 25570;
+      }
     ];
     allowPing = true; # Samba?
   };
@@ -95,22 +112,23 @@
       adminpassFile = "/etc/nextcloud-admin-pass";
     };
     settings = {
-      trusted_domains =
-        [
-          "nextcloud.mattysgervais.com"
-          "192.168.0.20" # Trust itself/calls from the proxy
-        ];
+      trusted_domains = [
+        "nextcloud.mattysgervais.com"
+        "192.168.0.20" # Trust itself/calls from the proxy
+      ];
       trusted_proxies = [ "192.168.0.10" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
     };
   };
-  services.nginx.virtualHosts."localhost".listen = [{ addr = "0.0.0.0"; port = 8002; }];
+  services.nginx.virtualHosts."localhost".listen = [
+    {
+      addr = "0.0.0.0";
+      port = 8002;
+    }
+  ];
 
   services.cron = {
     enable = true;
-    systemCronJobs = [
-      "0 2 * * *      root    /opt/backup-hdpdb.sh"
-    ];
+    systemCronJobs = [ "0 2 * * *      root    /opt/backup-hdpdb.sh" ];
   };
-
 }

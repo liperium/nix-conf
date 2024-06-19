@@ -1,6 +1,7 @@
-{ lib
-, rustPlatform
-, fetchFromGitHub
+{
+  lib,
+  rustPlatform,
+  fetchFromGitHub,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -18,9 +19,7 @@ rustPlatform.buildRustPackage rec {
 
   # Can't seem to pass these tests? Network access?
   # github::tests::test_get_release, github::tests::test_list_releases
-  checkFlags = [
-    "--skip={github::tests::test_get_release, github::tests::test_list_releases}"
-  ];
+  checkFlags = [ "--skip={github::tests::test_get_release, github::tests::test_list_releases}" ];
 
   meta = with lib; {
     description = "Lib, CLI and GUI(wip) program to automate the installation and update of Proton-GE";

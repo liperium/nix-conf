@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   # Bootloader.
   boot.supportedFilesystems = [ "ntfs" ];
 

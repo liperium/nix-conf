@@ -25,11 +25,11 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs;[
+  home.packages = with pkgs; [
     fastfetch
     dconf
     # needed for ark archives
-    p7zip 
+    p7zip
     rar
     # From default config modules 
     #Basic Needs
@@ -45,7 +45,7 @@
     papirus-icon-theme
 
     #Personnal
-    logseq #qownnotes replacement, rip.
+    logseq # qownnotes replacement, rip.
     betterdiscordctl
     discord
     vesktop
@@ -135,15 +135,22 @@
       "image/jpeg" = [ "org.kde.gwenview.desktop" ];
     };
   };
-  
+
   xdg.desktopEntries = {
     firefox-fusion = {
       name = "Firefox FJ";
       genericName = "Web Browser Fusion";
       exec = "firefox %U -p fusion";
       terminal = false;
-      categories = [ "Application" "Network" "WebBrowser" ];
-      mimeType = [ "text/html" "text/xml" ];
+      categories = [
+        "Application"
+        "Network"
+        "WebBrowser"
+      ];
+      mimeType = [
+        "text/html"
+        "text/xml"
+      ];
     };
     android-studio-env = {
       name = "Android Studio Patched Envs";
@@ -170,7 +177,7 @@
         uris = [ "qemu:///system" ];
       };
       "org/gnome/nautilus/preferences" = {
-        always-use-location-entry = true; #shows dir in nautilus
+        always-use-location-entry = true; # shows dir in nautilus
       };
     };
   };
@@ -180,13 +187,12 @@
     size = 24;
   };
 
-  qt =
-    {
-      enable = true;
-      # disabled cause crashes KDE I think?
-      #platformTheme.name = "qtct";
-      #style.name = "kvantum";
-    };
+  qt = {
+    enable = true;
+    # disabled cause crashes KDE I think?
+    #platformTheme.name = "qtct";
+    #style.name = "kvantum";
+  };
 
   gtk = {
     enable = true;
