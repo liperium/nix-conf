@@ -105,7 +105,7 @@
   services.nextcloud = {
     enable = true;
     configureRedis = true;
-    package = pkgs.nextcloud28;
+    package = pkgs.nextcloud29;
     hostName = "localhost";
     datadir = "/zfs-data/nextcloud"; # Make sure /zfs-data is mounted as root (systemd stuff), and that ./nextcloud folder is owned by nextcloud
     config = {
