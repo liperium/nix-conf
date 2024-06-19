@@ -6,6 +6,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
@@ -13,6 +14,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixos-hardware,
       ...
     }@inputs:
     let
@@ -36,6 +38,8 @@
               };
               home-manager.backupFileExtension = "hm_backup";
             }
+            # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
+            nixos-hardware.nixosModules.lenovo-legion-15arh05h
           ];
         };
 
