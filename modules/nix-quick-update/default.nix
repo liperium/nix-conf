@@ -11,8 +11,6 @@ let
     rm /home/liperium/.gtkrc-2.0
     git pull; 
     nh os switch ./;
-    git commit
-    git push
   '';
 in
 {
