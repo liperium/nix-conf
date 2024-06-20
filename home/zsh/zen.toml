@@ -1,0 +1,109 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+final_space = true
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    type = 'path'    
+    style = 'plain'
+    foreground = 'p:lavender'
+    background = 'transparent'
+    template = ' {{ path .Path .Location }}'
+
+    [blocks.segments.properties]
+      style = 'folder'
+
+  [[blocks.segments]]
+    type = 'git'
+    foreground = 'p:grey'
+    template = '|{{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }}{{ end }}{{ .HEAD }}{{ if .Working.Changed }}* {{ end }}{{ if .Staging.Changed }}{{ .Staging.String }}{{ end }}'
+
+    [blocks.segments.properties]
+      branch_max_length = 25
+      fetch_status = true
+      fetch_upstream_icon = true
+      branch_icon = ''
+      commit_icon = '@'
+  [[blocks.segments]]
+    type = 'text'
+    style = 'plain'
+    foreground_templates = [
+      "{{if gt .Code 0}}p:red{{end}}",
+      "{{if eq .Code 0}}p:mauve{{end}}"
+    ]
+    background = 'transparent'
+    template = '⟩'
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = "hidden"
+
+  [[blocks.segments]]
+    type = 'go'
+    style = 'plain'
+    foreground = 'p:blue'
+    background = 'transparent'
+    template = ' '
+
+    [blocks.segments.properties]
+      fetch_version = false
+
+  [[blocks.segments]]
+    type = 'python'
+    style = 'plain'
+    foreground = 'p:yellow'
+    background = 'transparent'
+    template = ' '
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      fetch_version = false
+      fetch_virtual_env = false
+  [[block.segments]]
+    type = 'rust'
+    style = "plain"
+    foreground = 'p:orange'
+    background = "transparent"
+    template = " "
+  [[blocks.segments]]
+    type = "executiontime"
+    style = "plain"
+    foreground = "p:mauve"
+    background = "transparent"  
+    template = " {{ .FormattedMs }} "
+  [[blocks.segments]]
+    type = "os"
+    style = "plain"
+    foreground = "p:blue"
+    background = "transparent"
+    template = "{{.UserName}}{{.Icon}} {{.HostName}}"
+
+[transient_prompt]
+  foreground_templates = [
+    "{{if gt .Code 0}}p:red{{end}}",
+    "{{if eq .Code 0}}p:mauve{{end}}"
+  ]
+  background = 'transparent'
+  template = '⟩ '
+
+[secondary_prompt]
+  foreground = 'p:blue'
+  background = 'transparent'
+  template = '⟩⟩ '
+
+[palette]
+  black = '#262B44'
+  blue = '#4B95E9'
+  green = '#59C9A5'
+  orange = '#F07623'
+  red = '#D81E5B'
+  white = '#E0DEF4'
+  yellow = '#F3AE35'
+  mauve = '#CBA6F7'
+  lavender = "#B4BEFE"
+  grey = "#BAC2DE"

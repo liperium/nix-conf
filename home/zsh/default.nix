@@ -3,10 +3,12 @@
 {
   home.file = {
     ".zshrc".source = ./.zshrc;
-    ".p10k.zsh".source = ./.p10k.zsh;
+    ".config/omp/catppuccin_mocha.omp.json".source = ./catppuccin_mocha.omp.json;
+    ".config/omp/zen.toml".source = ./zen.toml;
   };
   home.packages = with pkgs; [
-    zsh
-    zsh-powerlevel10k
-  ];
+    zsh  ];
+  programs.oh-my-posh = {
+    enable = true;
+  };
 }
