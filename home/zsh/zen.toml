@@ -11,7 +11,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = 'path'    
     style = 'plain'
-    foreground = 'p:lavender'
+    foreground = 'p:white'
     background = 'transparent'
     template = ' {{ path .Path .Location }}'
 
@@ -79,7 +79,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = "os"
     style = "plain"
-    foreground = "p:blue"
+    foreground = "p:lavender"
     background = "transparent"
     template = "{{.UserName}}{{.Icon}} {{.HostName}}"
 
