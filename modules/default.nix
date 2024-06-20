@@ -82,7 +82,7 @@
 
     #Terminal
     zsh
-    zsh-powerlevel10k
+    any-nix-shell
   ];
   programs.tmux = {
     enable = true;
@@ -116,6 +116,9 @@
     shellAliases = {
       ls = "lsd";
     };
+    promptInit = ''
+    ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+  '';
   };
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;

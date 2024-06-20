@@ -13,7 +13,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = 'plain'
     foreground = 'p:white'
     background = 'transparent'
-    template = ' {{ path .Path .Location }}'
+    template = '  {{ path .Path .Location }} '
 
     [blocks.segments.properties]
       style = 'folder'
@@ -21,7 +21,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   [[blocks.segments]]
     type = 'git'
     foreground = 'p:grey'
-    template = '|{{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }}{{ end }}{{ .HEAD }}{{ if .Working.Changed }}* {{ end }}{{ if .Staging.Changed }}{{ .Staging.String }}{{ end }}'
+    template = '| {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }}{{ end }}{{ .HEAD }}{{ if .Working.Changed }}*{{ end }}{{ if .Staging.Changed }}{{ .Staging.String }}{{ end }} '
 
     [blocks.segments.properties]
       branch_max_length = 25
@@ -29,6 +29,14 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
       fetch_upstream_icon = true
       branch_icon = ''
       commit_icon = '@'
+
+  [[blocks.segments]]
+    type = "text"
+    style = "plain"
+    foreground = "p:blue"
+    background = "transparent"
+    template = "{{ if .Env.IN_NIX_SHELL }}impure {{end}}"
+
   [[blocks.segments]]
     type = 'text'
     style = 'plain'
