@@ -74,11 +74,9 @@
 
     # Helix
     helix
-    nil
-    nixpkgs-fmt
-    
+
     lsd # Better ls
-    
+
     #Terminal
     zsh
     any-nix-shell

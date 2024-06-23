@@ -7,16 +7,17 @@
 {
   users.users.liperium = {
     packages = with pkgs; [
+      # General
       vscode
       github-desktop
+      gh
+
+      # Other IDEs
       godot_4
 
-      gh
       # Languages - All the time on system - MAKE A SHELL DAMMIT
       zig
 
-      # Language servers
-      zls
     ];
   };
 }

@@ -1,9 +1,0 @@
-{ config, pkgs, ... }:
-
-{
-  home.file = {
-    ".config/helix/config.toml".source = ./config.toml;
-    ".config/helix/themes/catppuccin_mocha.toml".source = ./themes/catppuccin_mocha.toml;
-  };
-  home.packages = with pkgs; [ helix ];
-}

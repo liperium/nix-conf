@@ -1,4 +1,21 @@
 { config, pkgs, ... }:
+
 {
-  home.packages = with pkgs; [ helix ];
+  home.file = {
+    ".config/helix/config.toml".source = ./config.toml;
+    ".config/helix/languages.toml".source = ./languages.toml;
+    ".config/helix/themes/catppuccin_mocha.toml".source = ./themes/catppuccin_mocha.toml;
+  };
+  home.packages = with pkgs; [
+    helix
+
+    # LSPs (Language Servers)
+    zls
+    rust-analyzer
+
+    # Formatters
+    rustfmt
+    nil
+    nixpkgs-fmt
+  ];
 }

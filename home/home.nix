@@ -3,12 +3,15 @@
 
 {
   imports = [
-    ./hypr-conf
-    ./kitty
-    ./tmux
+    # Everywhere
     ./zsh
     ./helix
     ./zellij
+
+    # Desktop
+    ./kitty
+    ./hypr-conf
+    ./firefox
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -27,7 +30,6 @@
     # From default config modules 
     #Basic Needs
     wl-clipboard
-    firefox
     steam-run
     gparted
     vlc
@@ -41,7 +43,12 @@
     logseq # qownnotes replacement, rip.
     betterdiscordctl
     discord
-    vesktop
+
+    (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
+      desktopItems = [
+        ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
+      ];
+    }))
 
     qbittorrent
     bitwarden
@@ -97,22 +104,8 @@
     };
   };
 
+
   xdg.desktopEntries = {
-    firefox-fusion = {
-      name = "pkgs.fusion.desktopEntries.name";
-      genericName = "Web Browser Fusion";
-      exec = "firefox %U -p fusion";
-      terminal = false;
-      categories = [
-        "Application"
-        "Network"
-        "WebBrowser"
-      ];
-      mimeType = [
-        "text/html"
-        "text/xml"
-      ];
-    };
     android-studio-env = {
       name = "Android Studio Patched Envs";
       genericName = "Coding For Android";
@@ -126,6 +119,7 @@
       terminal = false;
     };
   };
+
 
   dconf = {
     enable = true;

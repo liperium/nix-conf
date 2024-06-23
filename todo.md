@@ -18,9 +18,10 @@
 - [ X ] Change ls for lsd
 - [ ] Waypipe to get into desktops?
 - [ ] Make firefox vaapi ```hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };```
+enable = true;
+extraPackages = with pkgs; [
+vaapiVdpau
+libvdpau-va-gl
+];
+};```
+- [ ] Change to home setup (maybe two configs? Base/Full? (Desktop/Server))

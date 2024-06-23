@@ -1,0 +1,9 @@
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt", args = [] }
+
+[[language]]
+name = "nix"
+auto-format = true
+formatter = { command = "nixpkgs-fmt" }
