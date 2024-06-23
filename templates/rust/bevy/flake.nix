@@ -8,11 +8,11 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      naersk,
-      utils,
+    { self
+    , nixpkgs
+    , naersk
+    , utils
+    ,
     }:
     utils.lib.eachDefaultSystem (
       system:

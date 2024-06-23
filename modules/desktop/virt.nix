@@ -1,9 +1,8 @@
-{
-  config,
-  pkgs,
-  lib,
-  dconf,
-  ...
+{ config
+, pkgs
+, lib
+, dconf
+, ...
 }:
 
 {

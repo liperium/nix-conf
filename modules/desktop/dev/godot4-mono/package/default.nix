@@ -1,45 +1,45 @@
-{
-  lib,
-  stdenv,
-  fetchFromGitHub,
-  pkg-config,
-  autoPatchelfHook,
-  installShellFiles,
-  scons,
-  python3,
-  mkNugetDeps,
-  mkNugetSource,
-  writeText,
-  vulkan-loader,
-  libGL,
-  libX11,
-  libXcursor,
-  libXinerama,
-  libXext,
-  libXrandr,
-  libXrender,
-  libXi,
-  libXfixes,
-  libxkbcommon,
-  alsa-lib,
-  libpulseaudio,
-  dbus,
-  speechd,
-  fontconfig,
-  udev,
-  withPlatform ? "linuxbsd",
-  withTarget ? "editor",
-  withPrecision ? "single",
-  withPulseaudio ? true,
-  withDbus ? true,
-  withSpeechd ? true,
-  withFontconfig ? true,
-  withUdev ? true,
-  withTouch ? true,
-  dotnet-sdk,
-  mono,
-  dotnet-runtime,
-  callPackage,
+{ lib
+, stdenv
+, fetchFromGitHub
+, pkg-config
+, autoPatchelfHook
+, installShellFiles
+, scons
+, python3
+, mkNugetDeps
+, mkNugetSource
+, writeText
+, vulkan-loader
+, libGL
+, libX11
+, libXcursor
+, libXinerama
+, libXext
+, libXrandr
+, libXrender
+, libXi
+, libXfixes
+, libxkbcommon
+, alsa-lib
+, libpulseaudio
+, dbus
+, speechd
+, fontconfig
+, udev
+, withPlatform ? "linuxbsd"
+, withTarget ? "editor"
+, withPrecision ? "single"
+, withPulseaudio ? true
+, withDbus ? true
+, withSpeechd ? true
+, withFontconfig ? true
+, withUdev ? true
+, withTouch ? true
+, dotnet-sdk
+, mono
+, dotnet-runtime
+, callPackage
+,
 }:
 
 assert lib.asserts.assertOneOf "withPrecision" withPrecision [

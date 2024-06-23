@@ -12,7 +12,7 @@
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
+
   home.username = "liperium";
   home.homeDirectory = "/home/liperium";
 
@@ -49,8 +49,6 @@
     #Media-Streams
     obs-studio
     chatterino2
-    streamlink
-    streamlink-twitch-gui-bin
 
     #Creative
     gimp
@@ -59,28 +57,17 @@
     kdePackages.kdenlive
 
     #Misc
-    spot
-    nextcloud-client # ? cmd
+    nextcloud-client
     feishin
 
     # Office
     onlyoffice-bin
     zoom-us
-
-    #Theming
-    (catppuccin-kvantum.override {
-      accent = "Mauve";
-      variant = "Mocha";
-    })
-    qt6Packages.qtstyleplugin-kvantum
-    libsForQt5.qtstyleplugin-kvantum
   ];
   #Direnv
-  programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
   home.sessionVariables = {
     # EDITOR = "emacs";
@@ -112,7 +99,7 @@
 
   xdg.desktopEntries = {
     firefox-fusion = {
-      name = "Firefox FJ";
+      name = "pkgs.fusion.desktopEntries.name";
       genericName = "Web Browser Fusion";
       exec = "firefox %U -p fusion";
       terminal = false;
@@ -150,9 +137,6 @@
         autoconnect = [ "qemu:///system" ];
         uris = [ "qemu:///system" ];
       };
-      "org/gnome/nautilus/preferences" = {
-        always-use-location-entry = true; # shows dir in nautilus
-      };
     };
   };
   home.pointerCursor = {
@@ -163,9 +147,6 @@
 
   qt = {
     enable = true;
-    # disabled cause crashes KDE I think?
-    #platformTheme.name = "qtct";
-    #style.name = "kvantum";
   };
 
   gtk = {
@@ -179,7 +160,7 @@
       name = "Catppuccin-Mocha-Standard-Mauve-Dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "mauve" ];
-        variant = "mocha"; # Since gtk are applications, I like Mocha for apps and Macchiato for OS
+        variant = "mocha";
       };
     };
     iconTheme = {

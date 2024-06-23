@@ -1,8 +1,7 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
+{ lib
+, config
+, pkgs
+, ...
 }:
 {
   imports = [
@@ -22,7 +21,7 @@
       settings = {
         Autologin = {
           Session = "plasma.desktop";
-          User = "liperium";  
+          User = "liperium";
         };
       };
     };

@@ -7,7 +7,8 @@
     ".config/omp/zen.toml".source = ./zen.toml;
   };
   home.packages = with pkgs; [
-    zsh  ];
+    zsh
+  ];
   programs.oh-my-posh = {
     enable = true;
   };

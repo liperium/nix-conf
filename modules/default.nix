@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 {
   nix.settings.experimental-features = [
@@ -45,10 +44,6 @@
   # Enables microcode updates
   hardware.enableRedistributableFirmware = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.liperium = {
     isNormalUser = true;
     description = "Mattys Gervais";
@@ -58,49 +53,36 @@
     ];
   };
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     util-linux
     #lshw # Debugging nvidia prime
     #libva-utils # Debugging vaapi
     gcc
-    git
     tree
+
+    # Utils
+    nh # Better nixos manager
     btop
     ranger
     zoxide
+
+    # Networking - Basics
+    wget
+    git
+
+    # Helix
     helix
     nil
     nixpkgs-fmt
-    nh # Better nixos manager
+    
     lsd # Better ls
-    wget
-
+    
     #Terminal
     zsh
     any-nix-shell
   ];
-  programs.tmux = {
-    enable = true;
-  };
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-
-    viAlias = true;
-    vimAlias = true;
-  };
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
 
   environment.variables.EDITOR = "hx";
 
@@ -117,8 +99,8 @@
       ls = "lsd";
     };
     promptInit = ''
-    ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
-  '';
+      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+    '';
   };
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;

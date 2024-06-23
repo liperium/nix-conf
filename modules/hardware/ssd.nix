@@ -1,9 +1,8 @@
 # SSD
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 {
   services.fstrim.enable = lib.mkDefault true;

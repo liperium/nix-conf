@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 
 {
@@ -20,10 +19,4 @@
       "kvm"
     ];
   };
-
-  # TP Final Cloud
-  #environment.systemPackages = with pkgs; [
-  #minikube
-  #kubectl
-  #];
 }

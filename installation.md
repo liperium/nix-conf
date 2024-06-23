@@ -3,13 +3,15 @@
 ## Enable flakes in /etc/nixos/configuration.nix and add git/gh
 
 ```bash
-sudoedit /etc/nixos/configuration.nix
-```
+  sudoedit /etc/nixos/configuration.nix
+  ```
 
-```nix
-# Add this to file
-git gh
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  ```
+  nix
+  # Add this to file
+  git
+  gh
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 ```
 
 ```bash
@@ -55,4 +57,10 @@ sudo nixos-rebuild --install-bootloader boot
 
 ```bash
 ./occ files:scan --all
+```
+
+## Start qemu virtual network
+
+```bash
+sudo virsh net-start default
 ```
