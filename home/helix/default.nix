@@ -12,10 +12,13 @@
     # LSPs (Language Servers)
     zls
     rust-analyzer
+    bash-language-server
+    gopls
 
     # Formatters
     rustfmt
     nil
     nixpkgs-fmt
+    shfmt
   ];
 }
