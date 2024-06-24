@@ -24,6 +24,7 @@
     zfs
     unzip
     zip
+    oh-my-posh # for now
   ];
 
   networking.firewall = {
