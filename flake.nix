@@ -52,6 +52,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.liperium = import ./home/home.nix;
+              home-manager.users.root = import ./home/root.nix;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
               };
