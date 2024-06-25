@@ -14,6 +14,8 @@
     rust-analyzer
     bash-language-server
     gopls
+    taplo #toml
+    yaml-language-server
 
     # Formatters
     rustfmt
