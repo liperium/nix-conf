@@ -22,6 +22,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     type = 'git'
     foreground = 'p:grey'
     template = '| {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }}{{ end }}{{ .HEAD }}{{ if .Working.Changed }}*{{ end }}{{ if .Staging.Changed }}{{ .Staging.String }}{{ end }} '
+    style = "plain"
 
     [blocks.segments.properties]
       branch_max_length = 25
