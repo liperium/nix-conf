@@ -16,7 +16,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     template = '  {{ path .Path .Location }} '
 
     [blocks.segments.properties]
-      style = 'folder'
+      style = 'unique'
 
   [[blocks.segments]]
     type = 'git'
@@ -38,12 +38,6 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     template = "{{ if .Env.IN_NIX_SHELL }}impure {{end}}"
 
   [[blocks.segments]]
-    type = "root"
-    style = "plain"
-    foreground = "p:red"
-    template = ""
-
-  [[blocks.segments]]
     type = 'text'
     style = 'plain'
     foreground_templates = [
@@ -51,7 +45,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
       "{{if eq .Code 0}}p:mauve{{end}}"
     ]
     background = 'transparent'
-    template = '⟩'
+    template = '{{ if .Root }}{{ else }}⟩{{ end }}'
 
 [[blocks]]
   type = 'rprompt'
