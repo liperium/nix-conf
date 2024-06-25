@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Define the file path
-file_dir="$HOME/.local/share/dbus-1/services/"
+file_dir="/home/liperium/.local/share/dbus-1/services/"
 file_name="fr.emersion.mako.service"
 
 # Create the file with the specified content

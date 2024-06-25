@@ -38,6 +38,12 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     template = "{{ if .Env.IN_NIX_SHELL }}impure {{end}}"
 
   [[blocks.segments]]
+    type = "root"
+    style = "plain"
+    foreground = "p:red"
+    template = ""
+
+  [[blocks.segments]]
     type = 'text'
     style = 'plain'
     foreground_templates = [
