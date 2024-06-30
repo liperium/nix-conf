@@ -44,12 +44,14 @@
     allowedTCPPorts = [
       8080
       5252
+      5173 # Svelte
       5037 # ADB
       8050 # Postgresql dev
     ];
     allowedUDPPorts = [
       8080
       5252
+      5173 # Svelte
       5353 # ADB
       8050 # Postgresql dev
     ];
