@@ -15,6 +15,8 @@
       accents = [ "teal" ];
       winDecStyles = [ "classic" ];
     })
+    kdePackages.merkuro
+    kdePackages.kdepim-addons
   ];
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     plasma-browser-integration
