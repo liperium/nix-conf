@@ -101,9 +101,6 @@
     '';
   };
 
-  # Enables
-  powerManagement.powertop.enable = true;
-
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];

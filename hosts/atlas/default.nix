@@ -14,6 +14,7 @@
     ./modules.nix
   ];
   networking.hostName = "atlas";
+  powerManagement.powertop.enable = true;
 
   services.openssh = {
     enable = true;

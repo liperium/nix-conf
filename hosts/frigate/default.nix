@@ -27,7 +27,11 @@
     };
   };
 
-  services.power-profiles-daemon.enable = false;
+  environment.systemPackages = with pkgs;[
+    powertop
+  ];
+
+  services.power-profiles-daemon.enable = true;
   services.tlp = {
     enable = true;
     settings.CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
