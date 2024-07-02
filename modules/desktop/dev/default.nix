@@ -17,7 +17,7 @@
 
       # Languages - All the time on system - MAKE A SHELL DAMMIT
       zig
-
+      cargo
     ];
   };
 }
