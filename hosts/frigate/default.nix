@@ -31,10 +31,11 @@
     powertop
   ];
 
-  services.power-profiles-daemon.enable = true;
+  # Doesn't work on AMD
+  services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;
-    settings.CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+    #settings.CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
   };
 
   # Bluetooth
