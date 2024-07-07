@@ -25,7 +25,10 @@
     zfs
     unzip
     zip
-    oh-my-posh # for now
+
+    # for now, need to make liperium home-manager user
+    oh-my-posh
+    zellij 
   ];
 
   networking.firewall = {
