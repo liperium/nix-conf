@@ -28,7 +28,7 @@
 
     # for now, need to make liperium home-manager user
     oh-my-posh
-    zellij
+    zellij 
   ];
 
   networking.firewall = {
@@ -134,26 +134,5 @@
   services.cron = {
     enable = true;
     systemCronJobs = [ "0 2 * * *      root    /opt/backup-hdpdb.sh" ];
-  };
-
-
-  # Gitea test
-  # Gitea
-  virtualisation.oci-containers.containers."gitea" = {
-    autoStart = true;
-    image = "gitea/gitea:latest";
-    environment = {
-      USER_UID = "1000";
-      USER_GID = "1000";
-    };
-    volumes = [
-      "/media/Containers/Gitea:/data"
-      "/etc/timezone:/etc/timezone:ro"
-      "/etc/localtime:/etc/localtime:ro"
-    ];
-    ports = [
-      "3000:3000"
-      "222:22"
-    ];
   };
 }
