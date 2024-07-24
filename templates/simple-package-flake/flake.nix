@@ -1,5 +1,5 @@
 {
-  description = "A basic flake with a shell";
+  description = "Simple devShell flake";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
@@ -12,8 +12,8 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          packages = [
-            #pkgs.bashInteractive 
+          packages = with pkgs; [
+            #my package
           ];
         };
       }

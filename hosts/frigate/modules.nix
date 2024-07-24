@@ -20,6 +20,7 @@ in
 
     "${modDir}/wireguard.nix"
     "${modDir}/nix-quick-update"
+    "${modDir}/nix-flake-template"
 
     # Desktop env
     "${modEnvironments}/hyprland"

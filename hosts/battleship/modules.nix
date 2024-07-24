@@ -16,6 +16,7 @@ in
     "${modDir}/docker.nix"
     #"${modDir}/dual-boot.nix" Using grub instead of systemd
     "${modDir}/nix-quick-update"
+    "${modDir}/nix-flake-template"
     "${modDir}/wireguard.nix"
 
     # Desktop env
