@@ -12,8 +12,10 @@
   ];
 
   networking.hostName = "battleship"; # Define your hostname.
+  services.teamviewer.enable = true;
 
   environment.systemPackages = with pkgs; [
+    teamviewer
     nvtopPackages.amd
     path-of-building
     os-prober # Probes for windows for grub
