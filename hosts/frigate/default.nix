@@ -35,7 +35,8 @@
   services.power-profiles-daemon.enable = false;
   services.tlp = {
     enable = true;
-    #settings.CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+    settings.CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+    settings.CPU_SCALING_GOVERNOR_ON_AC = "performance";
   };
 
   # Bluetooth
@@ -43,12 +44,7 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
-  # Enable OpenGL - nixos-hardware doesn't.
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+
   hardware.nvidia = {
 
     # Modesetting is required.
