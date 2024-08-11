@@ -7,6 +7,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    catppuccin.url = "github:catppuccin/nix";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -14,11 +19,11 @@
     , nixpkgs
     , home-manager
     , nixos-hardware
+    , catppuccin
     , ...
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
     in
     {
@@ -29,14 +34,21 @@
             ./hosts/frigate
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.liperium = import ./home/home.nix;
-              home-manager.users.root = import ./home/root.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.liperium = {
+                  imports = [
+                    ./home/home.nix
+                    catppuccin.homeManagerModules.catppuccin
+                  ];
+                };
+                users.root = import ./home/root.nix;
+                backupFileExtension = "hm_backup";
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
               };
-              home-manager.backupFileExtension = "hm_backup";
             }
             # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
             nixos-hardware.nixosModules.lenovo-legion-15arh05h
@@ -49,14 +61,19 @@
             ./hosts/battleship
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.liperium = import ./home/home.nix;
-              home-manager.users.root = import ./home/root.nix;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                imports = [
+                  ./home/home.nix
+                  catppuccin.homeManagerModules.catppuccin
+                ];
+                users.root = import ./home/root.nix;
+                backupFileExtension = "hm_backup";
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
               };
-              home-manager.backupFileExtension = "hm_backup";
             }
           ];
         };

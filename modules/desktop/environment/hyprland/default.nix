@@ -19,7 +19,7 @@
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Ozone/discord/wayland
-  environment.sessionVariables.GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
+  #environment.sessionVariables.GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
   environment.systemPackages = with pkgs; [
     kitty
     libsecret

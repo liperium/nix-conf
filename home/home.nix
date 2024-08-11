@@ -133,44 +133,53 @@
       };
     };
   };
-  home.pointerCursor = {
-    package = pkgs.kdePackages.breeze-gtk;
-    name = "breeze_cursors";
-    size = 24;
-  };
+  # home.pointerCursor = {
+  #   package = pkgs.kdePackages.breeze-gtk;
+  #   name = "breeze_cursors";
+  #   size = 24;
+  # };
 
-  qt = {
+  catppuccin = {
+    enable = true;
+    accent = "mauve";
+    flavor = "mocha";
+    pointerCursor = {
+      enable = true;
+      accent = "light";
+    };
+  };
+  gtk.catppuccin = {
     enable = true;
   };
-
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      package = pkgs.kdePackages.breeze-gtk;
-      name = "breeze_cursors";
-      size = 24;
-    };
-    theme = {
-      name = "Catppuccin-Mocha-Standard-Mauve-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "mauve" ];
-        variant = "mocha";
-      };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    font = {
-      name = "Noto Sans";
-      package = pkgs.noto-fonts;
-      size = 12;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
+  qt.style.catppuccin.enable = true;
+  # gtk = {
+  #   enable = true;
+  #   cursorTheme = {
+  #     package = pkgs.kdePackages.breeze-gtk;
+  #     name = "breeze_cursors";
+  #     size = 24;
+  #   };
+  #   theme = {
+  #     name = "Catppuccin-Mocha-Standard-Mauve-Dark";
+  #     package = pkgs.catppuccin-gtk.override {
+  #       accents = [ "mauve" ];
+  #       variant = "mocha";
+  #     };
+  #   };
+  #   iconTheme = {
+  #     name = "Papirus-Dark";
+  #     package = pkgs.papirus-icon-theme;
+  #   };
+  #   font = {
+  #     name = "Noto Sans";
+  #     package = pkgs.noto-fonts;
+  #     size = 12;
+  #   };
+  #   gtk3.extraConfig = {
+  #     gtk-application-prefer-dark-theme = 1;
+  #   };
+  #   gtk4.extraConfig = {
+  #     gtk-application-prefer-dark-theme = 1;
+  #   };
+  # };
 }
