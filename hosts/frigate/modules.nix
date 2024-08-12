@@ -25,6 +25,7 @@ in
     # Desktop env
     "${modEnvironments}/hyprland"
     "${modEnvironments}/plasma"
+    "${modEnvironments}/cosmic"
 
     # Basic apps
     "${modDesktop}"

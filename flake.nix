@@ -20,6 +20,7 @@
     , home-manager
     , nixos-hardware
     , catppuccin
+    , nixos-cosmic
     , ...
     }@inputs:
     let
@@ -52,6 +53,14 @@
             }
             # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
             nixos-hardware.nixosModules.lenovo-legion-15arh05h
+            # Testing Cosmic
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            nixos-cosmic.nixosModules.default
           ];
         };
 
