@@ -23,8 +23,8 @@ in
     "${modDir}/nix-flake-template"
 
     # Desktop env
-    "${modEnvironments}/hyprland"
-    "${modEnvironments}/plasma"
+    #"${modEnvironments}/hyprland"
+    #"${modEnvironments}/plasma"
     "${modEnvironments}/cosmic"
 
     # Basic apps

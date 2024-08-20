@@ -34,7 +34,7 @@
     gparted
     vlc
     widevine-cdm
-    libsForQt5.kalk
+    vulkan-tools
 
     #Theming
     papirus-icon-theme
@@ -83,7 +83,7 @@
     enable = true;
     defaultApplications = {
       "inode/directory" = [ "org.kde.dolphin.desktop" ];
-      #"inode/directory" = ["gnome.nautilus.desktop"];
+      # "inode/directory" = ["gnome.nautilus.desktop"];
       "application/pdf" = [ "firefox.desktop" ];
 
       "application/gzip" = [ "org.kde.ark.desktop" ];
@@ -105,24 +105,24 @@
   };
 
 
-  xdg.desktopEntries = {
-    android-studio-env = {
-      name = "Android Studio Patched Envs";
-      genericName = "Coding For Android";
-      exec = "env -u QT_QPA_PLATFORM android-studio %U";
-      terminal = false;
-    };
-    android-studio-canary-env = {
-      name = "Android Studio Canary with Patched Envs";
-      genericName = "Coding For Android, Canary version";
-      exec = "env -u QT_QPA_PLATFORM android-studio-canary %U";
-      terminal = false;
-    };
-  };
+  # xdg.desktopEntries = {
+  #   android-studio-env = {
+  #     name = "Android Studio Patched Envs";
+  #     genericName = "Coding For Android";
+  #     exec = "env -u QT_QPA_PLATFORM android-studio %U";
+  #     terminal = false;
+  #   };
+  #   android-studio-canary-env = {
+  #     name = "Android Studio Canary with Patched Envs";
+  #     genericName = "Coding For Android, Canary version";
+  #     exec = "env -u QT_QPA_PLATFORM android-studio-canary %U";
+  #     terminal = false;
+  #   };
+  # };
 
 
   dconf = {
-    enable = true;
+    enable = true; # needed for theming
     settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
@@ -143,8 +143,20 @@
       accent = "light";
     };
   };
-  gtk.catppuccin = {
+  gtk = {
     enable = true;
+
+    catppuccin = {
+      enable = true;
+      gnomeShellTheme = true;
+    };
   };
-  qt.style.catppuccin.enable = true;
+  qt = {
+    enable = true;
+    platformTheme.name = "kvantum";
+    style = {
+      name = "kvantum";
+      catppuccin.enable = true;
+    };
+  };
 }

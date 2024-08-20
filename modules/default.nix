@@ -49,6 +49,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "adm" # system76 stuff? https://www.reddit.com/r/System76/comments/1dnfhj4/system76power_on_nixos/
     ];
   };
 

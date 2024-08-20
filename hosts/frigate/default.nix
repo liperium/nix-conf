@@ -11,37 +11,39 @@
   ];
   networking.hostName = "frigate";
 
-  services.displayManager.defaultSession = "plasma";
+  services.displayManager.defaultSession = "cosmic";
+  services.displayManager.cosmic-greeter.enable = true;
 
-  services.xserver.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      autoNumlock = true;
-      settings = {
-        Autologin = {
-          Session = "plasma.desktop";
-          User = "liperium";
-        };
-      };
-    };
-  };
+  # services.xserver.displayManager = {
+  #   sddm = {
+  #     enable = true;
+  #     wayland.enable = true;
+  #     autoNumlock = true;
+  #     settings = {
+  #       Autologin = {
+  #         Session = "plasma.desktop";
+  #         User = "liperium";
+  #       };
+  #     };
+  #   };
+  # };
 
-  environment.systemPackages = with pkgs;[
-    powertop
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      # powertop
+    ];
 
   # Doesn't work on AMD
   services.power-profiles-daemon.enable = false;
-  services.tlp = {
-    enable = true;
-    settings.CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
-    settings.CPU_SCALING_GOVERNOR_ON_AC = "performance";
-  };
+  # services.tlp = {
+  #   enable = true;
+  #   settings.CPU_SCALING_GOVERNOR_ON_BAT = "schedutil";
+  #   settings.CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  # };
 
   # Bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth.powerOnBoot = false;
   services.blueman.enable = true;
 
 

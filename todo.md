@@ -1,9 +1,6 @@
 # TODO
 
-- [ ] Nextcloud auto-sync cmd? or client? Think cmd would be more seemless? But conflict resoltion: o
-  (Force-Pull on start?)
-
-  - [ X ] Discord Notifications not showing up - Use discord and not Webcord
+  - [ X ] Discord Notifications not showing up - Use discord and not Webcord - Vesktop fixes everything
   - [ X ] Polkit - GUI to enable sudo
   - [ X ] better libsecret (check how it works before) - gnome-keyring,
   stores
@@ -16,12 +13,4 @@
 - [ X ] frigate bluetooth
 - [ X ] Make custom power white too
 - [ X ] Change ls for lsd
-- [ ] Waypipe to get into desktops?
-- [ ] Make firefox vaapi ```hardware.opengl = {
-enable = true;
-extraPackages = with pkgs; [
-vaapiVdpau
-libvdpau-va-gl
-];
-};```
-- [ ] Change to home setup (maybe two configs? Base/Full? (Desktop/Server))
+- [ X ] Change to home setup (maybe two configs? Base/Full? (Desktop/Server))
