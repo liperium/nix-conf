@@ -4,7 +4,6 @@
 , ...
 }:
 let
-  currentDir = ./.;
   protonup-rs = pkgs.callPackage ./protonup-rs/default.nix { };
 in
 {
@@ -18,7 +17,6 @@ in
       goverlay
       lutris
       steam
-      starsector
       protonup-rs
       prismlauncher
       temurin-bin-8
