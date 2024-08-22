@@ -26,6 +26,36 @@
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
+      cosmic-stuff =
+        [
+          {
+            nix.settings = {
+              substituters = [ "https://cosmic.cachix.org/" ];
+              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+            };
+          }
+          nixos-cosmic.nixosModules.default
+        ];
+      home-manager-liperium-root = [
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.liperium = {
+              imports = [
+                ./home/home.nix
+                catppuccin.homeManagerModules.catppuccin
+              ];
+            };
+            users.root = import ./home/root.nix;
+            backupFileExtension = "hm_backup";
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+          };
+        }
+      ];
     in
     {
       nixosConfigurations = {
@@ -33,58 +63,22 @@
           inherit system;
           modules = [
             ./hosts/frigate
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.liperium = {
-                  imports = [
-                    ./home/home.nix
-                    catppuccin.homeManagerModules.catppuccin
-                  ];
-                };
-                users.root = import ./home/root.nix;
-                backupFileExtension = "hm_backup";
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
-              };
-            }
             # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
             nixos-hardware.nixosModules.lenovo-legion-15arh05h
-            # Testing Cosmic
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
-            nixos-cosmic.nixosModules.default
-          ];
+          ]
+          ++ home-manager-liperium-root
+          # Testing Cosmic
+          ++ cosmic-stuff;
         };
 
         battleship = lib.nixosSystem {
           inherit system;
           modules = [
             ./hosts/battleship
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                imports = [
-                  ./home/home.nix
-                  catppuccin.homeManagerModules.catppuccin
-                ];
-                users.root = import ./home/root.nix;
-                backupFileExtension = "hm_backup";
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
-              };
-            }
-          ];
+          ]
+          ++ home-manager-liperium-root
+          # Testing Cosmic
+          ++ cosmic-stuff;
         };
         atlas = lib.nixosSystem {
           inherit system;

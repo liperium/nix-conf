@@ -14,9 +14,7 @@
     xwayland.enable = true;
   };
 
-  hardware = {
-    opengl.enable = true;
-  };
+  hardware.graphics.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Ozone/discord/wayland
   #environment.sessionVariables.GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";

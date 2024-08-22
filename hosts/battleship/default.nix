@@ -20,25 +20,9 @@
   ];
   services.fstrim.enable = true;
 
-  services.displayManager.defaultSession = "plasma";
-  services.xserver.displayManager = {
+  services.displayManager.defaultSession = "hyprland";
+  services.displayManager.cosmic-greeter.enable = true;
 
-    #gdm = {
-    #  enable = true;
-    #  wayland = true;
-    #};
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      autoNumlock = true;
-      settings = {
-        Autologin = {
-          Session = "plasma.desktop";
-          User = "liperium";
-        };
-      };
-    };
-  };
   # networking.firewall = {
   #   enable = true;
   #   allowedTCPPorts = [
@@ -58,7 +42,6 @@
   # };
   services.openssh = {
     enable = true;
-    ports = [ 5252 ];
     # require public key authentication for better security
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
