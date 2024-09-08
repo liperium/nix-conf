@@ -18,7 +18,7 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 5252 ];
+    ports = [ 22 ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -28,7 +28,7 @@
 
     # for now, need to make liperium home-manager user
     oh-my-posh
-    zellij 
+    zellij
   ];
 
   networking.firewall = {

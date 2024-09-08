@@ -46,7 +46,6 @@
     kdePackages.dolphin
     #gnome.eog # Image viewer
 
-    #xwaylandvideobridge #not working... works for 5s
     #kdeconnect #not working???
   ];
   security.polkit.enable = true;
