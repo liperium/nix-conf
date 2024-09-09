@@ -13,11 +13,4 @@
     nautilus
   ];
   services.desktopManager.cosmic.enable = true;
-  hardware.system76.enableAll = true;
-  services.power-profiles-daemon.enable = false; # Because we use system76-power
-  boot.extraModulePackages =
-    with config.boot.kernelPackages; [
-      system76-scheduler
-      system76-power
-    ];
 }

@@ -26,6 +26,7 @@ in
     #"${modEnvironments}/hyprland"
     #"${modEnvironments}/plasma"
     "${modEnvironments}/cosmic"
+    "${modDir}/hardware/power-management/system76.nix"
 
     # Basic apps
     "${modDesktop}"
