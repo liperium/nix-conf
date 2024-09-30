@@ -10,7 +10,6 @@
     catppuccin.url = "github:catppuccin/nix";
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

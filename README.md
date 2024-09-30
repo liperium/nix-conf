@@ -35,3 +35,8 @@ echo "use flake" >> .envrc && direnv allow
 [Running and building from local nixpkgs](https://nixos.wiki/wiki/Nixpkgs/Create_and_debug_packages)
 
 Get hashes while debugging : ```lib.fakeHash```
+
+## Public key is invalid
+
+1. get key from [here](https://github.com/NixOS/nixpkgs/blob/1f949558617ebb18bbf7005c1c4dc3407d391e93/nixos/modules/services/misc/nix-daemon.nix#L806)
+2. add ```--option trusted-public-keys 'YOUR KEY HERE'```
