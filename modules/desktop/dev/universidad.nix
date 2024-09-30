@@ -10,6 +10,7 @@
     packages = with pkgs; [
       jetbrains.datagrip
       androidStudioPackages.canary
+      zotero
     ];
     extraGroups = [
       "adbusers"
