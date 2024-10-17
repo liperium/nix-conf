@@ -14,6 +14,11 @@
   services.displayManager.defaultSession = "cosmic";
   services.displayManager.cosmic-greeter.enable = true;
 
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+  };
+
   # services.xserver.displayManager = {
   #   sddm = {
   #     enable = true;

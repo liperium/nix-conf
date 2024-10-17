@@ -4,13 +4,10 @@
 {
   imports = [
     # Everywhere
-    ./zsh
-    ./helix
-    ./zellij
+    ./console.nix
 
     # Desktop
     ./kitty
-    ./hypr-conf
     ./firefox
   ];
   # Let Home Manager install and manage itself.
@@ -22,26 +19,15 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    fastfetch
-    dconf
-    # needed for ark archives
-    p7zip
-    rar
-    # From default config modules 
-    #Basic Needs
-    wl-clipboard
-    steam-run
-    gparted
-    vlc
-    widevine-cdm
-    vulkan-tools
-
     #Theming
     papirus-icon-theme
 
+    #File viewers
+    vlc
+    dolphin
+
     #Personnal
     logseq # qownnotes replacement, rip.
-    betterdiscordctl
     discord
 
     (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
@@ -71,14 +57,7 @@
     onlyoffice-bin
     zoom-us
   ];
-  #Direnv
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {

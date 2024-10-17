@@ -43,7 +43,7 @@
             useUserPackages = true;
             users.liperium = {
               imports = [
-                ./home/home.nix
+                ./home/desktop.nix
                 catppuccin.homeManagerModules.catppuccin
               ];
             };
