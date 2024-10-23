@@ -31,28 +31,9 @@
     zellij
   ];
 
+  # Everything is local, nothing exposed directly to the net ( Caddy from rpi )
   networking.firewall = {
-    enable = true;
-    allowedTCPPortRanges = [
-      {
-        from = 1000;
-        to = 10000;
-      }
-      {
-        from = 25565;
-        to = 25570;
-      }
-    ];
-    allowedUDPPortRanges = [
-      {
-        from = 1000;
-        to = 10000;
-      }
-      {
-        from = 25565;
-        to = 25570;
-      }
-    ];
+    enable = false;
     allowPing = true; # Samba?
   };
 
