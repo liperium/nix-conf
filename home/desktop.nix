@@ -18,6 +18,10 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  home.sessionVariables = {
+    COSMIC_DISABLE_DIRECT_SCANOUT = "true";
+  };
+
   home.packages = with pkgs; [
     #Theming
     papirus-icon-theme
@@ -37,7 +41,7 @@
     }))
 
     qbittorrent
-    bitwarden
+    #bitwarden
 
     #Media-Streams
     obs-studio

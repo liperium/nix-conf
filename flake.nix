@@ -35,15 +35,14 @@
           }
           nixos-cosmic.nixosModules.default
         ];
-      home-manager-liperium-root = [
+      home-manager-liperium-root = { userImports ? [ "./home/desktop.nix" ] }: [
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             users.liperium = {
-              imports = [
-                ./home/desktop.nix
+              imports = userImports ++ [
                 catppuccin.homeManagerModules.catppuccin
               ];
             };
@@ -65,7 +64,11 @@
             # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
             nixos-hardware.nixosModules.lenovo-legion-15arh05h
           ]
-          ++ home-manager-liperium-root
+          ++ home-manager-liperium-root {
+            userImports = [
+              ./home/desktop.nix
+            ];
+          }
           # Testing Cosmic
           ++ cosmic-stuff;
         };
@@ -75,7 +78,11 @@
           modules = [
             ./hosts/battleship
           ]
-          ++ home-manager-liperium-root
+          ++ home-manager-liperium-root {
+            userImports = [
+              ./home/hyprland.nix
+            ];
+          }
           # Testing Cosmic
           ++ cosmic-stuff;
         };

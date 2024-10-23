@@ -9,7 +9,6 @@
     enable = true;
   };
   environment.systemPackages = with pkgs; [
-    xdg-desktop-portal-gtk
     nautilus
   ];
   services.desktopManager.cosmic.enable = true;
