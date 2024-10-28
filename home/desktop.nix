@@ -34,11 +34,13 @@
     logseq # qownnotes replacement, rip.
     #discord
 
-    (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
-      desktopItems = [
-        ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
-      ];
-    }))
+    vesktop
+    gparted
+    # (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
+    #   desktopItems = [
+    #     ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
+    #   ];
+    # }))
 
     qbittorrent
     #bitwarden
