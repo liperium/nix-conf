@@ -6,7 +6,7 @@
 }:
 {
   services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = (with pkgs; [
+  environment.gnome.excludePackages = with pkgs; [
     gnome-photos
     gnome-tour
     gnome-text-editor
@@ -28,10 +28,11 @@
     gnome-weather
     gnome-contacts
     simple-scan
-  ]);
+  ];
   environment.systemPackages = with pkgs.gnomeExtensions;
     [
       blur-my-shell
       pop-shell
+      tray-icons-reloaded
     ];
 }

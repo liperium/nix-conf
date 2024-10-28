@@ -32,7 +32,7 @@
 
     #Personnal
     logseq # qownnotes replacement, rip.
-    discord
+    #discord
 
     (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
       desktopItems = [
