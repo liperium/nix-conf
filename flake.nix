@@ -80,7 +80,7 @@
           ]
           ++ home-manager-liperium-root {
             userImports = [
-              ./home/hyprland.nix
+              ./home/desktop.nix
             ];
           }
           # Testing Cosmic

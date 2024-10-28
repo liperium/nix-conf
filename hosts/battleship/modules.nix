@@ -20,9 +20,8 @@ in
     "${modDir}/wireguard.nix"
 
     # Desktop env
-    "${modEnvironments}/hyprland"
-    "${modEnvironments}/plasma"
-    "${modEnvironments}/cosmic"
+    #"${modEnvironments}/cosmic"
+    "${modEnvironments}/gnome"
 
     # Basic apps
     "${modDesktop}"
