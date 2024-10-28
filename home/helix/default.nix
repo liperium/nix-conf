@@ -8,6 +8,7 @@
   };
   home.packages = with pkgs; [
     helix
+    wl-clipboard
 
     # LSPs (Language Servers)
     zls
