@@ -18,9 +18,9 @@
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  home.sessionVariables = {
-    COSMIC_DISABLE_DIRECT_SCANOUT = "true";
-  };
+  #home.sessionVariables = {
+  #  COSMIC_DISABLE_DIRECT_SCANOUT = "true";
+  #};
 
   home.packages = with pkgs; [
     #Theming
@@ -67,7 +67,7 @@
     enable = true;
     defaultApplications = {
       #"inode/directory" = [ "org.kde.dolphin.desktop" ];
-      "inode/directory" = ["gnome.nautilus.desktop"];
+      "inode/directory" = [ "gnome.nautilus.desktop" ];
       "application/pdf" = [ "firefox.desktop" ];
 
       "application/gzip" = [ "org.kde.ark.desktop" ];
