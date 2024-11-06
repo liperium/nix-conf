@@ -31,8 +31,8 @@
   ];
   environment.systemPackages = with pkgs.gnomeExtensions;
     [
-      blur-my-shell
       pop-shell
       tray-icons-reloaded
+      clipboard-history
     ];
 }

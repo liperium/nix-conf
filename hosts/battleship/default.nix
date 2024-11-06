@@ -20,9 +20,17 @@
   ];
   services.fstrim.enable = true;
 
-  services.displayManager.defaultSession = "hyprland";
-  services.displayManager.cosmic-greeter.enable = true;
-
+  # services.displayManager.defaultSession = "hyprland";
+  # services.displayManager.cosmic-greeter.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager = {
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+  };
   # networking.firewall = {
   #   enable = true;
   #   allowedTCPPorts = [

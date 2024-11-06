@@ -34,13 +34,12 @@
     logseq # qownnotes replacement, rip.
     #discord
 
-    vesktop
-    gparted
-    # (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
-    #   desktopItems = [
-    #     ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
-    #   ];
-    # }))
+    #vesktop
+    (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
+      desktopItems = [
+        ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
+      ];
+    }))
 
     qbittorrent
     #bitwarden
@@ -67,8 +66,8 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "inode/directory" = [ "org.kde.dolphin.desktop" ];
-      # "inode/directory" = ["gnome.nautilus.desktop"];
+      #"inode/directory" = [ "org.kde.dolphin.desktop" ];
+      "inode/directory" = ["gnome.nautilus.desktop"];
       "application/pdf" = [ "firefox.desktop" ];
 
       "application/gzip" = [ "org.kde.ark.desktop" ];
