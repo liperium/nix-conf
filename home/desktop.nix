@@ -115,6 +115,15 @@
         autoconnect = [ "qemu:///system" ];
         uris = [ "qemu:///system" ];
       };
+      "org/gnome/shell" = {
+        disable-user-extensions = false;
+        enabled-extensions = with pkgs.gnomeExtensions; [
+          pop-shell.extensionUuid
+          user-themes.extensionUuid
+          appindicator.extensionUuid
+          clipboard-history.extensionUuid
+        ];
+      };
     };
   };
 

@@ -23,11 +23,11 @@
   # services.displayManager.defaultSession = "hyprland";
   # services.displayManager.cosmic-greeter.enable = true;
   services.xserver = {
-    enable = true;
-    displayManager = {
+    enable = true; # services.xserver.enable = true
+    displayManager = { 
       gdm = {
-        enable = true;
-        wayland = true;
+        enable = true; # services.xserver.displayManager.gdm.enable = true
+        wayland = true; # services.xserver.displayManager.gdm.wayland = true
       };
     };
   };

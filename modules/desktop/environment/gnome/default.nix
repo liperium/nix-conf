@@ -32,7 +32,7 @@
   environment.systemPackages = with pkgs.gnomeExtensions;
     [
       pop-shell
-      tray-icons-reloaded
       clipboard-history
+      appindicator
     ];
 }
