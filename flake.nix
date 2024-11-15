@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,6 +10,7 @@
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
     };
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   };
 
   outputs =
@@ -20,6 +20,7 @@
     , nixos-hardware
     , catppuccin
     , nixos-cosmic
+    , hyprpanel
     , ...
     }@inputs:
     let
@@ -49,6 +50,7 @@
             users.root = import ./home/root.nix;
             backupFileExtension = "hm_backup";
             extraSpecialArgs = {
+              inherit system;
               inherit inputs;
             };
           };
@@ -61,7 +63,6 @@
           inherit system;
           modules = [
             ./hosts/frigate
-            # add your model from this list: https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
             nixos-hardware.nixosModules.lenovo-legion-15arh05h
           ]
           ++ home-manager-liperium-root {
@@ -69,7 +70,6 @@
               ./home/desktop.nix
             ];
           }
-          # Testing Cosmic
           ++ cosmic-stuff;
         };
 
@@ -80,12 +80,17 @@
           ]
           ++ home-manager-liperium-root {
             userImports = [
-              ./home/desktop.nix
+              ./home/hyprland.nix
             ];
           }
-          # Testing Cosmic
-          ++ cosmic-stuff;
+          # Adding Hyprpanel overlay for the battleship machine
+          ++ [
+            {
+              nixpkgs.overlays = [ hyprpanel.overlay ];
+            }
+          ];
         };
+
         atlas = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/atlas ];

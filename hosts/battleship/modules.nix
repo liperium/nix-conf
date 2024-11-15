@@ -21,7 +21,8 @@ in
 
     # Desktop env
     #"${modEnvironments}/cosmic"
-    "${modEnvironments}/gnome"
+    #"${modEnvironments}/gnome"
+    "${modEnvironments}/hyprland"
 
     # Basic apps
     "${modDesktop}"

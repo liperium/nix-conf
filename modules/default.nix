@@ -70,7 +70,6 @@
 
     # Networking - Basics
     wget
-    git
 
     # Helix
     helix
@@ -81,6 +80,10 @@
     zsh
     any-nix-shell
   ];
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+  };
 
   environment.variables.EDITOR = "hx";
 

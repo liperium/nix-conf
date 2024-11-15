@@ -3,12 +3,12 @@
 {
   xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
   xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;
-  xdg.configFile."hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;
+  #xdg.configFile."hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;
 
-  home.packages = with pkgs; [
-    pamixer
-    playerctl
-  ];
+  #home.packages = with pkgs; [
+  #pamixer
+  #playerctl
+  #];
 
   wayland.windowManager.hyprland = {
     # Whether to enable Hyprland wayland compositor

@@ -21,34 +21,38 @@
   environment.systemPackages = with pkgs; [
     kitty
     libsecret
-    #polkit_gnome
-    kdePackages.polkit-qt-1
-    kdePackages.polkit-kde-agent-1
-    kdePackages.kwallet
-    kdePackages.kwallet-pam
+    gnome-keyring
+    polkit_gnome
+    seahorse
+    # kdePackages.polkit-qt-1
+    # kdePackages.polkit-kde-agent-1
+    # kdePackages.kwallet
+    # kdePackages.kwallet-pam
 
-    waybar # Top status bar # Home
-    wlogout # Home
-    networkmanagerapplet
+    #waybar # Top status bar # Home
+    #wlogout # Home
+    #networkmanagerapplet
 
-    mako # Notifications # Home
-    libnotify # Required by mako
+    #mako # Notifications # Home
+    libnotify # Required by apps to send notifications
 
     #swww # Wallpaper server # Home
     hyprpaper # Wallpaper server # Home
 
     pulseaudio
     killall # Restart processes
-    pavucontrol # Audio panel
+    #pavucontrol # Audio panel
 
-    grimblast # Screenshots
-    #gnome.nautilus # File explorer
-    kdePackages.dolphin
+    hyprshot # Screenshots
+    gnome.nautilus # File explorer
+    #kdePackages.dolphin
     #gnome.eog # Image viewer
 
     #kdeconnect #not working???
   ];
   security.polkit.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
 
@@ -58,7 +62,7 @@
   # Portal to make it easy
   xdg.portal.enable = true;
   xdg.portal.extraPortals = with pkgs; [
-    kdePackages.xdg-desktop-portal-kde
+    xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
   ];
 

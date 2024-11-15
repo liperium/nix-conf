@@ -124,6 +124,13 @@
           clipboard-history.extensionUuid
         ];
       };
+      "org/gnome/shell/extensions/pop-shell" = {
+        hint-color-rgba = "rgba(203, 166, 247, 1)";
+      };
+      "org/gnome/mutter" = {
+        experimental-features = "['scale-monitor-framebuffer']";
+      };
+
     };
   };
 
