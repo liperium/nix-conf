@@ -63,30 +63,30 @@
     zoom-us
   ];
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      #"inode/directory" = [ "org.kde.dolphin.desktop" ];
-      "inode/directory" = [ "gnome.nautilus.desktop" ];
-      "application/pdf" = [ "firefox.desktop" ];
+  # xdg.mimeApps = {
+  #   enable = true;
+  #   defaultApplications = {
+  #     #"inode/directory" = [ "org.kde.dolphin.desktop" ];
+  #     "inode/directory" = [ "gnome.nautilus.desktop" ];
+  #     "application/pdf" = [ "firefox.desktop" ];
 
-      "application/gzip" = [ "org.kde.ark.desktop" ];
-      "application/zip" = [ "org.kde.ark.desktop" ];
-      "application/x-7z-compressed" = [ "org.kde.ark.desktop" ];
-      "application/x-compressed-tar" = [ "org.kde.ark.desktop" ];
+  #     # "application/gzip" = [ "org.kde.ark.desktop" ];
+  #     # # "application/zip" = [ "org.kde.ark.desktop" ];
+  #     # "application/x-7z-compressed" = [ "org.kde.ark.desktop" ];
+  #     # "application/x-compressed-tar" = [ "org.kde.ark.desktop" ];
 
-      "x-scheme-handler/http" = [ "firefox.desktop" ];
-      "x-scheme-handler/https" = [ "firefox.desktop" ];
+  #     "x-scheme-handler/http" = [ "firefox.desktop" ];
+  #     "x-scheme-handler/https" = [ "firefox.desktop" ];
 
-      "x-scheme-handler/x-github-client" = [ "github-desktop.desktop" ];
-      "x-scheme-handler/x-github-desktop-auth" = [ "github-desktop.desktop" ];
-    };
-    associations.added = {
-      "text/plain" = [ "Helix.desktop" ];
-      "image/png" = [ "org.kde.gwenview.desktop" ];
-      "image/jpeg" = [ "org.kde.gwenview.desktop" ];
-    };
-  };
+  #     "x-scheme-handler/x-github-client" = [ "github-desktop.desktop" ];
+  #     "x-scheme-handler/x-github-desktop-auth" = [ "github-desktop.desktop" ];
+  #   };
+  #   associations.added = {
+  #     "text/plain" = [ "Helix.desktop" ];
+  #     # "image/png" = [ "org.kde.gwenview.desktop" ];
+  #     # "image/jpeg" = [ "org.kde.gwenview.desktop" ];
+  #   };
+  # };
 
 
   # xdg.desktopEntries = {
@@ -129,6 +129,9 @@
       };
       "org/gnome/mutter" = {
         experimental-features = "['scale-monitor-framebuffer']";
+      };
+      "org/gnome/nautilus/preferences" = {
+        always-use-location-entry = true;
       };
 
     };
