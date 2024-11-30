@@ -14,6 +14,7 @@
 
       # Other IDEs
       godot_4
+      blender
 
       # Languages - All the time on system - MAKE A SHELL DAMMIT
       zig

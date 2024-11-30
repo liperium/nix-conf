@@ -11,6 +11,7 @@
       url = "github:lilyinstarlight/nixos-cosmic";
     };
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs =
@@ -21,6 +22,7 @@
     , catppuccin
     , nixos-cosmic
     , hyprpanel
+    , chaotic
     , ...
     }@inputs:
     let
@@ -77,6 +79,7 @@
           inherit system;
           modules = [
             ./hosts/battleship
+            chaotic.nixosModules.default
           ]
           ++ home-manager-liperium-root {
             userImports = [
