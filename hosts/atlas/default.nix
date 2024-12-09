@@ -101,6 +101,19 @@
       trusted_proxies = [ "192.168.0.10" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
     };
+    extraOptions.enabledPreviewProviders = [
+      "OC\\Preview\\BMP"
+      "OC\\Preview\\GIF"
+      "OC\\Preview\\JPEG"
+      "OC\\Preview\\Krita"
+      "OC\\Preview\\MarkDown"
+      "OC\\Preview\\MP3"
+      "OC\\Preview\\OpenDocument"
+      "OC\\Preview\\PNG"
+      "OC\\Preview\\TXT"
+      "OC\\Preview\\XBitmap"
+      "OC\\Preview\\HEIC"
+    ];
   };
   services.nginx.virtualHosts."localhost".listen = [
     {
