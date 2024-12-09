@@ -101,7 +101,7 @@
       trusted_proxies = [ "192.168.0.10" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
     };
-    extraOptions.enabledPreviewProviders = [
+    settings.enabledPreviewProviders = [
       "OC\\Preview\\BMP"
       "OC\\Preview\\GIF"
       "OC\\Preview\\JPEG"
