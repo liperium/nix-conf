@@ -98,6 +98,15 @@
           inherit system;
           modules = [ ./hosts/atlas ];
         };
+
+        shuttle = lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            nixos-hardware.nixosModules.raspberry-pi-4
+            "${nixpkgs}/nixos/modules/profiles/minimal.nix"
+            ./hosts/shuttle
+          ];
+        };
       };
     };
 }

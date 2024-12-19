@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ./modules.nix
   ];
-
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   networking.hostName = "battleship"; # Define your hostname.
 
   environment.systemPackages = with pkgs; [
@@ -24,7 +24,7 @@
   # services.displayManager.cosmic-greeter.enable = true;
   services.xserver = {
     enable = true; # services.xserver.enable = true
-    displayManager = { 
+    displayManager = {
       gdm = {
         enable = true; # services.xserver.displayManager.gdm.enable = true
         wayland = true; # services.xserver.displayManager.gdm.wayland = true

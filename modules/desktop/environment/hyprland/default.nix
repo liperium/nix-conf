@@ -44,7 +44,7 @@
     #pavucontrol # Audio panel
 
     hyprshot # Screenshots
-    gnome.nautilus # File explorer
+    nautilus # File explorer
     #kdePackages.dolphin
     #gnome.eog # Image viewer
 

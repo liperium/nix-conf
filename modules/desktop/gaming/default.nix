@@ -8,7 +8,7 @@ let
 in
 {
   programs.gamemode.enable = true;
-  #programs.steam.gamescopeSession.enable = true;
+
   programs.gamescope.enable = true;
   programs.steam.gamescopeSession.enable = true;
   users.users.liperium = {
@@ -22,6 +22,11 @@ in
       temurin-bin-8
       wineWowPackages.waylandFull
       winetricks
+      (heroic.override {
+        extraPkgs = pkgs: [
+          pkgs.gamemode
+        ];
+      })
     ];
   };
   nixpkgs.config.packageOverrides = pkgs: {
