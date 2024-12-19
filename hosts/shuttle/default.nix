@@ -9,7 +9,6 @@
   networking.hostName = "rpi4";
   users = {
     users."liperium" = {
-      password = "caca";
       isNormalUser = true;
       extraGroups = [ "wheel" ];
       openssh.authorizedKeys.keys = [
