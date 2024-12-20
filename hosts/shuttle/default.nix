@@ -1,13 +1,17 @@
 { pkgs, lib, ... }:
 {
   imports = [
-    ./repart.nix
+    ./hardware-configuration.nix
     ./services.nix
+    ./modules.nix
   ];
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
-  environment.systemPackages = with pkgs; [ vim git helix ];
+  environment.systemPackages = with pkgs; [
+    dig # nameserver stuff
+  ];
   services.openssh.enable = true;
   networking = {
+    firewall.enable = false;
     hostName = "rpi4";
     networkmanager.enable = true;
     nameservers = [
@@ -17,6 +21,7 @@
       "8.8.4.4"
     ];
   };
+
   users = {
     users."liperium" = {
       #password = "caca";

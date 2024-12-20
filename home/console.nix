@@ -21,7 +21,7 @@
     dconf
     # needed for ark archives
     p7zip
-    rar
+    #rar
     # From default config modules 
     #Basic Needs
     vulkan-tools

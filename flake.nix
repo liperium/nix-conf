@@ -105,7 +105,11 @@
             nixos-hardware.nixosModules.raspberry-pi-4
             "${nixpkgs}/nixos/modules/profiles/minimal.nix"
             ./hosts/shuttle
-          ];
+          ] ++ home-manager-liperium-root {
+            userImports = [
+              ./home/console.nix
+            ];
+          };
         };
       };
     };

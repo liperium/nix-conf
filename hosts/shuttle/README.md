@@ -1,4 +1,5 @@
 ### On NixOS
+
 If you're running NixOS and want to use this template to build the Raspberry Pi
 4 Image, you'll need to emulate an arm64 machine by adding the following to your
 NixOS configuration.
@@ -18,3 +19,7 @@ github:matthewcroughan/raspberrypi-nixos-example`
 
 Simply fork this repo and begin adding code to `./configuration.nix` and allow
 this basic configuration to become your own.
+
+## For updating remotely
+
+nixos-rebuild switch --target-host root@192.168.0.10 --flake .#shuttle

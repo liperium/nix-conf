@@ -16,7 +16,7 @@
   };
   nix.settings.auto-optimise-store = true;
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -26,19 +26,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
 
   # Enables microcode updates
   hardware.enableRedistributableFirmware = true;
@@ -107,23 +94,4 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
-
-  #Fonts
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-    ];
-    fontconfig = {
-      enable = true;
-      defaultFonts = {
-        serif = [ "Noto Serif" ];
-        sansSerif = [ "Noto Sans" ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
-      };
-    };
-  };
 }
