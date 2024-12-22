@@ -72,7 +72,12 @@
               ./home/hyprland.nix
             ];
           }
-          ++ cosmic-stuff;
+          # Adding Hyprpanel overlay for the battleship machine
+          ++ [
+            {
+              nixpkgs.overlays = [ hyprpanel.overlay ];
+            }
+          ];
         };
 
         battleship = lib.nixosSystem {
