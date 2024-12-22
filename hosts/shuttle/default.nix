@@ -20,6 +20,7 @@
       "8.8.8.8"
       "8.8.4.4"
     ];
+    wireguard.enable = true;
   };
 
   users = {
