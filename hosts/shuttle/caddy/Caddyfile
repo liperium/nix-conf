@@ -70,7 +70,7 @@ homepage.mur.mattysgervais.com:80 {
 	import internal_service 192.168.0.20:3000
 }
 hass.mur.mattysgervais.com:80 {
-	import internal_service 192.168.0.20:8123
+	import internal_service 127.0.0.1:8123
 }
 
 # Catch-all for internal subdomain

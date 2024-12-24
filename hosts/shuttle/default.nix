@@ -8,6 +8,7 @@
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
   environment.systemPackages = with pkgs; [
     dig # nameserver stuff
+    fish
   ];
   services.openssh.enable = true;
   networking = {

@@ -60,6 +60,12 @@
       ];
     in
     {
+      images.shuttle = self.nixosConfigurations.shuttle.config.system.build.image;
+
+      packages.x86_64-linux.shuttle-image = self.nixosConfigurations.shuttle.config.system.build.image;
+      packages.aarch64-linux.shuttle-image = self.nixosConfigurations.shuttle.config.system.build.image;
+
+
       nixosConfigurations = {
         frigate = lib.nixosSystem {
           inherit system;
@@ -105,11 +111,7 @@
             nixos-hardware.nixosModules.raspberry-pi-4
             "${nixpkgs}/nixos/modules/profiles/minimal.nix"
             ./hosts/shuttle
-          ] ++ home-manager-liperium-root {
-            userImports = [
-              ./home/console.nix
-            ];
-          };
+          ];
         };
       };
     };
