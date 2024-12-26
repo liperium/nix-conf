@@ -23,9 +23,9 @@ in
     "${modDir}/nix-flake-template"
 
     # Desktop env
-    #"${modEnvironments}/hyprland"
+    "${modEnvironments}/hyprland"
     #"${modEnvironments}/plasma"
-    "${modEnvironments}/cosmic"
+    #"${modEnvironments}/cosmic"
     "${modDir}/hardware/power-management/system76.nix"
 
     # Basic apps

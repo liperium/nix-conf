@@ -75,10 +75,15 @@
           ]
           ++ home-manager-liperium-root {
             userImports = [
-              ./home/desktop.nix
+              ./home/hyprland.nix
             ];
           }
-          ++ cosmic-stuff;
+          # Adding Hyprpanel overlay for the battleship machine
+          ++ [
+            {
+              nixpkgs.overlays = [ hyprpanel.overlay ];
+            }
+          ];
         };
 
         battleship = lib.nixosSystem {
