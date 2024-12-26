@@ -5,12 +5,26 @@
     ./services.nix
     ./modules.nix
   ];
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_latest;
+
+  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
+  boot.loader.grub.enable = false;
+  # Enables the generation of /boot/extlinux/extlinux.conf
+  boot.loader.generic-extlinux-compatible.enable = true;
+
   environment.systemPackages = with pkgs; [
     dig # nameserver stuff
     fish
   ];
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
   networking = {
     firewall.enable = false;
     hostName = "rpi4";
@@ -38,4 +52,13 @@
     experimental-features = lib.mkDefault "nix-command flakes";
     trusted-users = [ "root" "@wheel" ];
   };
+
+
+  # FISH 
+  programs.fish.enable = true;
+  users.defaultUserShell = lib.mkForce pkgs.fish;
+  users.users.liperium.shell = lib.mkForce pkgs.fish;
+  environment.shells = lib.mkForce [ pkgs.fish ];
+
+  system.stateVersion = "24.11";
 }

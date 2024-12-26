@@ -13,7 +13,7 @@ in
     # Additional System
     "${modDir}/hardware/btrfs.nix"
     "${modDir}/hardware/ssd.nix"
-    "${modDir}/hardware/sched-ext.nix"
+    #"${modDir}/hardware/sched-ext.nix"
     "${modDir}/docker.nix"
     #"${modDir}/dual-boot.nix" Using grub instead of systemd
     "${modDir}/nix-quick-update"
