@@ -8,8 +8,8 @@
   programs.adb.enable = true;
   users.users.liperium = {
     packages = with pkgs; [
-      jetbrains.datagrip
-      androidStudioPackages.canary
+      #jetbrains.datagrip
+      #androidStudioPackages.canary
       zotero
     ];
     extraGroups = [
