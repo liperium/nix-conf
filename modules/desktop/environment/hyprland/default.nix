@@ -44,8 +44,8 @@
     #pavucontrol # Audio panel
 
     hyprshot # Screenshots
-    nautilus # File explorer
-    #kdePackages.dolphin
+    #nautilus # File explorer
+    kdePackages.dolphin
     #gnome.eog # Image viewer
 
     #kdeconnect #not working???
@@ -60,11 +60,26 @@
   security.pam.services.gdm.kwallet.enable = true;
 
   # Portal to make it easy
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-gtk
-    #xdg-desktop-portal-hyprland
-  ];
+  xdg.portal = {
+    enable = true;
+    config = {
+      hyprland = {
+        default = [
+          "hyprland"
+          "kde"
+        ];
+      };
+    };
+    configPackages = with pkgs; [
+      xdg-desktop-portal-hyprland
+      kdePackages.xdg-desktop-portal-kde
+    ];
+    extraPortals = with pkgs; [
+      #xdg-desktop-portal-gtk
+      kdePackages.xdg-desktop-portal-kde
+      #xdg-desktop-portal-hyprland
+    ];
+  };
 
   # Sound stuff
   security.rtkit.enable = true;

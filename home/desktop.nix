@@ -89,10 +89,8 @@
   # };
 
 
-  # xdg.desktopEntries = {
-  #   android-studio-env = {
-  #     name = "Android Studio Patched Envs";
-  #     genericName = "Coding For Android";
+  # xdg.desktpapirus-icon-theme
+
   #     exec = "env -u QT_QPA_PLATFORM android-studio %U";
   #     terminal = false;
   #   };
@@ -141,25 +139,29 @@
     enable = true;
     accent = "mauve";
     flavor = "mocha";
-    pointerCursor = {
+    cursors = {
       enable = true;
       accent = "light";
     };
+    gtk = {
+      enable = true;
+      gnomeShellTheme = true;
+
+    };
+    kvantum.enable = true;
   };
   gtk = {
     enable = true;
-
-    catppuccin = {
-      enable = true;
-      gnomeShellTheme = true;
+    iconTheme = {
+      package = pkgs.papirus-icon-theme
+      ;
+      name = "Papirus-Dark";
     };
   };
   qt = {
     enable = true;
+    style.name = "kvantum";
     platformTheme.name = "kvantum";
-    style = {
-      name = "kvantum";
-      catppuccin.enable = true;
-    };
   };
+
 }

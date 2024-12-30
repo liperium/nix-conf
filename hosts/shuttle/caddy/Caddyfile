@@ -46,6 +46,9 @@ jellyfin.mattysgervais.com {
 adguard.mur.mattysgervais.com {
     import internal_service 127.0.0.1:3000
 }
+udockge.mur.mattysgervais.com {
+    import internal_service 192.168.0.20:5001
+}
 
 # ARR
 prowlarr.mur.mattysgervais.com {
@@ -63,6 +66,8 @@ sonarr.mur.mattysgervais.com {
 qbittorrent.mur.mattysgervais.com {
 	import internal_service 192.168.0.20:8182
 }
+
+# Others
 kuma.mur.mattysgervais.com {
 	import internal_service 192.168.0.20:3001
 }

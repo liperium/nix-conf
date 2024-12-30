@@ -9,6 +9,8 @@
     # For audio keyboard shortcuts (pactl is included in pulseaudio)
     playerctl # For play/pause/next/previous
     brightnessctl
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
   ];
 
   wayland.windowManager.hyprland = {
