@@ -29,4 +29,9 @@
     enable = true;
     configFile = "/var/lib/ddclient/ddclient.conf";
   };
+
+  # Uptime Kuma
+  services.uptime-kuma = {
+    enable = true;
+  };
 }

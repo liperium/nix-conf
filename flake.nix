@@ -38,6 +38,17 @@
           }
           nixos-cosmic.nixosModules.default
         ];
+      hyprland-stuff = [
+        {
+          nix.settings = {
+            substituters = [ "https://hyprland.cachix.org" ];
+            trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+          };
+        }
+        {
+          nixpkgs.overlays = [ hyprpanel.overlay ];
+        }
+      ];
       home-manager-liperium-root = { userImports ? [ "./home/desktop.nix" ] }: [
         home-manager.nixosModules.home-manager
         {
@@ -78,12 +89,7 @@
               ./home/hyprland.nix
             ];
           }
-          # Adding Hyprpanel overlay for the battleship machine
-          ++ [
-            {
-              nixpkgs.overlays = [ hyprpanel.overlay ];
-            }
-          ];
+          ++ hyprland-stuff;
         };
 
         battleship = lib.nixosSystem {
@@ -97,12 +103,7 @@
               ./home/hyprland.nix
             ];
           }
-          # Adding Hyprpanel overlay for the battleship machine
-          ++ [
-            {
-              nixpkgs.overlays = [ hyprpanel.overlay ];
-            }
-          ];
+          ++ hyprland-stuff;
         };
 
         atlas = lib.nixosSystem {
