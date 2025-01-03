@@ -24,8 +24,8 @@
     gnome-keyring
     polkit_gnome
     seahorse
-    # kdePackages.polkit-qt-1
-    # kdePackages.polkit-kde-agent-1
+    kdePackages.polkit-qt-1
+    kdePackages.polkit-kde-agent-1
     # kdePackages.kwallet
     # kdePackages.kwallet-pam
 
