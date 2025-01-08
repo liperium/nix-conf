@@ -11,8 +11,20 @@
   ];
   networking.hostName = "frigate";
 
-  services.displayManager.defaultSession = "cosmic";
-  services.displayManager.cosmic-greeter.enable = true;
+  #services.displayManager.defaultSession = "cosmic";
+  #services.displayManager.cosmic-greeter.enable = true;
+
+  #programs.hyprland.withUWSM = true;
+
+  services.xserver = {
+    enable = true; # services.xserver.enable = true
+    displayManager = {
+      gdm = {
+        enable = true; # services.xserver.displayManager.gdm.enable = true
+        wayland = true; # services.xserver.displayManager.gdm.wayland = true
+      };
+    };
+  };
 
   services.openssh = {
     enable = true;
@@ -33,8 +45,15 @@
   #   };
   # };
 
+  services.upower.enable = true;
   environment.systemPackages = with pkgs;
     [
+      # Hyprpanel
+      upower
+      bluez
+      bluez-tools
+      dart-sass
+      brightnessctl
       # powertop
     ];
 

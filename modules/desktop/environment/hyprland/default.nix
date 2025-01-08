@@ -46,6 +46,11 @@
     hyprshot # Screenshots
     #nautilus # File explorer
     kdePackages.dolphin
+    # Extract here KDE
+    kdePackages.ark
+    kdePackages.qtsvg # See svg icons
+    kdePackages.kio-fuse # mount drives
+    kdePackages.kio-extras
     #gnome.eog # Image viewer
 
     #kdeconnect #not working???

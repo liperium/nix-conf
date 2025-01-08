@@ -28,7 +28,7 @@
 
     #File viewers
     vlc
-    dolphin
+    #dolphin
 
     #Personnal
     logseq # qownnotes replacement, rip.
