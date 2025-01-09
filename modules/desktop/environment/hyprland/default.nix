@@ -9,10 +9,10 @@
   services.xserver.enable = true;
 
   # Enable Hyprland - Need it here + home-manager
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
 
   hardware.graphics.enable = true;
 
@@ -57,12 +57,12 @@
   ];
   security.polkit.enable = true;
   # services.gnome.gnome-keyring.enable = true;
-  # security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
 
   # Enable a keyring
-  security.pam.services.gdm.kwallet.enable = true;
+  #security.pam.services.gdm.kwallet.enable = true;
 
   # Portal to make it easy
   xdg.portal = {

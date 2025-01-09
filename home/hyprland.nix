@@ -10,4 +10,5 @@
     ./hypr-conf
     ./kitty
   ];
+  home.packages = with pkgs;[ kdePackages.gwenview ];
 }
