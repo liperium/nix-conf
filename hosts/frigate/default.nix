@@ -14,8 +14,6 @@
   #services.displayManager.defaultSession = "cosmic";
   #services.displayManager.cosmic-greeter.enable = true;
 
-  #programs.hyprland.withUWSM = true;
-
   services.xserver = {
     enable = true; # services.xserver.enable = true
     displayManager = {

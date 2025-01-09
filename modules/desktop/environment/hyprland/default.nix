@@ -9,10 +9,10 @@
   services.xserver.enable = true;
 
   # Enable Hyprland - Need it here + home-manager
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  # programs.hyprland = {
+  #   enable = true;
+  #   xwayland.enable = true;
+  # };
 
   hardware.graphics.enable = true;
 
@@ -21,8 +21,8 @@
   environment.systemPackages = with pkgs; [
     kitty
     libsecret
-    gnome-keyring
-    polkit_gnome
+    #gnome-keyring
+    #polkit_gnome
     seahorse
     kdePackages.polkit-qt-1
     kdePackages.polkit-kde-agent-1
@@ -56,8 +56,8 @@
     #kdeconnect #not working???
   ];
   security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
+  # services.gnome.gnome-keyring.enable = true;
+  # security.pam.services.gdm.enableGnomeKeyring = true;
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
 
@@ -94,34 +94,5 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-  };
-
-  systemd = {
-    #user.services.polkit-gnome-authentication-agent-1 = {
-    #  description = "polkit-gnome-authentication-agent-1";
-    #  wantedBy = [ "graphical-session.target" ];
-    #  wants = [ "graphical-session.target" ];
-    #  after = [ "graphical-session.target" ];
-    #  serviceConfig = {
-    #      Type = "simple";
-    #      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-    #      Restart = "on-failure";
-    #      RestartSec = 1;
-    #      TimeoutStopSec = 10;
-    #    };
-    #};
-    #user.services.kwallet-pam-init-1 = {
-    #  description = "Launches kwallet";
-    #  wantedBy = [ "graphical-session.target" ];
-    #  wants = [ "graphical-session.target" ];
-    #  after = [ "graphical-session.target" ];
-    #  serviceConfig = {
-    #      Type = "simple";
-    #      ExecStart = "${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init";
-    #      Restart = "on-failure";
-    #      RestartSec = 1;
-    #      TimeoutStopSec = 10;
-    #    };    
-    #};
   };
 }
