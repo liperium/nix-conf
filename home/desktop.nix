@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 
 {
@@ -25,6 +25,7 @@
   home.packages = with pkgs; [
     #Theming
     papirus-icon-theme
+    papirus-folders
 
     #File viewers
     vlc
@@ -143,12 +144,8 @@
       enable = true;
       accent = "light";
     };
-    gtk = {
-      enable = true;
-      gnomeShellTheme = true;
 
-    };
-    kvantum.enable = true;
+    kvantum.enable = false;
   };
   gtk = {
     enable = true;
@@ -160,8 +157,17 @@
   };
   qt = {
     enable = true;
-    style.name = "kvantum";
+    #style.name = "qtct";
     platformTheme.name = "kvantum";
+  };
+  xdg.configFile = {
+    kvantum = {
+      target = "Kvantum/kvantum.kvconfig";
+      text = lib.generators.toINI { } {
+        General.theme = "Catppuccin-Mocha-Mauve";
+      };
+    };
+
   };
 
 }

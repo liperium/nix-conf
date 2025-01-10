@@ -9,9 +9,19 @@
     # For audio keyboard shortcuts (pactl is included in pulseaudio)
     playerctl # For play/pause/next/previous
     brightnessctl
+    # Theming
+    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     kdePackages.qt6ct
+    (catppuccin-kvantum.override {
+      accent = "mauve";
+      variant = "mocha";
+    })
+
+    # Others
     hyprland-qtutils
+    hyprshot
   ];
 
   # wayland.windowManager.hyprland = {

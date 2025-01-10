@@ -17,52 +17,46 @@
   hardware.graphics.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Ozone/discord/wayland
-  #environment.sessionVariables.GTK_THEME = "Catppuccin-Mocha-Standard-Mauve-Dark";
+
   environment.systemPackages = with pkgs; [
-    kitty
     libsecret
-    #gnome-keyring
-    #polkit_gnome
+    gnome-keyring
+    polkit_gnome
     seahorse
     kdePackages.polkit-qt-1
     kdePackages.polkit-kde-agent-1
     # kdePackages.kwallet
     # kdePackages.kwallet-pam
 
-    #waybar # Top status bar # Home
+    #waybar # Top status bar # Ho~me
     #wlogout # Home
     #networkmanagerapplet
 
-    #mako # Notifications # Home
     libnotify # Required by apps to send notifications
 
-    #swww # Wallpaper server # Home
-    hyprpaper # Wallpaper server # Home
-
-    pulseaudio
+    #pulseaudio
     killall # Restart processes
     #pavucontrol # Audio panel
-
-    hyprshot # Screenshots
-    #nautilus # File explorer
+  ];
+  users.users.liperium.packages = with pkgs;[
+    lxqt.pcmanfm-qt
+    lxde.lxmenu-data
+    shared-mime-info
     kdePackages.dolphin
     # Extract here KDE
     kdePackages.ark
     kdePackages.qtsvg # See svg icons
     kdePackages.kio-fuse # mount drives
     kdePackages.kio-extras
-    #gnome.eog # Image viewer
-
-    #kdeconnect #not working???
   ];
+
   security.polkit.enable = true;
-  # services.gnome.gnome-keyring.enable = true;
+
+  # Enable a keyring
+  services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
-
-  # Enable a keyring
-  #security.pam.services.gdm.kwallet.enable = true;
 
   # Portal to make it easy
   xdg.portal = {
