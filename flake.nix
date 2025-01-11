@@ -7,9 +7,6 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     catppuccin.url = "github:catppuccin/nix";
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-    };
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
@@ -20,7 +17,6 @@
     , home-manager
     , nixos-hardware
     , catppuccin
-    , nixos-cosmic
     , hyprpanel
     , chaotic
     , ...
@@ -28,16 +24,6 @@
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
-      cosmic-stuff =
-        [
-          {
-            nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            };
-          }
-          nixos-cosmic.nixosModules.default
-        ];
       hyprland-stuff = [
         {
           nix.settings = {
@@ -49,6 +35,7 @@
           nixpkgs.overlays = [ hyprpanel.overlay ];
         }
       ];
+      # Imports the RELEVANT home manager module to the system
       home-manager-liperium-root = { userImports ? [ "./home/desktop.nix" ] }: [
         home-manager.nixosModules.home-manager
         {

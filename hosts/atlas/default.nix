@@ -13,8 +13,12 @@
     ./hardware-configuration.nix
     ./modules.nix
   ];
-  networking.hostName = "atlas";
   powerManagement.powertop.enable = true;
+
+  networking.firewall = {
+    hostName = "atlas";
+    allowPing = true; # Samba?
+  };
 
   services.openssh = {
     enable = true;
@@ -31,11 +35,6 @@
     zellij
   ];
 
-  # Everything is local, nothing exposed directly to the net ( Caddy from rpi )
-  networking.firewall = {
-    enable = false;
-    allowPing = true; # Samba?
-  };
 
   # ZFS
 

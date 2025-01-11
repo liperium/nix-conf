@@ -13,28 +13,21 @@ in
     # Additional System
     "${modDir}/hardware/btrfs.nix"
     "${modDir}/hardware/ssd.nix"
-    #"${modDir}/hardware/sched-ext.nix"
+    "${modDir}/hardware/power-management/system76.nix"
     "${modDir}/docker.nix"
-    #"${modDir}/dual-boot.nix" Using grub instead of systemd
     "${modDir}/nix-quick-update"
-    "${modDir}/nix-flake-template"
     "${modDir}/wireguard.nix"
 
     # Desktop env
-    #"${modEnvironments}/cosmic"
-    #"${modEnvironments}/gnome"
     "${modEnvironments}/hyprland"
 
     # Basic apps
     "${modDesktop}"
     "${modDesktop}/virt.nix"
     "${modDesktop}/gaming/default.nix"
-    "${modDesktop}/kdeconnect"
 
     # Desktop Additionals
     "${modDev}"
-    #"${modDev}/godot4-mono"
     "${modDev}/universidad.nix"
-    #"${currentDir}/dummy-conservationmode"
   ];
 }

@@ -10,6 +10,7 @@
     ./modules.nix
   ];
   networking.hostName = "frigate";
+  networking.firewall.enable = true;
 
   #services.displayManager.defaultSession = "cosmic";
   #services.displayManager.cosmic-greeter.enable = true;

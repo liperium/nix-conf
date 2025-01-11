@@ -26,7 +26,6 @@
     };
   };
   networking = {
-    firewall.enable = false;
     hostName = "rpi4";
     networkmanager.enable = true;
     nameservers = [

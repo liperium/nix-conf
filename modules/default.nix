@@ -19,7 +19,10 @@
   system.stateVersion = "24.11";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    firewall.enable = lib.mkDefault false;
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
@@ -37,6 +40,8 @@
       "networkmanager"
       "wheel"
       "adm" # system76 stuff? https://www.reddit.com/r/System76/comments/1dnfhj4/system76power_on_nixos/
+      "video"
+      "audio"
     ];
   };
 
@@ -57,6 +62,7 @@
 
     # Networking - Basics
     wget
+    curl
 
     # Helix
     helix
@@ -90,6 +96,9 @@
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
     '';
   };
+  programs.fish.interactiveShellInit = ''
+    ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+  '';
 
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;

@@ -7,7 +7,7 @@
 
   xdg.desktopEntries = {
     firefox-fusion = {
-      name = "Firefox - FJ";
+      name = "Firefox - fusion";
       genericName = "Web Browser Fusion";
       exec = "firefox %U -p fusion";
       icon = "firefox";
