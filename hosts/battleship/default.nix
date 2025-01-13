@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
-
+let
+  regreet-theme =
+    (pkgs.catppuccin-gtk.override {
+      variant = "mocha";
+      accents = [ "mauve" ];
+    });
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -18,7 +24,7 @@
   environment.etc = {
     greetd-regreet-hyprland = {
       text = ''
-        exec-once = ${pkgs.greetd.regreet}/bin/regreet; hyprctl dispatch exit
+        exec-once = ${pkgs.greetd.regreet}/bin/regreet --style ${regreet-theme}/share/themes/catppuccin-mocha-mauve-standard/gtk-4.0/gtk-dark.css; hyprctl dispatch exit
         misc {
             disable_hyprland_logo = true
             disable_splash_rendering = true
