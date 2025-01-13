@@ -25,7 +25,7 @@
             disable_hyprland_qtutils_check = true
         }
       '';
-      mode = "4444";
+      mode = "0444";
     };
   };
   services.greetd = {
