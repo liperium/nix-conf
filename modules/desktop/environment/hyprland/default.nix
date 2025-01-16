@@ -25,23 +25,15 @@
     seahorse
     kdePackages.polkit-qt-1
     kdePackages.polkit-kde-agent-1
-    # kdePackages.kwallet
-    # kdePackages.kwallet-pam
-
-    #waybar # Top status bar # Ho~me
-    #wlogout # Home
-    #networkmanagerapplet
-
     libnotify # Required by apps to send notifications
-
-    #pulseaudio
     killall # Restart processes
-    #pavucontrol # Audio panel
   ];
+  xdg.portal.lxqt.enable = true;
   users.users.liperium.packages = with pkgs;[
     lxqt.pcmanfm-qt
     lxde.lxmenu-data
     shared-mime-info
+
     kdePackages.dolphin
     # Extract here KDE
     kdePackages.ark
@@ -65,17 +57,18 @@
       hyprland = {
         default = [
           "hyprland"
-          "kde"
+          "lxqt"
         ];
       };
     };
     configPackages = with pkgs; [
       xdg-desktop-portal-hyprland
-      kdePackages.xdg-desktop-portal-kde
+      lxqt.xdg-desktop-portal-lxqt
     ];
     extraPortals = with pkgs; [
       #xdg-desktop-portal-gtk
-      kdePackages.xdg-desktop-portal-kde
+      #kdePackages.xdg-desktop-portal-kde
+      lxqt.xdg-desktop-portal-lxqt
       #xdg-desktop-portal-hyprland
     ];
   };
