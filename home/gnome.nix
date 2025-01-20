@@ -2,6 +2,14 @@
 
 
 {
+  imports = [
+    # Desktop
+    ./desktop.nix
+    ./console.nix
+
+    ./kitty
+  ];
+
   dconf = {
     enable = true; # needed for theming
     settings = {
@@ -24,9 +32,9 @@
       "org/gnome/shell/extensions/pop-shell" = {
         hint-color-rgba = "rgba(203, 166, 247, 1)";
       };
-      "org/gnome/mutter" = {
-        experimental-features = "['scale-monitor-framebuffer']";
-      };
+      # "org/gnome/mutter" = {
+      #   experimental-features = "['scale-monitor-framebuffer']";
+      # };
       "org/gnome/nautilus/preferences" = {
         always-use-location-entry = true;
       };
