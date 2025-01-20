@@ -29,6 +29,7 @@
 
     #Personnal
     logseq # qownnotes replacement, rip.
+    brave
 
     (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
       desktopItems = [
