@@ -7,7 +7,7 @@
     #./mako
     #./wlogout
     ./hyprpanel
-    ./hyprpaper
+    #./hyprpaper hyprpanel has background support
   ];
   # home.file.".config/hypr/auth.conf".text = ''
   #   exec-once = ${pkgs.gnome-keyring}/libexec/polkit-kde-authentication-agent-1      
