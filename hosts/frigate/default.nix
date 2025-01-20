@@ -26,10 +26,10 @@ in
 
   boot.initrd.luks.devices."luks-2a9c4cee-d3a3-41ce-9d46-f48a7cf2d703".device = "/dev/disk/by-uuid/2a9c4cee-d3a3-41ce-9d46-f48a7cf2d703";
 
+  # FW Update
+  services.fwupd.enable = true;
   # Fingerprint
   services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -42,7 +42,6 @@ in
   #services.upower.enable = true;
   environment.systemPackages = with pkgs;
     [
-      fprintd
       # Hyprpanel
     ];
 
