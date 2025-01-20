@@ -1,0 +1,46 @@
+{
+    "bar.layouts": {
+        "*": {
+            "left": [
+                "dashboard",
+                "workspaces",
+                "windowtitle"
+            ],
+            "middle": [
+                "media"
+            ],
+            "right": [
+                "volume",
+                "network",
+                "systray",
+                "clock",
+                "notifications"
+            ]
+        }
+    },
+    "bar.customModules.updates.pollingInterval": 1440000,
+    "scalingPriority": "hyprland",
+    "theme.bar.floating": false,
+    "theme.bar.buttons.workspaces.enableBorder": false,
+    "bar.workspaces.show_numbered": false,
+    "bar.workspaces.monitorSpecific": false,
+    "bar.workspaces.show_icons": false,
+    "bar.workspaces.showWsIcons": true,
+    "bar.workspaces.showApplicationIcons": true,
+    "notifications.position": "top right",
+    "menus.clock.time.military": false,
+    "menus.clock.weather.location": "redacted",
+    "menus.clock.weather.unit": "metric",
+    "menus.clock.weather.key": "redacted",
+    "menus.dashboard.powermenu.avatar.image": "/home/liperium/nix-conf/home/assets/logo_liperium.png",
+    "menus.dashboard.controls.enabled": false,
+    "menus.dashboard.stats.enabled": false,
+    "menus.dashboard.shortcuts.enabled": false,
+    "menus.dashboard.directories.enabled": false,
+    "wallpaper.image": "/home/liperium/nix-conf/home/assets/backgrounds/shaded_landscape.jpg",
+    "wallpaper.enable": true,
+    "theme.bar.menus.opacity": 100,
+    "theme.bar.transparent": false,
+    "theme.bar.opacity": 45,
+    "theme.bar.buttons.style": "default"
+}
