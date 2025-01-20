@@ -36,7 +36,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = "plain"
     foreground = "p:blue"
     background = "transparent"
-    template = "{{ if .Env.IN_NIX_SHELL }}impure {{end}}"
+    template = "{{ if .Env.IN_NIX_SHELL }}󱄅 {{end}}"
 
   [[blocks.segments]]
     type = 'text'
