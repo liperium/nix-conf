@@ -9,14 +9,10 @@ in
   imports = [
     # Base
     "${modDir}"
-    "${currentDir}/conservationmode"
+    #"${currentDir}/conservationmode"
 
     # Additional System
-    "${modDir}/hardware/btrfs.nix"
     "${modDir}/hardware/ssd.nix"
-    "${modDir}/hardware/dual-boot.nix"
-    "${modDir}/hardware/power-management/system76.nix"
-
     "${modDir}/docker.nix"
 
     "${modDir}/wireguard.nix"

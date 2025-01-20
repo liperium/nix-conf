@@ -69,7 +69,7 @@
           inherit system;
           modules = [
             ./hosts/frigate
-            nixos-hardware.nixosModules.lenovo-legion-15arh05h
+            nixos-hardware.nixosModules.framework-intel-core-ultra-series1
           ]
           ++ home-manager-liperium-root {
             userImports = [
