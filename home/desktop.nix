@@ -30,6 +30,7 @@
     #Personnal
     logseq # qownnotes replacement, rip.
     brave
+    thunderbird
 
     (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
       desktopItems = [

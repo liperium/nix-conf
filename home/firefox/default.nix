@@ -22,6 +22,24 @@
         "text/xml"
       ];
     };
+
+    firefox-cegepj = {
+      name = "Firefox - Cegep";
+      genericName = "Web Browser Cegep";
+      exec = "firefox %U -p cegepj";
+      icon = "firefox";
+      terminal = false;
+      categories = [
+        "Application"
+        "Network"
+        "WebBrowser"
+      ];
+      mimeType = [
+        "text/html"
+        "text/xml"
+      ];
+    };
   };
+
 }
 
