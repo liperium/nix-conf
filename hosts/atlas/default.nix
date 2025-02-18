@@ -17,7 +17,7 @@
 
   networking.hostName = "atals";
   networking.firewall = {
-    
+
     allowPing = true; # Samba?
   };
 
@@ -106,6 +106,7 @@
       trusted_proxies = [ "192.168.0.10" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
     };
+    caching.redist = true;
     settings.enabledPreviewProviders = [
       "OC\\Preview\\BMP"
       "OC\\Preview\\GIF"
