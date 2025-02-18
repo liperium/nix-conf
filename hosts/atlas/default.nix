@@ -15,8 +15,9 @@
   ];
   powerManagement.powertop.enable = true;
 
+  networking.hostName = "atals";
   networking.firewall = {
-    hostName = "atlas";
+    
     allowPing = true; # Samba?
   };
 
@@ -95,6 +96,7 @@
     datadir = "/zfs-data/nextcloud"; # Make sure /zfs-data is mounted as root (systemd stuff), and that ./nextcloud folder is owned by nextcloud
     config = {
       adminpassFile = "/etc/nextcloud-admin-pass";
+      dbtype = "sqlite";
     };
     settings = {
       trusted_domains = [
