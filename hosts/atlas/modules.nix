@@ -12,6 +12,7 @@ in
 
     # Additional System
     "${modDir}/docker.nix"
+    "${modDir}/auto-update.nix"
     "${modDir}/nix-quick-update"
   ];
 }

@@ -15,7 +15,7 @@
   ];
   powerManagement.powertop.enable = true;
 
-  networking.hostName = "atals";
+  networking.hostName = "atlas";
   networking.firewall = {
 
     allowPing = true; # Samba?
@@ -106,7 +106,7 @@
       trusted_proxies = [ "192.168.0.10" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
     };
-    caching.redist = true;
+    caching.redis = true;
     settings.enabledPreviewProviders = [
       "OC\\Preview\\BMP"
       "OC\\Preview\\GIF"
