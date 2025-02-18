@@ -31,6 +31,7 @@
     logseq # qownnotes replacement, rip.
     brave
     thunderbird
+    qalculate-qt
 
     (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
       desktopItems = [
