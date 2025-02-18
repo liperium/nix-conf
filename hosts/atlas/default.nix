@@ -46,6 +46,10 @@
   # config
   boot.zfs.extraPools = [ "zfs-data" ];
   services.zfs.autoScrub.enable = true;
+  services.zfs.zed.settings =
+    {
+      ZED_NTFY_TOPIC = "FkFtiV69AO4i21vg";
+    };
 
   # Samba - need to setup a user for the private share
   # sudo smbpasswd -a myuser
