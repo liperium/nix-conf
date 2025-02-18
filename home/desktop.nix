@@ -37,6 +37,7 @@
         ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
       ];
     }))
+    discord
 
     deluge-gtk
     #bitwarden
