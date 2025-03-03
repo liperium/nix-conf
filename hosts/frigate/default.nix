@@ -31,9 +31,18 @@ in
   # Fingerprint
   services.fprintd.enable = true;
 
+  # GDM
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  # Autologin
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "liperium";
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
+
+  # Ambiant light sensor
+  hardware.sensor.iio.enable = true;
 
   services.openssh = {
     enable = true;
@@ -42,6 +51,7 @@ in
   #services.upower.enable = true;
   environment.systemPackages = with pkgs;
     [
+      fprintd
       # Hyprpanel
     ];
 
