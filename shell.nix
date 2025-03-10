@@ -8,7 +8,7 @@ pkgs.mkShell {
   shellHook =
 
     ''       
-      git fetch && git pull
-      echo "Git is up to date"
+      git fetch
+      git pull
       '';
 }
