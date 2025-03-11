@@ -18,7 +18,51 @@ in
     nvtopPackages.amd
     os-prober # Probes for windows for grub
     greetd.regreet
+    (catppuccin-grub.override {
+      flavor = "mocha";
+    })
+    polkit_gnome
   ];
+
+  boot = {
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+    };
+    # Enable "Silent Boot"
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+
+    loader = {
+      timeout = 3;
+      grub.theme = "${pkgs.catppuccin-grub}";
+    };
+  };
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
 
   # Greetd start
   environment.etc = {
