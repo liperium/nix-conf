@@ -19,6 +19,7 @@ in
       steam
       protonup-rs
       prismlauncher
+      wowup-cf
       temurin-bin-8
       wineWowPackages.waylandFull
       winetricks
