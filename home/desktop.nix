@@ -28,7 +28,6 @@
     kdePackages.gwenview
 
     #Personnal
-    logseq # qownnotes replacement, rip.
     brave
     thunderbird
     qalculate-qt
@@ -49,7 +48,7 @@
 
     #Creative
     gimp
-    kate
+    kdePackages.kate
     krita
 
     #Misc

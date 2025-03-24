@@ -6,7 +6,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "protonup-rs";
-  version = "0.8.2";
+  version = "0.8.6";
   mainProgram = "protonup-rs";
 
   src = fetchFromGitHub {
@@ -16,7 +16,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-nBSrY4DAHRphzJ3VfausBAJcLKNxSVR0VNSzWreCs8E=";
   };
 
-  cargoHash = "sha256-nzwWYHMY3IMi3S+x1IqHpaZks9Tv5saFJTWect62elg=";
+  cargoHash = "sha256-4aCe1ZIfYCQbBbjpf8200rTLB+Af1YnWvfspIHMIm9Y=";
 
   # Can't seem to pass these tests? Network access?
   # github::tests::test_get_release, github::tests::test_list_releases
