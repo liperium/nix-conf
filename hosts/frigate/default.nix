@@ -77,6 +77,7 @@ in
       fprintd
       polkit_gnome
       bitwarden-desktop
+      nvtopPackages.intel
       # Hyprpanel
     ];
   #programs.bitwarden.enable = true;
