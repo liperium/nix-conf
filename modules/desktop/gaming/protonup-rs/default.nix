@@ -13,7 +13,7 @@ rustPlatform.buildRustPackage rec {
     owner = "auyer";
     repo = "Protonup-rs";
     rev = "v${version}";
-    hash = "sha256-nBSrY4DAHRphzJ3VfausBAJcLKNxSVR0VNSzWreCs8E=";
+    hash = "sha256-6ltPmyoPYuCeCzS9BcMfIsS79zxY1MnYAaKco1Qcvjw=";
   };
 
   cargoHash = "sha256-4aCe1ZIfYCQbBbjpf8200rTLB+Af1YnWvfspIHMIm9Y=";
