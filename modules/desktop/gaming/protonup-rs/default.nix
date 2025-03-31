@@ -16,7 +16,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-6ltPmyoPYuCeCzS9BcMfIsS79zxY1MnYAaKco1Qcvjw=";
   };
 
-  cargoHash = "sha256-4aCe1ZIfYCQbBbjpf8200rTLB+Af1YnWvfspIHMIm9Y=";
+  cargoHash = "sha256-QFoXHji1p6DE+yBclSmwqKOWIkIPLXa49gkXVKLNnQE=";
 
   # Can't seem to pass these tests? Network access?
   # github::tests::test_get_release, github::tests::test_list_releases
