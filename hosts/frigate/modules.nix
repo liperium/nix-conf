@@ -19,7 +19,8 @@ in
     "${modDir}/nix-quick-update"
 
     # Desktop env
-    "${modEnvironments}/gnome"
+    #"${modEnvironments}/gnome"
+    "${modEnvironments}/hyprland"
 
     # Basic apps
     "${modDesktop}"

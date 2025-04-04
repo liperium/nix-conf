@@ -73,7 +73,7 @@
           ]
           ++ home-manager-liperium-root {
             userImports = [
-              ./home/gnome.nix
+              ./home/hyprland.nix
             ];
           }
           ++ hyprland-stuff;

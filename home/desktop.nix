@@ -40,6 +40,7 @@
     discord
 
     deluge-gtk
+    obsidian
     #bitwarden
 
     #Media-Streams

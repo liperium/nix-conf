@@ -23,8 +23,8 @@
     gnome-keyring
     polkit_gnome
     seahorse
-    kdePackages.polkit-qt-1
-    kdePackages.polkit-kde-agent-1
+    #kdePackages.polkit-qt-1
+    #kdePackages.polkit-kde-agent-1
     libnotify # Required by apps to send notifications
     killall # Restart processes
   ];
@@ -34,12 +34,12 @@
     lxde.lxmenu-data
     shared-mime-info
 
-    kdePackages.dolphin
+    #kdePackages.dolphin
     # Extract here KDE
     kdePackages.ark
-    kdePackages.qtsvg # See svg icons
-    kdePackages.kio-fuse # mount drives
-    kdePackages.kio-extras
+    #kdePackages.qtsvg # See svg icons
+    #kdePackages.kio-fuse # mount drives
+    #kdePackages.kio-extras
   ];
 
   security.polkit.enable = true;
