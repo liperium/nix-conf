@@ -36,7 +36,7 @@
         }
       ];
       # Imports the RELEVANT home manager module to the system
-      home-manager-liperium-root = { userImports ? [ "./home/desktop.nix" ] }: [
+      home-manager-liperium-root = { hyprMonitor, userImports ? [ "./home/desktop.nix" ] }: [
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -52,13 +52,14 @@
             extraSpecialArgs = {
               inherit system;
               inherit inputs;
+              inherit hyprMonitor;
             };
           };
         }
       ];
     in
     {
-      images.shuttle = self.nixosConfigurations.shuttle.config.system.build.image;
+      images. shuttle = self.nixosConfigurations.shuttle.config.system.build.image;
 
       packages.x86_64-linux.shuttle-image = self.nixosConfigurations.shuttle.config.system.build.image;
       packages.aarch64-linux.shuttle-image = self.nixosConfigurations.shuttle.config.system.build.image;
@@ -72,6 +73,15 @@
             nixos-hardware.nixosModules.framework-intel-core-ultra-series1
           ]
           ++ home-manager-liperium-root {
+            hyprMonitor = {
+              primary = "eDP-1";
+              secondary = "DP-5";
+              settings = [
+                "eDP-1,preferred,auto,1.175"
+                "DP-5,preferred,auto,1.0"
+                ",preferred,auto,1"
+              ];
+            };
             userImports = [
               ./home/hyprland.nix
             ];
@@ -86,6 +96,15 @@
             chaotic.nixosModules.default
           ]
           ++ home-manager-liperium-root {
+            hyprMonitor = {
+              primary = "DP-1";
+              secondary = "DP-2";
+              settings = [
+                "DP-1,2560x1440@164.80,auto,1.25"
+                "DP-2,preferred,auto,1.25"
+                ",preferred,auto,1"
+              ];
+            };
             userImports = [
               ./home/hyprland.nix
             ];
