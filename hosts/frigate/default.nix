@@ -48,12 +48,13 @@ in
     # It will just not appear on screen unless a key is pressed
     loader.timeout = 0;
   };
-
+  # FW Stuff
   # FW Update
   services.fwupd.enable = true;
   # Fingerprint
   services.fprintd.enable = true;
-
+  # Ambiant light sensor
+  hardware.sensor.iio.enable = true;
   # GDM
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
@@ -61,11 +62,11 @@ in
   # Autologin
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "liperium";
+  services.displayManager.defaultSession = "hyprland";
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Ambiant light sensor
-  hardware.sensor.iio.enable = true;
+
 
   services.openssh = {
     enable = true;
@@ -76,11 +77,11 @@ in
     [
       fprintd
       polkit_gnome
-      bitwarden-desktop
       nvtopPackages.intel
       # Hyprpanel
+      bluez
+      bluez-tools
     ];
-  #programs.bitwarden.enable = true;
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
@@ -97,9 +98,13 @@ in
       };
     };
   };
+  services.power-profiles-daemon.enable = true;
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
-  #services.blueman.enable = true;
+  # Hyprland/panel
+  services.blueman.enable = true;
+  services.upower.enable = true;
+
 
 }

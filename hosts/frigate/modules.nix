@@ -20,6 +20,7 @@ in
 
     # Desktop env
     "${modEnvironments}/gnome"
+    "${modEnvironments}/hyprland"
 
     # Basic apps
     "${modDesktop}"
