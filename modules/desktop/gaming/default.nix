@@ -17,7 +17,7 @@ in
       goverlay
       lutris
       steam
-      protonup-rs
+      #protonup-rs
       prismlauncher
       wowup-cf
       temurin-bin-8
