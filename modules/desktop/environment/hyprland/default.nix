@@ -54,6 +54,9 @@
   xdg.portal = {
     enable = true;
     config = {
+      common.default = "lxqt";
+      pantheon.default = "lxqt";
+      gtk.default = "lxqt";
       hyprland = {
         default = [
           "hyprland"
@@ -69,7 +72,7 @@
       #xdg-desktop-portal-gtk
       #kdePackages.xdg-desktop-portal-kde
       lxqt.xdg-desktop-portal-lxqt
-      #xdg-desktop-portal-hyprland
+      xdg-desktop-portal-hyprland
     ];
   };
 

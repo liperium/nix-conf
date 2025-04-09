@@ -11,6 +11,7 @@
       #jetbrains.datagrip
       #androidStudioPackages.canary
       zotero
+      brev-cli
     ];
     extraGroups = [
       "adbusers"
