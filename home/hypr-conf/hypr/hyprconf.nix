@@ -113,8 +113,8 @@ in
         ", XF86AudioPause, exec, playerctl play-pause"
         ", XF86AudioNext, exec, playerctl next"
         ", XF86AudioPrev, exec, playerctl previous"
-        ", xf86KbdBrightnessUp, exec, brightnessctl -d *::kbd_backlight set +33%"
-        ", xf86KbdBrightnessDown, exec, brightnessctl -d *::kbd_backlight set 33%-"
+        ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
+        ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
 
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"

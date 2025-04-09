@@ -31,7 +31,5 @@
     enable = true;
     nix-direnv.enable = true;
   };
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
+
 }

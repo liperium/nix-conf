@@ -27,8 +27,9 @@
     #kdePackages.polkit-kde-agent-1
     libnotify # Required by apps to send notifications
     killall # Restart processes
+    pavucontrol
   ];
-  xdg.portal.lxqt.enable = true;
+
   users.users.liperium.packages = with pkgs;[
     lxqt.pcmanfm-qt
     lxde.lxmenu-data

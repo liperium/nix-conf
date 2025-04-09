@@ -6,6 +6,9 @@
     ".config/helix/languages.toml".source = ./languages.toml;
     ".config/helix/themes/catppuccin_mocha.toml".source = ./themes/catppuccin_mocha.toml;
   };
+  home.sessionVariables = {
+    EDITOR = "hx";
+  };
   home.packages = with pkgs; [
     helix
     wl-clipboard
