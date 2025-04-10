@@ -128,8 +128,8 @@
     }
   ];
 
-  services.cron = {
-    enable = true;
-    systemCronJobs = [ "0 2 * * *      root    /opt/backup-hdpdb.sh" ];
-  };
+  # services.cron = {
+  #   enable = true;
+  #   systemCronJobs = [ "0 2 * * *      root    /opt/backup-hdpdb.sh" ];
+  # };
 }
