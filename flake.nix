@@ -76,11 +76,11 @@
           ]
           ++ home-manager-liperium-root {
             hyprMonitor = {
-              primary = "DP-1";
-              secondary = "eDP-1";
+              primary = "eDP-1";
+              secondary = "DP-5";
               settings = [
-                "DP-1,1920x1080@119.98,0x0,1.0"
-                "eDP-1,preferred,1920x0,1.175"
+                "eDP-1,preferred,0x0,1.175"
+                "DP-5,preferred,2256x0,1.0"
                 ",preferred,auto,1"
               ];
             };
