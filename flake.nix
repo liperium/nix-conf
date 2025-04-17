@@ -80,7 +80,7 @@
               secondary = "DP-5";
               settings = [
                 "eDP-1,preferred,0x0,1.175"
-                "DP-5,preferred,2256x0,1.0"
+                "DP-5,preferred,auto,1.0"
                 ",preferred,auto,1"
               ];
             };

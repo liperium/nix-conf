@@ -18,6 +18,7 @@ in
       lutris
       steam
       #protonup-rs
+      starsector
       prismlauncher
       wowup-cf
       temurin-bin-8
