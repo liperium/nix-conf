@@ -27,11 +27,10 @@
 }
 
 (internal_service) {
-    #import internal_security
-    reverse_proxy {args.0} {
-        transport http {
-            tls_insecure_skip_verify
-        }
+    import internal_security
+    reverse_proxy {args.0}
+    tls {
+        issuer internal
     }
 }
 
@@ -46,6 +45,10 @@ immich.mattysgervais.com {
 
 jellyfin.mattysgervais.com {
     import public_service 192.168.0.20:8096
+}
+
+convertx.mattysgervais.com {
+    import public_service 192.168.0.20:3020
 }
 
 # Internal services - one line with IP ranges specified
