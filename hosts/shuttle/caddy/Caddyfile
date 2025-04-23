@@ -28,13 +28,10 @@
 
 (internal_service) {
     #import internal_security
-    reverse_proxy args.0 {
+    reverse_proxy {args.0} {
         transport http {
             tls_insecure_skip_verify
         }
-    }
-    tls {
-        issuer internal
     }
 }
 
