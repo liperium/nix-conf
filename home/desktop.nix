@@ -40,11 +40,11 @@
     discord
 
     deluge-gtk
-    obsidian
+    #obsidian
     #bitwarden
 
     #Media-Streams
-    obs-studio
+    #obs-studio declared with plugings lower
     chatterino2
 
     #Creative
@@ -59,6 +59,16 @@
     onlyoffice-bin
     zoom-us
   ];
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-tuna
+      obs-backgroundremoval
+      obs-vaapi
+    ];
+  };
+
   dconf.enable = true;
   catppuccin = {
     enable = true;

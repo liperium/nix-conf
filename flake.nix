@@ -45,7 +45,7 @@
             useUserPackages = true;
             users.liperium = {
               imports = userImports ++ [
-                catppuccin.homeManagerModules.catppuccin
+                catppuccin.homeModules.catppuccin
               ];
             };
             users.root = import ./home/root.nix;
