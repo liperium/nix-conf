@@ -93,6 +93,7 @@
 
         battleship = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/battleship
             chaotic.nixosModules.default
