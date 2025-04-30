@@ -46,6 +46,9 @@ immich.mattysgervais.com {
 jellyfin.mattysgervais.com {
     import public_service 192.168.0.20:8096
 }
+fusion.mattysgervais.com {
+    import public_service 192.168.0.20:3041
+}
 
 convertx.mattysgervais.com {
     import public_service 192.168.0.20:3020
