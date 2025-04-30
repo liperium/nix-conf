@@ -21,7 +21,7 @@ in
     (catppuccin-grub.override {
       flavor = "mocha";
     })
-    hyprpolkitagent
+    gparted
   ];
 
   boot = {

@@ -28,6 +28,7 @@
     libnotify # Required by apps to send notifications
     killall # Restart processes
     pavucontrol
+    hyprpolkitagent
   ];
 
   users.users.liperium.packages = with pkgs;[
