@@ -79,6 +79,7 @@
       accent = "light";
     };
 
+    gtk.enable = true;
     kvantum.enable = false;
   };
   gtk = {
