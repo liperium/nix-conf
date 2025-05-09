@@ -87,7 +87,7 @@ bazarr.mur.mattysgervais.com {
 
 # Others
 kuma.mur.mattysgervais.com {
-	import internal_service 192.168.0.20:3001
+	import internal_service 192.168.0.10:3001
 }
 homepage.mur.mattysgervais.com:80 {
 	import internal_service 192.168.0.20:3000
