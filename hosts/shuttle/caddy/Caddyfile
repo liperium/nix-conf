@@ -65,6 +65,17 @@ jellyseerr.mur.mattysgervais.com {
     import internal_service 192.168.0.20:5055
 }
 
+# Internal services - .local test
+adguard.local {
+    import internal_service 127.0.0.1:3000
+}
+udockge.local {
+    import internal_service 192.168.0.20:5001
+}
+jellyseerr.local {
+    import internal_service 192.168.0.20:5055
+}
+
 # ARR
 prowlarr.mur.mattysgervais.com {
     import internal_service 192.168.0.20:9696
