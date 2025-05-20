@@ -68,8 +68,6 @@ in
   systemd.services."autovt@tty1".enable = false;
 
 
-
-
   services.openssh = {
     enable = true;
     ports = [ 22 ];
@@ -86,6 +84,7 @@ in
 
       # Fix logseq??
       stable.logseq
+      easyeffects
     ];
 
   systemd = {
