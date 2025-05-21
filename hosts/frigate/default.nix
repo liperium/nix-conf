@@ -85,6 +85,7 @@ in
       # Fix logseq??
       stable.logseq
       easyeffects
+      jellyfin-media-player
     ];
 
   systemd = {
