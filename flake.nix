@@ -10,6 +10,7 @@
     catppuccin.url = "github:catppuccin/nix";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    zsh-helix-mode.url = "github:Multirious/zsh-helix-mode/main";
   };
 
   outputs =

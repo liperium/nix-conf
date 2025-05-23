@@ -86,6 +86,8 @@ in
       stable.logseq
       easyeffects
       jellyfin-media-player
+      cockatrice
+      rustdesk
     ];
 
   systemd = {
