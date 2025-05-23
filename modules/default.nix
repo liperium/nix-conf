@@ -1,6 +1,7 @@
 { config
 , pkgs
 , lib
+, inputs
 , ...
 }:
 {
@@ -64,11 +65,13 @@
     # Networking - Basics
     wget
     curl
+    dig
 
     # Helix
     helix
 
     lsd # Better ls
+    sops # Secret encryption/decryption
 
     #Terminal
     zsh
@@ -104,4 +107,10 @@
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;
   environment.shells = with pkgs; [ zsh ];
+
+  # SOPS
+  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/liperium/.config/sops/age/keys.txt";
+  sops.secrets.example-key = { };
 }

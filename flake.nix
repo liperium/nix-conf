@@ -10,7 +10,10 @@
     catppuccin.url = "github:catppuccin/nix";
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    zsh-helix-mode.url = "github:Multirious/zsh-helix-mode/main";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -21,6 +24,7 @@
     , catppuccin
     , hyprpanel
     , chaotic
+    , sops-nix
     , ...
     }@inputs:
     let
@@ -59,6 +63,7 @@
           };
         }
       ];
+      globalModules = [ sops-nix.nixosModules.sops ];
     in
     {
       images. shuttle = self.nixosConfigurations.shuttle.config.system.build.image;
@@ -89,7 +94,8 @@
               ./home/hyprland.nix
             ];
           }
-          ++ hyprland-stuff;
+          ++ hyprland-stuff
+          ++ globalModules;
         };
 
         battleship = lib.nixosSystem {
@@ -113,12 +119,14 @@
               ./home/hyprland.nix
             ];
           }
-          ++ hyprland-stuff;
+          ++ hyprland-stuff
+          ++ globalModules;
         };
 
         atlas = lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/atlas ];
+          modules = [ ./hosts/atlas ]
+            ++ globalModules;
         };
 
         shuttle = lib.nixosSystem {
@@ -127,7 +135,7 @@
             nixos-hardware.nixosModules.raspberry-pi-4
             "${nixpkgs}/nixos/modules/profiles/minimal.nix"
             ./hosts/shuttle
-          ];
+          ] ++ globalModules;
         };
       };
     };

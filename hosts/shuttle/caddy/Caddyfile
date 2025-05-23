@@ -26,14 +26,6 @@
     }
 }
 
-(internal_service) {
-    import internal_security
-    reverse_proxy {args.0}
-    tls {
-        issuer internal
-    }
-}
-
 # Public services - just one line per service!
 nextcloud.mattysgervais.com {
     import public_service 192.168.0.20:8002
@@ -54,64 +46,67 @@ convertx.mattysgervais.com {
     import public_service 192.168.0.20:3020
 }
 
+# Catch-all for internal subdomain
+*.mur.mattysgervais.com {
+	# Basic security
+    @disallowed not remote_ip 192.168.0.1/24 10.100.0.1/24
+    respond @disallowed "Access denied - internal" 403
+    
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+	respond "Subdomain doesn't exist" 404
+}
+
 # Internal services - one line with IP ranges specified
 adguard.mur.mattysgervais.com {
-    import internal_service 127.0.0.1:3000
+    reverse_proxy 127.0.0.1:3000
 }
 udockge.mur.mattysgervais.com {
-    import internal_service 192.168.0.20:5001
+    reverse_proxy 192.168.0.20:5001
 }
 jellyseerr.mur.mattysgervais.com {
-    import internal_service 192.168.0.20:5055
+    reverse_proxy 192.168.0.20:5055
 }
 
 # Internal services - .local test
 adguard.local {
-    import internal_service 127.0.0.1:3000
+    reverse_proxy 127.0.0.1:3000
 }
 udockge.local {
-    import internal_service 192.168.0.20:5001
+    reverse_proxy 192.168.0.20:5001
 }
 jellyseerr.local {
-    import internal_service 192.168.0.20:5055
+    reverse_proxy 192.168.0.20:5055
 }
 
 # ARR
 prowlarr.mur.mattysgervais.com {
-    import internal_service 192.168.0.20:9696
+    reverse_proxy 192.168.0.20:9696
 }
 lidarr.mur.mattysgervais.com {
-    import internal_service 192.168.0.20:8686
+    reverse_proxy 192.168.0.20:8686
 }
 radarr.mur.mattysgervais.com {
-    import internal_service 192.168.0.20:7878
+    reverse_proxy 192.168.0.20:7878
 }
 sonarr.mur.mattysgervais.com {
-    import internal_service 192.168.0.20:8989
+    reverse_proxy 192.168.0.20:8989
 }
 qbittorrent.mur.mattysgervais.com {
-	import internal_service 192.168.0.20:8182
+	reverse_proxy 192.168.0.20:8182
 }
 bazarr.mur.mattysgervais.com {
-    import internal_service 192.168.0.20:6767
+    reverse_proxy 192.168.0.20:6767
 }
 
 # Others
 kuma.mur.mattysgervais.com {
-	import internal_service 192.168.0.10:3001
+	reverse_proxy 192.168.0.10:3001
 }
 homepage.mur.mattysgervais.com:80 {
-	import internal_service 192.168.0.20:3000
+	reverse_proxy 192.168.0.20:3000
 }
 hass.mur.mattysgervais.com:80 {
-	import internal_service 127.0.0.1:8123
-}
-
-# Catch-all for internal subdomain
-*.mur.mattysgervais.com {
-    import internal_security "private_ranges"
-    respond "Internal service not found" 404
-    tls {
-        issuer internal
-    }
+	reverse_proxy 127.0.0.1:8123
 }
