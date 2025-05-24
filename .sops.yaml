@@ -6,3 +6,7 @@ creation_rules:
     key_groups:
     - age:
       - *primary
+  - path_regex: secrets/caddy.env$
+    key_groups:
+    - age:
+      - *primary

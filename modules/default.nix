@@ -112,5 +112,6 @@
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/liperium/.config/sops/age/keys.txt";
-  sops.secrets.example-key = { };
+  #sops.secrets.example-key = { };
+
 }
