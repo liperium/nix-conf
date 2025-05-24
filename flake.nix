@@ -14,6 +14,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    #zsh-helix-mode.url = "github:Multirious/zsh-helix-mode/main";
   };
 
   outputs =
