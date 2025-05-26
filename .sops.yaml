@@ -10,3 +10,7 @@ creation_rules:
     key_groups:
     - age:
       - *primary
+  - path_regex: secrets/*
+    key_groups:
+    - age:
+      - *primary

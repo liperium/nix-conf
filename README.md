@@ -48,3 +48,9 @@ Attach ```--option eval-cache false``` to the command or remove the cached runs 
 From [here](https://bbs.archlinux.org/viewtopic.php?id=285709)
 Use ```sudo chmod a+rw /dev/hidraw*``` to make hid devices writeable/readable.
 Open Keychron Launcher, should work!
+
+## Adding Sops stuff
+Make sure path is ok in .sops.yaml
+then have a base unencrypted file in that path
+convert it using
+```sops --config ./.sops.yaml encrypt --input-type INPUT_TYPE --in-place ./modules/secrets/MY_FILE```

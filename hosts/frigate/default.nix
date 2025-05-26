@@ -113,5 +113,8 @@ in
   services.blueman.enable = true;
   services.upower.enable = true;
 
+  networking.networkmanager.dns = "systemd-resolved";
+  services.resolved.enable = true;
+  networking.firewall.checkReversePath = false;
 
 }
