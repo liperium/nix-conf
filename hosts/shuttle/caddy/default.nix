@@ -13,7 +13,7 @@
   };
 
   sops.secrets."caddy.env" = {
-    sopsFile = ./secrets/caddy.env;
+    sopsFile = ../../../modules/secrets/caddy.env;
     format = "dotenv";
     owner = "caddy";
   };

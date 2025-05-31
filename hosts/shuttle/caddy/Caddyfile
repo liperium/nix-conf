@@ -13,16 +13,12 @@
     respond @disallowed "Access denied - not using cloudflare proxy" 403
 }
 
-(internal_security) {
-    @disallowed not remote_ip 192.168.0.1/24 10.100.0.1/24
-    respond @disallowed "Access denied - internal" 403
-}
-
 (public_service) {
     import cloudflare_security
     reverse_proxy {args.0}
+    
     tls {
-        issuer internal
+        dns cloudflare {env.CF_API_TOKEN}
     }
 }
 
