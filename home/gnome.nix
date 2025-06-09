@@ -16,8 +16,8 @@
       picture-options = "zoom";
       picture-uri = "file:///home/liperium/nix-conf/home/assets/backgrounds/shaded_landscape.jpg";
       picture-uri-dark = "file:///home/liperium/nix-conf/home/assets/backgrounds/shaded_landscape.jpg";
-      primary-color = "#000000000000";
-      secondary-color = "#000000000000";
+      #primary-color = "#000000000000";
+      #secondary-color = "#000000000000";
     };
 
     "org/gnome/desktop/input-sources" = {
@@ -29,7 +29,7 @@
       color-scheme = "prefer-dark";
       icon-theme = "Papirus-Dark";
       show-battery-percentage = false;
-      text-scaling-factor = 1.25;
+      #text-scaling-factor = 1.25;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -78,10 +78,12 @@
     "org/gnome/shell" = {
       disable-user-extensions = false;
       enabled-extensions = with pkgs.gnomeExtensions; [
-        pop-shell.extensionUuid
+        #pop-shell.extensionUuid
+        dragntile.extensionUuid
+        tiling-shell.extensionUuid
         user-themes.extensionUuid
         appindicator.extensionUuid
-        clipboard-history.extensionUuid
+        #clipboard-history.extensionUuid
       ];
     };
 

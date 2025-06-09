@@ -13,6 +13,8 @@ let
 in
 {
 
+  time.timeZone = lib.mkForce "Europe/Oslo";
+
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -113,8 +115,12 @@ in
   services.blueman.enable = true;
   services.upower.enable = true;
 
-  networking.networkmanager.dns = "systemd-resolved";
-  services.resolved.enable = true;
-  networking.firewall.checkReversePath = false;
-
+  services.xserver.desktopManager.gnome = {
+    #enable = true;
+    extraGSettingsOverridePackages = [ pkgs.mutter ];
+    extraGSettingsOverrides = ''
+      [org.gnome.mutter]
+      experimental-features=['scale-monitor-framebuffer']
+    '';
+  };
 }

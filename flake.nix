@@ -14,7 +14,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #zsh-helix-mode.url = "github:Multirious/zsh-helix-mode/main";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +29,7 @@
     , hyprpanel
     , chaotic
     , sops-nix
+    , quickshell
     , ...
     }@inputs:
     let
@@ -93,6 +97,7 @@
             };
             userImports = [
               ./home/hyprland.nix
+              ./home/gnome.nix
             ];
           }
           ++ hyprland-stuff

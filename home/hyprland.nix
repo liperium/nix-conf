@@ -1,4 +1,9 @@
-{ config, pkgs, hyprMonitor, ... }:
+{ config
+, pkgs
+, hyprMonitor
+, inputs
+, ...
+}:
 
 
 {
@@ -17,4 +22,23 @@
       icon-theme = "Papirus-Dark";
     };
   };
+  # Quickshell caelestial test
+  home.packages = with pkgs;[
+    inputs.quickshell.packages.x86_64-linux.default
+    fish
+    jq
+    fd
+    (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
+      # select Python packages here
+      aubio
+      pyaudio
+      numpy
+    ]))
+    cava
+    bluez
+    ddcutil
+    brightnessctl
+    curl
+    material-symbols
+  ];
 }

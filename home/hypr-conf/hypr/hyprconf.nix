@@ -177,9 +177,10 @@ in
       "exec-once" = [
         "gnome-keyring-daemon --start --components=secrets"
         "systemctl --user start hyprpolkitagent"
-        "hyprpanel"
-        "hyprpaper"
-        "xembedsniproxy"
+        #"hyprpanel"
+        "qs -c caelestia"
+        #"hyprpaper"
+        #"xembedsniproxy"
         "sleep 1.0 && nextcloud --background"
         "[workspace 3 silent] sleep 3.0 && discord --start-minimized"
       ];

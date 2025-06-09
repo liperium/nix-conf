@@ -31,7 +31,9 @@
   ];
   environment.systemPackages = with pkgs.gnomeExtensions;
     [
-      pop-shell
+      #pop-shell
+      dragntile
+      tiling-shell
       clipboard-history
       appindicator
     ];
