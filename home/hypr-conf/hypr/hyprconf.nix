@@ -29,7 +29,7 @@ in
         "XCURSOR_SIZE,24"
         "WLR_NO_HARDWARE_CURSORS,1"
         "QT_QPA_PLATFORM,wayland"
-        "QT_QPA_PLATFORMTHEME,qt5ct"
+        #"QT_QPA_PLATFORMTHEME,qt5ct"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "HYPRSHOT_DIR,/home/liperium/Pictures/hyprshot"
@@ -103,6 +103,14 @@ in
       };
 
       "$mainMod" = "SUPER";
+
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        force_default_wallpaper = 0;
+        new_window_takes_over_fullscreen = 2;
+      };
+
 
       bind = [
         ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
@@ -194,7 +202,7 @@ in
         "noanim,class:^(pavucontrol)$"
         "size 45% 50%,class:^(pavucontrol)$"
         "float,title:(Nextcloud)"
-        "move 55% 42,title:(Nextcloud)"
+        "move 0% 40%,title:(Nextcloud)"
         "noanim,title:(Nextcloud)"
         "size 45% 50%,title:(Nextcloud)"
       ];

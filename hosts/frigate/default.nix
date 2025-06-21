@@ -80,16 +80,15 @@ in
       fprintd
       polkit_gnome
       nvtopPackages.intel
-      # Hyprpanel
+      # Panel
       bluez
       bluez-tools
 
       # Fix logseq??
       stable.logseq
       easyeffects
-      jellyfin-media-player
       cockatrice
-      rustdesk
+      #rustdesk
     ];
 
   systemd = {
@@ -111,7 +110,7 @@ in
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
-  # Hyprland/panel
+  # Panel
   services.blueman.enable = true;
   services.upower.enable = true;
 

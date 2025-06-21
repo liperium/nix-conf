@@ -32,11 +32,11 @@
     thunderbird
     qalculate-qt
 
-    (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
-      desktopItems = [
-        ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
-      ];
-    }))
+    # (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
+    #   desktopItems = [
+    #     ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
+    #   ];
+    # }))
     discord
 
     deluge-gtk

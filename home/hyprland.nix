@@ -40,5 +40,6 @@
     brightnessctl
     curl
     material-symbols
+    kdePackages.qtdeclarative
   ];
 }

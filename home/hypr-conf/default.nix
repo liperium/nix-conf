@@ -6,7 +6,7 @@
     #./waybar
     #./mako
     #./wlogout
-    ./hyprpanel
+    #./hyprpanel
     #./hyprpaper hyprpanel has background support
   ];
   # home.file.".config/hypr/auth.conf".text = ''

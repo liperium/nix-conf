@@ -59,7 +59,8 @@
     # Utils
     nh # Better nixos manager
     btop
-    ranger
+    #ranger
+    yazi # more features, preview, etc
     zoxide
 
     # Networking - Basics

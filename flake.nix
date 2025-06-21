@@ -42,9 +42,9 @@
             trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
           };
         }
-        {
-          nixpkgs.overlays = [ hyprpanel.overlay ];
-        }
+        # {
+        #   nixpkgs.overlays = [ hyprpanel.overlay ];
+        # }
       ];
       # Imports the RELEVANT home manager module to the system
       home-manager-liperium-root = { hyprMonitor, userImports ? [ "./home/desktop.nix" ] }: [

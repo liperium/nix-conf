@@ -17,3 +17,8 @@ formatter = { command = "shfmt" }
 name = "go"
 auto-format = true
 formatter = { command = "gofmt" }
+
+[[language]]
+name = "qml"
+auto-format = true
+formatter = { command = "qmlformat" }

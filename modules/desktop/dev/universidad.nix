@@ -12,6 +12,7 @@
       #androidStudioPackages.canary
       zotero
       brev-cli
+      teams-for-linux
     ];
     extraGroups = [
       "adbusers"
