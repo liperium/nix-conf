@@ -60,8 +60,8 @@ in
   hardware.sensor.iio.enable = true;
   # GDM
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
   # Autologin
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "liperium";
@@ -114,7 +114,7 @@ in
   services.blueman.enable = true;
   services.upower.enable = true;
 
-  services.xserver.desktopManager.gnome = {
+  services.desktopManager.gnome = {
     #enable = true;
     extraGSettingsOverridePackages = [ pkgs.mutter ];
     extraGSettingsOverrides = ''

@@ -29,7 +29,7 @@ in
         "XCURSOR_SIZE,24"
         "WLR_NO_HARDWARE_CURSORS,1"
         "QT_QPA_PLATFORM,wayland"
-        #"QT_QPA_PLATFORMTHEME,qt5ct"
+        "QT_QPA_PLATFORMTHEME,qt6ct" #pcmanfm-qt
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "HYPRSHOT_DIR,/home/liperium/Pictures/hyprshot"
@@ -162,11 +162,13 @@ in
         "$mainMod, E, exec, pcmanfm-qt"
 
         # Rofi menu
-        "$mainMod, S, exec, rofi -modes \"run,drun\" -show drun -show-icons"
+        "$mainMod, S, exec, rofi -modes \"run,drun,emoji\" -show drun -show-icons"
         "$mainMod SHIFT, S, exec, killall rofi"
+        "$mainMod, B, exec, rofi-bluetooth"
+        "$mainMod, N, exec, rofi-network-manager"
 
         # Reloads
-        "$mainMod SHIFT, B, exec, ~/.config/hypr/scripts/waybar/start.sh"
+        #"$mainMod SHIFT, B, exec, ~/.config/hypr/scripts/waybar/start.sh"
 
         # Fullscreen
         "$mainMod, F, fullscreen"

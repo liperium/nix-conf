@@ -22,8 +22,12 @@
       icon-theme = "Papirus-Dark";
     };
   };
-  # Quickshell caelestial test
+
   home.packages = with pkgs;[
+    # Pactl for f keys
+    pulseaudio
+
+    # Quickshell caelestial test
     inputs.quickshell.packages.x86_64-linux.default
     fish
     jq
@@ -40,6 +44,7 @@
     brightnessctl
     curl
     material-symbols
-    kdePackages.qtdeclarative
+    kdePackages.qtdeclarative #autocomplete
+    lm_sensors
   ];
 }
