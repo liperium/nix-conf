@@ -183,14 +183,15 @@ in
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
+      debug = { "disable_logs" = false; };
 
       "exec-once" = [
+        #"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+        #"dbus-update-activation-environment --systemd --all" # https://wiki.hypr.land/Hypr-Ecosystem/xdg-desktop-portal-hyprland/#debugging
+        #"systemctl --user import-environment QT_QPA_PLATFORMTHEME"
         "gnome-keyring-daemon --start --components=secrets"
         "systemctl --user start hyprpolkitagent"
-        #"hyprpanel"
-        "qs -c caelestia"
-        #"hyprpaper"
-        #"xembedsniproxy"
+        "systemctl --user start quickshell"
         "sleep 1.0 && nextcloud --background"
         "[workspace 3 silent] sleep 3.0 && discord --start-minimized"
       ];

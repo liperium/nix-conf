@@ -29,8 +29,12 @@
     # Whether to enable Hyprland wayland compositor
     enable = true;
     # The hyprland package to use
-    package = pkgs.hyprland;
+    # Disable them because managed by NixOs
+    package = null;
+    portalPackage = null;
+    systemd.enable = false;
     # Whether to enable XWayland
     xwayland.enable = true;
+
   };
 }

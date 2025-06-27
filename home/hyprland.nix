@@ -26,6 +26,7 @@
   home.packages = with pkgs;[
     # Pactl for f keys
     pulseaudio
+    wezterm
 
     # Quickshell caelestial test
     inputs.quickshell.packages.x86_64-linux.default
@@ -47,4 +48,13 @@
     kdePackages.qtdeclarative #autocomplete
     lm_sensors
   ];
+
+  systemd.user.services.quickshell = {
+    Unit = {
+      Description = "Quickshell caelestia";
+    };
+    Service = {
+      ExecStart = "${inputs.quickshell.packages.x86_64-linux.default}/bin/quickshell -c caelestia";
+    };
+  };
 }

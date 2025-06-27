@@ -12,6 +12,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    withUWSM = true;
   };
 
   hardware.graphics.enable = true;
@@ -23,8 +24,6 @@
     gnome-keyring
     polkit_gnome
     seahorse
-    #kdePackages.polkit-qt-1
-    #kdePackages.polkit-kde-agent-1
     libnotify # Required by apps to send notifications
     killall # Restart processes
     pavucontrol
@@ -52,31 +51,35 @@
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
 
-  # Portal to make it easy
   xdg.portal = {
     enable = true;
-    config = {
-      common.default = "lxqt";
-      pantheon.default = "lxqt";
-      gtk.default = "lxqt";
-      hyprland = {
-        default = [
-          "hyprland"
-          "lxqt"
-        ];
-      };
-    };
-    configPackages = with pkgs; [
-      xdg-desktop-portal-hyprland
-      lxqt.xdg-desktop-portal-lxqt
-    ];
-    extraPortals = with pkgs; [
-      #xdg-desktop-portal-gtk
-      #kdePackages.xdg-desktop-portal-kde
-      lxqt.xdg-desktop-portal-lxqt
-      xdg-desktop-portal-hyprland
-    ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
+  # Portal to make it easy
+  # xdg.portal = {
+  #   enable = true;
+  #   config = {
+  #     common.default = "lxqt";
+  #     pantheon.default = "lxqt";
+  #     gtk.default = "lxqt";
+  #     hyprland = {
+  #       default = [
+  #         "hyprland"
+  #         "lxqt"
+  #       ];
+  #     };
+  #   };
+  #   configPackages = with pkgs; [
+  #     xdg-desktop-portal-hyprland
+  #     lxqt.xdg-desktop-portal-lxqt
+  #   ];
+  #   extraPortals = with pkgs; [
+  #     #xdg-desktop-portal-gtk
+  #     #kdePackages.xdg-desktop-portal-kde
+  #     lxqt.xdg-desktop-portal-lxqt
+  #     xdg-desktop-portal-hyprland
+  #   ];
+  # };
 
   # Sound stuff
   security.rtkit.enable = true;
