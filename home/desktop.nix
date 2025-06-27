@@ -7,7 +7,7 @@
     ./console.nix
 
     # Desktop
-    ./kitty
+    #./kitty
     ./firefox
   ];
   # Let Home Manager install and manage itself.

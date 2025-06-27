@@ -13,7 +13,7 @@
     ./console.nix
 
     ./hypr-conf
-    ./kitty
+    #./kitty
   ];
   dconf.settings = {
 

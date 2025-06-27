@@ -158,7 +158,7 @@ in
         "$mainMod, mouse_up, workspace, e-1"
 
         # Apps
-        "$mainMod, Q, exec, kitty"
+        "$mainMod, Q, exec, wezterm"
         "$mainMod, E, exec, pcmanfm-qt"
 
         # Rofi menu
