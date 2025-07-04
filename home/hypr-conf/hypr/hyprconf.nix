@@ -159,7 +159,7 @@ in
 
         # Apps
         "$mainMod, Q, exec, wezterm"
-        "$mainMod, E, exec, pcmanfm-qt"
+        "$mainMod, E, exec, dolphin"
 
         # Rofi menu
         "$mainMod, S, exec, rofi -modes \"run,drun,emoji\" -show drun -show-icons"

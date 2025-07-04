@@ -31,16 +31,16 @@
   ];
 
   users.users.liperium.packages = with pkgs;[
-    lxqt.pcmanfm-qt
-    lxde.lxmenu-data
+    #lxqt.pcmanfm-qt
+    #lxde.lxmenu-data
     shared-mime-info
 
-    #kdePackages.dolphin
+    kdePackages.dolphin
     # Extract here KDE
     kdePackages.ark
-    #kdePackages.qtsvg # See svg icons
-    #kdePackages.kio-fuse # mount drives
-    #kdePackages.kio-extras
+    kdePackages.qtsvg # See svg icons
+    kdePackages.kio-fuse # mount drives
+    kdePackages.kio-extras
   ];
 
   security.polkit.enable = true;
