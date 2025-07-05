@@ -9,6 +9,7 @@
     packages = with pkgs; [
       # General
       vscode
+      claude-code
       github-desktop
       gh
 

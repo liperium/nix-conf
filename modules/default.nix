@@ -81,6 +81,19 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
+    config = {
+      init = {
+        defaultBranch = "main";
+      };
+      user.email = "mattysgervais@gmail.com";
+      user.name = "Mattys Gervais";
+
+      fetch = {
+        prune = "true";
+        auto = 1;
+      };
+
+    };
   };
 
   environment.variables.EDITOR = "hx";
@@ -92,7 +105,7 @@
     syntaxHighlighting.enable = true;
     ohMyZsh = {
       enable = true;
-      plugins = [ "git" ];
+      plugins = [ "git" "thefuck" ];
     };
     shellAliases = {
       ls = "lsd";

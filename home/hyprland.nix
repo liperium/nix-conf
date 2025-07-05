@@ -29,7 +29,7 @@
     wezterm
 
     # Quickshell caelestial test
-    inputs.quickshell.packages.x86_64-linux.default
+    quickshell
     fish
     jq
     fd
@@ -54,7 +54,7 @@
       Description = "Quickshell caelestia";
     };
     Service = {
-      ExecStart = "${inputs.quickshell.packages.x86_64-linux.default}/bin/quickshell -c caelestia";
+      ExecStart = "${pkgs.quickshell}/bin/quickshell -c caelestia";
     };
   };
 }

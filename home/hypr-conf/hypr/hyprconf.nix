@@ -109,6 +109,7 @@ in
         disable_splash_rendering = true;
         force_default_wallpaper = 0;
         new_window_takes_over_fullscreen = 2;
+        focus_on_activate = true;
       };
 
 

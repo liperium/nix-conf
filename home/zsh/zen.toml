@@ -90,7 +90,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = "plain"
     foreground = "p:lavender"
     background = "transparent"
-    template = "{{.UserName}}{{.Icon}} {{.HostName}}"
+    template = "{{.UserName}}{{.Icon}}{{.HostName}}"
 
 [transient_prompt]
   foreground_templates = [
