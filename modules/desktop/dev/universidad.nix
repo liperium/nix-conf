@@ -13,6 +13,10 @@
       zotero
       brev-cli
       teams-for-linux
+
+      # Writing
+      texliveFull
+      tex-fmt
     ];
     extraGroups = [
       "adbusers"
