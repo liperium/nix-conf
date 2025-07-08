@@ -168,15 +168,12 @@ in
         "$mainMod, B, exec, rofi-bluetooth"
         "$mainMod, N, exec, rofi-network-manager"
 
-        # Reloads
-        #"$mainMod SHIFT, B, exec, ~/.config/hypr/scripts/waybar/start.sh"
-
         # Fullscreen
         "$mainMod, F, fullscreen"
         "$mainMod, Tab, cyclenext"
 
         # Screenshot
-        ", print, exec, hyprshot -m region --clipboard-only"
+        ", print, exec, hyprshot -z -s -m region --clipboard-only"
         "SHIFT, print, exec, hyprshot -m region"
       ];
 
@@ -184,16 +181,13 @@ in
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
       ];
-      debug = { "disable_logs" = false; };
+      #debug = { "disable_logs" = false; };
 
       "exec-once" = [
-        #"dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        #"dbus-update-activation-environment --systemd --all" # https://wiki.hypr.land/Hypr-Ecosystem/xdg-desktop-portal-hyprland/#debugging
-        #"systemctl --user import-environment QT_QPA_PLATFORMTHEME"
         "gnome-keyring-daemon --start --components=secrets"
         "systemctl --user start hyprpolkitagent"
         "systemctl --user start quickshell"
-        "sleep 1.0 && nextcloud --background"
+        "nextcloud --background"
         "[workspace 3 silent] sleep 3.0 && discord --start-minimized"
       ];
 
@@ -201,12 +195,12 @@ in
 
       windowrulev2 = [
         "stayfocused, title:^()$,class:^(steam)$"
-        "float,class:^(pavucontrol)$"
-        "move 55% 42,class:^(pavucontrol)$"
-        "noanim,class:^(pavucontrol)$"
-        "size 45% 50%,class:^(pavucontrol)$"
+        #"float,class:^(pavucontrol)$"
+        #"move 55% 42,class:^(pavucontrol)$"
+        #"noanim,class:^(pavucontrol)$"
+        #"size 45% 50%,class:^(pavucontrol)$"
         "float,title:(Nextcloud)"
-        "move 0% 40%,title:(Nextcloud)"
+        "move 5% 40%,title:(Nextcloud)"
         "noanim,title:(Nextcloud)"
         "size 45% 50%,title:(Nextcloud)"
       ];

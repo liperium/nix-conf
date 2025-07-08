@@ -7,14 +7,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    catppuccin.url = "github:catppuccin/nix";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #zsh-helix-mode.url = "github:multirious/zsh-helix-mode/main";
+    catppuccin.url = "github:catppuccin/nix";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs =
@@ -26,7 +24,6 @@
     , hyprpanel
     , chaotic
     , sops-nix
-
     , ...
     }@inputs:
     let
@@ -39,12 +36,9 @@
             trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
           };
         }
-        # {
-        #   nixpkgs.overlays = [ hyprpanel.overlay ];
-        # }
       ];
       # Imports the RELEVANT home manager module to the system
-      home-manager-liperium-root = { hyprMonitor, userImports ? [ "./home/desktop.nix" ] }: [
+      home-manager-liperium-root = { hyprMonitor, userImports ? [ "./home/console.nix" ] }: [
         home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -65,6 +59,7 @@
           };
         }
       ];
+      # Global modules to add to ALL confs
       globalModules = [ sops-nix.nixosModules.sops ];
     in
     {

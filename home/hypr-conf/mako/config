@@ -1,8 +1,0 @@
-font=monospace 14
-width=450
-height=160
-background-color=#363a4faa
-border-color=#c6a0f6aa
-border-radius=10
-default-timeout=5000
-on-notify=exec cvlc --play-and-exit /home/liperium/nix-conf/home/hypr-conf/mako/notification-in.wav

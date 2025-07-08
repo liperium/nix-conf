@@ -7,28 +7,35 @@ let
   protonup-rs = pkgs.callPackage ./protonup-rs/default.nix { };
 in
 {
+  # Tools
   programs.gamemode.enable = true;
-
   programs.gamescope.enable = true;
-  programs.steam.gamescopeSession.enable = true;
+
   users.users.liperium = {
     packages = with pkgs; [
+      # Tools
       mangohud
       goverlay
-      lutris
-      steam
       #protonup-rs
-      starsector
-      prismlauncher
-      wowup-cf
-      temurin-bin-8
+      # 
+      # Wine
       wineWowPackages.waylandFull
       winetricks
+
+      # Launchers
+      lutris
       (heroic.override {
         extraPkgs = pkgs: [
           pkgs.gamemode
         ];
       })
+
+      # Games
+      prismlauncher
+      temurin-bin-8
+      temurin-bin-17
+      wowup-cf
+      starsector
     ];
   };
   nixpkgs.config.packageOverrides = pkgs: {
@@ -52,5 +59,6 @@ in
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    gamescopeSession.enable = true;
   };
 }

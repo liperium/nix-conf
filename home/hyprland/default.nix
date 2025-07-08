@@ -1,7 +1,11 @@
 { config, pkgs, hyprMonitor, ... }:
 
 {
-  imports = [ ./hyprconf.nix ];
+  imports = [
+    ./hyprland-conf.nix
+    ./rofi
+    ./quickshell
+  ];
   #xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
   xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;
   #xdg.configFile."hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;

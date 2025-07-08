@@ -55,31 +55,6 @@
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
-  # Portal to make it easy
-  # xdg.portal = {
-  #   enable = true;
-  #   config = {
-  #     common.default = "lxqt";
-  #     pantheon.default = "lxqt";
-  #     gtk.default = "lxqt";
-  #     hyprland = {
-  #       default = [
-  #         "hyprland"
-  #         "lxqt"
-  #       ];
-  #     };
-  #   };
-  #   configPackages = with pkgs; [
-  #     xdg-desktop-portal-hyprland
-  #     lxqt.xdg-desktop-portal-lxqt
-  #   ];
-  #   extraPortals = with pkgs; [
-  #     #xdg-desktop-portal-gtk
-  #     #kdePackages.xdg-desktop-portal-kde
-  #     lxqt.xdg-desktop-portal-lxqt
-  #     xdg-desktop-portal-hyprland
-  #   ];
-  # };
 
   # Sound stuff
   security.rtkit.enable = true;
