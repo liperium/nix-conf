@@ -21,7 +21,6 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     style = "plain"
     foreground = 'p:grey'
     background = 'transparent'
-    foreground_templates = [ "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}" ]
     template = ' {{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{ if .Working.Changed }} *{{ end }}{{ if .Staging.Changed }} {{ .Staging.String }}{{ end }} '
     [blocks.segments.properties]
       branch_max_length = 25

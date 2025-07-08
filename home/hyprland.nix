@@ -26,8 +26,6 @@
   home.packages = with pkgs;[
     # Pactl for f keys
     pulseaudio
-    wezterm
-
     # Quickshell caelestial test
     quickshell
     fish
@@ -48,6 +46,12 @@
     kdePackages.qtdeclarative #autocomplete
     lm_sensors
   ];
+  programs.wezterm = {
+    enable = true;
+    extraConfig = ''
+      config.font = wezterm.font 'JetBrainsMono Nerd Font Propo'
+    '';
+  };
 
   systemd.user.services.quickshell = {
     Unit = {
