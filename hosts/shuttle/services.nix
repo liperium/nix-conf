@@ -1,6 +1,10 @@
 { pkgs, lib, ... }:
 {
-  imports = [ ./caddy ./wireguard ];
+  # Module defined services
+  imports = [
+    ./caddy
+    ./wireguard
+  ];
   services.adguardhome = {
     enable = true;
     settings = null;

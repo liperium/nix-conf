@@ -16,7 +16,6 @@ in
     "${modDir}/docker.nix"
 
     "${modDir}/wireguard.nix"
-    "${modDir}/nix-quick-update"
 
     # Desktop env
     #"${modEnvironments}/gnome"

@@ -15,7 +15,6 @@ in
     "${modDir}/hardware/ssd.nix"
     "${modDir}/hardware/power-management/system76.nix"
     "${modDir}/docker.nix"
-    "${modDir}/nix-quick-update"
     "${modDir}/wireguard.nix"
 
     # Desktop env

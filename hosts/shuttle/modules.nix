@@ -5,7 +5,5 @@ in
   imports = [
     # Base
     "${modDir}"
-
-    "${modDir}/nix-quick-update"
   ];
 }
