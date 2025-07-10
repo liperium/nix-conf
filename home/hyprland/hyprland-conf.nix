@@ -20,6 +20,10 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    extraConfig = ''
+      exec = hyprctl dispatch submap global
+      submap = global
+    '';
     settings = {
       monitor = monitorSettings;
 
@@ -163,6 +167,7 @@ in
         "$mainMod, E, exec, dolphin"
 
         # Rofi menu
+        # "$mainMod, S, global, caelestia:launcher" example caelestia ipc bus
         "$mainMod, S, exec, rofi -modes \"run,drun,emoji\" -show drun -show-icons"
         "$mainMod SHIFT, S, exec, killall rofi"
         "$mainMod, B, exec, rofi-bluetooth"
