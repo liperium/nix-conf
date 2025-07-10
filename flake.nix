@@ -21,7 +21,6 @@
     , home-manager
     , nixos-hardware
     , catppuccin
-    , hyprpanel
     , chaotic
     , sops-nix
     , ...

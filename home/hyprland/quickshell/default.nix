@@ -7,14 +7,6 @@
 
 
 {
-  imports = [
-    # Desktop
-    ./desktop.nix
-    ./console.nix
-
-    ./hypr-conf
-
-  ];
   dconf.settings = {
 
     "org/gnome/desktop/interface" = {

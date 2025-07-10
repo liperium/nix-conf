@@ -79,6 +79,8 @@ in
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
+  # Power management
+  services.power-profiles-daemon.enable = true;
 
   #Dual boot, systemd can't see other EFI partition, use grub instead
   boot.loader = {

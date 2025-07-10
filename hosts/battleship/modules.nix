@@ -13,7 +13,6 @@ in
     # Additional System
     "${modDir}/hardware/btrfs.nix"
     "${modDir}/hardware/ssd.nix"
-    "${modDir}/hardware/power-management/system76.nix"
     "${modDir}/docker.nix"
     "${modDir}/wireguard.nix"
 
