@@ -24,6 +24,9 @@ in
     gparted
   ];
 
+  #Bambu-studio
+  services.flatpak.enable = true;
+
   boot = {
     plymouth = {
       enable = true;

@@ -37,6 +37,7 @@ in
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
         "QT_AUTO_SCREEN_SCALE_FACTOR,1"
         "HYPRSHOT_DIR,/home/liperium/Pictures/hyprshot"
+        "XDG_DATA_DIRS,$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
       ];
 
       blurls = [ "waybar" ];
