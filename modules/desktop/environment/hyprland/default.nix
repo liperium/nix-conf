@@ -29,6 +29,9 @@
     pavucontrol
     hyprpolkitagent
   ];
+  environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+  xdg.mime.enable = true;
+  xdg.menus.enable = true;
 
   users.users.liperium.packages = with pkgs;[
     #lxqt.pcmanfm-qt
@@ -37,10 +40,18 @@
 
     kdePackages.dolphin
     # Extract here KDE
-    kdePackages.ark
-    kdePackages.qtsvg # See svg icons
-    kdePackages.kio-fuse # mount drives
+    kdePackages.kio
+    kdePackages.kdf
+    kdePackages.kio-fuse
     kdePackages.kio-extras
+    kdePackages.kio-admin
+    kdePackages.qtwayland
+    kdePackages.plasma-integration
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.breeze-icons
+    kdePackages.qtsvg
+    kdePackages.kservice
+    shared-mime-info
   ];
 
   security.polkit.enable = true;
