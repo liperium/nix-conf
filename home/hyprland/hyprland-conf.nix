@@ -165,7 +165,7 @@ in
 
         # Apps
         "$mainMod, Q, exec, wezterm"
-        "$mainMod, E, exec, dolphin"
+        "$mainMod, E, exec, XDG_CURRENT_DESKTOP=kde dolphin"
 
         # Rofi menu
         # "$mainMod, S, global, caelestia:launcher" example caelestia ipc bus

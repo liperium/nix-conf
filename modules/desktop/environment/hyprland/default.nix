@@ -41,6 +41,9 @@
     kdePackages.dolphin
     # Extract here KDE
     kdePackages.ark
+    # Edit mime
+    kdePackages.kde-cli-tools
+    #dolphin stuff
     kdePackages.kio
     kdePackages.kdf
     kdePackages.kio-fuse
