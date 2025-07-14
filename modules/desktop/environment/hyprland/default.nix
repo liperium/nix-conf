@@ -40,6 +40,7 @@
 
     kdePackages.dolphin
     # Extract here KDE
+    kdePackages.ark
     kdePackages.kio
     kdePackages.kdf
     kdePackages.kio-fuse
