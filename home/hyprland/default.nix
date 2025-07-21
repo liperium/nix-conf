@@ -5,6 +5,7 @@
     ./hyprland-conf.nix
     ./rofi
     ./quickshell
+    ./hypridle
   ];
   #xdg.configFile."hypr/hyprland.conf".source = ./hyprland.conf;
   xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;

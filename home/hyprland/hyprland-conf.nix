@@ -193,6 +193,7 @@ in
         "gnome-keyring-daemon --start --components=secrets"
         "systemctl --user start hyprpolkitagent"
         "systemctl --user start quickshell"
+        "systemctl --user start hypridle"
         "nextcloud --background"
         "[workspace 3 silent] sleep 3.0 && discord --start-minimized"
       ];
