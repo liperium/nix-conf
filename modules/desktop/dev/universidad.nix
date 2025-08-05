@@ -13,6 +13,7 @@
       zotero
       brev-cli
       teams-for-linux
+      claude-code
 
       # Writing
       texliveFull

@@ -40,6 +40,7 @@
     discord
 
     deluge-gtk
+    psst
     #obsidian
     #bitwarden
 
