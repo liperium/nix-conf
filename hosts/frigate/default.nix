@@ -13,7 +13,7 @@ let
 in
 {
 
-  time.timeZone = lib.mkForce "Europe/Oslo";
+  time.timeZone = lib.mkForce "America/Montreal";
 
   imports = [
     # Include the results of the hardware scan.
@@ -83,7 +83,6 @@ in
       bluez
       bluez-tools
 
-      # Fix logseq??
       stable.logseq
       easyeffects
       cockatrice
