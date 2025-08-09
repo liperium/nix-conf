@@ -17,7 +17,7 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      icon-theme = "Papirus-Dark";
+      #icon-theme = "Papirus-Dark";
     };
   };
 

@@ -113,6 +113,11 @@
     promptInit = ''
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
     '';
+    shellInit = ''
+      eval "$(oh-my-posh init zsh --config $HOME/.config/omp/zen.toml)"
+      eval "$(zoxide init zsh)"
+      eval "$(direnv hook zsh)"
+    '';
   };
   programs.fish.interactiveShellInit = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source

@@ -20,8 +20,8 @@
 
   home.packages = with pkgs; [
     #Theming
-    papirus-icon-theme
-    papirus-folders
+    #papirus-icon-theme
+    #papirus-folders
 
     #File viewers
     vlc
@@ -80,16 +80,16 @@
       accent = "light";
     };
 
-    gtk.enable = true;
+    #gtk.enable = true;
     kvantum.enable = false;
   };
   gtk = {
     enable = true;
-    iconTheme = {
-      package = pkgs.papirus-icon-theme
-      ;
-      name = "Papirus-Dark";
-    };
+    #iconTheme = {
+    #package = pkgs.papirus-icon-theme
+    #;
+    #name = "Papirus-Dark";
+    #};
   };
   qt = {
     enable = true;

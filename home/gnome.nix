@@ -27,7 +27,7 @@
 
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      icon-theme = "Papirus-Dark";
+      #icon-theme = "Papirus-Dark";
       show-battery-percentage = false;
       #text-scaling-factor = 1.25;
     };
