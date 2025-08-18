@@ -80,4 +80,21 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  # Terminal emulator
+  programs.foot = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      main = {
+
+        shell = "fish";
+
+        font = "JetBrainsMono Nerd Font:size=11";
+      };
+      colors = {
+        alpha = 0.7;
+      };
+    };
+
+  };
 }

@@ -17,7 +17,6 @@
 
   home.packages = with pkgs;[
     quickshell
-    fish
     jq
     fd
     (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [

@@ -164,7 +164,7 @@ in
         "$mainMod, mouse_up, workspace, e-1"
 
         # Apps
-        "$mainMod, Q, exec, wezterm"
+        "$mainMod, Q, exec, foot"
         "$mainMod, E, exec, XDG_CURRENT_DESKTOP=kde dolphin"
 
         # Rofi menu

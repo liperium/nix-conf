@@ -77,6 +77,15 @@
     #Terminal
     zsh
     any-nix-shell
+
+    # Fish plugins
+    fish
+    fishPlugins.z
+    fishPlugins.tide
+    fishPlugins.done
+    fishPlugins.forgit
+    fishPlugins.fzf
+    fzf
   ];
   programs.git = {
     enable = true;
@@ -119,13 +128,15 @@
       eval "$(direnv hook zsh)"
     '';
   };
+
+  programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
   '';
 
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [ zsh fish ];
 
   # SOPS
   sops.defaultSopsFile = ./secrets/secrets.yaml;
