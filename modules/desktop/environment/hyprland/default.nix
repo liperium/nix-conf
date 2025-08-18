@@ -92,7 +92,7 @@
         font = "JetBrainsMono Nerd Font:size=11";
       };
       colors = {
-        alpha = 0.7;
+        alpha = 0.9;
       };
     };
 

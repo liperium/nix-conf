@@ -31,5 +31,9 @@
     enable = true;
     nix-direnv.enable = true;
   };
+  programs.fish = {
+    enable = true;
+  };
+  programs.oh-my-posh.enableFishIntegration = false;
 
 }

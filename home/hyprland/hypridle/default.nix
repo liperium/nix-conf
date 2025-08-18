@@ -13,12 +13,12 @@
       }
 
       listener {
-          timeout = 60
+          timeout = 120
           on-timeout = brightnessctl -s && brightnessctl s 1%
           on-resume = brightnessctl -r 
       }
       listener {
-        timeout = 300
+        timeout = 600
         on-timeout = systemctl suspend
       }
     '';
