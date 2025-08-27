@@ -36,6 +36,7 @@ in
       temurin-bin-17
       wowup-cf
       starsector
+      cockatrice
     ];
   };
   nixpkgs.config.packageOverrides = pkgs: {

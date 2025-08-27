@@ -21,14 +21,16 @@
     };
   };
 
-  # programs.wezterm = {
-  #   enable = true;
-  #   extraConfig = ''
-  #     local config = wezterm.config_builder()
-  #     config.font = wezterm.font 'JetBrainsMono Nerd Font Propo'
-  #     config.window_background_opacity = 0.7
-  #     return config
-  #   '';
-  # };
+  programs.wezterm = {
+    enable = true;
+    extraConfig = ''
+      local config = wezterm.config_builder()
+      config.font = wezterm.font 'JetBrainsMono Nerd Font Propo'
+      config.window_background_opacity = 0.85
+      config.hide_tab_bar_if_only_one_tab = true
+      config.default_prog = { 'fish' }
+      return config
+    '';
+  };
 
 }
