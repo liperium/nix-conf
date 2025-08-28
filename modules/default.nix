@@ -101,6 +101,11 @@
         prune = "true";
         auto = 1;
       };
+      url = {
+        "git@github.com:liperium/" = {
+          insteadOf = "https://github.com/liperium/";
+        };
+      };
 
     };
   };
