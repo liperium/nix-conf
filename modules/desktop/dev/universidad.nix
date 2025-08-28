@@ -5,14 +5,12 @@
 }:
 
 {
-  programs.adb.enable = true;
+  #programs.adb.enable = true;
+  services.tailscale.enable = true;
   users.users.liperium = {
     packages = with pkgs; [
-      #jetbrains.datagrip
-      #androidStudioPackages.canary
       zotero
-      brev-cli
-      teams-for-linux
+      #teams-for-linux
       claude-code
 
       # Writing
