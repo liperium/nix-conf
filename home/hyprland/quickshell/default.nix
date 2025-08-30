@@ -38,10 +38,10 @@
 
   systemd.user.services.quickshell = {
     Unit = {
-      Description = "Quickshell caelestia";
+      Description = "Quickshell liperium";
     };
     Service = {
-      ExecStart = "${pkgs.quickshell}/bin/quickshell -c caelestia";
+      ExecStart = "${pkgs.quickshell}/bin/quickshell -c liperium";
     };
   };
 }
