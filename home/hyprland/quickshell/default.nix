@@ -17,23 +17,18 @@
 
   home.packages = with pkgs;[
     quickshell
-    jq
-    fd
-    (pkgs.python3.withPackages (python-pkgs: with python-pkgs; [
-      # select Python packages here
-      aubio
-      pyaudio
-      numpy
-    ]))
+    # DankMaterialShell
+    matugen
+    wl-clipboard
+    cliphist
     cava
+    material-symbols
+
     bluez
     pulseaudio
     ddcutil
     brightnessctl
-    curl
-    material-symbols
     kdePackages.qtdeclarative #autocomplete
-    lm_sensors
   ];
 
   systemd.user.services.quickshell = {
@@ -41,7 +36,7 @@
       Description = "Quickshell liperium";
     };
     Service = {
-      ExecStart = "${pkgs.quickshell}/bin/quickshell -c liperium";
+      ExecStart = "${pkgs.quickshell}/bin/quickshell -c dms";
     };
   };
 }
