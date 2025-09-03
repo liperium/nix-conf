@@ -207,9 +207,9 @@ in
         #"noanim,class:^(pavucontrol)$"
         #"size 45% 50%,class:^(pavucontrol)$"
         "float,title:(Nextcloud)"
-        "move 5% 40%,title:(Nextcloud)"
+        "move 65% 30px,title:(Nextcloud)"
         "noanim,title:(Nextcloud)"
-        "size 45% 50%,title:(Nextcloud)"
+        "size 35% 30%,title:(Nextcloud)"
       ];
     };
   };
