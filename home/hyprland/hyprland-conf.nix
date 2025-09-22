@@ -201,7 +201,7 @@ in
       workspace = assignWorkspaces primaryMonitor secondaryMonitor;
 
       windowrulev2 = [
-        "stayfocused, title:^()$,class:^(steam)$"
+        #"stayfocused, title:^()$,class:^(steam)$"
         #"float,class:^(pavucontrol)$"
         #"move 55% 42,class:^(pavucontrol)$"
         #"noanim,class:^(pavucontrol)$"

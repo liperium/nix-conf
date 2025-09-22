@@ -8,7 +8,7 @@
 
   home.packages = with pkgs; [
 
-    (rofi-wayland.override {
+    (rofi.override {
       plugins = [
         rofi-emoji
         rofi-games
