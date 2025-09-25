@@ -12,6 +12,8 @@ in
     ./modules.nix
   ];
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.hostName = "battleship";
 
   environment.systemPackages = with pkgs; [
