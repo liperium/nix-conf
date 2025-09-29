@@ -16,7 +16,7 @@
   };
 
   home.packages = with pkgs;[
-    quickshell
+    unstable.quickshell
     # DankMaterialShell
     matugen
     wl-clipboard
@@ -36,7 +36,7 @@
       Description = "Quickshell liperium";
     };
     Service = {
-      ExecStart = "${pkgs.quickshell}/bin/quickshell -c dms";
+      ExecStart = "${pkgs.unstable.quickshell}/bin/quickshell -c dms";
     };
   };
 }

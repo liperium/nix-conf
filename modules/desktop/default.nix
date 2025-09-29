@@ -19,6 +19,10 @@
         inherit (final.stdenv.hostPlatform) system;
         inherit (final) config;
       };
+      unstable = import inputs.nixpkgs-unstable {
+        inherit (final.stdenv.hostPlatform) system;
+        inherit (final) config;
+      };
     })
   ];
   users.users.liperium = {

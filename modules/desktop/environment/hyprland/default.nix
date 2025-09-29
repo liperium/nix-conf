@@ -13,6 +13,7 @@
     enable = true;
     xwayland.enable = true;
     withUWSM = true;
+    package = pkgs.unstable.hyprland;
   };
 
   hardware.graphics.enable = true;
@@ -68,7 +69,6 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
   # Sound stuff

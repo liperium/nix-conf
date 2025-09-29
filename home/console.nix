@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 
 {
@@ -35,5 +35,4 @@
     enable = true;
   };
   programs.oh-my-posh.enableFishIntegration = false;
-
 }

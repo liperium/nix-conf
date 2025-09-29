@@ -36,7 +36,7 @@
     # The hyprland package to use
     # Disable them because managed by NixOs
     package = null;
-    portalPackage = null;
+    #portalPackage = null;
     systemd.enable = false;
     # Whether to enable XWayland
     xwayland.enable = true;

@@ -60,7 +60,7 @@ in
   #hardware.sensor.iio.enable = true;
   # GDM
   #services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   #services.desktopManager.gnome.enable = true;
   # Autologin
   services.displayManager.autoLogin.enable = true;

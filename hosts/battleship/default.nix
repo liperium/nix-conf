@@ -19,11 +19,12 @@ in
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
     os-prober # Probes for windows for grub
-    regreet
+    greetd.regreet
     (catppuccin-grub.override {
       flavor = "mocha";
     })
     gparted
+    rkdeveloptool
   ];
 
   #Bambu-studio
@@ -57,7 +58,7 @@ in
   environment.etc = {
     greetd-regreet-hyprland = {
       text = ''
-        exec-once = ${pkgs.regreet}/bin/regreet --style ${regreet-theme}/share/themes/catppuccin-mocha-mauve-standard/gtk-4.0/gtk-dark.css; hyprctl dispatch exit
+        exec-once = ${pkgs.greetd.regreet}/bin/regreet --style ${regreet-theme}/share/themes/catppuccin-mocha-mauve-standard/gtk-4.0/gtk-dark.css; hyprctl dispatch exit
         misc {
             disable_hyprland_logo = true
             disable_splash_rendering = true
@@ -71,7 +72,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland --config /etc/greetd-regreet-hyprland";
+        command = "${pkgs.unstable.hyprland}/bin/Hyprland --config /etc/greetd-regreet-hyprland";
         user = "greeter";
       };
     };

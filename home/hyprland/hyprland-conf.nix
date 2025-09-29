@@ -1,4 +1,4 @@
-{ config, lib, pkgs, hyprMonitor, ... }:
+{ config, lib, pkgs, hyprMonitor, inputs, ... }:
 
 let
   # Define host-specific monitor configurations
@@ -18,8 +18,10 @@ let
   ];
 in
 {
+
   wayland.windowManager.hyprland = {
     enable = true;
+    package = null;
     extraConfig = ''
       exec = hyprctl dispatch submap global
       submap = global
@@ -160,7 +162,7 @@ in
         "$mainMod, mouse_up, workspace, e-1"
 
         # Apps
-        "$mainMod, Q, exec, wezterm"
+        "$mainMod, Q, exec, foot"
         "$mainMod, E, exec, XDG_CURRENT_DESKTOP=kde dolphin"
 
         # Rofi menu

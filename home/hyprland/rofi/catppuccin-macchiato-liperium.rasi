@@ -2,7 +2,7 @@ configuration {
     modi: "drun,run,filebrowser,window";
     display-drun: "Apps";
     icon-theme: "Papirus-Dark";
-    terminal: "wezterm";
+    terminal: "foot";
 }
 
 * {
