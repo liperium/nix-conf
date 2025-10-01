@@ -44,6 +44,7 @@
       "video"
       "audio"
       "input" # fingerprint reader GDM https://wiki.archlinux.org/title/Fprint
+      "dialout" #serial usb
     ];
   };
 

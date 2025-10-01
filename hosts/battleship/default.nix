@@ -25,6 +25,7 @@ in
     })
     gparted
     rkdeveloptool
+    minicom
   ];
 
   #Bambu-studio
