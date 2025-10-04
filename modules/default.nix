@@ -17,8 +17,6 @@
   };
   nix.settings.auto-optimise-store = true;
 
-  system.stateVersion = "24.11";
-
   # Enable networking
   networking = {
     firewall.enable = lib.mkDefault false;
@@ -26,10 +24,21 @@
   };
 
   # Set your time zone.
-  time.timeZone = "America/Toronto";
+  time.timeZone = "America/Montreal";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_CA.UTF-8";
+    LC_IDENTIFICATION = "en_CA.UTF-8";
+    LC_MEASUREMENT = "en_CA.UTF-8";
+    LC_MONETARY = "en_CA.UTF-8";
+    LC_NAME = "en_CA.UTF-8";
+    LC_NUMERIC = "en_CA.UTF-8";
+    LC_PAPER = "en_CA.UTF-8";
+    LC_TELEPHONE = "en_CA.UTF-8";
+    LC_TIME = "en_CA.UTF-8";
+  };
 
   # Enables microcode updates
   hardware.enableRedistributableFirmware = true;
@@ -44,7 +53,6 @@
       "video"
       "audio"
       "input" # fingerprint reader GDM https://wiki.archlinux.org/title/Fprint
-      "dialout" #serial usb
     ];
   };
 
@@ -131,7 +139,10 @@
     shellInit = ''
       eval "$(oh-my-posh init zsh --config $HOME/.config/omp/zen.toml)"
       eval "$(zoxide init zsh)"
-      eval "$(direnv hook zsh)"
+      if command -v direnv >/dev/null 2>&1
+      then
+        eval "$(direnv hook zsh)"
+      fi
     '';
   };
 

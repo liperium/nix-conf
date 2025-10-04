@@ -93,12 +93,12 @@
     configureRedis = true;
     package = pkgs.nextcloud31;
     extraApps = {
-    inherit (pkgs.nextcloud31Packages.apps)
-      mail
-      calendar
-      tasks
-      contacts;
-      };
+      inherit (pkgs.nextcloud31Packages.apps)
+        mail
+        calendar
+        tasks
+        contacts;
+    };
     hostName = "localhost";
     datadir = "/zfs-data/nextcloud"; # Make sure /zfs-data is mounted as root (systemd stuff), and that ./nextcloud folder is owned by nextcloud
     config = {
@@ -134,6 +134,7 @@
       port = 8002;
     }
   ];
+  system.stateVersion = "24.11";
 
   # services.cron = {
   #   enable = true;

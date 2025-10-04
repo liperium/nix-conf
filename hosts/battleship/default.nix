@@ -97,4 +97,5 @@ in
     grub.efiSupport = true;
     grub.useOSProber = true;
   };
+  system.stateVersion = "24.11";
 }

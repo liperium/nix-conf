@@ -96,5 +96,5 @@ in
   # Panel
   services.blueman.enable = true;
   services.upower.enable = true;
-
+  system.stateVersion = "24.11";
 }

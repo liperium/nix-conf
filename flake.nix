@@ -135,6 +135,12 @@
             ./hosts/shuttle
           ] ++ globalModules;
         };
+        shuttle-n150 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/shuttle-n150
+          ] ++ globalModules;
+        };
       };
     };
 }
