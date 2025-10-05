@@ -1,8 +1,13 @@
 { pkgs, lib, ... }:
 {
   networking.nat.enable = true;
-  networking.nat.externalInterface = "end0";
+  networking.nat.externalInterface = "enp1s0";
   networking.nat.internalInterfaces = [ "wg0" ];
+  sops.secrets."wireguard/privatekey" = {
+    sopsFile = ../../../../modules/secrets/wg-privatekey;
+    format = "binary";
+    owner = "root";
+  };
   networking.wireguard.interfaces = {
     # "wg0" is the network interface name. You can name the interface arbitrarily.
     wg0 = {
@@ -28,7 +33,7 @@
       # Note: The private key can also be included inline via the privateKey option,
       # but this makes the private key world-readable; thus, using privateKeyFile is
       # recommended.
-      privateKeyFile = "/var/lib/wireguard/privatekey";
+      privateKeyFile = "/run/secrets/wireguard/privatekey";
 
       peers = [
         # List of allowed peers.

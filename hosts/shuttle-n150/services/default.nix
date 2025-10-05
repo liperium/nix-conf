@@ -38,8 +38,14 @@
   # Reverse DNS
   services.ddclient = {
     enable = true;
-    configFile = "/var/lib/ddclient/ddclient.conf";
+    configFile = "/run/secrets/ddclient.conf";
   };
+  sops.secrets."ddclient.conf" = {
+    sopsFile = ../../../modules/secrets/ddclient.conf;
+    format = "binary";
+    owner = "root";
+  };
+
 
   # Uptime Kuma
   services.uptime-kuma = {
