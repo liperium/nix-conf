@@ -24,7 +24,7 @@
 
 # Public services - just one line per service!
 nextcloud.mattysgervais.com {
-    import public_service 127.0.0.1:8002
+    import public_service 127.0.0.1:8001
 }
 
 immich.mattysgervais.com {

@@ -6,7 +6,6 @@
     ./wireguard
     ./nextcloud
   ];
-  services.nginx.enable = false;
   services.adguardhome = {
     enable = true;
     settings = null;
@@ -61,6 +60,11 @@
   services.jellyseerr.enable = true; # 5055
 
   services.immich.enable = true; # 2283
+  services.immich.port = 2283;
+  services.immich.accelerationDevices = [ "/dev/dri/renderD128" ];
+  #services.immich.settings.server.externalDomain = "https://immich.mattysgervais.com";
+  users.users.immich.extraGroups = [ "video" "render" ];
+  services.immich.mediaLocation = "/zfs-data/immich";
 
   # Samba - need to setup a user for the private share
   # sudo smbpasswd -a myuser

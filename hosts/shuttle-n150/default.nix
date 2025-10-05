@@ -56,6 +56,16 @@
       ZED_NTFY_TOPIC = "FkFtiV69AO4i21vg";
     };
 
+  # Hardware accelleration
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # For Broadwell (2014) or newer processors. LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # For older processors. LIBVA_DRIVER_NAME=i965
+    ];
+  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }

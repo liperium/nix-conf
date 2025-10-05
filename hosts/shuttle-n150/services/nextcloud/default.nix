@@ -3,6 +3,7 @@
   # Nextcloud config
  
   # OCC commands : sudo -i nextcloud-occ YOUR_OCC_COMMAND
+  services.nginx.virtualHosts."localhost".listen = [ { addr = "127.0.0.1"; port = 8001; } ];
   services.nextcloud = {
     enable = true;
     configureRedis = true;
@@ -17,7 +18,7 @@
     hostName = "localhost";
     datadir = "/zfs-data/nextcloud"; # Make sure /zfs-data is mounted as root (systemd stuff), and that ./nextcloud folder is owned by nextcloud
     config = {
-      adminpassFile = "/etc/nextcloud-admin-pass";
+      adminpassFile = "/run/secrets/nextcloud-admin-pass";
       dbtype = "sqlite";
     };
     settings = {
@@ -43,4 +44,10 @@
       "OC\\Preview\\HEIC"
     ];
   };
+  sops.secrets."nextcloud-admin-pass" = {
+    sopsFile = ../../../../modules/secrets/nextcloud-admin-pass;
+    format = "binary";
+    owner = "nextcloud";
+  };
+
 }
