@@ -5,6 +5,7 @@
     ./caddy
     ./wireguard
     ./nextcloud
+    ./jellyfin
   ];
   services.adguardhome = {
     enable = true;
@@ -56,27 +57,9 @@
   # ARR
   services.prowlarr.enable = true; # 9696
   services.sonarr.enable = true; # 8989
-  services.jellyfin.enable = true; # 8096
-  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "iHD";
-  environment.systemPackages = [
-    pkgs.jellyfin
-    pkgs.jellyfin-web
-    pkgs.jellyfin-ffmpeg
-  ];
-  # from https://wiki.nixos.org/wiki/Jellyfin
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      intel-ocl # generic OpenCL support, for all processors
-      # For newer processors (Broadwell and higher, ca. 2014), use this paired with `LIBVA_DRIVER_NAME=iHD`:
-      intel-media-driver
-      intel-compute-runtime
-      vpl-gpu-rt
-    ];
-  };
   services.jellyseerr.enable = true; # 5055
 
-   services.immich = {
+  services.immich = {
     enable = true;
     package = pkgs.unstable.immich;
     port = 2283;
