@@ -6,6 +6,7 @@
     ./wireguard
     ./nextcloud
     ./jellyfin
+    ./qbittorrent
   ];
   services.adguardhome = {
     enable = true;
