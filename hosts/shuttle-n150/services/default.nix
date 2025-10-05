@@ -6,6 +6,7 @@
     ./wireguard
     ./nextcloud
   ];
+  services.nginx.enable = false;
   services.adguardhome = {
     enable = true;
     settings = null;

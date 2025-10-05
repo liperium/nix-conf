@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 {
   # Nextcloud config
-  #environment.etc."nextcloud-admin-pass".text = "RANDOM_PASSWORD";
+ 
   # OCC commands : sudo -i nextcloud-occ YOUR_OCC_COMMAND
   services.nextcloud = {
     enable = true;
