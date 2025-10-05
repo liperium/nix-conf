@@ -16,6 +16,7 @@
     options = "--delete-older-than 7d";
   };
   nix.settings.auto-optimise-store = true;
+  nix.settings.download-buffer-size = 524288000;
 
   # Enable networking
   networking = {
@@ -53,6 +54,9 @@
       "video"
       "audio"
       "input" # fingerprint reader GDM https://wiki.archlinux.org/title/Fprint
+    ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPv3sbgsPrzqGKPAQXSCcHfa85ya8DeY6gJ08Zqu9Mzf liperium@battleship"
     ];
   };
 

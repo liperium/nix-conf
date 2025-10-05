@@ -8,7 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules.nix
+      ./services
     ];
 
   # Bootloader.
@@ -31,22 +31,29 @@
         prefixLength = 24;
       }];
     };
+    defaultGateway = {
+      address = "192.168.0.1";
+      interface = "enp1s0";
+    };
   };
-
-  users.users.liperium = {
-    isNormalUser = true;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPv3sbgsPrzqGKPAQXSCcHfa85ya8DeY6gJ08Zqu9Mzf liperium@battleship"
-    ];
-  };
-
-  environment.systemPackages = with pkgs; [
-  ];
 
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
 
   networking.firewall.enable = false;
+
+  # ZFS 
+  # basics
+  boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  networking.hostId = "86e27f43";
+  # Config
+  boot.zfs.extraPools = [ "zfs-data" ];
+  services.zfs.autoScrub.enable = true;
+  services.zfs.zed.settings =
+    {
+      ZED_NTFY_TOPIC = "FkFtiV69AO4i21vg";
+    };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 
