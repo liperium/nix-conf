@@ -16,6 +16,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  hardware.enableAllFirmware = true; #https://wiki.nixos.org/wiki/Jellyfin n100? 
+
   networking = {
     hostName = "shuttle-n150";
     nameservers = [
