@@ -12,19 +12,6 @@
   };
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
 
-  nixpkgs.overlays = [
-    (final: _: {
-      # this allows you to access `pkgs.unstable` anywhere in your config
-      stable = import inputs.nixpkgs-stable {
-        inherit (final.stdenv.hostPlatform) system;
-        inherit (final) config;
-      };
-      unstable = import inputs.nixpkgs-unstable {
-        inherit (final.stdenv.hostPlatform) system;
-        inherit (final) config;
-      };
-    })
-  ];
   users.users.liperium = {
     packages = with pkgs; [
       stable.logseq

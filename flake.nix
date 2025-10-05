@@ -136,6 +136,7 @@
         };
         shuttle-n150 = lib.nixosSystem {
           inherit system;
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/shuttle-n150
           ] ++ globalModules;

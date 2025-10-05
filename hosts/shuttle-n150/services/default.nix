@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 {
   # Module defined services
   imports = [
@@ -59,12 +59,16 @@
   services.jellyfin.enable = true; # 8096
   services.jellyseerr.enable = true; # 5055
 
-  services.immich.enable = true; # 2283
-  services.immich.port = 2283;
-  services.immich.accelerationDevices = [ "/dev/dri/renderD128" ];
-  #services.immich.settings.server.externalDomain = "https://immich.mattysgervais.com";
+   services.immich = {
+    enable = true;
+    package = pkgs.unstable.immich;
+    port = 2283;
+    host = "0.0.0.0";
+    accelerationDevices = [ "/dev/dri/renderD128" ];
+    mediaLocation = "/zfs-data/immich";
+    settings.server.externalDomain = "https://immich.mattysgervais.com";
+  };
   users.users.immich.extraGroups = [ "video" "render" ];
-  services.immich.mediaLocation = "/zfs-data/immich";
 
   # Samba - need to setup a user for the private share
   # sudo smbpasswd -a myuser
