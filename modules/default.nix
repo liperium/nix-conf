@@ -56,7 +56,8 @@
       "input" # fingerprint reader GDM https://wiki.archlinux.org/title/Fprint
     ];
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPv3sbgsPrzqGKPAQXSCcHfa85ya8DeY6gJ08Zqu9Mzf liperium@battleship"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaXteVeooXltzsHdBDfjwBzqLV+NGcNJ3O25ZbmIKdL liperium@battleship"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaXteVeooXltzsHdBDfjwBzqLV+NGcNJ3O25ZbmIKdL liperium@frigate"
     ];
   };
 

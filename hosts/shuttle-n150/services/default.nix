@@ -9,7 +9,7 @@
   services.adguardhome = {
     enable = true;
     settings = null;
-  };
+  }; # 3000
   # Home Assistant
   services.home-assistant = {
     enable = true;
@@ -28,7 +28,7 @@
 
       http = {
         use_x_forwarded_for = true;
-        trusted_proxies = [ "192.168.0.10" "127.0.0.1" ];
+        trusted_proxies = [ "192.168.0.15" "127.0.0.1" ];
       };
     };
   };
@@ -48,10 +48,12 @@
     };
   };
   # ARR
-  services.prowlarr.enable = true;
-  services.sonarr.enable = true;
-  services.jellyfin.enable = true;
-  services.jellyseerr.enable = true;
+  services.prowlarr.enable = true; # 9696
+  services.sonarr.enable = true; # 8989
+  services.jellyfin.enable = true; # 8096
+  services.jellyseerr.enable = true; # 5055
+
+  services.immich.enable = true; # 2283
 
   # Samba - need to setup a user for the private share
   # sudo smbpasswd -a myuser
