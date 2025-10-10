@@ -14,6 +14,7 @@
     };
     catppuccin.url = "github:catppuccin/nix";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
   };
 
   outputs =
@@ -24,6 +25,7 @@
     , catppuccin
     , chaotic
     , sops-nix
+    , vpn-confinement
     , ...
     }@inputs:
     let
@@ -139,6 +141,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/shuttle-n150
+            vpn-confinement.nixosModules.default
           ] ++ globalModules;
         };
       };
