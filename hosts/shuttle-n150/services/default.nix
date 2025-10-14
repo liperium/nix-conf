@@ -83,8 +83,8 @@
       global = {
         security = "user";
         "workgroup" = "WORKGROUP";
-        "server string" = "atlas";
-        "netbios name" = "atlas";
+        "server string" = "shuttle-n150";
+        "netbios name" = "shuttle-n150";
         "hosts allow" = "192.168.0. 127.0.0.1 localhost";
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
