@@ -92,9 +92,9 @@ bazarr.mur.mattysgervais.com {
 kuma.mur.mattysgervais.com {
 	reverse_proxy 127.0.0.1:3001
 }
-homepage.mur.mattysgervais.com:80 {
-	reverse_proxy 127.0.0.1:3000
-}
+# homepage.mur.mattysgervais.com:80 {
+# 	reverse_proxy 127.0.0.1:3000
+# }
 hass.mur.mattysgervais.com:80 {
 	reverse_proxy 127.0.0.1:8123
 }
