@@ -27,6 +27,8 @@ in
     rkdeveloptool
     minicom
   ];
+  programs.kdeconnect.enable = true;
+  programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
 
   #Bambu-studio
   services.flatpak.enable = true;
