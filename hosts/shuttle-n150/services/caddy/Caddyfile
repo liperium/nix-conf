@@ -82,7 +82,7 @@ sonarr.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:8989
 }
 qbittorrent.mur.mattysgervais.com {
-	reverse_proxy 127.0.0.1:8182
+	reverse_proxy 192.168.15.1:8182 # qbittorrent bind internal sudo iptables -t nat -L -n -v | grep 8182
 }
 bazarr.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:6767
@@ -92,9 +92,9 @@ bazarr.mur.mattysgervais.com {
 kuma.mur.mattysgervais.com {
 	reverse_proxy 127.0.0.1:3001
 }
-homepage.mur.mattysgervais.com:80 {
-	reverse_proxy 127.0.0.1:3000
-}
+# homepage.mur.mattysgervais.com:80 {
+# 	reverse_proxy 127.0.0.1:3000
+# }
 hass.mur.mattysgervais.com:80 {
 	reverse_proxy 127.0.0.1:8123
 }
