@@ -29,6 +29,12 @@
       trusted_proxies = [ "192.168.0.15" "127.0.0.1" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
     };
+    phpOptions =  { # https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/big_file_upload_configuration.html
+      "post_max_size"=lib.mkForce "16G";
+      "upload_max_filesize"=lib.mkForce"16G";
+      "max_input_time"="3600";
+      "max_execution_time"="3600";
+    };
     caching.redis = true;
     settings.enabledPreviewProviders = [
       "OC\\Preview\\BMP"
