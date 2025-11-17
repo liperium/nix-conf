@@ -109,7 +109,7 @@
               primary = "DP-1";
               secondary = "DP-2";
               settings = [
-                "DP-1,2560x1440@164.80,auto,1.25"
+                "DP-1,2560x1440@239.97,auto,1.25"
                 "DP-2,preferred,auto,1.25"
                 ",preferred,auto,1"
               ];
