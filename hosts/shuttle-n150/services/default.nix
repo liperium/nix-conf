@@ -70,6 +70,8 @@
     accelerationDevices = [ "/dev/dri/renderD128" ];
     mediaLocation = "/zfs-data/immich";
     settings.server.externalDomain = "https://immich.mattysgervais.com";
+    settings.ffmpeg.accel = "enabled";
+    settings.ffmpeg.accelDecode = true;
   };
   users.users.immich.extraGroups = [ "video" "render" ];
 
@@ -106,18 +108,19 @@
     openFirewall = true;
   };
 
-  vpnNamespaces.qvpn = { # The name is limited to 7 characters
+  vpnNamespaces.qvpn = {
+    # The name is limited to 7 characters
     enable = true;
     wireguardConfigFile = "/run/secrets/qvpn.conf";
-    accessibleFrom = ["192.168.0.0/24" "127.0.0.1/32" "::1/128" ];
+    accessibleFrom = [ "192.168.0.0/24" "127.0.0.1/32" "::1/128" ];
     portMappings = [{
       from = 8182;
-      to = 8182;  
+      to = 8182;
       protocol = "tcp";
     }];
     openVPNPorts = [{
       port = 48026;
-      protocol = "both";  # BitTorrent uses both TCP and UDP
+      protocol = "both"; # BitTorrent uses both TCP and UDP
     }];
   };
   sops.secrets."qvpn.conf" = {

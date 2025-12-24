@@ -107,10 +107,10 @@
           ++ home-manager-liperium-root {
             hyprMonitor = {
               primary = "DP-1";
-              secondary = "DP-2";
+              secondary = "HDMI-A-1";
               settings = [
-                "DP-1,2560x1440@239.97,auto,1.25"
-                "DP-2,preferred,auto,1.25"
+                "DP-1,2560x1440@239.97,0x0,1.25"
+                "HDMI-A-1,preferred,2048x0,1.0"
                 ",preferred,auto,1"
               ];
             };
