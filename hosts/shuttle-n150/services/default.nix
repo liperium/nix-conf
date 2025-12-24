@@ -7,6 +7,7 @@
     ./nextcloud
     ./jellyfin
     ./qbittorrent
+    ./homer
   ];
   services.adguardhome = {
     enable = true;

@@ -24,7 +24,9 @@
 
 # Public services - just one line per service!
 nextcloud.mattysgervais.com {
-    import public_service 127.0.0.1:8001
+    reverse_proxy 127.0.0.1:8001
+    #import public_service 127.0.0.1:8001
+    #client_max_body_size 0
 }
 
 immich.mattysgervais.com {

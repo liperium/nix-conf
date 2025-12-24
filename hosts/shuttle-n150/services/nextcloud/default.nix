@@ -28,6 +28,7 @@
       ];
       trusted_proxies = [ "192.168.0.15" "127.0.0.1" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
+      maxChunkSize = 100000000;
     };
     phpOptions =  { # https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/big_file_upload_configuration.html
       "post_max_size"=lib.mkForce "16G";
