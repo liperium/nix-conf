@@ -71,7 +71,7 @@
     accelerationDevices = [ "/dev/dri/renderD128" ];
     mediaLocation = "/zfs-data/immich";
     settings.server.externalDomain = "https://immich.mattysgervais.com";
-    settings.ffmpeg.accel = "enabled";
+    settings.ffmpeg.accel = "qsv";
     settings.ffmpeg.accelDecode = true;
   };
   users.users.immich.extraGroups = [ "video" "render" ];
