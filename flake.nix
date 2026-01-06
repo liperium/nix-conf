@@ -1,7 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    #chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
   };
 
@@ -23,7 +23,7 @@
     , home-manager
     , nixos-hardware
     , catppuccin
-    , chaotic
+      #, chaotic
     , sops-nix
     , vpn-confinement
     , ...
@@ -102,7 +102,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/battleship
-            chaotic.nixosModules.default
+            #chaotic.nixosModules.default
           ]
           ++ home-manager-liperium-root {
             hyprMonitor = {

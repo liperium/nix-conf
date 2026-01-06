@@ -56,7 +56,7 @@
     nextcloud-client
 
     # Office
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     zoom-us
   ];
 
