@@ -62,6 +62,7 @@
   services.radarr.enable = true; # 7878
   services.flaresolverr.enable = true; # 8191
   services.jellyseerr.enable = true; # 5055
+  services.bazarr.enable = true; # 6767
 
   services.immich = {
     enable = true;
@@ -75,6 +76,12 @@
     settings.ffmpeg.accelDecode = true;
   };
   users.users.immich.extraGroups = [ "video" "render" ];
+
+  # Stirling PDF
+  services.stirling-pdf = {
+    enable = true;
+    environment = {SERVER_PORT=6666;};
+  };
 
   # Samba - need to setup a user for the private share
   # sudo smbpasswd -a myuser
@@ -137,4 +144,19 @@
     after = [ "qvpn.service" ];
     requires = [ "qvpn.service" ];
   };
+  
+  services.stash = {
+    enable = true;
+    username = "liperium";
+    passwordFile = "/zfs-data/apps/stash/secrets/password";
+    jwtSecretKeyFile = "/zfs-data/apps/stash/secrets/jwt-secret";
+    sessionStoreKeyFile = "/zfs-data/apps/stash/secrets/session-key";
+    settings.stash = [
+      {
+        path = "/zfs-data/apps/stash/videos";
+        excludeimage = true;
+      }
+    ];
+  };
+
 }
