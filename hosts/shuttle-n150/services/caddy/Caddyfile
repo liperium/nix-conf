@@ -67,7 +67,10 @@ jellyseerr.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:5055
 }
 pdf.mur.mattysgervais.com {
-    import public_service 127.0.0.1:6666
+    reverse_proxy 127.0.0.1:6666
+}
+stash.mur.mattysgervais.com {
+    reverse_proxy 127.0.0.1:9999
 }
 
 # ARR
