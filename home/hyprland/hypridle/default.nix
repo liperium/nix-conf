@@ -18,8 +18,8 @@
           on-resume = brightnessctl -r 
       }
       listener {
-        timeout = 600
-        on-timeout = systemctl suspend
+        timeout = 300
+        on-timeout = if ! playerctl -a status | grep -q "Playing"; then systemctl suspend; fi
       }
     '';
   };

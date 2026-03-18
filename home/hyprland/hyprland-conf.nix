@@ -192,7 +192,8 @@ in
         "systemctl --user start hyprpolkitagent"
         "systemctl --user start quickshell"
         "systemctl --user start hypridle"
-        "[workspace 3 silent] sleep 1.0 && discord"
+        "[workspace 3 silent] sleep 1.0 && discord --start-minimized"
+        "tailscale systray"
         "nextcloud"
       ];
 
