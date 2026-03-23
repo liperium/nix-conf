@@ -16,6 +16,7 @@ in
     # "${modDir}/docker.nix"
 
     "${modDir}/wireguard.nix"
+    "${currentDir}/wireguard.nix"
 
     # Desktop env
     #"${modEnvironments}/gnome"
