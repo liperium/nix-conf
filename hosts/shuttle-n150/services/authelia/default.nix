@@ -86,7 +86,8 @@
 
   sops.secrets."authelia/users" = {
     sopsFile = ../../../../modules/secrets/authelia-users.yml;
-    format = "binary";
+    format = "yaml";
+    key = "content";
     owner = "authelia-main";
   };
   sops.secrets."authelia/jwt" = {
