@@ -16,7 +16,35 @@
 (public_service) {
     import cloudflare_security
     reverse_proxy {args.0}
-    
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
+
+(authelia) {
+    forward_auth 127.0.0.1:9091 {
+        uri /api/authz/forward-auth
+        copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
+    }
+}
+
+# Authelia portal
+auth.mattysgervais.com {
+    import cloudflare_security
+    reverse_proxy 127.0.0.1:9091
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
+
+# Protected by Authelia
+mtg.mattysgervais.com {
+    import cloudflare_security
+    import authelia
+    reverse_proxy 127.0.0.1:8501
+
     tls {
         dns cloudflare {env.CF_API_TOKEN}
     }
@@ -41,7 +69,23 @@ fusion.mattysgervais.com {
 }
 
 convertx.mattysgervais.com {
-    import public_service 127.0.0.1:3020
+    import cloudflare_security
+    import authelia
+    reverse_proxy 127.0.0.1:3000
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
+
+pdf.mattysgervais.com {
+    import cloudflare_security
+    import authelia
+    reverse_proxy 127.0.0.1:6666
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
 }
 
 # Catch-all for internal subdomain
@@ -58,7 +102,7 @@ convertx.mattysgervais.com {
 
 # Internal services - one line with IP ranges specified
 adguard.mur.mattysgervais.com {
-    reverse_proxy 127.0.0.1:3000
+    reverse_proxy 127.0.0.1:3053
 }
 udockge.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:5001

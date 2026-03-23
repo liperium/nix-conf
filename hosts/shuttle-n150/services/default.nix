@@ -8,11 +8,14 @@
     ./jellyfin
     ./qbittorrent
     ./homer
+    ./mtg-scraper
+    ./authelia
   ];
   services.adguardhome = {
     enable = true;
+    port = 3053;
     settings = null;
-  }; # 3000
+  };
   # Home Assistant
   services.home-assistant = {
     enable = true;
@@ -84,6 +87,23 @@
   services.stirling-pdf = {
     enable = true;
     environment = {SERVER_PORT=6666;};
+  };
+
+  # ConvertX (hardcoded to port 3000)
+  systemd.services.convertx = {
+    description = "ConvertX file converter";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    environment = {
+      ALLOW_UNAUTHENTICATED = "true";
+    };
+    serviceConfig = {
+      ExecStart = "${pkgs.unstable.convertx}/bin/convertx";
+      Restart = "on-failure";
+      DynamicUser = true;
+      StateDirectory = "convertx";
+      WorkingDirectory = "/var/lib/convertx";
+    };
   };
 
   # Samba - need to setup a user for the private share
