@@ -118,8 +118,8 @@ in
       bind = [
         ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
         ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
-        ", XF86AudioMicMute, exec, noctalia-shell ipc call volume muteOutput"
-        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteInput"
+        ", XF86AudioMicMute, exec, noctalia-shell ipc call volume muteInput"
+        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput"
         ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
         ", XF86AudioPause, exec, noctalia-shell ipc call media playPause"
         ", XF86AudioNext, exec, noctalia-shell ipc call media next"
