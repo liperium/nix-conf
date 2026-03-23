@@ -17,18 +17,6 @@
 
   home.packages = with pkgs;[
     unstable.quickshell
-    # # DankMaterialShell
-    # matugen
-    # wl-clipboard
-    # cliphist
-    # cava
-    # material-symbols
-
-    # bluez
-    # pulseaudio
-    # ddcutil
-    # brightnessctl
-    # kdePackages.qtdeclarative #autocomplete
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 

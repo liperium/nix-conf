@@ -26,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     mtg-card-scraper = {
-      url = "git+file:///home/liperium/Downloads/mtg-card-scraper";
+      url = "git+ssh://git@github.com/liperium/mtg-card-scraper";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };

@@ -116,14 +116,14 @@ in
 
 
       bind = [
-        ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
-        ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
-        ", XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-        ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        ", XF86AudioPause, exec, playerctl play-pause"
-        ", XF86AudioNext, exec, playerctl next"
-        ", XF86AudioPrev, exec, playerctl previous"
+        ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
+        ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
+        ", XF86AudioMicMute, exec, noctalia-shell ipc call volume muteOutput"
+        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteInput"
+        ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
+        ", XF86AudioPause, exec, noctalia-shell ipc call media playPause"
+        ", XF86AudioNext, exec, noctalia-shell ipc call media next"
+        ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
         ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
         ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
 
