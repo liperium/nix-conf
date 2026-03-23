@@ -19,10 +19,6 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
-    #Theming
-    #papirus-icon-theme
-    #papirus-folders
-
     #File viewers
     vlc
     kdePackages.gwenview
@@ -31,43 +27,27 @@
     brave
     thunderbird
     qalculate-qt
-
-    # (vesktop.overrideAttrs (finalAttrs: previousAttrs: {
-    #   desktopItems = [
-    #     ((builtins.elemAt previousAttrs.desktopItems 0).override { icon = "discord"; })
-    #   ];
-    # }))
     discord
-
     deluge-gtk
-    #obsidian
-    #bitwarden
-
-    #Media-Streams
-    #obs-studio declared with plugings lower
-    chatterino2
 
     #Creative
     gimp
-    kdePackages.kate
-    krita
+
+    # krita
 
     #Misc
     nextcloud-client
 
-    # Office
-    onlyoffice-desktopeditors
-    zoom-us
   ];
 
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [
-      obs-tuna
-      obs-backgroundremoval
-      obs-vaapi
-    ];
-  };
+  # programs.obs-studio = {
+  #   enable = true;
+  #   plugins = with pkgs.obs-studio-plugins; [
+  #     obs-tuna
+  #     obs-backgroundremoval
+  #     obs-vaapi
+  #   ];
+  # };
 
   dconf.enable = true;
   catppuccin = {

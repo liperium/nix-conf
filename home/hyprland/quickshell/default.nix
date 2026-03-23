@@ -17,26 +17,27 @@
 
   home.packages = with pkgs;[
     unstable.quickshell
-    # DankMaterialShell
-    matugen
-    wl-clipboard
-    cliphist
-    cava
-    material-symbols
+    # # DankMaterialShell
+    # matugen
+    # wl-clipboard
+    # cliphist
+    # cava
+    # material-symbols
 
-    bluez
-    pulseaudio
-    ddcutil
-    brightnessctl
-    kdePackages.qtdeclarative #autocomplete
+    # bluez
+    # pulseaudio
+    # ddcutil
+    # brightnessctl
+    # kdePackages.qtdeclarative #autocomplete
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   systemd.user.services.quickshell = {
     Unit = {
-      Description = "Quickshell liperium";
+      Description = "Noctalia-Shell autostart";
     };
     Service = {
-      ExecStart = "${pkgs.unstable.quickshell}/bin/quickshell -c dms";
+      ExecStart = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia-shell";
     };
   };
 }

@@ -9,11 +9,11 @@
     packages = with pkgs; [
       # General
       vscode
-      github-desktop
+      #github-desktop
 
       # Other IDEs
       #godot_4
-      blender
+      # blender
 
       # Languages - All the time on system - MAKE A SHELL DAMMIT
       #zig

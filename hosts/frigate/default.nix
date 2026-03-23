@@ -27,6 +27,9 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   boot.initrd.luks.devices."luks-2a9c4cee-d3a3-41ce-9d46-f48a7cf2d703".device = "/dev/disk/by-uuid/2a9c4cee-d3a3-41ce-9d46-f48a7cf2d703";
   boot = {
     plymouth = {
@@ -60,7 +63,7 @@ in
   #hardware.sensor.iio.enable = true;
   # GDM
   #services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
   #services.desktopManager.gnome.enable = true;
   # Autologin
   services.displayManager.autoLogin.enable = true;
@@ -83,9 +86,8 @@ in
       bluez
       bluez-tools
 
-      stable.logseq
       easyeffects
-      cockatrice
+      #cockatrice
       #rustdesk
     ];
 
@@ -93,6 +95,11 @@ in
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
+  # Unblock bluetooth at boot but keep it powered off
+  # This allows software like noctalia-shell to control it on demand
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{soft}="0"
+  '';
   # Panel
   services.blueman.enable = true;
   services.upower.enable = true;

@@ -13,7 +13,7 @@ in
 
     # Additional System
     "${modDir}/hardware/ssd.nix"
-    "${modDir}/docker.nix"
+    # "${modDir}/docker.nix"
 
     "${modDir}/wireguard.nix"
 
@@ -24,7 +24,7 @@ in
     # Basic apps
     "${modDesktop}"
     #"${modDesktop}/virt.nix"
-    "${modDesktop}/gaming"
+    # "${modDesktop}/gaming"
 
     # Desktop Additionals
     "${modDev}"

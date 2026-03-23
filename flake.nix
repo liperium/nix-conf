@@ -15,6 +15,20 @@
     catppuccin.url = "github:catppuccin/nix";
     #chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+  };
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
   };
 
   outputs =

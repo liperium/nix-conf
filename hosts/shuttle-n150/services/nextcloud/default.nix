@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 {
   # Nextcloud config
- 
+
   # OCC commands : sudo -i nextcloud-occ YOUR_OCC_COMMAND
-  services.nginx.virtualHosts."localhost".listen = [ { addr = "127.0.0.1"; port = 8001; } ];
+  services.nginx.virtualHosts."localhost".listen = [{ addr = "127.0.0.1"; port = 8001; }];
   services.nextcloud = {
     enable = true;
     configureRedis = true;
@@ -30,18 +30,19 @@
       overwriteprotocol = "https"; # Needed to understand comm between proxy
       maxChunkSize = 100000000;
     };
-    phpOptions =  { # https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/big_file_upload_configuration.html
-      "post_max_size"=lib.mkForce "16G";
-      "upload_max_filesize"=lib.mkForce"16G";
-      "max_input_time"="3600";
-      "max_execution_time"="3600";
+    phpOptions = {
+      # https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/big_file_upload_configuration.html
+      "post_max_size" = lib.mkForce "16G";
+      "upload_max_filesize" = lib.mkForce "16G";
+      "max_input_time" = "3600";
+      "max_execution_time" = "3600";
     };
     caching.redis = true;
     settings.enabledPreviewProviders = [
       "OC\\Preview\\BMP"
       "OC\\Preview\\GIF"
       "OC\\Preview\\JPEG"
-      "OC\\Preview\\Krita"
+      # "OC\\Preview\\Krita"
       "OC\\Preview\\MarkDown"
       "OC\\Preview\\MP3"
       "OC\\Preview\\OpenDocument"
