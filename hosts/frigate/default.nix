@@ -94,12 +94,7 @@ in
   services.power-profiles-daemon.enable = true;
   # Bluetooth
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = false;
-  # Unblock bluetooth at boot but keep it powered off
-  # This allows software like noctalia-shell to control it on demand
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="rfkill", ATTR{type}=="bluetooth", ATTR{soft}="0"
-  '';
+  hardware.bluetooth.powerOnBoot = true;
   # Panel
   services.blueman.enable = true;
   services.upower.enable = true;

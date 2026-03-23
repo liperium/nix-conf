@@ -17,6 +17,7 @@
   home.homeDirectory = "/home/liperium";
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [
     #File viewers
@@ -64,6 +65,7 @@
   };
   gtk = {
     enable = true;
+    gtk4.theme = null;
     #iconTheme = {
     #package = pkgs.papirus-icon-theme
     #;

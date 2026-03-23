@@ -111,7 +111,6 @@ in
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
         force_default_wallpaper = 0;
-        new_window_takes_over_fullscreen = 2;
         focus_on_activate = true;
       };
 
@@ -194,21 +193,20 @@ in
         "systemctl --user start hypridle"
         "[workspace 3 silent] sleep 1.0 && discord --start-minimized"
         "tailscale systray"
-        "nextcloud"
       ];
 
       workspace = assignWorkspaces primaryMonitor secondaryMonitor;
 
-      windowrulev2 = [
-        #"stayfocused, title:^()$,class:^(steam)$"
-        #"float,class:^(pavucontrol)$"
-        #"move 55% 42,class:^(pavucontrol)$"
-        #"noanim,class:^(pavucontrol)$"
-        #"size 45% 50%,class:^(pavucontrol)$"
-        "float,title:(Nextcloud)"
-        "move 65% 30px,title:(Nextcloud)"
-        "noanim,title:(Nextcloud)"
-        "size 35% 30%,title:(Nextcloud)"
+      windowrule = [
+        #"stay_focused on, match:title ^()$, match:class ^(steam)$"
+        #"float on, match:class ^(pavucontrol)$"
+        #"move 55% 42, match:class ^(pavucontrol)$"
+        #"no_anim on, match:class ^(pavucontrol)$"
+        #"size 45% 50%, match:class ^(pavucontrol)$"
+        "float on, match:title (Nextcloud)"
+        "move 65% 30px, match:title (Nextcloud)"
+        "no_anim on, match:title (Nextcloud)"
+        "size 35% 30%, match:title (Nextcloud)"
       ];
     };
   };

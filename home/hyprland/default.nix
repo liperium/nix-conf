@@ -11,6 +11,13 @@
   xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;
   #xdg.configFile."hypr/scripts/waybar/start.sh".source = ./scripts/waybar/start.sh;
 
+  # Set foot as the terminal for KDE apps (Dolphin "Open in Terminal")
+  xdg.configFile."kdeglobals".text = ''
+    [General]
+    TerminalApplication=foot
+    TerminalService=foot.desktop
+  '';
+
   home.packages = with pkgs; [
     # For audio keyboard shortcuts (pactl is included in pulseaudio)
     playerctl # For play/pause/next/previous
