@@ -59,10 +59,13 @@
   # ARR
   services.prowlarr.enable = true; # 9696
   services.sonarr.enable = true; # 8989
+  services.sonarr.group = "users";
   services.radarr.enable = true; # 7878
+  services.radarr.group = "users";
   services.flaresolverr.enable = true; # 8191
   services.jellyseerr.enable = true; # 5055
   services.bazarr.enable = true; # 6767
+  services.bazarr.group = "users";
 
   services.immich = {
     enable = true;

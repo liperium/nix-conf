@@ -7,9 +7,9 @@
   services.nextcloud = {
     enable = true;
     configureRedis = true;
-    package = pkgs.nextcloud31;
+    package = pkgs.nextcloud33;
     extraApps = {
-      inherit (pkgs.nextcloud31Packages.apps)
+      inherit (pkgs.nextcloud33Packages.apps)
         mail
         calendar
         tasks
