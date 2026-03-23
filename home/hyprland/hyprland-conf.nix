@@ -164,13 +164,11 @@ in
         "$mainMod, Q, exec, foot"
         "$mainMod, E, exec, XDG_CURRENT_DESKTOP=kde dolphin"
 
-        # Rofi menu
+        # Start Menu
         # "$mainMod, S, global, caelestia:launcher" example caelestia ipc bus
-        "$mainMod, S, exec, rofi -modes \"run,drun,emoji\" -show drun -show-icons"
-        "$mainMod SHIFT, S, exec, killall rofi"
-        "$mainMod, B, exec, rofi-bluetooth"
-        "$mainMod, N, exec, rofi-network-manager"
-
+        # "$mainMod, S, exec, rofi -modes \"run,drun,emoji\" -show drun -show-icons"
+        # "$mainMod SHIFT, S, exec, killall rofi"
+        "$mainMod, S, exec, noctalia-shell ipc call launcher toggle"
         # Fullscreen
         "$mainMod, F, fullscreen"
         "$mainMod, Tab, cyclenext"
