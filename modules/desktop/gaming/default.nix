@@ -16,8 +16,6 @@ in
       # Tools
       mangohud
       goverlay
-      #protonup-rs
-      # 
       # Wine
       wineWowPackages.waylandFull
       winetricks
@@ -34,7 +32,6 @@ in
       prismlauncher
       temurin-bin-8
       temurin-bin-17
-      wowup-cf
       starsector
       cockatrice
     ];

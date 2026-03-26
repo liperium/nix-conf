@@ -4,13 +4,6 @@
 , inputs
 , ...
 }:
-let
-  regreet-theme =
-    (pkgs.catppuccin-gtk.override {
-      variant = "mocha";
-      accents = [ "mauve" ];
-    });
-in
 {
 
   time.timeZone = lib.mkForce "America/Montreal";
