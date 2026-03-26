@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./modules.nix
       ./services
+      ./security.nix
     ];
 
   # Bootloader.
@@ -42,8 +43,6 @@
 
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "yes";
-
-  networking.firewall.enable = false;
 
   # ZFS 
   # basics
