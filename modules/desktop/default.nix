@@ -11,6 +11,7 @@
     variant = "alt-intl";
   };
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" ];
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   users.users.liperium = {
     packages = with pkgs; [
