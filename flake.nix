@@ -166,7 +166,9 @@
           modules = [
             ./hosts/shuttle-n150
             vpn-confinement.nixosModules.default
-          ] ++ globalModules;
+          ]
+          ++ home-manager-liperium-root { hyprMonitor = { }; }
+          ++ globalModules;
         };
       };
     };
