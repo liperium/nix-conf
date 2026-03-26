@@ -64,7 +64,7 @@
         }
       ];
       # Imports the RELEVANT home manager module to the system
-      home-manager-liperium-root = { hyprMonitor, userImports ? [ "./home/console.nix" ] }: [
+      home-manager-liperium-root = { hyprMonitor, userImports ? [ ./home/console.nix ] }: [
         home-manager.nixosModules.home-manager
         {
           home-manager = {
