@@ -142,8 +142,15 @@ kuma.mur.mattysgervais.com {
 	reverse_proxy 127.0.0.1:3001
 }
 homepage.mur.mattysgervais.com {
-	root * /var/lib/homer
-	file_server
+	handle /assets/config.yml {
+		root * /var/lib
+		rewrite * /homer-config.yml
+		file_server
+	}
+	handle {
+		root * /var/lib/homer
+		file_server
+	}
 }
 hass.mur.mattysgervais.com:80 {
 	reverse_proxy 127.0.0.1:8123
