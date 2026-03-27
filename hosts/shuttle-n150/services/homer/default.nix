@@ -1,4 +1,4 @@
-{pkgs,config,lib,...}:
+{ pkgs, config, lib, ... }:
 let
   homerConfig = pkgs.writeText "config.yml" ''
     title: "Dashboard"
@@ -11,34 +11,6 @@ let
     theme: default
     defaults:
       colorTheme: dark
-    colors:
-      light: # Catppuccin Latte
-        highlight-primary: "#ccd0da"     # Surface0 (header bg)
-        highlight-secondary: "#bcc0cc"   # Surface1 (secondary bg)
-        highlight-hover: "#acb0be"       # Surface2 (hover)
-        background: "#eff1f5"            # Base
-        card-background: "#e6e9ef"       # Mantle
-        text: "#4c4f69"                  # Text
-        text-header: "#eff1f5"           # Base
-        text-title: "#4c4f69"            # Text
-        text-subtitle: "#5c5f77"         # Subtext1
-        card-shadow: rgba(220, 224, 232, 0.5)
-        link: "#1e66f5"                  # Blue
-        link-hover: "#04a5e5"            # Sky
-      dark: # Catppuccin Mocha
-        highlight-primary: "#313244"     # Surface0 (header bg)
-        highlight-secondary: "#45475a"   # Surface1 (secondary bg)
-        highlight-hover: "#585b70"       # Surface2 (hover)
-        background: "#1e1e2e"            # Base
-        card-background: "#181825"       # Mantle
-        text: "#cdd6f4"                  # Text
-        text-header: "#cdd6f4"           # Text
-        text-title: "#cdd6f4"            # Text
-        text-subtitle: "#a6adc8"         # Subtext1
-        card-shadow: rgba(17, 17, 27, 0.7)
-        link: "#89b4fa"                  # Blue
-        link-hover: "#89dceb"            # Sky
-
     links:
       - name: "GitHub"
         icon: "fab fa-github"
@@ -49,11 +21,33 @@ let
       - name: "Public"
         icon: "fas fa-globe"
         items:
+
+          - name: "Jellyfin"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/jellyfin.png"
+            subtitle: "Media server"
+            tag: "media"
+            url: "https://jellyfin.mattysgervais.com"
+            target: "_blank"
+            
           - name: "Nextcloud"
             logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nextcloud.png"
             subtitle: "Cloud storage"
             tag: "storage"
             url: "https://nextcloud.mattysgervais.com"
+            target: "_blank"
+
+          - name: "ConvertX"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/convertx.png"
+            subtitle: "File converter"
+            tag: "tools"
+            url: "https://convertx.mattysgervais.com"
+            target: "_blank"
+
+          - name: "PDF Tools"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/stirling-pdf.png"
+            subtitle: "PDF utilities"
+            tag: "tools"
+            url: "https://pdf.mattysgervais.com"
             target: "_blank"
 
           - name: "Immich"
@@ -63,23 +57,25 @@ let
             url: "https://immich.mattysgervais.com"
             target: "_blank"
 
-          - name: "Jellyfin"
-            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/jellyfin.png"
-            subtitle: "Media server"
-            tag: "media"
-            url: "https://jellyfin.mattysgervais.com"
-            target: "_blank"
-
           - name: "Fusion"
-            subtitle: "Fusion"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/linkace.png"
+            subtitle: "Self-Hosted Construct3"
             tag: "app"
             url: "https://fusion.mattysgervais.com"
             target: "_blank"
+          
+          - name: "MTG Scraper"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/magic-the-gathering.png"
+            subtitle: "Card prices"
+            tag: "app"
+            url: "https://mtg.mattysgervais.com"
+            target: "_blank"
 
-          - name: "ConvertX"
-            subtitle: "Converter"
-            tag: "tools"
-            url: "https://convertx.mattysgervais.com"
+          - name: "Authelia"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/authelia.png"
+            subtitle: "Authentication"
+            tag: "auth"
+            url: "https://auth.mattysgervais.com"
             target: "_blank"
 
       - name: "Media"
@@ -165,12 +161,6 @@ let
             url: "http://hass.mur.mattysgervais.com"
             target: "_blank"
 
-          - name: "PDF Tools"
-            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/stirling-pdf.png"
-            subtitle: "PDF utilities"
-            tag: "tools"
-            url: "https://pdf.mur.mattysgervais.com"
-            target: "_blank"
   '';
 in
 {
