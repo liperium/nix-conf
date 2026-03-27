@@ -78,7 +78,7 @@ let
             url: "https://auth.mattysgervais.com"
             target: "_blank"
 
-      - name: "Media"
+      - name: "Arr*"
         icon: "fas fa-video"
         items:
           - name: "Jellyseerr"
@@ -100,13 +100,6 @@ let
             subtitle: "Movies"
             tag: "arr"
             url: "https://radarr.mur.mattysgervais.com"
-            target: "_blank"
-
-          - name: "Lidarr"
-            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/lidarr.png"
-            subtitle: "Music"
-            tag: "arr"
-            url: "https://lidarr.mur.mattysgervais.com"
             target: "_blank"
 
           - name: "Prowlarr"
