@@ -112,6 +112,7 @@ in
         disable_splash_rendering = true;
         force_default_wallpaper = 0;
         focus_on_activate = true;
+        disable_watchdog_warning = 1;
       };
 
 

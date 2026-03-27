@@ -74,7 +74,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.unstable.hyprland}/bin/Hyprland --config /etc/greetd-regreet-hyprland";
+        command = "${pkgs.unstable.hyprland}/bin/start-hyprland --config /etc/greetd-regreet-hyprland";
         user = "greeter";
       };
     };
