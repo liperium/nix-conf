@@ -65,6 +65,7 @@ in
         misc {
             disable_hyprland_logo = true
             disable_splash_rendering = true
+            disable_watchdog_warning = true
         }
       '';
       mode = "0444";
@@ -74,7 +75,7 @@ in
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.unstable.hyprland}/bin/start-hyprland --config /etc/greetd-regreet-hyprland";
+        command = "${pkgs.unstable.hyprland}/bin/Hyprland --config /etc/greetd-regreet-hyprland";
         user = "greeter";
       };
     };

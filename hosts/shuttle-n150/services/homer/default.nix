@@ -29,6 +29,13 @@ let
             url: "https://jellyfin.mattysgervais.com"
             target: "_blank"
             
+          - name: "Seerr"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/jellyseerr.png"
+            subtitle: "Requests"
+            tag: "media"
+            url: "https://seerr.mattysgervais.com"
+            target: "_blank"            
+
           - name: "Nextcloud"
             logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nextcloud.png"
             subtitle: "Cloud storage"
@@ -81,13 +88,6 @@ let
       - name: "Arr*"
         icon: "fas fa-video"
         items:
-          - name: "Jellyseerr"
-            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/jellyseerr.png"
-            subtitle: "Requests"
-            tag: "media"
-            url: "https://jellyseerr.mur.mattysgervais.com"
-            target: "_blank"
-
           - name: "Sonarr"
             logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/sonarr.png"
             subtitle: "TV Shows"

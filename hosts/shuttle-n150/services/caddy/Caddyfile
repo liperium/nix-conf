@@ -53,8 +53,6 @@ mtg.mattysgervais.com {
 # Public services - just one line per service!
 nextcloud.mattysgervais.com {
     reverse_proxy 127.0.0.1:8001
-    #import public_service 127.0.0.1:8001
-    #client_max_body_size 0
 }
 
 immich.mattysgervais.com {
@@ -64,28 +62,20 @@ immich.mattysgervais.com {
 jellyfin.mattysgervais.com {
     import public_service 127.0.0.1:8096
 }
+seerr.mattysgervais.com {
+    import public_service 127.0.0.1:5055
+}
 fusion.mattysgervais.com {
     import public_service 127.0.0.1:3041
 }
-
 convertx.mattysgervais.com {
-    import cloudflare_security
     import authelia
-    reverse_proxy 127.0.0.1:3000
-
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-    }
+    import public_service 127.0.0.1:3000
 }
 
 pdf.mattysgervais.com {
-    import cloudflare_security
     import authelia
-    reverse_proxy 127.0.0.1:6666
-
-    tls {
-        dns cloudflare {env.CF_API_TOKEN}
-    }
+    import public_service 127.0.0.1:6666
 }
 
 # Catch-all for internal subdomain
@@ -106,9 +96,6 @@ adguard.mur.mattysgervais.com {
 }
 udockge.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:5001
-}
-jellyseerr.mur.mattysgervais.com {
-    reverse_proxy 127.0.0.1:5055
 }
 pdf.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:6666
