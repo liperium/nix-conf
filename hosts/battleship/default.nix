@@ -52,7 +52,7 @@ in
     ];
 
     loader = {
-      timeout = 3;
+      timeout = 5;
       grub.theme = "${pkgs.catppuccin-grub}";
     };
   };
