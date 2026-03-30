@@ -29,6 +29,10 @@
       url = "git+ssh://git@github.com/liperium/mtg-card-scraper";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   nixConfig = {
     extra-substituters = [
