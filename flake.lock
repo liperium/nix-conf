@@ -64,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774564205,
-        "narHash": "sha256-D2snsULqkcSWbQ9mUw+JRr+wE1oTXymIYGW87MNvpv8=",
+        "lastModified": 1774801096,
+        "narHash": "sha256-jCQKbsZ4MMEEziIGv4q6rcAS/xgniu4SWFbOw/q/D64=",
         "ref": "refs/heads/master",
-        "rev": "03cfd3cb41ef8e6d65bbf2d8de75c9bec64ca3d2",
-        "revCount": 9,
+        "rev": "6deae1493fdc3e3475c28d47374df3f22cc62c34",
+        "revCount": 10,
         "type": "git",
         "url": "ssh://git@github.com/liperium/mtg-card-scraper"
       },
