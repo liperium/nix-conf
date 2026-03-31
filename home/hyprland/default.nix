@@ -3,7 +3,7 @@
 {
   imports = [
     ./hyprland-conf.nix
-    ./rofi
+    #./rofi
     ./quickshell
     ./hypridle
   ];
@@ -20,7 +20,7 @@
 
   home.packages = with pkgs; [
     # For audio keyboard shortcuts (pactl is included in pulseaudio)
-    playerctl # For play/pause/next/previous
+    #playerctl # For play/pause/next/previous
     brightnessctl
     # Theming
     libsForQt5.qtstyleplugin-kvantum
