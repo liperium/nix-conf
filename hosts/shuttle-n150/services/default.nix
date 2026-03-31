@@ -10,6 +10,7 @@
     ./homer
     ./mtg-scraper
     ./authelia
+    ./ml-production-website
   ];
   services.adguardhome = {
     enable = true;

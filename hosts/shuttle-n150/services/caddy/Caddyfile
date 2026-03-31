@@ -78,6 +78,18 @@ pdf.mattysgervais.com {
     import public_service 127.0.0.1:6666
 }
 
+# ML Production website
+ml-production.com {
+    import cloudflare_security
+    root * /var/lib/ml-production-website
+    file_server
+    try_files {path} /index.html
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
+
 # Catch-all for internal subdomain
 *.mur.mattysgervais.com {
 	# Basic security
