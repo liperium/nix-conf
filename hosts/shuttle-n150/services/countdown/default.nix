@@ -175,8 +175,8 @@ let
             <div class="countdown-display" id="display">00:00</div>
 
             <div class="controls">
-                <button class="btn-primary" onclick="startCountdown(15)">15 min</button>
-                <button class="btn-primary" onclick="startCountdown(5)">5 min</button>
+                <button class="btn-primary" onclick="startCountdown(20)">20 min</button>
+                <button class="btn-primary" onclick="startCountdown(10)">10 min</button>
 
                 <div class="divider"></div>
 
