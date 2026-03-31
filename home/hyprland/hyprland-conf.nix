@@ -11,7 +11,7 @@ let
   # Helper function to assign workspaces to monitors
   assignWorkspaces = primary: secondary: [
     "1, persistent:true, default:true, monitor:${primary}"
-    "2, on-created-empty:[tiled] firefox, monitor:${secondary}"
+    "2, on-created-empty:[tiled] zen, monitor:${secondary}"
     "3, on-created-empty:[tiled] discord, monitor:${secondary}"
     "4, on-created-empty:[tiled] kitty hx /home/liperium/nix-conf, monitor:${primary}"
     "5, on-created-empty:[tiled] steam, monitor:${primary}"
