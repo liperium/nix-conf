@@ -12,8 +12,6 @@
     packages = with pkgs; [
       zotero
       #teams-for-linux
-      claude-code
-
       # Writing
       texliveFull
       tex-fmt
