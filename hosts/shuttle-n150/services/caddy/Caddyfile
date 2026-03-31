@@ -65,6 +65,15 @@ jellyfin.mattysgervais.com {
 seerr.mattysgervais.com {
     import public_service 127.0.0.1:5055
 }
+countdown.mattysgervais.com {
+    import cloudflare_security
+    root * /var/lib/countdown
+    file_server
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
 fusion.mattysgervais.com {
     import public_service 127.0.0.1:3041
 }

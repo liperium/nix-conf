@@ -11,6 +11,7 @@
     ./mtg-scraper
     ./authelia
     ./ml-production-website
+    ./countdown
   ];
   services.adguardhome = {
     enable = true;
