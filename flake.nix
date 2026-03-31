@@ -1,5 +1,6 @@
 {
   inputs = {
+    # Nix basics
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -12,13 +13,19 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Desktop/Customizations
     catppuccin.url = "github:catppuccin/nix";
-    #chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Server stuff
+    vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
     mtg-card-scraper = {
       url = "git+ssh://git@github.com/liperium/mtg-card-scraper";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -26,10 +33,6 @@
     ml-production-website = {
       url = "git+ssh://git@github.com/liperium/ml-production-website";
       inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   nixConfig = {
