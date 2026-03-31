@@ -17,6 +17,10 @@
       # Writing
       texliveFull
       tex-fmt
+
+
+      # cegep
+      gh
     ];
     extraGroups = [
       "adbusers"
