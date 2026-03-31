@@ -19,6 +19,7 @@
   home.packages = with pkgs; [
     fastfetch
     dconf
+    claude-code
     # needed for ark archives
     p7zip
     #rar

@@ -65,6 +65,15 @@ jellyfin.mattysgervais.com {
 seerr.mattysgervais.com {
     import public_service 127.0.0.1:5055
 }
+countdown.mattysgervais.com {
+    import cloudflare_security
+    root * /var/lib/countdown
+    file_server
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
+}
 fusion.mattysgervais.com {
     import public_service 127.0.0.1:3041
 }
@@ -76,6 +85,18 @@ convertx.mattysgervais.com {
 pdf.mattysgervais.com {
     import authelia
     import public_service 127.0.0.1:6666
+}
+
+# ML Production website
+ml-production.com {
+    import cloudflare_security
+    root * /var/lib/ml-production-website
+    file_server
+    try_files {path} /index.html
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
 }
 
 # Catch-all for internal subdomain
