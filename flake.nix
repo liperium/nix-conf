@@ -18,12 +18,6 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      inputs.noctalia-qs.follows = "noctalia-qs";
-    };
-
-    noctalia-qs = {
-      url = "github:noctalia-dev/noctalia-qs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     mtg-card-scraper = {
       url = "git+ssh://git@github.com/liperium/mtg-card-scraper";
@@ -81,6 +75,7 @@
             users.liperium = {
               imports = userImports ++ [
                 catppuccin.homeModules.catppuccin
+                inputs.noctalia.homeModules.default
               ];
             };
             users.root = import ./home/root.nix;
