@@ -44,12 +44,13 @@
     grim
     slurp
     wl-clipboard
-    tesseract4
+    (pkgs.tesseract4.override { enableLanguages = [ "eng" "fra" "spa" ]; })
     imagemagick
     zbar
     translate-shell
     wf-recorder
   ];
+
 
 
   systemd.user.services.quickshell = {
