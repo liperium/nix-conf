@@ -82,11 +82,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774921573,
-        "narHash": "sha256-nZQ81MQC01NmVES8BVioyEJC+wHpUzx6jCGbl2p6BPU=",
+        "lastModified": 1775490190,
+        "narHash": "sha256-tR4/Uy0ZEhbi7NMGTMyrXw/Gh4oGldzKIVcH8ewiWfY=",
         "ref": "refs/heads/main",
-        "rev": "b7965d849053e01349c0fa256e0e6011a2157ec7",
-        "revCount": 9,
+        "rev": "549ae7371b8eec94fe4c98ab3c7f16ea1bae2cc2",
+        "revCount": 10,
         "type": "git",
         "url": "ssh://git@github.com/liperium/ml-production-website"
       },
