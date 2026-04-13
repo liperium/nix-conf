@@ -36,12 +36,14 @@
     enable = true;
     # Git fetch on enter a git directory
     interactiveShellInit = ''
-      function __git_fetch_on_cd --on-variable PWD
-        if git rev-parse --is-inside-work-tree &>/dev/null
-          git fetch --all --quiet &
-        end
-      end
-    '';
+        function __git_fetch_on_cd --on-variable PWD
+        fish -c '
+          if git rev-parse --is-inside-work-tree &>/dev/null
+            git fetch --quiet
+            commandline -f repaint
+          end
+        ' &
+      end    '';
   };
   programs.oh-my-posh.enableFishIntegration = false;
 }

@@ -8,7 +8,7 @@
   users.users.liperium = {
     packages = with pkgs; [
       # General
-      vscode
+      vscode-fhs
       #github-desktop
 
       # Other IDEs
