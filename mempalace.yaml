@@ -1,0 +1,30 @@
+wing: nix_conf
+rooms:
+- name: hosts
+  description: Files from hosts/
+  keywords:
+  - hosts
+  - hosts
+- name: modules
+  description: Files from modules/
+  keywords:
+  - modules
+  - modules
+- name: templates
+  description: Files from templates/
+  keywords:
+  - templates
+  - templates
+- name: home
+  description: Files from home/
+  keywords:
+  - home
+  - home
+- name: design
+  description: Files from assets/
+  keywords:
+  - design
+  - assets
+- name: general
+  description: Files that don't fit other rooms
+  keywords: []
