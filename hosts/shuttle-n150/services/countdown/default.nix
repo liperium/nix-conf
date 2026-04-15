@@ -196,6 +196,28 @@ let
             let countdownInterval = null;
             let remainingSeconds = 0;
             let audioContext = null;
+            let wakeLock = null;
+
+            async function acquireWakeLock() {
+                if ('wakeLock' in navigator) {
+                    try {
+                        wakeLock = await navigator.wakeLock.request('screen');
+                    } catch (e) {}
+                }
+            }
+
+            function releaseWakeLock() {
+                if (wakeLock) {
+                    wakeLock.release();
+                    wakeLock = null;
+                }
+            }
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible' && countdownInterval !== null) {
+                    acquireWakeLock();
+                }
+            });
 
             function playAlarm() {
                 if (!audioContext) {
@@ -254,6 +276,7 @@ let
 
                 remainingSeconds = minutes * 60;
                 updateDisplay();
+                acquireWakeLock();
 
                 countdownInterval = setInterval(() => {
                     remainingSeconds--;
@@ -264,6 +287,7 @@ let
                         countdownInterval = null;
                         updateDisplay();
                         playAlarm();
+                        releaseWakeLock();
                     }
                 }, 1000);
             }
@@ -285,6 +309,7 @@ let
                     clearInterval(countdownInterval);
                     countdownInterval = null;
                 }
+                releaseWakeLock();
                 remainingSeconds = 0;
                 const display = document.getElementById('display');
                 display.textContent = '00:00';

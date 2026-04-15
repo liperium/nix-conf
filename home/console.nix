@@ -16,6 +16,7 @@ let
         --prefix PATH : ${pkgs.nodejs}/bin \
         --prefix PATH : ${pkgs.python3}/bin \
         --prefix LD_LIBRARY_PATH : ${pkgs.stdenv.cc.cc.lib}/lib \
+        --prefix LD_LIBRARY_PATH : ${pkgs.zlib}/lib \
         --run 'MEMPALACE_VENV="$HOME/.local/share/mempalace-env-${pkgs.python3.version}"; [ -f "$MEMPALACE_VENV/bin/mempalace" ] || (${pkgs.python3}/bin/python3 -m venv "$MEMPALACE_VENV" && "$MEMPALACE_VENV/bin/pip" install --quiet mempalace); export PATH="$MEMPALACE_VENV/bin:$PATH"'
     '';
   };
