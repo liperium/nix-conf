@@ -42,6 +42,13 @@
     kdePackages.dolphin
     # Extract here KDE
     kdePackages.ark
+    # Dolphin previews
+    kdePackages.ffmpegthumbs
+    icoutils
+    kdePackages.kdegraphics-thumbnailers
+    resvg
+    kdePackages.kimageformats
+
     # Edit mime
     kdePackages.kde-cli-tools
     #dolphin stuff
