@@ -28,6 +28,10 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dolphin-overlay = {
+      url = "github:rumboon/dolphin-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Server stuff
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
     mtg-card-scraper = {

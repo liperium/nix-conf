@@ -1,10 +1,13 @@
 { config
 , pkgs
 , lib
+, inputs
 , ...
 }:
 
 {
+  nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ];
+
   # Enable the X11 windowing system - Configure keymap in X11
   services.xserver.enable = true;
 
