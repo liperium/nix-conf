@@ -15,6 +15,7 @@
       # Writing
       texliveFull
       tex-fmt
+      onlyoffice-desktopeditors
 
 
       # cegep
