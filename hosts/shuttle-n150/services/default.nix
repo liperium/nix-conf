@@ -88,7 +88,7 @@
   # Stirling PDF
   services.stirling-pdf = {
     enable = true;
-    environment = {SERVER_PORT=6666;};
+    environment = { SERVER_PORT = 6666; };
   };
 
   # ConvertX (hardcoded to port 3000)
@@ -169,7 +169,20 @@
     after = [ "qvpn.service" ];
     requires = [ "qvpn.service" ];
   };
-  
+  services.pufferpanel = {
+    enable = true;
+    extraPackages = with pkgs; [ bash curl gawk gnutar gzip jdk21 ];
+    package = pkgs.buildFHSEnv {
+      name = "pufferpanel-fhs";
+      runScript = lib.getExe pkgs.pufferpanel;
+      targetPkgs = pkgs': with pkgs'; [ icu openssl zlib ];
+    };
+    environment = {
+      PUFFER_WEB_HOST = ":2556";
+      PUFFER_PANEL_REGISTRATIONENABLED = "false";
+    };
+  };
+
   services.stash = {
     enable = true;
     username = "liperium";

@@ -154,6 +154,13 @@ let
             url: "http://hass.mur.mattysgervais.com"
             target: "_blank"
 
+          - name: "PufferPanel"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/pufferpanel.png"
+            subtitle: "Game servers"
+            tag: "gaming"
+            url: "https://pp.mur.mattysgervais.com"
+            target: "_blank"
+
   '';
 in
 {
