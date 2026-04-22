@@ -1,0 +1,31 @@
+let
+  modDir = ../../modules;
+  modDesktop = ../../modules/desktop;
+  modDev = ../../modules/desktop/dev;
+  modEnvironments = ../../modules/desktop/environment;
+  currentDir = ./.;
+in
+{
+  imports = [
+    # Base
+    "${modDir}"
+
+    # Additional System
+    "${modDir}/hardware/btrfs.nix"
+    "${modDir}/hardware/ssd.nix"
+    "${modDir}/docker.nix"
+    "${modDir}/wireguard.nix"
+
+    # Desktop env
+    "${modEnvironments}/niri"
+
+    # Basic apps
+    "${modDesktop}"
+    "${modDesktop}/virt.nix"
+    "${modDesktop}/gaming/default.nix"
+
+    # Desktop Additionals
+    "${modDev}"
+    "${modDev}/universidad.nix"
+  ];
+}

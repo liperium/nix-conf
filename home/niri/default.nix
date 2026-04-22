@@ -1,22 +1,17 @@
-{ config
-, pkgs
-, hyprMonitor
-, inputs
-, ...
-}:
+{ pkgs, inputs, hyprMonitor, ... }:
 
 {
   imports = [
-    ./desktop.nix
-    ./console.nix
-    ./hyprland/default.nix
+    ./niri-conf.nix
+    ../dolphin.nix
+    ../noctalia.nix
+    ../hyprland/hypridle
   ];
 
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
-  };
+  home.packages = with pkgs; [
+    brightnessctl
+    unstable.niri
+  ];
 
   programs.foot = {
     enable = true;
@@ -30,5 +25,4 @@
       };
     };
   };
-
 }

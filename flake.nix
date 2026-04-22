@@ -163,6 +163,25 @@
           ++ globalModules;
         };
 
+        battleship-niri = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/battleship-niri
+          ]
+          ++ home-manager-liperium-root {
+            hyprMonitor = {
+              primary = "DP-1";
+              secondary = "DP-2";
+              settings = [];
+            };
+            userImports = [
+              ./home/niri.nix
+            ];
+          }
+          ++ globalModules;
+        };
+
         atlas = lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/atlas ]

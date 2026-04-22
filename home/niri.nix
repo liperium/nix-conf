@@ -9,7 +9,7 @@
   imports = [
     ./desktop.nix
     ./console.nix
-    ./hyprland/default.nix
+    ./niri/default.nix
   ];
 
   dconf.settings = {
@@ -17,7 +17,6 @@
       color-scheme = "prefer-dark";
     };
   };
-
   programs.foot = {
     enable = true;
     settings = {
@@ -30,5 +29,4 @@
       };
     };
   };
-
 }
