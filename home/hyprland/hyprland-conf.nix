@@ -7,6 +7,7 @@ let
   monitorSettings = hyprMonitor.settings or [
     "DP-1,preferred,auto,1"
     ",preferred,auto,1"
+    "DP-5, 1920x1080@60, auto, 1, transform, 1, mirror, DP-7, bitdepth, 10"
   ];
   # Helper function to assign workspaces to monitors
   assignWorkspaces = primary: secondary: [

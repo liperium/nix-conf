@@ -126,6 +126,7 @@
                 "eDP-1,preferred,0x0,1.175"
                 "DP-5,preferred,auto,1.0"
                 ",preferred,auto,1"
+                "desc:Dell Inc. DELL P2217H 668VC8633AEB, preferred, auto, 1, mirror, desc:Seiko Epson Corporation EPSON PJ 0x01010101"
               ];
             };
             userImports = [
