@@ -85,6 +85,13 @@
   };
   users.users.immich.extraGroups = [ "video" "render" ];
 
+  users.users.marie = {
+    isNormalUser = true;
+    group = "users";
+    home = "/zfs-data/marie";
+    createHome = true;
+  };
+
   # Stirling PDF
   services.stirling-pdf = {
     enable = true;
@@ -132,6 +139,18 @@
         "guest ok" = "no";
         "writeable" = "yes";
         "inherit permissions" = "yes";
+      };
+      marie = {
+        path = "/zfs-data/marie";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "writeable" = "yes";
+        "valid users" = "marie";
+        "force user" = "marie";
+        "force group" = "users";
+        "create mask" = "0664";
+        "directory mask" = "0775";
       };
     };
   };
