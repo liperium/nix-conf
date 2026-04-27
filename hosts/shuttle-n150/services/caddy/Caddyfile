@@ -164,6 +164,6 @@ homepage.mur.mattysgervais.com {
 		file_server
 	}
 }
-hass.mur.mattysgervais.com:80 {
-	reverse_proxy 127.0.0.1:8123
+hass.mattysgervais.com {
+    import public_service 127.0.0.1:8123
 }

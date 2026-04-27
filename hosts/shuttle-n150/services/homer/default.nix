@@ -151,7 +151,7 @@ let
             logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/home-assistant.png"
             subtitle: "Home automation"
             tag: "automation"
-            url: "http://hass.mur.mattysgervais.com"
+            url: "http://hass.mattysgervais.com"
             target: "_blank"
 
           - name: "PufferPanel"
