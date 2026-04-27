@@ -18,6 +18,13 @@
     port = 3053;
     settings = null;
   };
+  sops.secrets."hass-google-service-account.json" = {
+    sopsFile = ../../../modules/secrets/hass-google-service-account.json;
+    format = "binary";
+    path = "/var/lib/hass/SERVICE_ACCOUNT.json";
+    owner = "hass";
+  };
+
   # Home Assistant
   services.home-assistant = {
     enable = true;
