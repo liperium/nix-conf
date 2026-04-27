@@ -78,6 +78,8 @@
       unstable.code-cursor
 
       easyeffects
+
+      omnissa-horizon-client
       #cockatrice
       #rustdesk
     ];

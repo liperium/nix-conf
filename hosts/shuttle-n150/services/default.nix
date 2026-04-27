@@ -28,6 +28,7 @@
       "radio_browser"
       "tplink"
       "matter"
+      "google_assistant"
     ];
     config = {
       # Includes dependencies for a basic setup
