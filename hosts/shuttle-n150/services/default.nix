@@ -47,6 +47,20 @@
         use_x_forwarded_for = true;
         trusted_proxies = [ "192.168.0.15" "127.0.0.1" ];
       };
+      google_assistant = {
+        project_id = "hass-liperium";
+        service_account = "!include SERVICE_ACCOUNT.json";
+        report_state = true;
+        exposed_domains = [ "switch" "light" ];
+        #entity_config = {
+        #  light.h6008_2 = {
+        #    name = "Chevet";
+        #  };
+        #  switch.unnamed_kp125m = {
+        #    name = "Fairy Lights";
+        #  };
+        #};
+      };
     };
   };
   services.matter-server.enable = true; # Matter wattage plugs

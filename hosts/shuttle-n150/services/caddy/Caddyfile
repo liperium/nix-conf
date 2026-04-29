@@ -169,5 +169,5 @@ jeux.mattysgervais.com {
 }
 
 hass.mattysgervais.com {
-    import public_service 127.0.0.1:8123
+    reverse_proxy 127.0.0.1:8123
 }
