@@ -39,6 +39,27 @@
         "type": "github"
       }
     },
+    "construct3-hoster": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777473306,
+        "narHash": "sha256-8FFvCeMK4P80c0pw1Ca+tF7y2TexqJ5oPe2piY4HwZU=",
+        "ref": "refs/heads/main",
+        "rev": "9f91efb43370e97bcdeba26494c303faab1f2337",
+        "revCount": 12,
+        "type": "git",
+        "url": "ssh://git@github.com/liperium/construct3-hoster"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/liperium/construct3-hoster"
+      }
+    },
     "dolphin-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -100,6 +121,24 @@
         "systems": "systems_3"
       },
       "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_4": {
+      "inputs": {
+        "systems": "systems_4"
+      },
+      "locked": {
         "lastModified": 1731533236,
         "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
         "owner": "numtide",
@@ -135,7 +174,7 @@
     },
     "ml-production-website": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs-stable"
         ]
@@ -156,7 +195,7 @@
     },
     "mtg-card-scraper": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "nixpkgs-stable"
         ]
@@ -282,7 +321,7 @@
           "noctalia",
           "nixpkgs"
         ],
-        "systems": "systems_4",
+        "systems": "systems_5",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -303,6 +342,7 @@
       "inputs": {
         "catppuccin": "catppuccin",
         "claude-code": "claude-code",
+        "construct3-hoster": "construct3-hoster",
         "dolphin-overlay": "dolphin-overlay",
         "home-manager": "home-manager",
         "ml-production-website": "ml-production-website",
@@ -383,6 +423,21 @@
       }
     },
     "systems_4": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_5": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
