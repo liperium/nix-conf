@@ -63,10 +63,15 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gnome ];
-    config.common.default = "*";
+    xdgOpenUsePortal = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+    ];
+    config = {
+      common.default = [ "gnome" ];
+    };
   };
-
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
