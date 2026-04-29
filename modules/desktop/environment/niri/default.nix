@@ -31,7 +31,11 @@
     hyprpolkitagent
   ];
   xdg.portal.config.niri = {
-    "org.freedesktop.impl.portal.FileChooser" = [ "kde" ]; # or "kde" or "gtk"
+    "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+    "org.freedesktop.impl.portal.ScreenCast" = [ "niri" ];
+    "org.freedesktop.impl.portal.Screenshot" = [ "niri" ];
+    "org.freedesktop.impl.portal.RemoteDesktop" = [ "niri" ];
+    default = [ "gnome" ];
   };
 
   xdg.mime.enable = true;

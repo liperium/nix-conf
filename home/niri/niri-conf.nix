@@ -15,9 +15,14 @@
         }
         touchpad {
             natural-scroll
+            tap
         }
         warp-mouse-to-focus
         focus-follows-mouse
+    }
+
+    output "eDP-1" {
+        scale 1.5
     }
 
     output "DP-1" {

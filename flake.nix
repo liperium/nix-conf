@@ -163,6 +163,22 @@
           ++ globalModules;
         };
 
+        frigate-niri = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/frigate-niri
+            nixos-hardware.nixosModules.framework-intel-core-ultra-series1
+          ]
+          ++ home-manager-liperium-root {
+            hyprMonitor = {};
+            userImports = [
+              ./home/niri.nix
+            ];
+          }
+          ++ globalModules;
+        };
+
         battleship-niri = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
