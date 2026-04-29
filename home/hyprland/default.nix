@@ -4,8 +4,8 @@
   imports = [
     ./hyprland-conf.nix
     ./hypridle
-    ../../noctalia.nix
-    ../../dolphin.nix
+    ../noctalia.nix
+    ../dolphin.nix
   ];
 
   xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;

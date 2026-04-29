@@ -13,6 +13,8 @@
     package = pkgs.unstable.niri;
   };
 
+  services.displayManager.enable = true;
+
   hardware.graphics.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -28,6 +30,9 @@
     pavucontrol
     hyprpolkitagent
   ];
+  xdg.portal.config.niri = {
+    "org.freedesktop.impl.portal.FileChooser" = [ "kde" ]; # or "kde" or "gtk"
+  };
 
   xdg.mime.enable = true;
   xdg.menus.enable = true;

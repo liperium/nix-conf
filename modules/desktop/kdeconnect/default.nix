@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ libsForQt5.kdeconnect-kde ];
+  programs.kdeconnect.enable = true;
+
   networking.firewall = {
     allowedTCPPortRanges = [
       {

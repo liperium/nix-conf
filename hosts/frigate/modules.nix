@@ -24,6 +24,7 @@ in
 
     # Basic apps
     "${modDesktop}"
+    "${modDesktop}/kdeconnect"
     #"${modDesktop}/virt.nix"
     # "${modDesktop}/gaming"
 
