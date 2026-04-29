@@ -164,6 +164,10 @@ homepage.mur.mattysgervais.com {
 		file_server
 	}
 }
+jeux.mattysgervais.com {
+    import public_service 127.0.0.1:3010
+}
+
 hass.mattysgervais.com {
     import public_service 127.0.0.1:8123
 }

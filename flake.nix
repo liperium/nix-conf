@@ -42,6 +42,10 @@
       url = "git+ssh://git@github.com/liperium/ml-production-website";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    construct3-hoster = {
+      url = "git+ssh://git@github.com/liperium/construct3-hoster";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
   nixConfig = {
     extra-substituters = [

@@ -12,6 +12,7 @@
     ./authelia
     ./ml-production-website
     ./countdown
+    ./construct3-hoster
   ];
   services.adguardhome = {
     enable = true;
