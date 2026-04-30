@@ -14,6 +14,7 @@ in
     "${modDir}/hardware/ssd.nix"
 
     "${modDir}/wireguard.nix"
+    "${modDir}/docker.nix"
     ../frigate/wireguard.nix
 
     # Desktop env

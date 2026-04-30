@@ -63,11 +63,10 @@
     environment {
         XCURSOR_SIZE "24"
         QT_QPA_PLATFORM "wayland"
-        QT_QPA_PLATFORMTHEME "qt6ct"
+        QT_QPA_PLATFORMTHEME "kvantum"
         QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
         QT_AUTO_SCREEN_SCALE_FACTOR "1"
         NIXOS_OZONE_WL "1"
-        XDG_DATA_DIRS "/etc/profiles/per-user/$USER/share:/run/current-system/sw/share:$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
     }
 
     spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
