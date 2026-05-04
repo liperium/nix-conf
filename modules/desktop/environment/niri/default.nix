@@ -30,13 +30,6 @@
     pavucontrol
     hyprpolkitagent
   ];
-  xdg.portal.config.niri = {
-    "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
-    "org.freedesktop.impl.portal.ScreenCast" = [ "niri" ];
-    "org.freedesktop.impl.portal.Screenshot" = [ "niri" ];
-    "org.freedesktop.impl.portal.RemoteDesktop" = [ "niri" ];
-    default = [ "gnome" ];
-  };
 
   xdg.mime.enable = true;
   xdg.menus.enable = true;
@@ -74,11 +67,16 @@
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
+      #pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
+      pkgs.kdePackages.xdg-desktop-portal-kde
     ];
     config = {
       common.default = [ "gnome" ];
+      niri = {
+        "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        default = [ "gnome" ];
+      };
     };
   };
   security.rtkit.enable = true;

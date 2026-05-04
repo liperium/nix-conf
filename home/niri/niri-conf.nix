@@ -23,6 +23,19 @@
 
     output "eDP-1" {
         scale 1.25
+        position x=0 y=0
+    }
+
+    output "DP-5" {
+        mode "1920x1080@60.000"
+        scale 1
+        position x=1805 y=0
+    }
+
+    output "DP-6" {
+        mode "1680x1050@59.883"
+        scale 1
+        position x=3725 y=0
     }
 
     output "DP-1" {
@@ -63,7 +76,7 @@
     environment {
         XCURSOR_SIZE "24"
         QT_QPA_PLATFORM "wayland"
-        QT_QPA_PLATFORMTHEME "kvantum"
+        QT_QPA_PLATFORMTHEME "qt6ct"
         QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
         QT_AUTO_SCREEN_SCALE_FACTOR "1"
         NIXOS_OZONE_WL "1"
@@ -139,7 +152,7 @@
 
         // Apps
         Mod+Q { spawn "foot"; }
-        Mod+E { spawn "sh" "-c" "XDG_CURRENT_DESKTOP=kde dolphin"; }
+        Mod+E { spawn "sh" "-c" "dolphin"; }
         Mod+S { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
 
         // Screenshots: region to clipboard / region to file

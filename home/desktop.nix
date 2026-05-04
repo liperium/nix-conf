@@ -73,30 +73,17 @@
     };
 
     #gtk.enable = true;
-    kvantum.enable = false;
+    kvantum.enable = true;
+    qt5ct.enable = true;
   };
   gtk = {
     enable = true;
     gtk4.theme = null;
-    #iconTheme = {
-    #package = pkgs.papirus-icon-theme
-    #;
-    #name = "Papirus-Dark";
-    #};
   };
   qt = {
     enable = true;
-    #style.name = "qtct";
-    platformTheme.name = "kvantum";
-  };
-  xdg.configFile = {
-    kvantum = {
-      target = "Kvantum/kvantum.kvconfig";
-      text = lib.generators.toINI { } {
-        General.theme = "Catppuccin-Mocha-Mauve";
-      };
-    };
-
+    platformTheme.name = "qtct";
+    style.name = "kvantum";
   };
 
 }
