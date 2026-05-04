@@ -30,7 +30,10 @@
     pavucontrol
     hyprpolkitagent
   ];
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   xdg.mime.enable = true;
   xdg.menus.enable = true;
   environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
@@ -74,7 +77,14 @@
     config = {
       common.default = [ "gnome" ];
       niri = {
+<<<<<<< Updated upstream
         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+=======
+        "org.freedesktop.impl.portal.FileChooser"   = [ "kde" ];
+        "org.freedesktop.impl.portal.ScreenCast"    = [ "gnome" ];
+        "org.freedesktop.impl.portal.Screenshot"    = [ "gnome" ];
+        "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
+>>>>>>> Stashed changes
         default = [ "gnome" ];
       };
     };

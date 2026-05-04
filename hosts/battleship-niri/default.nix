@@ -1,11 +1,4 @@
 { config, pkgs, ... }:
-let
-  regreet-theme =
-    (pkgs.catppuccin-gtk.override {
-      variant = "mocha";
-      accents = [ "mauve" ];
-    });
-in
 {
   imports = [
     ../battleship/hardware-configuration.nix
@@ -20,7 +13,6 @@ in
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
     os-prober
-    regreet
     (catppuccin-grub.override {
       flavor = "mocha";
     })
@@ -56,12 +48,8 @@ in
     };
   };
 
-  programs.regreet = {
-    enable = true;
-    settings = {
-      GTK.application_prefer_dark_theme = true;
-    };
-  };
+  services.displayManager.gdm.enable = true;
+  services.displayManager.defaultSession = "niri";
 
   services.openssh = {
     enable = true;
