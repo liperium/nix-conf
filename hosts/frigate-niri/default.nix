@@ -62,7 +62,6 @@
     nvtopPackages.intel
     bluez
     bluez-tools
-    unstable.code-cursor
     easyeffects
     omnissa-horizon-client
   ];
