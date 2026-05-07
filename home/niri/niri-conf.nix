@@ -86,7 +86,7 @@
     spawn-at-startup "systemctl" "--user" "start" "quickshell"
     spawn-at-startup "systemctl" "--user" "start" "hypridle"
     spawn-at-startup "nextcloud" "--background"
-    spawn-at-startup "discord" "--start-minimized"
+    spawn-sh-at-startup "sleep 5 && discord --start-minimized
     spawn-at-startup "tailscale" "systray"
 
     binds {
