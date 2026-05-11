@@ -25,14 +25,12 @@
         scale 1.25
         position x=0 y=0
     }
-
-    output "DP-5" {
+    output "Philips Consumer Electronics Company PHL 221B8L 0x0000C50B" {
         mode "1920x1080@60.000"
         scale 1
         position x=1805 y=0
     }
-
-    output "DP-6" {
+    output "Dell Inc. DELL E228WFP WT81483O117I" {
         mode "1680x1050@59.883"
         scale 1
         position x=3725 y=0
