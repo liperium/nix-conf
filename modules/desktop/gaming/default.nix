@@ -32,8 +32,8 @@ in
       prismlauncher
       temurin-bin-8
       temurin-bin-17
-      starsector
-      cockatrice
+      #starsector
+      #cockatrice
     ];
   };
   nixpkgs.config.packageOverrides = pkgs: {
