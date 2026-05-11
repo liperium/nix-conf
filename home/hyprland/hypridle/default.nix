@@ -13,12 +13,12 @@
       }
 
       listener {
-          timeout = 120
+          timeout = 180
           on-timeout = brightnessctl -s && brightnessctl s 1%
           on-resume = brightnessctl -r 
       }
       listener {
-        timeout = 300
+        timeout = 420
         on-timeout = if ! playerctl -a status | grep -q "Playing"; then systemctl suspend; fi
       }
     '';
