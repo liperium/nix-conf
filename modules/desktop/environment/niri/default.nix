@@ -17,7 +17,11 @@
 
   hardware.graphics.enable = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    # Electron / Chromium PipeWire capture (Discord, browsers)
+    WEBRTC_USE_PIPEWIRE = "1";
+  };
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite #xwayland
@@ -59,6 +63,7 @@
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
   services.gvfs.enable = true;
 
@@ -66,18 +71,21 @@
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = [
-      #pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-gnome
       pkgs.kdePackages.xdg-desktop-portal-kde
     ];
     config = {
       common.default = [ "gnome" ];
       niri = {
+        default = [ "gnome" "gtk" ];
+        "org.freedesktop.impl.portal.Access" = [ "gtk" ];
         "org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+        "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
         "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
         "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
         "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
-        default = [ "gnome" ];
       };
     };
   };

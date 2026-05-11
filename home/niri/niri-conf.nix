@@ -1,5 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
+let
+  # xdg-desktop-portal-gnome can start before niri exposes org.gnome.Mutter.ScreenCast; restart once it's up.
+  niriRestartXdpGnome = pkgs.writeShellScript "niri-restart-xdp-gnome" ''
+    export PATH="${lib.makeBinPath [ pkgs.coreutils pkgs.systemd pkgs.procps ]}"
+    i=0
+    while [ "$i" -lt 150 ]; do
+      if busctl --user status org.gnome.Mutter.ScreenCast >/dev/null 2>&1; then
+        break
+      fi
+      sleep 0.2
+      i=$((i + 1))
+    done
+    pkill -f xdg-desktop-portal-gnome || true
+  '';
+in
 {
   xdg.configFile."niri/config.kdl".text = ''
     input {
@@ -78,8 +93,12 @@
         QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
         QT_AUTO_SCREEN_SCALE_FACTOR "1"
         NIXOS_OZONE_WL "1"
+        WEBRTC_USE_PIPEWIRE "1"
     }
 
+    // Screen share / portals: sync env into D-Bus activation + systemd --user; restart xdg-desktop-portal-gnome once Mutter ScreenCast exists.
+    spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "--all"
+    spawn-at-startup "${niriRestartXdpGnome}"
     spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
     spawn-at-startup "systemctl" "--user" "start" "quickshell"
     spawn-at-startup "systemctl" "--user" "start" "hypridle"
