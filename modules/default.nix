@@ -44,6 +44,7 @@
 
   # Enables microcode updates
   hardware.enableRedistributableFirmware = true;
+  nix.settings.trusted-users = [ "root" "liperium" ];
 
   users.users.liperium = {
     isNormalUser = true;

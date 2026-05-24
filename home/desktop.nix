@@ -28,7 +28,7 @@
     brave
     thunderbird
     qalculate-qt
-    discord
+    unstable.discord
     deluge-gtk
 
     #Creative
