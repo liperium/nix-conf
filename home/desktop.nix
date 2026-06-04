@@ -28,7 +28,8 @@
     brave
     thunderbird
     qalculate-qt
-    unstable.discord
+    #unstable.discord
+    discord
     deluge-gtk
 
     #Creative
@@ -85,5 +86,6 @@
     platformTheme.name = "qtct";
     style.name = "kvantum";
   };
+  services.xembed-sni-proxy.enable = true;
 
 }
