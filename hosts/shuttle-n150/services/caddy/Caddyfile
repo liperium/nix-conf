@@ -171,3 +171,7 @@ jeux.mattysgervais.com {
 hass.mattysgervais.com {
     reverse_proxy 127.0.0.1:8123
 }
+
+ml-ninja.gsol.ca {
+    reverse_proxy 127.0.0.1:8101
+}
