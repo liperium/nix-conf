@@ -87,5 +87,6 @@
     style.name = "kvantum";
   };
   services.xembed-sni-proxy.enable = true;
+  systemd.user.services.xembed-sni-proxy.Service.Environment = [ "DISPLAY=:0" ];
 
 }

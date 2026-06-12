@@ -84,6 +84,7 @@
     // Screen share / portals: sync env into D-Bus activation + systemd --user.
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "--all"
     spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
+    spawn-at-startup "systemctl" "--user" "start" "xembed-sni-proxy"
     spawn-at-startup "systemctl" "--user" "start" "quickshell"
     spawn-at-startup "systemctl" "--user" "start" "hypridle"
     spawn-at-startup "nextcloud" "--background"
