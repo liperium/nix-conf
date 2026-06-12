@@ -173,5 +173,15 @@ hass.mattysgervais.com {
 }
 
 ml-ninja.gsol.ca {
-    reverse_proxy 127.0.0.1:8101
+    root * /zfs-data/apps/ml-invoice-ninja/public
+    encode gzip
+    php_fastcgi 127.0.0.1:9000 {
+        # SCRIPT_FILENAME is the path inside the app container, not on the host.
+        root /var/www/html/public
+    }
+    file_server
+
+    tls {
+        dns cloudflare {env.CF_API_TOKEN}
+    }
 }

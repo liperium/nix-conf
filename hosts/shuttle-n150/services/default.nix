@@ -13,6 +13,7 @@
     ./ml-production-website
     ./countdown
     ./construct3-hoster
+    ./invoice-ninja
   ];
   services.adguardhome = {
     enable = true;
