@@ -4,6 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build and Deployment Commands
 
+**IMPORTANT: Never run `nixos-rebuild` yourself. The user always rebuilds their system manually.** After making config changes, stop and let the user run the rebuild.
+
 ```bash
 # Build and switch to new configuration (replace HOSTNAME with: frigate, battleship, or shuttle-n150)
 sudo nixos-rebuild switch --flake /home/liperium/nix-conf#HOSTNAME

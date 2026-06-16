@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   xdg.configFile."dolphinrc".text = ''
@@ -70,6 +70,23 @@
     [General]
     TerminalApplication=foot
     TerminalService=foot.desktop
+
+    [Icons]
+    Theme=Papirus-Dark
+  '';
+
+  home.activation.qtctIconTheme = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+    for f in "$HOME/.config/qt5ct/qt5ct.conf" "$HOME/.config/qt6ct/qt6ct.conf"; do
+      [ -e "$f" ] || continue
+      if [ -L "$f" ]; then
+        target=$(readlink -f "$f")
+        rm "$f"
+        install -m 644 "$target" "$f"
+      fi
+      if ! grep -q "^icon_theme=" "$f"; then
+        sed -i '/^\[Appearance\]/a icon_theme=Papirus-Dark' "$f"
+      fi
+    done
   '';
 
   home.packages = with pkgs; [

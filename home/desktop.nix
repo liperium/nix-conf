@@ -53,6 +53,9 @@
 
   xdg.mimeApps = {
     enable = true;
+    associations.added = {
+      "application/pdf" = "zen.desktop";
+    };
     defaultApplications = {
       "text/html" = "zen.desktop";
       "x-scheme-handler/http" = "zen.desktop";
@@ -60,6 +63,7 @@
       "x-scheme-handler/about" = "zen.desktop";
       "x-scheme-handler/unknown" = "zen.desktop";
       "application/xhtml+xml" = "zen.desktop";
+      "application/pdf" = "zen.desktop";
     };
   };
 
