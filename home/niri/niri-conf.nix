@@ -85,7 +85,7 @@
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "--all"
     spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
     spawn-at-startup "systemctl" "--user" "start" "xembed-sni-proxy"
-    spawn-at-startup "systemctl" "--user" "start" "quickshell"
+    spawn-at-startup "systemctl" "--user" "start" "noctalia"
     spawn-at-startup "systemctl" "--user" "start" "hypridle"
     spawn-at-startup "nextcloud" "--background"
     spawn-sh-at-startup "sleep 5 && discord --start-minimized"
@@ -93,14 +93,14 @@
 
     binds {
         // Media keys
-        XF86AudioRaiseVolume { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-        XF86AudioLowerVolume { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-        XF86AudioMicMute     { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-        XF86AudioMute        { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-        XF86AudioPlay        { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
-        XF86AudioPause       { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
-        XF86AudioNext        { spawn "noctalia-shell" "ipc" "call" "media" "next"; }
-        XF86AudioPrev        { spawn "noctalia-shell" "ipc" "call" "media" "previous"; }
+        XF86AudioRaiseVolume { spawn "noctalia" "msg" "volume-up"; }
+        XF86AudioLowerVolume { spawn "noctalia" "msg" "volume-down"; }
+        XF86AudioMicMute     { spawn "noctalia" "msg" "mic-mute"; }
+        XF86AudioMute        { spawn "noctalia" "msg" "volume-mute"; }
+        XF86AudioPlay        { spawn "noctalia" "msg" "media" "toggle"; }
+        XF86AudioPause       { spawn "noctalia" "msg" "media" "toggle"; }
+        XF86AudioNext        { spawn "noctalia" "msg" "media" "next"; }
+        XF86AudioPrev        { spawn "noctalia" "msg" "media" "previous"; }
         XF86MonBrightnessUp   { spawn "brightnessctl" "s" "+5%"; }
         XF86MonBrightnessDown { spawn "brightnessctl" "s" "5%-"; }
 
@@ -155,7 +155,7 @@
         // Apps
         Mod+Q { spawn "foot"; }
         Mod+E { spawn "sh" "-c" "dolphin"; }
-        Mod+S { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+        Mod+S { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 
         // Screenshots: region to clipboard / region to file
         Print       { spawn "sh" "-c" "grim -g \"$(slurp)\" - | wl-copy"; }
