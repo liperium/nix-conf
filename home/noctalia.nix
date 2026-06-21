@@ -8,31 +8,14 @@
     };
   };
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
-    plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
-      ];
-      states = {
-        screen-toolkit = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-      };
-      version = 2;
-    };
+    systemd.enable = true;
+    package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   home.packages = with pkgs; [
-    unstable.quickshell
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-    # Screen-Toolkit dependencies
+    # Screen-Toolkit plugin dependencies
     grim
     slurp
     wl-clipboard
@@ -42,13 +25,4 @@
     translate-shell
     wf-recorder
   ];
-
-  systemd.user.services.quickshell = {
-    Unit = {
-      Description = "Noctalia-Shell autostart";
-    };
-    Service = {
-      ExecStart = "${inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/noctalia-shell";
-    };
-  };
 }

@@ -40,6 +40,10 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # AppImage support
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;

@@ -118,14 +118,14 @@ in
 
 
       bind = [
-        ", XF86AudioRaiseVolume, exec, noctalia-shell ipc call volume increase"
-        ", XF86AudioLowerVolume, exec, noctalia-shell ipc call volume decrease"
-        ", XF86AudioMicMute, exec, noctalia-shell ipc call volume muteInput"
-        ", XF86AudioMute, exec, noctalia-shell ipc call volume muteOutput"
-        ", XF86AudioPlay, exec, noctalia-shell ipc call media playPause"
-        ", XF86AudioPause, exec, noctalia-shell ipc call media playPause"
-        ", XF86AudioNext, exec, noctalia-shell ipc call media next"
-        ", XF86AudioPrev, exec, noctalia-shell ipc call media previous"
+        ", XF86AudioRaiseVolume, exec, noctalia msg volume-up"
+        ", XF86AudioLowerVolume, exec, noctalia msg volume-down"
+        ", XF86AudioMicMute, exec, noctalia msg mic-mute"
+        ", XF86AudioMute, exec, noctalia msg volume-mute"
+        ", XF86AudioPlay, exec, noctalia msg media toggle"
+        ", XF86AudioPause, exec, noctalia msg media toggle"
+        ", XF86AudioNext, exec, noctalia msg media next"
+        ", XF86AudioPrev, exec, noctalia msg media previous"
         ", XF86MonBrightnessUp, exec, brightnessctl s +5%"
         ", XF86MonBrightnessDown, exec, brightnessctl s 5%-"
 
@@ -170,7 +170,7 @@ in
         # "$mainMod, S, global, caelestia:launcher" example caelestia ipc bus
         # "$mainMod, S, exec, rofi -modes \"run,drun,emoji\" -show drun -show-icons"
         # "$mainMod SHIFT, S, exec, killall rofi"
-        "$mainMod, S, exec, noctalia-shell ipc call launcher toggle"
+        "$mainMod, S, exec, noctalia msg panel-toggle launcher"
         # Fullscreen
         "$mainMod, F, fullscreen"
         "$mainMod, Tab, cyclenext"
@@ -189,7 +189,7 @@ in
       "exec-once" = [
         "gnome-keyring-daemon --start --components=secrets"
         "systemctl --user start hyprpolkitagent"
-        "systemctl --user start quickshell"
+        "systemctl --user start noctalia"
         "systemctl --user start hypridle"
         #"nextcloud --background"
         "[workspace 3 silent] sleep 1.0 && discord --start-minimized"
