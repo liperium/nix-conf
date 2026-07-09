@@ -29,16 +29,16 @@
     ];
     networkmanager.enable = true;
     wireguard.enable = true;
-    interfaces.enp1s0 = {
-      ipv4.addresses = [{
-        address = "10.0.0.37";
-        prefixLength = 24;
-      }];
-    };
-    defaultGateway = {
-      address = "10.0.0.1";
-      interface = "enp1s0";
-    };
+    # interfaces.enp1s0 = {
+    #   ipv4.addresses = [{
+    #     address = "10.0.0.37";
+    #     prefixLength = 24;
+    #   }];
+    # };
+    # defaultGateway = {
+    #   address = "10.0.0.1";
+    #   interface = "enp1s0";
+    # };
   };
 
   services.openssh.enable = true;
