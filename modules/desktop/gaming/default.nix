@@ -22,6 +22,7 @@ in
 
       # Launchers
       lutris
+      faugus-launcher
       (heroic.override {
         extraPkgs = pkgs: [
           pkgs.gamemode
@@ -33,7 +34,7 @@ in
       temurin-bin-8
       temurin-bin-17
       #starsector
-      #cockatrice
+      unstable.cockatrice
     ];
   };
   nixpkgs.config.packageOverrides = pkgs: {

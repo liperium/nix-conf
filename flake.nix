@@ -85,7 +85,7 @@
       # Imports the RELEVANT home manager module to the system
       home-manager-liperium-root = { hyprMonitor, userImports ? [ ./home/console.nix ] }: [
         home-manager.nixosModules.home-manager
-        {
+        ({ pkgs, ... }: {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
@@ -96,14 +96,16 @@
               ];
             };
             users.root = import ./home/root.nix;
-            backupFileExtension = "hm_backup";
+            backupCommand = ''
+              ${pkgs.coreutils}/bin/mv -f "$1" "$1.hm_backup"
+            '';
             extraSpecialArgs = {
               inherit system;
               inherit inputs;
               inherit hyprMonitor;
             };
           };
-        }
+        })
       ];
       # Global modules to add to ALL confs
       globalModules = [ sops-nix.nixosModules.sops ];
