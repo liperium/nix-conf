@@ -1,4 +1,9 @@
 {nixpkgs,conf,...}:
+let
+  # Edit here when LAN changes; every downstream rule below picks it up.
+  lanSubnet = "10.0.0.0/24";
+  wgSubnet  = "10.100.0.0/24";
+in
 {
   # Security
   networking.firewall = {
@@ -13,7 +18,11 @@
       51820 # Wireguard
       53    # DNS
     ];
-    trustedInterfaces = [ "wg0" "enp1s0" ];
+    trustedInterfaces = [ "wg0" ];
+    # Trust any packet from LAN regardless of iface (WiFi, Ethernet, future renames).
+    extraInputRules = ''
+      ip saddr ${lanSubnet} accept
+    '';
   };
 
   services.fail2ban = {
@@ -48,7 +57,7 @@
   };
   services.fail2ban.ignoreIP = [
     "127.0.0.0/8"
-    "192.168.0.0/24"      # your LAN
-    "10.100.0.0/24"       # your WireGuard subnet
+    lanSubnet
+    wgSubnet
   ];
 }

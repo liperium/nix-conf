@@ -158,7 +158,7 @@
         "workgroup" = "WORKGROUP";
         "server string" = "shuttle-n150";
         "netbios name" = "shuttle-n150";
-        "hosts allow" = "192.168.0. 127.0.0.1 localhost";
+        "hosts allow" = "192.168.0. 10.0.0. 127.0.0.1 localhost";
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
@@ -195,7 +195,7 @@
     # The name is limited to 7 characters
     enable = true;
     wireguardConfigFile = "/run/secrets/qvpn.conf";
-    accessibleFrom = [ "192.168.0.0/24" "127.0.0.1/32" "::1/128" ];
+    accessibleFrom = [ "192.168.0.0/24" "10.0.0.0/24" "127.0.0.1/32" "::1/128" ];
     portMappings = [{
       from = 8182;
       to = 8182;
