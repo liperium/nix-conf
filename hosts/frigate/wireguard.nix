@@ -71,7 +71,7 @@ let
       done
 
       log "Verifying tunnel connectivity..."
-      if ping -c 1 -W 3 192.168.0.15 &>/dev/null; then
+      if ping -c 1 -W 3 192.168.1.10 &>/dev/null; then
         log "Tunnel is passing traffic."
       else
         log "Handshake OK but no traffic. Continuing anyway..."
@@ -93,7 +93,7 @@ let
       fi
 
       sleep 2
-      if ping -c 2 -W 3 192.168.0.15 &>/dev/null; then
+      if ping -c 2 -W 3 192.168.1.10 &>/dev/null; then
         log "WireGuard is working over school wifi. You're good!"
       else
         log "Tunnel may have dropped. Check 'sudo wg show'."
@@ -140,7 +140,7 @@ in
   networking.wg-quick.interfaces.wg0 = {
     autostart = false;
     address = [ "10.100.0.3/24" ];
-    dns = [ "192.168.0.15" ];
+    dns = [ "192.168.1.15" ];
     privateKeyFile = config.sops.secrets.frig-wg-priv.path;
 
     peers = [

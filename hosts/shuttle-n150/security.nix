@@ -1,22 +1,27 @@
-{nixpkgs,conf,...}:
+{ nixpkgs, conf, ... }:
 let
   # Edit here when LAN changes; every downstream rule below picks it up.
-  lanSubnet = "10.0.0.0/24";
-  wgSubnet  = "10.100.0.0/24";
+  lanSubnet = "192.168.1.0/24";
+  wgSubnet = "10.100.0.0/24";
 in
 {
   # Security
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [
-      80    # Caddy HTTP
-      443   # Caddy HTTPS
-      22    # SSH
-      53    # DNS
+      80 # Caddy HTTP
+      443 # Caddy HTTPS
+      22 # SSH
+      53 # DNS
+      3053 # AdGuardHome web UI
+      8080 # UniFi device inform (docker container)
     ];
     allowedUDPPorts = [
       51820 # Wireguard
-      53    # DNS
+      53 # DNS
+      3478 # UniFi STUN
+      10001 # UniFi device discovery
+      1900 # UniFi L2 discovery (SSDP)
     ];
     trustedInterfaces = [ "wg0" ];
     # Trust any packet from LAN regardless of iface (WiFi, Ethernet, future renames).
@@ -30,8 +35,8 @@ in
     maxretry = 5;
     bantime = "1h";
     bantime-increment = {
-      enable = true;       # repeat offenders get longer bans
-      maxtime = "168h";    # cap at 1 week
+      enable = true; # repeat offenders get longer bans
+      maxtime = "168h"; # cap at 1 week
       factor = "4";
     };
   };

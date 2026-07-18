@@ -133,11 +133,11 @@ let
             url: "https://adguard.mur.mattysgervais.com"
             target: "_blank"
 
-          - name: "Dockge"
-            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/dockge.png"
-            subtitle: "Docker"
-            tag: "system"
-            url: "https://udockge.mur.mattysgervais.com"
+          - name: "UniFi"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/unifi.png"
+            subtitle: "Network controller"
+            tag: "network"
+            url: "https://unifi.mur.mattysgervais.com"
             target: "_blank"
 
           - name: "Uptime Kuma"

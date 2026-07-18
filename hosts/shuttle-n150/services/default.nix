@@ -20,6 +20,32 @@
     port = 3053;
     settings = null;
   };
+
+  # UniFi Network Application (jacobalberty image, MongoDB bundled).
+  # Uses host networking so L2 device discovery (SSDP/broadcast) works.
+  # Caddy reverse-proxies https://unifi.mur.mattysgervais.com -> https://127.0.0.1:8443.
+  systemd.tmpfiles.rules = [
+    "d /var/lib/unifi 0755 root root -"
+  ];
+  virtualisation.oci-containers.containers.unifi = {
+    image = "jacobalberty/unifi:latest";
+    autoStart = true;
+    environment = {
+      TZ = "America/Montreal";
+      RUNAS_UID0 = "false";
+      UNIFI_UID = "999";
+      UNIFI_GID = "999";
+    };
+    volumes = [
+      "/var/lib/unifi:/unifi"
+    ];
+    extraOptions = [
+      "--network=host"
+      "--dns=1.1.1.1"
+      "--dns=8.8.8.8"
+    ];
+  };
+
   sops.secrets."hass-google-service-account.json" = {
     sopsFile = ../../../modules/secrets/hass-google-service-account.json;
     format = "binary";
@@ -46,7 +72,7 @@
 
       http = {
         use_x_forwarded_for = true;
-        trusted_proxies = [ "192.168.0.15" "127.0.0.1" ];
+        trusted_proxies = [ "192.168.1.10" "127.0.0.1" ];
       };
       google_assistant = {
         project_id = "hass-liperium";
@@ -158,7 +184,7 @@
         "workgroup" = "WORKGROUP";
         "server string" = "shuttle-n150";
         "netbios name" = "shuttle-n150";
-        "hosts allow" = "192.168.0. 10.0.0. 127.0.0.1 localhost";
+        "hosts allow" = "192.168.0. 192.168.1. 10.0.0. 127.0.0.1 localhost";
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";
@@ -195,7 +221,7 @@
     # The name is limited to 7 characters
     enable = true;
     wireguardConfigFile = "/run/secrets/qvpn.conf";
-    accessibleFrom = [ "192.168.0.0/24" "10.0.0.0/24" "127.0.0.1/32" "::1/128" ];
+    accessibleFrom = [ "192.168.0.0/16" "10.0.0.0/24" "127.0.0.1/32" "::1/128" ];
     portMappings = [{
       from = 8182;
       to = 8182;

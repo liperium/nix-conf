@@ -24,9 +24,9 @@
     settings = {
       trusted_domains = [
         "nextcloud.mattysgervais.com"
-        "192.168.0.15" # Trust itself/calls from the proxy
+        "192.168.1.10" # Trust itself/calls from the proxy
       ];
-      trusted_proxies = [ "192.168.0.15" "127.0.0.1" ]; # Needed to accept from proxy
+      trusted_proxies = [ "192.168.1.10" "127.0.0.1" ]; # Needed to accept from proxy
       overwriteprotocol = "https"; # Needed to understand comm between proxy
       maxChunkSize = 100000000;
     };
