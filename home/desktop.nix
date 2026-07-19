@@ -26,10 +26,9 @@
 
     #Personnal
     brave
-    thunderbird
     qalculate-qt
-    #unstable.discord
-    discord
+    unstable.discord
+    #discord
     deluge-gtk
 
     #Creative
@@ -91,6 +90,10 @@
     style.name = "kvantum";
   };
   services.xembed-sni-proxy.enable = true;
-  systemd.user.services.xembed-sni-proxy.Service.Environment = [ "DISPLAY=:0" ];
+  systemd.user.services.xembed-sni-proxy.Service = {
+    Environment = [ "DISPLAY=:0" ];
+    Restart = lib.mkForce "on-failure";
+    RestartSec = 2;
+  };
 
 }

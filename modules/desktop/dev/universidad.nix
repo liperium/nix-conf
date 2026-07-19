@@ -16,8 +16,6 @@
       texliveFull
       tex-fmt
       onlyoffice-desktopeditors
-      unstable.code-cursor
-
 
 
       # cegep
