@@ -21,6 +21,7 @@ in
 
     # Basic apps
     "${modDesktop}"
+    "${modDesktop}/printer.nix"
     "${modDesktop}/virt.nix"
     "${modDesktop}/gaming/default.nix"
 

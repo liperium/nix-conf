@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, inputs, pkgs, lib, ... }:
 
 
 {
@@ -8,7 +8,7 @@
 
     # Desktop
     #./kitty
-    ./firefox
+    #./firefox
   ];
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -38,6 +38,7 @@
 
     #Misc
     nextcloud-client
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
 
   ];
 

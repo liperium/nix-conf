@@ -66,5 +66,12 @@
     grub.efiSupport = true;
     grub.useOSProber = true;
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+  services.upower.enable = true;
+
   system.stateVersion = "24.11";
 }
