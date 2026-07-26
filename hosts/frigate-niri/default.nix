@@ -15,6 +15,35 @@
   networking.hostName = "frigate";
   networking.firewall.enable = true;
 
+  # Notify desktop user when Wi-Fi requires captive-portal sign-in.
+  networking.networkmanager.dispatcherScripts = [
+    {
+      type = "basic";
+      source = pkgs.writeShellScript "captive-portal-notify" ''
+        #!/usr/bin/env bash
+        set -euo pipefail
+
+        [ "''${2:-}" = "connectivity-change" ] || exit 0
+
+        status=$(${pkgs.networkmanager}/bin/nmcli networking connectivity)
+        [ "$status" = "portal" ] || exit 0
+
+        user="liperium"
+        uid=$(id -u "$user")
+
+        ${pkgs.systemd}/bin/systemd-run --quiet --collect --uid="$uid" \
+          --setenv="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus" \
+          --setenv="XDG_RUNTIME_DIR=/run/user/$uid" \
+          -- ${pkgs.bash}/bin/bash -c '
+            action=$(${pkgs.libnotify}/bin/notify-send -u critical -a "Network" \
+              -A open="Open neverssl.com" \
+              "Wi-Fi sign-in required" "This network needs you to log in in a browser.")
+            [ "$action" = "open" ] && ${pkgs.xdg-utils}/bin/xdg-open http://neverssl.com
+          '
+      '';
+    }
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
