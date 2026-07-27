@@ -10,6 +10,7 @@
       # General
       vscode-fhs
       unstable.code-cursor
+      unstable.devenv
       #github-desktop
 
       # Other IDEs

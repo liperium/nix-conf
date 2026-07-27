@@ -1,12 +1,5 @@
 { pkgs, ... }:
 
-let
-  mempalaceBin = pkgs.writeShellScriptBin "mempalace" ''
-    venv="$HOME/.local/share/mempalace-env-${pkgs.python3.version}"
-    [ -f "$venv/bin/mempalace" ] || (${pkgs.python3}/bin/python3 -m venv "$venv" && "$venv/bin/pip" install --quiet mempalace)
-    exec "$venv/bin/mempalace" "$@"
-  '';
-in
 {
   imports = [
     # Everywhere
@@ -27,7 +20,6 @@ in
   home.packages = with pkgs; [
     fastfetch
     dconf
-    mempalaceBin
     # needed for ark archives
     p7zip
     #rar
