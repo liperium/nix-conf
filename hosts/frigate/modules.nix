@@ -9,24 +9,21 @@ in
   imports = [
     # Base
     "${modDir}"
-    #"${currentDir}/conservationmode"
 
     # Additional System
     "${modDir}/hardware/ssd.nix"
-    # "${modDir}/docker.nix"
 
     "${modDir}/wireguard.nix"
+    "${modDir}/docker.nix"
     "${currentDir}/wireguard.nix"
 
     # Desktop env
-    #"${modEnvironments}/gnome"
-    "${modEnvironments}/hyprland"
+    "${modEnvironments}/niri"
 
     # Basic apps
     "${modDesktop}"
     "${modDesktop}/kdeconnect"
-    #"${modDesktop}/virt.nix"
-    "${modDesktop}/gaming"
+    #"${modDesktop}/gaming"
 
     # Desktop Additionals
     "${modDev}"

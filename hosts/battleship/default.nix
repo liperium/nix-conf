@@ -1,16 +1,10 @@
 { config, pkgs, ... }:
-let
-  regreet-theme =
-    (pkgs.catppuccin-gtk.override {
-      variant = "mocha";
-      accents = [ "mauve" ];
-    });
-in
 {
   imports = [
     ./hardware-configuration.nix
     ./modules.nix
   ];
+
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -18,8 +12,7 @@ in
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
-    os-prober # Probes for windows for grub
-    regreet
+    os-prober
     (catppuccin-grub.override {
       flavor = "mocha";
     })
@@ -30,7 +23,6 @@ in
   programs.kdeconnect.enable = true;
   programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
 
-  #Bambu-studio
   services.flatpak.enable = true;
 
   boot = {
@@ -38,7 +30,6 @@ in
       enable = true;
       theme = "bgrt";
     };
-    # Enable "Silent Boot"
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelParams = [
@@ -57,41 +48,17 @@ in
     };
   };
 
-  # Greetd start
-  environment.etc = {
-    greetd-regreet-hyprland = {
-      text = ''
-        exec-once = ${pkgs.regreet}/bin/regreet --style ${regreet-theme}/share/themes/catppuccin-mocha-mauve-standard/gtk-4.0/gtk-dark.css; hyprctl dispatch exit
-        misc {
-            disable_hyprland_logo = true
-            disable_splash_rendering = true
-            disable_watchdog_warning = true
-        }
-      '';
-      mode = "0444";
-    };
-  };
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.unstable.hyprland}/bin/Hyprland --config /etc/greetd-regreet-hyprland";
-        user = "greeter";
-      };
-    };
-  };
-  programs.regreet.enable = true;
-  # Greetd end
+  services.displayManager.gdm.enable = true;
+  services.displayManager.defaultSession = "niri";
 
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
-  # Power management
+
   services.power-profiles-daemon.enable = true;
 
-  #Dual boot, systemd can't see other EFI partition, use grub instead
   boot.loader = {
     efi.canTouchEfiVariables = true;
     grub.enable = true;
@@ -99,5 +66,12 @@ in
     grub.efiSupport = true;
     grub.useOSProber = true;
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+  services.upower.enable = true;
+
   system.stateVersion = "24.11";
 }

@@ -74,14 +74,6 @@
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
-      hyprland-stuff = [
-        {
-          nix.settings = {
-            substituters = [ "https://hyprland.cachix.org" ];
-            trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-          };
-        }
-      ];
       # Imports the RELEVANT home manager module to the system
       home-manager-liperium-root = { hyprMonitor, userImports ? [ ./home/console.nix ] }: [
         home-manager.nixosModules.home-manager
@@ -125,58 +117,6 @@
             nixos-hardware.nixosModules.framework-intel-core-ultra-series1
           ]
           ++ home-manager-liperium-root {
-            hyprMonitor = {
-              primary = "eDP-1";
-              secondary = "DP-5";
-              settings = [
-                "eDP-1,preferred,0x0,1.175"
-                "DP-5,preferred,auto,1.0"
-                ",preferred,auto,1"
-                "desc:Dell Inc. DELL P2217H 668VC8633AEB, preferred, auto, 1, mirror, desc:Seiko Epson Corporation EPSON PJ 0x01010101"
-              ];
-            };
-            userImports = [
-              ./home/hyprland.nix
-              ./home/gnome.nix
-            ];
-          }
-          ++ hyprland-stuff
-          ++ globalModules;
-        };
-
-        battleship = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/battleship
-            #chaotic.nixosModules.default
-          ]
-          ++ home-manager-liperium-root {
-            hyprMonitor = {
-              primary = "DP-1";
-              secondary = "DP-2";
-              settings = [
-                "DP-1,2560x1440@239.97,0x0,1.25"
-                "DP-2,2560x1440@164.802,2048x0,1.25"
-                ",preferred,auto,1"
-              ];
-            };
-            userImports = [
-              ./home/hyprland.nix
-            ];
-          }
-          ++ hyprland-stuff
-          ++ globalModules;
-        };
-
-        frigate-niri = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/frigate-niri
-            nixos-hardware.nixosModules.framework-intel-core-ultra-series1
-          ]
-          ++ home-manager-liperium-root {
             hyprMonitor = {};
             userImports = [
               ./home/niri.nix
@@ -185,11 +125,11 @@
           ++ globalModules;
         };
 
-        battleship-niri = lib.nixosSystem {
+        battleship = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/battleship-niri
+            ./hosts/battleship
           ]
           ++ home-manager-liperium-root {
             hyprMonitor = {

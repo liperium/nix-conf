@@ -17,7 +17,7 @@ in
     "${modDir}/wireguard.nix"
 
     # Desktop env
-    "${modEnvironments}/hyprland"
+    "${modEnvironments}/niri"
 
     # Basic apps
     "${modDesktop}"
