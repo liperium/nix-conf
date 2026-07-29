@@ -11,6 +11,7 @@ let
 
     - For one-off commands: `nix-shell -p <package> --run "<command>"`
     - For projects with a `flake.nix` devShell: `nix develop -c <command>`
+    - For projects use devenv.
     - For projects with `.envrc` (direnv active): just run commands normally after `direnv allow`
     - Never use: python, python3, pip, node, cargo directly — always wrap with nix-shell or nix develop
 

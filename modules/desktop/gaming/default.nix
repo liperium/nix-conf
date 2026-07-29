@@ -21,7 +21,7 @@ in
       winetricks
 
       # Launchers
-      lutris
+      #lutris
       faugus-launcher
       (heroic.override {
         extraPkgs = pkgs: [

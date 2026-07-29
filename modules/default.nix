@@ -78,6 +78,26 @@
     #ranger
     yazi # more features, preview, etc
     zoxide
+    jq
+    yq-go
+    ripgrep
+    fd
+    bat
+    eza
+    delta
+    xh
+    fx
+    dust
+    duf
+    procs
+    tealdeer
+    hyperfine
+    choose
+    sd
+    watchexec
+    lnav
+    mtr
+    dogdns
 
     # Networking - Basics
     wget

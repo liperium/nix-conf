@@ -23,6 +23,7 @@ in
     # Basic apps
     "${modDesktop}"
     "${modDesktop}/kdeconnect"
+    #"${modDesktop}/gaming"
 
     # Desktop Additionals
     "${modDev}"
