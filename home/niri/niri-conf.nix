@@ -1,6 +1,14 @@
 { pkgs, ... }:
 
 {
+  systemd.user.services.nix-conf-sync-check = {
+    Unit.Description = "Check nix-conf git sync status";
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.callPackage ../../modules/scripts/nix-conf-sync-check.nix { }}/bin/nix-conf-sync-check notify";
+    };
+  };
+
   xdg.configFile."niri/config.kdl".text = ''
     input {
         keyboard {
@@ -87,6 +95,7 @@
     spawn-at-startup "systemctl" "--user" "start" "xembed-sni-proxy"
     spawn-at-startup "systemctl" "--user" "start" "noctalia"
     spawn-at-startup "systemctl" "--user" "start" "hypridle"
+    spawn-at-startup "systemctl" "--user" "start" "nix-conf-sync-check"
     spawn-at-startup "nextcloud" "--background"
     spawn-sh-at-startup "sleep 5 && discord --start-minimized"
     spawn-at-startup "tailscale" "systray"
