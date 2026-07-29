@@ -17,6 +17,7 @@
   };
   nix.settings.auto-optimise-store = true;
   nix.settings.download-buffer-size = 524288000;
+  nix.settings.accept-flake-config = true;
 
   # Enable networking
   networking = {
