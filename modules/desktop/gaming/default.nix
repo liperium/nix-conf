@@ -4,7 +4,7 @@
 , ...
 }:
 let
-  protonup-rs = pkgs.callPackage ./protonup-rs/default.nix { };
+  #protonup-rs = pkgs.callPackage ./protonup-rs/default.nix { };
 in
 {
   # Tools

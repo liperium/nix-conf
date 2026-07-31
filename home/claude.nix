@@ -1,6 +1,17 @@
 { pkgs, lib, inputs, system, ... }:
 
 let
+  # Read-only commands safe to run without a permission prompt, everywhere.
+  globalAllowPatterns = [
+    "Bash(rtk grep *)"
+    "Bash(rtk git status*)"
+    "Bash(rtk git diff*)"
+    "Bash(rtk git log*)"
+    "Bash(rtk ls *)"
+    "Bash(rtk find *)"
+    "Bash(rtk proxy cat*)"
+    "Bash(nix eval *)"
+  ];
   staticClaudeMd = pkgs.writeText "claude-md-header" ''
     # User-level Claude Instructions
 
@@ -17,7 +28,8 @@ let
 
     ## Communication
 
-    Caveman skill is available. Use `/caveman` to enable ultra-compressed mode.
+    Ponytail skill is active by default (lazy/minimal-diff mode). Use `/ponytail lite|full|ultra` to adjust, or "stop ponytail" to disable.
+    (Caveman skill disabled by default. Use `/caveman` to enable ultra-compressed mode if desired.)
   '';
 
   realClaude = inputs.claude-code.packages.${system}.default;
@@ -46,10 +58,29 @@ in
     $DRY_RUN_CMD ${pkgs.unstable.rtk}/bin/rtk init -g --claude-md
   '';
 
-  # Install caveman Claude plugin if not already present
-  home.activation.installCavemanPlugin = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  # Install caveman + ponytail plugins, disable caveman, enable ponytail by default
+  home.activation.installClaudePlugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    CLAUDE=${claudeWrapped}/bin/claude
     if [ ! -d "$HOME/.claude/plugins/marketplaces/caveman" ]; then
-      $DRY_RUN_CMD ${claudeWrapped}/bin/claude install caveman --market caveman --yes 2>/dev/null || true
+      $DRY_RUN_CMD $CLAUDE plugin marketplace add JuliusBrussee/caveman 2>/dev/null || true
+      $DRY_RUN_CMD $CLAUDE plugin install caveman@caveman 2>/dev/null || true
     fi
+    if [ ! -d "$HOME/.claude/plugins/marketplaces/ponytail" ]; then
+      $DRY_RUN_CMD $CLAUDE plugin marketplace add DietrichGebert/ponytail 2>/dev/null || true
+      $DRY_RUN_CMD $CLAUDE plugin install ponytail@ponytail 2>/dev/null || true
+    fi
+    $DRY_RUN_CMD $CLAUDE plugin disable caveman@caveman 2>/dev/null || true
+    $DRY_RUN_CMD $CLAUDE plugin enable ponytail@ponytail 2>/dev/null || true
+  '';
+
+  # Merge the read-only allowlist into ~/.claude/settings.json without touching anything else in it
+  home.activation.mergeClaudeAllowlist = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    SETTINGS="$HOME/.claude/settings.json"
+    mkdir -p "$HOME/.claude"
+    [ -f "$SETTINGS" ] || echo '{}' > "$SETTINGS"
+    ${pkgs.jq}/bin/jq \
+      --argjson allow '${builtins.toJSON globalAllowPatterns}' \
+      '.permissions.allow = ((.permissions.allow // []) + $allow | unique)' \
+      "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
   '';
 }

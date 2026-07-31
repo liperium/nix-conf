@@ -66,6 +66,33 @@
     Comment=Opens a terminal at the current folder
   '';
 
+  xdg.mimeApps.defaultApplications =
+    lib.genAttrs [
+      "text/plain"
+      "text/markdown"
+      "text/csv"
+      "text/x-log"
+      "text/x-nix"
+      "text/x-python"
+      "text/x-shellscript"
+      "application/x-shellscript"
+      "application/json"
+      "application/toml"
+      "application/x-yaml"
+      "application/xml"
+      "text/xml"
+    ] (_: "Helix.desktop")
+    // lib.genAttrs [
+      "image/png"
+      "image/jpeg"
+      "image/gif"
+      "image/webp"
+      "image/avif"
+      "image/svg+xml"
+      "image/tiff"
+      "image/bmp"
+    ] (_: "org.kde.gwenview.desktop");
+
   xdg.configFile."kdeglobals".text = ''
     [General]
     TerminalApplication=foot
