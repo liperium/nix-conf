@@ -30,6 +30,8 @@
     unstable.discord
     #discord
     deluge-gtk
+    joplin
+    joplin-desktop
 
     #Creative
     gimp
@@ -76,9 +78,6 @@
       enable = true;
       accent = "light";
     };
-
-    # Unused; upstream still targets the renamed programs.gemini-cli -> programs.antigravity-cli.
-    gemini-cli.enable = false;
 
     #gtk.enable = true;
     kvantum.enable = true;
