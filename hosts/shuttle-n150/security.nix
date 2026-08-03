@@ -22,6 +22,7 @@ in
       3478 # UniFi STUN
       10001 # UniFi device discovery
       1900 # UniFi L2 discovery (SSDP)
+      2456
     ];
     trustedInterfaces = [ "wg0" ];
     # Trust any packet from LAN regardless of iface (WiFi, Ethernet, future renames).
