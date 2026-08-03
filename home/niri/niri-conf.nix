@@ -1,6 +1,20 @@
 { pkgs, ... }:
 
 {
+  # GTK polkit agent: GUI password prompt for pkexec / polkit-authorized actions.
+  systemd.user.services.polkit-gnome-agent = {
+    Unit = {
+      Description = "polkit-gnome authentication agent";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+  };
+
   systemd.user.services.nix-conf-sync-check = {
     Unit.Description = "Check nix-conf git sync status";
     Service = {
@@ -92,6 +106,7 @@
     // Screen share / portals: sync env into D-Bus activation + systemd --user.
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "--all"
     spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
+    spawn-at-startup "systemctl" "--user" "start" "polkit-gnome-agent"
     spawn-at-startup "systemctl" "--user" "start" "xembed-sni-proxy"
     spawn-at-startup "systemctl" "--user" "start" "noctalia"
     spawn-at-startup "systemctl" "--user" "start" "hypridle"

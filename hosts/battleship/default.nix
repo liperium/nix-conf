@@ -53,7 +53,27 @@
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+    systemd-boot.enable = false;
+
+    limine = {
+      enable = true;
+      efiSupport = true;
+      # Editing entries at boot allows passing init=/bin/sh, i.e. free root.
+      enableEditor = false;
+      # The ESP is only 600M and each generation copies its kernel + initrd
+      # into /boot/limine/kernels, so cap how many are kept.
+      maxGenerations = 5;
+
+      style.interface.branding = "battleship";
+
+      # Windows sits on its own ESP (nvme0n1p1), which Limine does not
+      # auto-discover, so chainload its boot manager by partition GUID.
+      extraEntries = ''
+        /Windows
+            protocol: efi
+            path: guid(b8aa925c-1c9a-4512-9e80-879b8a2aef72):/EFI/Microsoft/Boot/bootmgfw.efi
+      '';
+    };
   };
 
   # Bluetooth

@@ -5,6 +5,12 @@
 , ...
 }:
 
+let
+  # GUI password prompt for sudo -A / ssh when there is no controlling TTY.
+  guiAskpass = pkgs.writeShellScriptBin "gui-askpass" ''
+    exec ${lib.getExe pkgs.zenity} --password --title="''${1:-Authentication required}"
+  '';
+in
 {
   programs.niri = {
     enable = true;
@@ -19,7 +25,10 @@
     NIXOS_OZONE_WL = "1";
     # Electron / Chromium PipeWire capture (Discord, browsers)
     WEBRTC_USE_PIPEWIRE = "1";
+    SUDO_ASKPASS = "${guiAskpass}/bin/gui-askpass";
   };
+
+  programs.ssh.askPassword = "${guiAskpass}/bin/gui-askpass";
 
   environment.systemPackages = with pkgs; [
     xwayland-satellite #xwayland
@@ -30,7 +39,8 @@
     libnotify
     killall
     pavucontrol
-    hyprpolkitagent
+    zenity
+    guiAskpass
   ];
   xdg.mime.enable = true;
   xdg.menus.enable = true;
