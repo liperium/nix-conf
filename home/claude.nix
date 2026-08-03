@@ -42,13 +42,14 @@ let
         --prefix PATH : ${pkgs.nodejs}/bin \
         --prefix PATH : ${pkgs.python3}/bin \
         --prefix PATH : ${pkgs.unstable.rtk}/bin \
+        --prefix PATH : "$HOME/.local/bin" \
         --prefix LD_LIBRARY_PATH : ${pkgs.stdenv.cc.cc.lib}/lib \
         --prefix LD_LIBRARY_PATH : ${pkgs.zlib}/lib
     '';
   };
 in
 {
-  home.packages = [ claudeWrapped pkgs.unstable.rtk ];
+  home.packages = [ claudeWrapped pkgs.unstable.rtk pkgs.unstable.uv ];
 
   # Sync CLAUDE.md: write static header, then auto-inject RTK instructions from binary
   home.activation.syncClaudeMd = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -71,6 +72,25 @@ in
     fi
     $DRY_RUN_CMD $CLAUDE plugin disable caveman@caveman 2>/dev/null || true
     $DRY_RUN_CMD $CLAUDE plugin enable ponytail@ponytail 2>/dev/null || true
+  '';
+
+  # mempalace is retired in favor of graphify; tear down its plugin + leftover manual MCP entries
+  home.activation.removeMempalace = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    CLAUDE=${claudeWrapped}/bin/claude
+    $DRY_RUN_CMD $CLAUDE plugin uninstall mempalace@mempalace 2>/dev/null || true
+    $DRY_RUN_CMD $CLAUDE mcp remove mempalace -s local 2>/dev/null || true
+    $DRY_RUN_CMD $CLAUDE mcp remove mempalace -s user 2>/dev/null || true
+  '';
+
+  # Install graphify (via uv; nixpkgs' `graphify` package is far behind upstream),
+  # register its Claude Code skill, and wire up its MCP server.
+  home.activation.installGraphify = lib.hm.dag.entryAfter [ "writeBoundary" "syncClaudeMd" ] ''
+    UV=${pkgs.unstable.uv}/bin/uv
+    $DRY_RUN_CMD $UV tool install --quiet "graphifyy[mcp]" 2>/dev/null || true
+    $DRY_RUN_CMD "$HOME/.local/bin/graphify" install --platform claude 2>/dev/null || true
+    CLAUDE=${claudeWrapped}/bin/claude
+    $DRY_RUN_CMD $CLAUDE mcp remove graphify -s user 2>/dev/null || true
+    $DRY_RUN_CMD $CLAUDE mcp add graphify -s user -- "$HOME/.local/bin/graphify-mcp" 2>/dev/null || true
   '';
 
   # Merge the read-only allowlist into ~/.claude/settings.json without touching anything else in it

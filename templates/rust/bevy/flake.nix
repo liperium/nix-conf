@@ -38,8 +38,8 @@
           ]);
         appRuntimeInputs = with pkgs; [
           vulkan-loader
-          xorg.libXcursor
-          xorg.libXi
+          libxcursor
+          libxi
           xorg.libXrandr
         ];
       in

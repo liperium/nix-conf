@@ -98,7 +98,7 @@
     watchexec
     lnav
     mtr
-    dogdns
+    doggo
 
     # Networking - Basics
     wget
@@ -187,10 +187,6 @@
   nixpkgs.overlays = [
     (final: _: {
       # this allows you to access `pkgs.unstable` anywhere in your config
-      stable = import inputs.nixpkgs-stable {
-        inherit (final.stdenv.hostPlatform) system;
-        inherit (final) config;
-      };
       unstable = import inputs.nixpkgs-unstable {
         inherit (final.stdenv.hostPlatform) system;
         inherit (final) config;

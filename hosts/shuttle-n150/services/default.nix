@@ -281,9 +281,9 @@
         SDL2
         libGL
         xorg.libX11
-        xorg.libXcursor
+        libxcursor
         xorg.libXrandr
-        xorg.libXi
+        libxi
         xorg.libXext
         libxkbcommon
         dotnet-runtime

@@ -20,7 +20,7 @@
         shell = "fish";
         font = "JetBrainsMono Nerd Font:size=12";
       };
-      colors = {
+      colors-dark = {
         alpha = 0.9;
       };
     };

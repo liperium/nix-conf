@@ -77,6 +77,9 @@
       accent = "light";
     };
 
+    # Unused; upstream still targets the renamed programs.gemini-cli -> programs.antigravity-cli.
+    gemini-cli.enable = false;
+
     #gtk.enable = true;
     kvantum.enable = true;
     qt5ct.enable = true;

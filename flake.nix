@@ -1,11 +1,11 @@
 {
   inputs = {
     # Nix basics
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-server.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -28,23 +28,19 @@
       url = "github:sadjow/claude-code-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dolphin-overlay = {
-      url = "github:rumboon/dolphin-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Server stuff
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
     mtg-card-scraper = {
       url = "git+ssh://git@github.com/liperium/mtg-card-scraper";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-server";
     };
     ml-production-website = {
       url = "git+ssh://git@github.com/liperium/ml-production-website";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-server";
     };
     construct3-hoster = {
       url = "git+ssh://git@github.com/liperium/construct3-hoster";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs-server";
     };
   };
   nixConfig = {
@@ -117,7 +113,7 @@
             nixos-hardware.nixosModules.framework-intel-core-ultra-series1
           ]
           ++ home-manager-liperium-root {
-            hyprMonitor = {};
+            hyprMonitor = { };
             userImports = [
               ./home/niri.nix
             ];
@@ -135,7 +131,7 @@
             hyprMonitor = {
               primary = "DP-1";
               secondary = "DP-2";
-              settings = [];
+              settings = [ ];
             };
             userImports = [
               ./home/niri.nix

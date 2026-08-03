@@ -6,16 +6,11 @@
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-  boot.supportedFilesystems = [ "ntfs" ];
 
   networking.hostName = "battleship";
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.amd
-    os-prober
-    (catppuccin-grub.override {
-      flavor = "mocha";
-    })
     gparted
     rkdeveloptool
     minicom
@@ -42,10 +37,7 @@
       "udev.log_priority=3"
     ];
 
-    loader = {
-      timeout = 5;
-      grub.theme = "${pkgs.catppuccin-grub}";
-    };
+    loader.timeout = 5;
   };
 
   services.displayManager.gdm.enable = true;
@@ -61,10 +53,7 @@
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    grub.enable = true;
-    grub.devices = [ "nodev" ];
-    grub.efiSupport = true;
-    grub.useOSProber = true;
+    systemd-boot.enable = true;
   };
 
   # Bluetooth

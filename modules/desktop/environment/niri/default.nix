@@ -6,8 +6,6 @@
 }:
 
 {
-  nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ];
-
   programs.niri = {
     enable = true;
     package = pkgs.unstable.niri;

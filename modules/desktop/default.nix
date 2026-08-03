@@ -15,7 +15,7 @@
 
   users.users.liperium = {
     packages = with pkgs; [
-      stable.logseq
+      logseq
     ];
   };
   #Fonts
