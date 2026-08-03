@@ -1,13 +1,17 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
+let
+  caddyPkgs = import inputs.nixpkgs-caddy {
+    inherit (pkgs.stdenv.hostPlatform) system;
+    inherit (pkgs) config;
+  };
+in
 {
-
-
   services.caddy = {
     enable = true;
     configFile = ./Caddyfile;
-    package = pkgs.caddy.withPlugins {
+    package = caddyPkgs.caddy.withPlugins {
       plugins = [ "github.com/caddy-dns/cloudflare@v0.2.1" ];
-      hash = "sha256-+nSmZNTdPv7d/T7qijkggyAf77RP17M6j4Cez/oha8Q=";
+      hash = "sha256-B5xXld1+IRUAQHm8zkHFqvRp8cqnervVL6XEos5VNkc=";
     };
     environmentFile = "/run/secrets/caddy.env";
   };

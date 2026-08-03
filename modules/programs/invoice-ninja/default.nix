@@ -85,8 +85,8 @@ in
         RemainAfterExit = true;
       };
       script = ''
-        ${pkgs.docker}/bin/docker network inspect ${network} >/dev/null 2>&1 || \
-          ${pkgs.docker}/bin/docker network create ${network}
+        ${config.virtualisation.docker.package}/bin/docker network inspect ${network} >/dev/null 2>&1 || \
+          ${config.virtualisation.docker.package}/bin/docker network create ${network}
       '';
     };
 

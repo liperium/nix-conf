@@ -46,48 +46,39 @@
     ];
   };
 
+  # Google Assistant service account, referenced from HA's configuration.yaml
+  # as `!include SERVICE_ACCOUNT.json`. Bind-mounted into the container below.
+  # Owned by root now that the native `hass` user no longer exists.
   sops.secrets."hass-google-service-account.json" = {
     sopsFile = ../../../modules/secrets/hass-google-service-account.json;
     format = "binary";
     path = "/var/lib/hass/SERVICE_ACCOUNT.json";
-    owner = "hass";
+    owner = "root";
   };
 
-  # Home Assistant
-  services.home-assistant = {
-    enable = true;
-    extraComponents = [
-      # Components required to complete the onboarding
-      "esphome"
-      "met"
-      "radio_browser"
-      "tplink"
-      "matter"
-      "google_assistant"
-    ];
-    config = {
-      # Includes dependencies for a basic setup
-      # https://www.home-assistant.io/integrations/default_config/
-      default_config = { };
-
-      http = {
-        use_x_forwarded_for = true;
-        trusted_proxies = [ "192.168.1.10" "127.0.0.1" ];
-      };
-      google_assistant = {
-        project_id = "hass-liperium";
-        service_account = "!include SERVICE_ACCOUNT.json";
-        report_state = true;
-        exposed_domains = [ "switch" "light" ];
-        #entity_config = {
-        #  light.h6008_2 = {
-        #    name = "Chevet";
-        #  };
-        #  switch.unnamed_kp125m = {
-        #    name = "Fairy Lights";
-        #  };
-        #};
-      };
+  # Home Assistant (podman container).
+  # Config lives in the `home-assistant` podman volume (/config). Restore your
+  # backup there and re-run onboarding as needed.
+  # Backend (docker) is set globally by the invoice-ninja module; inherit it.
+  virtualisation.oci-containers = {
+    containers.homeassistant = {
+      image = "ghcr.io/home-assistant/home-assistant:stable";
+      autoStart = true;
+      # Note: the image is not updated on rebuilds unless the tag/version changes.
+      volumes = [
+        "home-assistant:/config"
+        # Google Assistant service account (managed by sops), read-only.
+        "/var/lib/hass/SERVICE_ACCOUNT.json:/config/SERVICE_ACCOUNT.json:ro"
+      ];
+      environment.TZ = "America/Montreal";
+      extraOptions = [
+        # Use the host network namespace so device discovery (SSDP/mDNS) works.
+        "--network=host"
+        # Pass USB devices (e.g. Zigbee/Z-Wave dongles) into the container.
+        # A device that doesn't exist blocks startup, so uncomment/adjust only
+        # if the shuttle actually has one.
+        # "--device=/dev/ttyACM0:/dev/ttyACM0"
+      ];
     };
   };
   services.matter-server.enable = true; # Matter wattage plugs

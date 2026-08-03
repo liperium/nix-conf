@@ -5,5 +5,6 @@ in
   imports = [
     # Base
     "${modDir}"
+    "${modDir}/docker.nix"
   ];
 }
