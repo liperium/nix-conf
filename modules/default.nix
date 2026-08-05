@@ -192,6 +192,27 @@
         inherit (final) config;
       };
     })
+
+    # KF6 apps get no palette out of the qt6ct platform theme: they end up with
+    # Qt's default *light* palette while Kvantum paints the widgets dark, so item
+    # text and the monochrome (breeze) icons render black on black. Forcing the
+    # KDE platform theme makes them read the Catppuccin palette, widget style and
+    # icon theme from ~/.config/kdeglobals instead (see home/dolphin.nix).
+    # QT_QPA_PLATFORMTHEME stays qt6ct for every other Qt app.
+    (final: prev: {
+      kdePackages = prev.kdePackages // lib.genAttrs
+        [ "dolphin" "gwenview" "ark" "kdf" ]
+        (name: final.symlinkJoin {
+          inherit name;
+          paths = [ prev.kdePackages.${name} ];
+          nativeBuildInputs = [ final.makeWrapper ];
+          postBuild = ''
+            for bin in $out/bin/*; do
+              wrapProgram "$bin" --set QT_QPA_PLATFORMTHEME kde
+            done
+          '';
+        });
+    })
   ];
 
   # SOPS

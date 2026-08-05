@@ -182,7 +182,8 @@
         Mod+S { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 
         // Screenshots: region to clipboard / region to file
-        Print       { spawn "sh" "-c" "grim -g \"$(slurp)\" - | wl-copy"; }
+        //Print { spawn "sh" "-c" "grim -t ppm -g \"$(slurp -d)\" - | satty -f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape=save-to-clipboard,exit --brush-smooth-history-size=5 --disable-notifications"; }
+        Print { spawn "sh" "-c" "geom=$(slurp -d) && grim -t ppm -g \"$geom\" - | satty -f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape=save-to-clipboard,exit --brush-smooth-history-size=5 --disable-notifications"; }
         Shift+Print { spawn "sh" "-c" "mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"; }
     }
   '';

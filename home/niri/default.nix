@@ -11,6 +11,7 @@
   home.packages = with pkgs; [
     brightnessctl
     unstable.niri
+    satty # Screenshot edit
   ];
 
   programs.foot = {
