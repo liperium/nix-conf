@@ -53,6 +53,10 @@
             policy = "one_factor";
           }
           {
+            domain = "mtg-deck.mattysgervais.com";
+            policy = "one_factor";
+          }
+          {
             domain = "auth.mattysgervais.com";
             policy = "bypass";
           }

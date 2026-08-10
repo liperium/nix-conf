@@ -9,6 +9,7 @@
     ./qbittorrent
     ./homer
     ./mtg-scraper
+    ./mtg-deck-tool
     ./authelia
     ./ml-production-website
     ./countdown

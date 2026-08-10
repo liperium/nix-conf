@@ -43,6 +43,10 @@
       url = "git+ssh://git@github.com/liperium/construct3-hoster";
       inputs.nixpkgs.follows = "nixpkgs-server";
     };
+    mtg-deck-tool = {
+      url = "git+ssh://git@github.com/liperium/mtg-deck-tool";
+      inputs.nixpkgs.follows = "nixpkgs-server";
+    };
   };
   nixConfig = {
     extra-substituters = [
