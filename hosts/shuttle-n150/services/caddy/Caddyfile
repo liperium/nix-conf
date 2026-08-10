@@ -150,6 +150,8 @@ radarr.mur.mattysgervais.com {
 sonarr.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:8989
 }
+# qBittorrent runs in the qvpn netns; portMappings only DNATs traffic hitting
+# the qvpn-br bridge, not loopback, so 127.0.0.1:8182 gets connection refused.
 qbittorrent.mur.mattysgervais.com {
 	reverse_proxy 192.168.15.1:8182
 }

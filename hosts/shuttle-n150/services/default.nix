@@ -115,9 +115,9 @@
 
   # Ensure files/dirs created by *arr services are group-writable so
   # bazarr (same `users` group) can write subtitles next to videos.
-  systemd.services.radarr.serviceConfig.UMask = "0002";
-  systemd.services.sonarr.serviceConfig.UMask = "0002";
-  systemd.services.bazarr.serviceConfig.UMask = "0002";
+  systemd.services.radarr.serviceConfig.UMask = lib.mkForce "0002";
+  systemd.services.sonarr.serviceConfig.UMask = lib.mkForce "0002";
+  systemd.services.bazarr.serviceConfig.UMask = lib.mkForce "0002";
   systemd.services.bazarr.path = [ pkgs.mediainfo ];
 
   services.immich = {

@@ -182,11 +182,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776866812,
-        "narHash": "sha256-2lDF4U+DH2npiAYW+knWUiR3rzi+YaERwT8MR0moLdY=",
+        "lastModified": 1784437297,
+        "narHash": "sha256-eYgl+piQJ9GNvc9spqMxYuZvhAy0doDJYNn2rNXyiGw=",
         "ref": "refs/heads/master",
-        "rev": "37918546eb9c7498fa52f8043d934fb9eb99aa15",
-        "revCount": 18,
+        "rev": "83094ab2e245e6173f97d7ae230a95ae6d16bd0c",
+        "revCount": 23,
         "type": "git",
         "url": "ssh://git@github.com/liperium/mtg-card-scraper"
       },
@@ -225,6 +225,22 @@
       "original": {
         "type": "tarball",
         "url": "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz"
+      }
+    },
+    "nixpkgs-caddy": {
+      "locked": {
+        "lastModified": 1785599192,
+        "narHash": "sha256-dg4RTtDxnXY13UkJNdhmgTUTl0n/IJBlCigfO7nutZw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6d65bfc1bcef2ef39a239d38e577e92a89fb0f07",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-server": {
@@ -318,6 +334,7 @@
         "mtg-card-scraper": "mtg-card-scraper",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-caddy": "nixpkgs-caddy",
         "nixpkgs-server": "nixpkgs-server",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia": "noctalia",
