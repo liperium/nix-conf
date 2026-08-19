@@ -49,7 +49,7 @@ behind=0
 
 if [ "$behind" -eq 1 ] && [ "$ahead" -eq 0 ] && [ -z "$dirty" ]; then
   n=$(git rev-list --count "HEAD..@{u}")
-  if git pull --ff-only --quiet origin >/dev/null 2>&1; then
+  if git merge --ff-only --quiet '@{u}' >/dev/null 2>&1; then
     notify "pulled $n new commit(s)"
   else
     notify "remote ahead, pull failed, check manually"
