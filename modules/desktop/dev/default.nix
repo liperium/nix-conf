@@ -9,7 +9,7 @@
     packages = with pkgs; [
       # General
       vscode-fhs
-      unstable.code-cursor
+      unstable.code-cursor-fhs
       unstable.devenv
       #github-desktop
 

@@ -10,7 +10,7 @@
 
   home.packages = with pkgs; [
     brightnessctl
-    unstable.niri
+    niri
     satty # Screenshot edit
   ];
 

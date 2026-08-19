@@ -14,7 +14,7 @@ in
 {
   programs.niri = {
     enable = true;
-    package = pkgs.unstable.niri;
+    package = pkgs.niri;
   };
 
   services.displayManager.enable = true;

@@ -14,6 +14,10 @@
     gparted
     rkdeveloptool
     minicom
+    unstable.llmfit
+    unstable.vllm
+    unstable.jan
+    unstable.ollama-rocm
   ];
   virtualisation.waydroid.enable = true;
   virtualisation.waydroid.package = pkgs.waydroid-nftables;
@@ -83,6 +87,24 @@
   hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
   services.upower.enable = true;
+
+
+  # ROCM
+  nixpkgs.config.rocmSupport = true;
+  systemd.tmpfiles.rules =
+    let
+      rocmEnv = pkgs.symlinkJoin {
+        name = "rocm-combined";
+        paths = with pkgs.rocmPackages; [
+          rocblas
+          hipblas
+          clr
+        ];
+      };
+    in
+    [
+      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+    ];
 
   system.stateVersion = "24.11";
 }

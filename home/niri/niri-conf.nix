@@ -186,5 +186,8 @@
         Print { spawn "sh" "-c" "geom=$(slurp -d) && grim -t ppm -g \"$geom\" - | satty -f - --initial-tool=arrow --copy-command=wl-copy --actions-on-escape=save-to-clipboard,exit --brush-smooth-history-size=5 --disable-notifications"; }
         Shift+Print { spawn "sh" "-c" "mkdir -p ~/Pictures/Screenshots && grim -g \"$(slurp)\" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%M-%S).png"; }
     }
+    debug {
+        honor-xdg-activation-with-invalid-serial
+    }
   '';
 }
