@@ -123,6 +123,13 @@ let
             url: "https://qbittorrent.mur.mattysgervais.com"
             target: "_blank"
 
+          - name: "NZBGet"
+            logo: "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/nzbget.png"
+            subtitle: "Usenet"
+            tag: "download"
+            url: "https://nzbget.mur.mattysgervais.com"
+            target: "_blank"
+
       - name: "System"
         icon: "fas fa-server"
         items:

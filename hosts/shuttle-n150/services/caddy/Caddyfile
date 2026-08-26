@@ -23,7 +23,8 @@
 }
 
 (authelia) {
-    forward_auth 127.0.0.1:9091 {
+    @needs_auth not remote_ip 192.168.1.0/24
+    forward_auth @needs_auth 127.0.0.1:9091 {
         uri /api/authz/forward-auth
         copy_headers Remote-User Remote-Groups Remote-Email Remote-Name
     }
@@ -160,6 +161,10 @@ sonarr.mur.mattysgervais.com {
 # the qvpn-br bridge, not loopback, so 127.0.0.1:8182 gets connection refused.
 qbittorrent.mur.mattysgervais.com {
 	reverse_proxy 192.168.15.1:8182
+}
+# nzbget also runs in the qvpn netns; same 192.168.15.1 gateway rule applies.
+nzbget.mur.mattysgervais.com {
+	reverse_proxy 192.168.15.1:6789
 }
 bazarr.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:6767

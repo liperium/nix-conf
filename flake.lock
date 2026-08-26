@@ -221,11 +221,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1786423785,
-        "narHash": "sha256-V7OJsewvyXc1AAiW03DcvWelhHtnmdIBbfQwfW/ObFc=",
+        "lastModified": 1787621340,
+        "narHash": "sha256-ajxoFn2OBqe8grZb/JlmuTw3uwNMbLOWC3RME9W/0J0=",
         "ref": "refs/heads/main",
-        "rev": "49fec4cb28c409231b7bf8fe6e878d2b3aca288c",
-        "revCount": 23,
+        "rev": "0a9de23679369f2ef44d7ff0b1e30ce65586fea4",
+        "revCount": 27,
         "type": "git",
         "url": "ssh://git@github.com/liperium/mtg-deck-tool"
       },

@@ -99,8 +99,23 @@ in
           autoStart = true;
           environmentFiles = [ secretPath ];
           volumes = [ "${dataDir}/mysql:/var/lib/mysql" ];
+          # Left unbounded, mysqld grew to ~5.8 GB RSS over a few days and was
+          # OOM-killed four times in August -- each time as the largest process
+          # during a *global* OOM that threatened the whole host. Bound its
+          # memory explicitly, and cap the cgroup so that a runaway can only
+          # ever take out this container instead of the box.
+          cmd = [
+            "--innodb-buffer-pool-size=256M"
+            "--performance-schema=OFF"
+            "--max-connections=75"
+            "--table-open-cache=400"
+            "--table-definition-cache=400"
+          ];
           extraOptions = [
             "--network=${network}"
+            # memory-swap equal to memory keeps it from spilling into host swap.
+            "--memory=1500m"
+            "--memory-swap=1500m"
             "--health-cmd=mysqladmin ping -h localhost -u$${MYSQL_USER} -p$${MYSQL_PASSWORD}"
             "--health-interval=10s"
             "--health-timeout=5s"

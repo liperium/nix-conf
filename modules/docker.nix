@@ -13,6 +13,15 @@
     # network's gateway makes the kernel route gateway traffic to lo and kills
     # the uplink. Keep every bridge in a range nobody else uses.
     daemon.settings = {
+      # The journald driver logged every container line a second time: once
+      # here from the daemon and once via the oci-containers unit's stdout
+      # (~64k duplicated lines per boot for invoice-ninja alone). `local` keeps
+      # `docker logs` working while leaving exactly one copy in the journal.
+      log-driver = "local";
+      log-opts = {
+        max-size = "10m";
+        max-file = "3";
+      };
       bip = "10.200.0.1/24";
       default-address-pools = [
         { base = "10.201.0.0/16"; size = 24; }

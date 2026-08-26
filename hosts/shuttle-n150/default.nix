@@ -11,6 +11,8 @@
       ./modules.nix
       ./services
       ./security.nix
+      ./memory.nix
+      ./reliability.nix
     ];
 
   # Bootloader.
