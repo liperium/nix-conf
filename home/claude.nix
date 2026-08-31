@@ -11,6 +11,12 @@ let
     "Bash(rtk find *)"
     "Bash(rtk proxy cat*)"
     "Bash(nix eval *)"
+    "Bash(rtk go test*)"
+    "Bash(rtk go build*)"
+    "Bash(rtk go vet*)"
+    "Bash(rtk read *)"
+    "Bash(journalctl *)"
+    "Bash(bootctl list *)"
   ];
   staticClaudeMd = pkgs.writeText "claude-md-header" ''
     # User-level Claude Instructions
@@ -25,6 +31,27 @@ let
     - For projects use devenv.
     - For projects with `.envrc` (direnv active): just run commands normally after `direnv allow`
     - Never use: python, python3, pip, node, cargo directly — always wrap with nix-shell or nix develop
+    - Never start a full system closure build (`nixos-rebuild switch/build`, or building a host's
+      `system.build.toplevel`) without asking first. Build only the specific package/flake output
+      you need; deploys are the user's call.
+    - Claude Code / MCP / plugin config lives declaratively in `~/nix-conf` (see `home/claude.nix`).
+      Prefer editing that config over imperative `claude mcp add/remove` or plugin install/uninstall
+      commands, then ask the user to rebuild.
+
+    ## Planning
+
+    For a change touching 3+ files or a new feature area, share a short plan (files to touch, order
+    of work, how you'll verify) and wait for approval before editing.
+
+    ## Verification
+
+    Don't declare a fix done from reading code alone. Show the command you ran and its real output.
+    If you can't verify something (e.g. it needs a GUI or a browser), say UNVERIFIED explicitly.
+
+    ## Debugging Discipline
+
+    Before proposing a fix for an environment/config issue, confirm the actual state (filesystem
+    type, hardware, existing entries) instead of assuming a default.
 
     ## Communication
 

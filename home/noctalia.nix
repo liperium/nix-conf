@@ -19,10 +19,11 @@
     grim
     slurp
     wl-clipboard
-    (pkgs.tesseract4.override { enableLanguages = [ "eng" "fra" "spa" ]; })
-    imagemagick
-    zbar
-    translate-shell
-    wf-recorder
+    #(pkgs.tesseract4.override { enableLanguages = [ "eng" "fra" "spa" ]; })
+    #imagemagick
+    #zbar
+    #translate-shell
+    #wf-recorder
+    inputs.ai-usagebar.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

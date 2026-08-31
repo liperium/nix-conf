@@ -19,7 +19,7 @@
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
@@ -27,6 +27,10 @@
     };
     claude-code = {
       url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ai-usagebar = {
+      url = "github:akitaonrails/ai-usagebar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Server stuff
@@ -104,11 +108,6 @@
       globalModules = [ sops-nix.nixosModules.sops ];
     in
     {
-      images. shuttle = self.nixosConfigurations.shuttle.config.system.build.image;
-
-      packages.x86_64-linux.shuttle-image = self.nixosConfigurations.shuttle.config.system.build.image;
-      packages.aarch64-linux.shuttle-image = self.nixosConfigurations.shuttle.config.system.build.image;
-
       nixosConfigurations = {
         frigate = lib.nixosSystem {
           inherit system;
@@ -151,14 +150,6 @@
             ++ globalModules;
         };
 
-        shuttle = lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            nixos-hardware.nixosModules.raspberry-pi-4
-            "${nixpkgs}/nixos/modules/profiles/minimal.nix"
-            ./hosts/shuttle
-          ] ++ globalModules;
-        };
         shuttle-n150 = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };

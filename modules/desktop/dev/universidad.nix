@@ -16,6 +16,8 @@
       texliveFull
       tex-fmt
       onlyoffice-desktopeditors
+      kdePackages.okular
+      libreoffice-qt
 
 
       # cegep
