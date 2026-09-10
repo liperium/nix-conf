@@ -13,7 +13,7 @@
   ];
 
   networking.hostName = "frigate";
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   # Notify desktop user when Wi-Fi requires captive-portal sign-in.
   networking.networkmanager.dispatcherScripts = [
