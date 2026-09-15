@@ -14,13 +14,13 @@
     gparted
     rkdeveloptool
     minicom
-    unstable.llmfit
-    unstable.vllm
-    unstable.jan
-    unstable.ollama-rocm
+    # unstable.llmfit
+    # unstable.vllm
+    # unstable.jan
+    # unstable.ollama-rocm
   ];
-  virtualisation.waydroid.enable = true;
-  virtualisation.waydroid.package = pkgs.waydroid-nftables;
+  #virtualisation.waydroid.enable = true;
+  #virtualisation.waydroid.package = pkgs.waydroid-nftables;
   programs.kdeconnect.enable = true;
   programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
 
@@ -90,21 +90,21 @@
 
 
   # ROCM
-  nixpkgs.config.rocmSupport = true;
-  systemd.tmpfiles.rules =
-    let
-      rocmEnv = pkgs.symlinkJoin {
-        name = "rocm-combined";
-        paths = with pkgs.rocmPackages; [
-          rocblas
-          hipblas
-          clr
-        ];
-      };
-    in
-    [
-      "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
-    ];
+  # nixpkgs.config.rocmSupport = true;
+  # systemd.tmpfiles.rules =
+  #   let
+  #     rocmEnv = pkgs.symlinkJoin {
+  #       name = "rocm-combined";
+  #       paths = with pkgs.rocmPackages; [
+  #         rocblas
+  #         hipblas
+  #         clr
+  #       ];
+  #     };
+  #   in
+  #   [
+  #     "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
+  #   ];
 
   system.stateVersion = "24.11";
 }

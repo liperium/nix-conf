@@ -34,7 +34,6 @@ in
       temurin-bin-8
       temurin-bin-17
       #starsector
-      unstable.cockatrice
     ];
   };
   nixpkgs.config.packageOverrides = pkgs: {

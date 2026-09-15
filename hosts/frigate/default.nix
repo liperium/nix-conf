@@ -92,8 +92,7 @@
     bluez
     bluez-tools
     easyeffects
-    omnissa-horizon-client
-    unstable.cockatrice
+    #omnissa-horizon-client
   ];
 
   services.power-profiles-daemon.enable = true;

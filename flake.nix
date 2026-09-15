@@ -51,6 +51,7 @@
       url = "git+ssh://git@github.com/liperium/mtg-deck-tool";
       inputs.nixpkgs.follows = "nixpkgs-server";
     };
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
   nixConfig = {
     extra-substituters = [
@@ -74,6 +75,7 @@
       #, chaotic
     , sops-nix
     , vpn-confinement
+    , vscode-server
     , ...
     }@inputs:
     let
@@ -130,6 +132,10 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/battleship
+            vscode-server.nixosModules.default
+            ({ config, pkgs, ... }: {
+              services.vscode-server.enable = true;
+            })
           ]
           ++ home-manager-liperium-root {
             hyprMonitor = {

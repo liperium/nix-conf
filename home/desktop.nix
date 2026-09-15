@@ -28,6 +28,7 @@
     brave
     qalculate-qt
     unstable.discord
+    unstable.codex
     #discord
     deluge-gtk
     joplin

@@ -37,7 +37,7 @@
 
 
   home.packages = with pkgs;[
-    unstable.quickshell
+    quickshell
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     #Screen-Toolkit dependencies
