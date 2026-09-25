@@ -28,6 +28,7 @@ in
 
     # Desktop Additionals
     "${modDev}"
+    "${modDev}/mapgears.nix"
     "${modDev}/universidad.nix"
   ];
 }
