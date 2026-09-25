@@ -31,8 +31,8 @@
     unstable.codex
     #discord
     deluge-gtk
-    joplin
-    joplin-desktop
+    #joplin
+    unstable.joplin-desktop
 
     #Creative
     gimp

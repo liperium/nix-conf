@@ -18,8 +18,8 @@
     catppuccin.url = "github:catppuccin/nix";
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:noctalia-dev/noctalia/cachix";
+      #inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
