@@ -40,17 +40,17 @@
     },
     "claude-code": {
       "inputs": {
-        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "systems": "systems"
       },
       "locked": {
-        "lastModified": 1784948311,
-        "narHash": "sha256-zXmyx6HuIjH0RQPV4VjVAXQttLyLDk55x9c3NmDke8c=",
+        "lastModified": 1790280108,
+        "narHash": "sha256-bApGLOF5XDhf3UCM1/e1yIQCoY5wW1+B88lHkcYlp2U=",
         "owner": "sadjow",
         "repo": "claude-code-nix",
-        "rev": "0d3cd1d6260b6f0ed232224c274c565407446fa1",
+        "rev": "f10421316cc6df045497f5aa0009adce648e89ee",
         "type": "github"
       },
       "original": {
@@ -61,7 +61,7 @@
     },
     "construct3-hoster": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs-server"
         ]
@@ -100,24 +100,6 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
-      "inputs": {
         "systems": "systems_2"
       },
       "locked": {
@@ -134,7 +116,7 @@
         "type": "github"
       }
     },
-    "flake-utils_3": {
+    "flake-utils_2": {
       "inputs": {
         "systems": "systems_3"
       },
@@ -152,7 +134,7 @@
         "type": "github"
       }
     },
-    "flake-utils_4": {
+    "flake-utils_3": {
       "inputs": {
         "systems": "systems_4"
       },
@@ -170,7 +152,7 @@
         "type": "github"
       }
     },
-    "flake-utils_5": {
+    "flake-utils_4": {
       "inputs": {
         "systems": "systems_5"
       },
@@ -209,9 +191,25 @@
         "type": "github"
       }
     },
+    "khronos-go": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790344456,
+        "narHash": "sha256-jMLlo95C9ZpJx0HRlWnF1nyuIkvjh83M8feUjDcTffw=",
+        "ref": "refs/heads/master",
+        "rev": "01f71c2c6baa83f3dabc003d6726fa0766db1015",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@proj.mapgears.com/diffusion/KHRONOSGO/khoronos-go.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@proj.mapgears.com/diffusion/KHRONOSGO/khoronos-go.git"
+      }
+    },
     "ml-production-website": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs-server"
         ]
@@ -232,7 +230,7 @@
     },
     "mtg-card-scraper": {
       "inputs": {
-        "flake-utils": "flake-utils_4",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs-server"
         ]
@@ -253,7 +251,7 @@
     },
     "mtg-deck-tool": {
       "inputs": {
-        "flake-utils": "flake-utils_5",
+        "flake-utils": "flake-utils_4",
         "nixpkgs": [
           "nixpkgs-server"
         ]
@@ -435,6 +433,7 @@
         "claude-code": "claude-code",
         "construct3-hoster": "construct3-hoster",
         "home-manager": "home-manager",
+        "khronos-go": "khronos-go",
         "ml-production-website": "ml-production-website",
         "mtg-card-scraper": "mtg-card-scraper",
         "mtg-deck-tool": "mtg-deck-tool",

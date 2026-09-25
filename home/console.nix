@@ -43,9 +43,10 @@
           end
         ' &
       end
+      devenv hook fish | source
 
       ${pkgs.callPackage ../modules/scripts/nix-conf-sync-check.nix { }}/bin/nix-conf-sync-check
-      '';
+    '';
   };
   programs.oh-my-posh.enableFishIntegration = false;
 }

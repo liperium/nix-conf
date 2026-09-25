@@ -52,6 +52,11 @@
       inputs.nixpkgs.follows = "nixpkgs-server";
     };
     vscode-server.url = "github:nix-community/nixos-vscode-server";
+    # Mapgears (private, desktop app, not a flake itself)
+    khronos-go = {
+      url = "git+ssh://git@proj.mapgears.com/diffusion/KHRONOSGO/khoronos-go.git";
+      flake = false;
+    };
   };
   nixConfig = {
     extra-substituters = [
