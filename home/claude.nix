@@ -3,18 +3,16 @@
 let
   # Read-only commands safe to run without a permission prompt, everywhere.
   globalAllowPatterns = [
-    "Bash(rtk grep *)"
-    "Bash(rtk git status*)"
-    "Bash(rtk git diff*)"
-    "Bash(rtk git log*)"
-    "Bash(rtk ls *)"
-    "Bash(rtk find *)"
-    "Bash(rtk proxy cat*)"
+    "Bash(grep *)"
+    "Bash(git status*)"
+    "Bash(git diff*)"
+    "Bash(git log*)"
+    "Bash(ls *)"
+    "Bash(find *)"
     "Bash(nix eval *)"
-    "Bash(rtk go test*)"
-    "Bash(rtk go build*)"
-    "Bash(rtk go vet*)"
-    "Bash(rtk read *)"
+    "Bash(go test*)"
+    "Bash(go build*)"
+    "Bash(go vet*)"
     "Bash(journalctl *)"
     "Bash(bootctl list *)"
   ];
@@ -64,26 +62,25 @@ let
     name = "claude-with-plugins";
     paths = [ realClaude ];
     nativeBuildInputs = [ pkgs.makeWrapper ];
+    # --suffix, not --prefix: fallbacks only, so a project's devenv/direnv
+    # python and node still win inside Claude's shell. No LD_LIBRARY_PATH —
+    # it leaked into project envs (glibc mismatches) and only mempalace/graphify
+    # needed it.
     postBuild = ''
       wrapProgram $out/bin/claude \
-        --prefix PATH : ${pkgs.nodejs}/bin \
-        --prefix PATH : ${pkgs.python3}/bin \
-        --prefix PATH : ${pkgs.unstable.rtk}/bin \
-        --prefix PATH : "$HOME/.local/bin" \
-        --prefix LD_LIBRARY_PATH : ${pkgs.stdenv.cc.cc.lib}/lib \
-        --prefix LD_LIBRARY_PATH : ${pkgs.zlib}/lib
+        --suffix PATH : ${pkgs.nodejs}/bin \
+        --suffix PATH : ${pkgs.python3}/bin
     '';
   };
 in
 {
-  home.packages = [ claudeWrapped pkgs.unstable.rtk pkgs.unstable.uv ];
+  home.packages = [ claudeWrapped pkgs.unstable.uv ];
 
-  # Sync CLAUDE.md: write static header, then auto-inject RTK instructions from binary
+  # Sync CLAUDE.md: write static header
   home.activation.syncClaudeMd = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.claude"
     $DRY_RUN_CMD cp ${staticClaudeMd} "$HOME/.claude/CLAUDE.md"
     $DRY_RUN_CMD chmod u+w "$HOME/.claude/CLAUDE.md"
-    $DRY_RUN_CMD ${pkgs.unstable.rtk}/bin/rtk init -g --claude-md
   '';
 
   # Install caveman + ponytail plugins, disable caveman, enable ponytail by default
@@ -101,7 +98,7 @@ in
     $DRY_RUN_CMD $CLAUDE plugin enable ponytail@ponytail 2>/dev/null || true
   '';
 
-  # mempalace is retired in favor of graphify; tear down its plugin + leftover manual MCP entries
+  # mempalace is retired; tear down its plugin + leftover manual MCP entries
   home.activation.removeMempalace = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     CLAUDE=${claudeWrapped}/bin/claude
     $DRY_RUN_CMD $CLAUDE plugin uninstall mempalace@mempalace 2>/dev/null || true
@@ -109,15 +106,15 @@ in
     $DRY_RUN_CMD $CLAUDE mcp remove mempalace -s user 2>/dev/null || true
   '';
 
-  # Install graphify (via uv; nixpkgs' `graphify` package is far behind upstream),
-  # register its Claude Code skill, and wire up its MCP server.
-  home.activation.installGraphify = lib.hm.dag.entryAfter [ "writeBoundary" "syncClaudeMd" ] ''
-    UV=${pkgs.unstable.uv}/bin/uv
-    $DRY_RUN_CMD $UV tool install --quiet "graphifyy[mcp]" 2>/dev/null || true
-    $DRY_RUN_CMD "$HOME/.local/bin/graphify" install --platform claude 2>/dev/null || true
+  # graphify is retired too; remove its skill, MCP server and uv tool.
+  home.activation.removeGraphify = lib.hm.dag.entryAfter [ "writeBoundary" "syncClaudeMd" ] ''
+    if [ -x "$HOME/.local/bin/graphify" ]; then
+      $DRY_RUN_CMD "$HOME/.local/bin/graphify" uninstall 2>/dev/null || true
+    fi
+    $DRY_RUN_CMD rm -rf "$HOME/.claude/skills/graphify"
+    $DRY_RUN_CMD ${pkgs.unstable.uv}/bin/uv tool uninstall graphifyy 2>/dev/null || true
     CLAUDE=${claudeWrapped}/bin/claude
     $DRY_RUN_CMD $CLAUDE mcp remove graphify -s user 2>/dev/null || true
-    $DRY_RUN_CMD $CLAUDE mcp add graphify -s user -- "$HOME/.local/bin/graphify-mcp" 2>/dev/null || true
   '';
 
   # Merge the read-only allowlist into ~/.claude/settings.json without touching anything else in it
@@ -127,7 +124,7 @@ in
     [ -f "$SETTINGS" ] || echo '{}' > "$SETTINGS"
     ${pkgs.jq}/bin/jq \
       --argjson allow '${builtins.toJSON globalAllowPatterns}' \
-      '.permissions.allow = ((.permissions.allow // []) + $allow | unique)' \
+      '.permissions.allow = ((.permissions.allow // []) + $allow | map(select(startswith("Bash(rtk ") | not)) | unique)' \
       "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
   '';
 }
