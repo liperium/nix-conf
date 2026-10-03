@@ -160,6 +160,7 @@
     };
     shellAliases = {
       ls = "lsd";
+      ll = "lsd -l";
     };
     promptInit = ''
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
@@ -179,6 +180,10 @@
     ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
     set fish_greeting # Disables shell greeting
   '';
+  programs.fish.shellAliases = {
+    ll = "lsd -l";
+    ls = "lsd";
+  };
 
   users.defaultUserShell = pkgs.zsh;
   users.users.liperium.shell = pkgs.zsh;
