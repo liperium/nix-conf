@@ -27,6 +27,8 @@ let
   };
 in
 {
+  services.flatpak.enable = true; #Slack
+
   users.users.liperium = {
     packages = with pkgs; [
       # General
