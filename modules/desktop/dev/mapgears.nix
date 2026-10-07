@@ -32,6 +32,7 @@ in
       # General
       unstable.arcanist
       unstable.devenv
+      (callPackage ./arc-checkout.nix { arcanist = unstable.arcanist; })
 
       khronos
       khronosDesktopItem
