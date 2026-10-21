@@ -83,6 +83,7 @@
         # A device that doesn't exist blocks startup, so uncomment/adjust only
         # if the shuttle actually has one.
         # "--device=/dev/ttyACM0:/dev/ttyACM0"
+        "--device=/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyUSB0"
       ];
     };
   };
@@ -191,7 +192,7 @@
       ALLOW_UNAUTHENTICATED = "true";
     };
     serviceConfig = {
-      ExecStart = "${pkgs.unstable.convertx}/bin/convertx";
+      ExecStart = "${pkgs.convertx}/bin/convertx";
       Restart = "on-failure";
       DynamicUser = true;
       StateDirectory = "convertx";

@@ -83,40 +83,6 @@ in
     $DRY_RUN_CMD chmod u+w "$HOME/.claude/CLAUDE.md"
   '';
 
-  # Install caveman + ponytail plugins, disable caveman, enable ponytail by default
-  home.activation.installClaudePlugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    CLAUDE=${claudeWrapped}/bin/claude
-    if [ ! -d "$HOME/.claude/plugins/marketplaces/caveman" ]; then
-      $DRY_RUN_CMD $CLAUDE plugin marketplace add JuliusBrussee/caveman 2>/dev/null || true
-      $DRY_RUN_CMD $CLAUDE plugin install caveman@caveman 2>/dev/null || true
-    fi
-    if [ ! -d "$HOME/.claude/plugins/marketplaces/ponytail" ]; then
-      $DRY_RUN_CMD $CLAUDE plugin marketplace add DietrichGebert/ponytail 2>/dev/null || true
-      $DRY_RUN_CMD $CLAUDE plugin install ponytail@ponytail 2>/dev/null || true
-    fi
-    $DRY_RUN_CMD $CLAUDE plugin disable caveman@caveman 2>/dev/null || true
-    $DRY_RUN_CMD $CLAUDE plugin enable ponytail@ponytail 2>/dev/null || true
-  '';
-
-  # mempalace is retired; tear down its plugin + leftover manual MCP entries
-  home.activation.removeMempalace = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    CLAUDE=${claudeWrapped}/bin/claude
-    $DRY_RUN_CMD $CLAUDE plugin uninstall mempalace@mempalace 2>/dev/null || true
-    $DRY_RUN_CMD $CLAUDE mcp remove mempalace -s local 2>/dev/null || true
-    $DRY_RUN_CMD $CLAUDE mcp remove mempalace -s user 2>/dev/null || true
-  '';
-
-  # graphify is retired too; remove its skill, MCP server and uv tool.
-  home.activation.removeGraphify = lib.hm.dag.entryAfter [ "writeBoundary" "syncClaudeMd" ] ''
-    if [ -x "$HOME/.local/bin/graphify" ]; then
-      $DRY_RUN_CMD "$HOME/.local/bin/graphify" uninstall 2>/dev/null || true
-    fi
-    $DRY_RUN_CMD rm -rf "$HOME/.claude/skills/graphify"
-    $DRY_RUN_CMD ${pkgs.unstable.uv}/bin/uv tool uninstall graphifyy 2>/dev/null || true
-    CLAUDE=${claudeWrapped}/bin/claude
-    $DRY_RUN_CMD $CLAUDE mcp remove graphify -s user 2>/dev/null || true
-  '';
-
   # Merge the read-only allowlist into ~/.claude/settings.json without touching anything else in it
   home.activation.mergeClaudeAllowlist = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     SETTINGS="$HOME/.claude/settings.json"
