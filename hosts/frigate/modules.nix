@@ -24,6 +24,7 @@ in
     "${modDesktop}"
     "${modDesktop}/kdeconnect"
     "${modDesktop}/gaming"
+    "${modDesktop}/virt.nix"
 
     # Desktop Additionals
     "${modDev}"
