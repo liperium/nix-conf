@@ -29,11 +29,30 @@ in
 {
   services.flatpak.enable = true; #Slack
 
+  environment.variables.TELEPORT_USER = "mgervais";
+  environment.variables.TELEPORT_PROXY = "tsh1.mapgears.com";
+
+  programs.fish.interactiveShellInit = ''
+    function tshssh
+      set -l nodes (command tsh --proxy=tsh1.mapgears.com ls --format=names)
+      or return $status
+
+      if test (count $nodes) -gt 0
+        set -l host (printf '%s\n' $nodes | ${pkgs.fzf}/bin/fzf)
+
+        if test -n "$host"
+          command tsh --proxy=tsh1.mapgears.com ssh "$host"
+        end
+      end
+    end
+  '';
+
   users.users.liperium = {
     packages = with pkgs; [
       # General
       unstable.arcanist
       unstable.devenv
+      teleport
       (callPackage ./arc-checkout.nix { arcanist = unstable.arcanist; })
 
       khronos

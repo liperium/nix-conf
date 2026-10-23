@@ -22,6 +22,7 @@ in
 
     # Basic apps
     "${modDesktop}"
+    "${modDesktop}/yubikey.nix"
     "${modDesktop}/printer.nix"
     "${modDesktop}/virt.nix"
     "${modDesktop}/gaming/default.nix"
