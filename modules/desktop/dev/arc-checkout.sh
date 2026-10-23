@@ -34,6 +34,9 @@ git checkout -b "$branch" origin/master
 # Submodules (e.g. evvuedist) keep their old hash after a checkout; arc patch
 # refuses to run if they show as modified.
 git submodule update --init --recursive
+# arc patch makes a temp arcpatch-D<id>[_n] branch even with --nobranch and
+# gives up after a few name collisions; clear leftovers from failed runs.
+git branch --list "arcpatch-D$id" "arcpatch-D${id}_*" | tr -d ' *+' | xargs -r git branch -D
 arc patch --nobranch "D$id"
 
 echo
