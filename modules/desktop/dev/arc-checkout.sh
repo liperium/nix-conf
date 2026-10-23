@@ -31,6 +31,9 @@ if git show-ref --verify --quiet "refs/heads/$branch"; then
 fi
 
 git checkout -b "$branch" origin/master
+# Submodules (e.g. evvuedist) keep their old hash after a checkout; arc patch
+# refuses to run if they show as modified.
+git submodule update --init --recursive
 arc patch --nobranch "D$id"
 
 echo
