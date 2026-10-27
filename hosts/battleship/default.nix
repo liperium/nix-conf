@@ -14,6 +14,7 @@
     gparted
     rkdeveloptool
     minicom
+    (callPackage ../../modules/desktop/tolaria.nix { })
     # unstable.llmfit
     # unstable.vllm
     # unstable.jan
