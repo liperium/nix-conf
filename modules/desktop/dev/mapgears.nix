@@ -30,6 +30,7 @@ in
   services.flatpak.enable = true; #Slack
 
   environment.variables.TELEPORT_USER = "mgervais";
+  environment.variables.TELEPORT_LOGIN = "mgervais";
   environment.variables.TELEPORT_PROXY = "tsh1.mapgears.com";
 
   programs.fish.interactiveShellInit = ''
