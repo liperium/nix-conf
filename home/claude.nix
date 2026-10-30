@@ -55,6 +55,15 @@ let
 
     Ponytail skill is active by default (lazy/minimal-diff mode). Use `/ponytail lite|full|ultra` to adjust, or "stop ponytail" to disable.
     (Caveman skill disabled by default. Use `/caveman` to enable ultra-compressed mode if desired.)
+    Never label code comments "ponytail:" (or with any other skill name); write limitations as plain comments.
+
+    ## Notes and Docs
+
+    Every note or doc the user asks for goes in `~/Documents/Notes` (a tolaria vault), never in
+    `~/Documents/Nextcloud/MapGears`. Start each note with YAML frontmatter (`type: Reference`,
+    `status: Reference`, `belongs_to: "[[MapGears]]"`), then a `# <Title>` line. For the Python 3.14
+    migration, `tracking-python.md` and `workflow-python314.md` in that folder are canonical; the
+    Nextcloud copies are stale.
   '';
 
   realClaude = inputs.claude-code.packages.${system}.default;

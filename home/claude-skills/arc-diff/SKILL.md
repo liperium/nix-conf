@@ -28,6 +28,8 @@ Branch naming schemes in these repos:
 Take the task from `T(\d+)` in the branch name. If it isn't there, or reviewers aren't known,
 ask the user both in one AskUserQuestion before writing the message. Offer the reviewers seen
 in recent commits as options: `git log -20 --format=%B | grep '^Reviewers:' | sort | uniq -c`.
+Prefer two or more reviewers (multi-select): one reviews, the other can land it, so a
+diff doesn't wait on a single person.
 
 ## Workflow
 

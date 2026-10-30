@@ -30,6 +30,8 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    # No "direnv: export +AR +AS ..." line on every load.
+    config.global.hide_env_diff = true;
   };
   programs.fish = {
     enable = true;
