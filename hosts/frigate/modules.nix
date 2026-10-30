@@ -15,6 +15,7 @@ in
 
     "${modDir}/wireguard.nix"
     "${modDir}/docker.nix"
+    "${modDesktop}/printer.nix"
     "${currentDir}/wireguard.nix"
 
     # Desktop env

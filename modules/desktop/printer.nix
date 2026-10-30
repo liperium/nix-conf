@@ -18,6 +18,8 @@
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     serviceConfig = {
+      # Off the home LAN, skip instead of failing activation; CUPS keeps the queue once added
+      ExecCondition = "${pkgs.netcat}/bin/nc -z -w3 192.168.1.73 631";
       Restart = "on-failure";
       RestartSec = "10s";
     };

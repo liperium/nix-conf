@@ -76,6 +76,8 @@ in
 {
   home.packages = [ claudeWrapped pkgs.unstable.uv ];
 
+  home.file.".claude/skills/arc-diff/SKILL.md".source = ./claude-skills/arc-diff/SKILL.md;
+
   # Sync CLAUDE.md: write static header
   home.activation.syncClaudeMd = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p "$HOME/.claude"

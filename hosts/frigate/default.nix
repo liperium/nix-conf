@@ -49,6 +49,18 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-2a9c4cee-d3a3-41ce-9d46-f48a7cf2d703".device = "/dev/disk/by-uuid/2a9c4cee-d3a3-41ce-9d46-f48a7cf2d703";
+
+  # Compressed RAM swap; used before the (LUKS) disk swap thanks to higher priority.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
+  # Recommended for zram: swapping to RAM is cheap, so swap eagerly and don't read ahead.
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 180;
+    "vm.page-cluster" = 0;
+  };
   boot = {
     plymouth = {
       enable = true;
@@ -89,6 +101,7 @@
     fprintd
     polkit_gnome
     nvtopPackages.intel
+    (callPackage ../../modules/desktop/tolaria.nix { })
     bluez
     bluez-tools
     easyeffects
