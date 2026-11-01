@@ -84,17 +84,23 @@ diffed against it, not master: `arc diff <parent-branch> --create ...`. Put
 <Title>
 
 Summary:
-<1-3 lines: what changed and why. Link context instead of explaining it.>
+- <verb-first bullet: what changed, as behavior>
+- <...>
+
+NOTE: requires D<id> on `<repo>`
 
 Test Plan:
-**Setup**
-<what to do before testing: other diffs to apply, commands to run, data to load>
+**Set up**
+- <step: other diffs to apply, commands to run, data to create>
 
 **Test**
 - <step>
-  - [ ] Expect <behavior / interaction>
+- [ ] expect <behavior>
 - <step>
-  - [ ] Expect <behavior / interaction>
+- [ ] expect <behavior>
+
+**Clean up**
+- <undo the setup>
 
 Reviewers: <phab usernames, comma separated>
 
@@ -103,17 +109,55 @@ Subscribers: <optional>
 Maniphest Tasks: T<task>
 ```
 
+### Title
+
+`<Area>: <Description>`, imperative. `Technical:` for anything not user-facing (most diffs);
+otherwise the product area (`Process:`, `Map Editor:`, `Accounts:`), combinable
+(`Process, i18n:`). Reverts keep git's `Revert "..."` title.
+
+### Summary
+
+- Default: short lowercase verb-first bullets (`add ...`, `fix ...`, `make sure ...`), each
+  one behavior a reviewer can check, not a file-by-file changelog. Big diffs: number the
+  groups (`1. build the table columns ...`) with bullets under each.
+- Small change: 1-2 sentences of prose instead, with the why when it isn't obvious
+  ("Validation is not needed here: values come from server-side drop-downs").
+- Callouts go after the bullets: `NOTE: requires D24907 on \`darcee\`` (cross-repo or
+  stacked dependency), `NOTE:` for what is deliberately kept or left out, and the follow-up
+  ticket for it (`{Q126} has been created to address this topic.`, `See Q131`).
+- `Revert` diffs keep git's "This reverts commit <hash>." line.
+
+### Test Plan
+
+- Steps are lowercase imperatives against real routes and UI: `open /library`,
+  ``click `Save` ``, ``in `Primary Group`, type ...``. Backticks for UI labels, buttons,
+  fields; quotes for data names; real URLs/online resources to paste.
+- Each step's checkbox sits right after it, same indent: `- [ ] expect ...`. Several
+  expects per step are fine. Include negative/edge expects: buttons disabled at the last
+  page, error on an unsupported type, `expect no ... error in the console`.
+- Use existing fixture data by name (`"T2 - Many features 100k Points"`). Data the test
+  creates is named after the task (`"T44258 - Process"`) and deleted in `**Clean up**`.
+- Commands go in code blocks labelled with where to run them:
+  ```` ```name=override.ini ```` / ```` ```name=~/proj/evvue ````.
+  Use `NOTE:` for environment traps ("test from Darcee, not Vite") and `!!text!!` to
+  highlight a crucial word.
+- Backend-only change covered by tests: the test plan is just the command,
+  `` `make test_functional_core` `` (or `make test_functional`).
+- `N/A` is normal for refactors, renames, dependency upgrades, i18n text, build config and
+  docs: changes with no new behavior to click through.
+- Paired diffs (same change in evvue + darcee): put the full plan on one, `See D<id>.` on
+  the other, and `requires D<id>` in each Summary.
+
 Size the plan to the change's reach: a low-reach change (tooling, docs, config) gets 1-3
 expects, not one per command. If the author already ran the plan, end it with
 `Tested on my end, everything worked as expected.` (ask the user if unsure whether they did).
-Omit `**Setup**` when nothing is needed. For code-only changes `Test Plan:` can say what to
-read (`**Look at code**`) plus the checks you ran. `N/A` only for trivial/automated diffs.
+Omit `**Set up**`/`**Clean up**` when nothing is needed.
 
 ## Remarkup cheatsheet
 
-- `**bold**`, `//italic//`, `` `mono` ``, `__underline__`
+- `**bold**`, `//italic//`, `` `mono` ``, `__underline__`, `!!highlight!!`
 - Headers: `= H1 =`, `== H2 ==` (or `####Header` inline as seen in existing diffs)
 - Checkbox: `- [ ] item` / `- [x] item`
 - Links: `[[ https://url | text ]]`; objects auto-link: `T123`, `D456`, `rMGP<hash>`, `{F123}` embeds a file
-- Code block: ```` ```lang=bash ```` ... ```` ``` ````
+- Code block: ```` ```lang=bash ```` ... ```` ``` ````; `name=<label>` titles it (file or dir)
 - Callouts: `NOTE: ...`, `WARNING: ...`, `IMPORTANT: ...`
