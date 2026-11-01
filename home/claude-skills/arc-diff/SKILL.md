@@ -35,6 +35,7 @@ diff doesn't wait on a single person.
 
 1. If on a main/release branch: `git switch -c T<task>-<Desc>`.
 2. Commit (first line = diff title, e.g. `Technical: ...`, `Roles: ...`).
+   Run the checks first (see "Checks before sending").
 3. Write the message file (format below) in the scratchpad.
 4. Create: `arc diff origin/master --create --message-file <file> --`
    Update an existing one: `arc diff origin/master --update D<id> --message-file <file> --`
@@ -64,6 +65,29 @@ Check a reviewer username exists:
 A change that builds on an unlanded one goes on a branch made from that branch, and is
 diffed against it, not master: `arc diff <parent-branch> --create ...`. Put
 `Depends on D<parent>.` in the Summary so Phabricator links the two.
+
+## Checks before sending
+
+Run what arc would run, before the commit, so the diff doesn't land with lint/unit errors:
+`arc lint --rev origin/master --` then `arc unit --rev origin/master --` (darcee: inside
+the devenv shell, see below). Skip if the repo has no `.arclint` / `unit.engine`.
+
+- **Lint fails: fix it**, only in files the diff touches. For flake8 (`.arclint` type
+  `flake8`, no flake8 config = defaults: line length 79, plus its `flags`), use ruff set
+  to match it:
+  ```
+  nix-shell -p ruff --run "ruff check --isolated --line-length 79 --select E,W,F,C90 \
+    --config 'lint.mccabe.max-complexity=20' --fix <files>"
+  nix-shell -p ruff --run "ruff format --isolated --line-length 79 \
+    --config \"format.quote-style='preserve'\" <files>"
+  ```
+  `ruff format` only on files new in the diff; on existing files it reformats untouched
+  code, so fix those lines by hand. Ruff won't split long strings/docstrings: hand-fix the
+  rest, then re-run `arc lint` until clean. Other linters (eslint, nixfmt): apply their
+  autofix or edit by hand. Mention the lint fixes to the user.
+- **Unit fails: abort.** Don't send the diff and don't change tests to make them pass.
+  Show the user the failing test names (and whether the env looks broken, see below), and
+  let them decide.
 
 ## Lint and unit (darcee devenv)
 
