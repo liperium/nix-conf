@@ -194,11 +194,11 @@
     "khronos-go": {
       "flake": false,
       "locked": {
-        "lastModified": 1791984718,
-        "narHash": "sha256-xO8lcN8S8H++DFURy9GWkug6q6apc5PMKE9xJZaGQuc=",
+        "lastModified": 1793551632,
+        "narHash": "sha256-bKDa+10fgma/ZRJGgp0hDQFqv/wytftqE5Fn5idILSU=",
         "ref": "refs/heads/master",
-        "rev": "01f63502398f3908ce2e7ce6d43bb684a079127a",
-        "revCount": 9,
+        "rev": "d33fd6b9d49d7fdb5ac833da33c058141ccc7baa",
+        "revCount": 12,
         "type": "git",
         "url": "ssh://git@proj.mapgears.com/diffusion/KHRONOSGO/khoronos-go.git"
       },
