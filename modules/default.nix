@@ -15,6 +15,17 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+  # Keep flake input sources (incl. nested ones) alive across GC, otherwise the
+  # next rebuild re-downloads every nixpkgs tarball (~1 min).
+  # Private git+ssh inputs are skipped: hosts that don't use them may lack access.
+  system.extraDependencies =
+    let
+      lock = (builtins.fromJSON (builtins.readFile "${inputs.self}/flake.lock")).nodes;
+      isGit = n: (lock.${lock.root.inputs.${n}}.locked.type or "") == "git";
+      public = lib.filterAttrs (n: _: !isGit n) (removeAttrs inputs [ "self" ]);
+      collect = i: [ i.outPath ] ++ lib.concatMap collect (lib.attrValues (i.inputs or { }));
+    in
+    lib.unique (lib.concatMap collect (lib.attrValues public));
   nix.settings.auto-optimise-store = true;
   nix.settings.download-buffer-size = 524288000;
   nix.settings.accept-flake-config = true;
