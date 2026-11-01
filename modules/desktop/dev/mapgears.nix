@@ -46,6 +46,11 @@ in
         end
       end
     end
+
+    # Loads nix/completions/mx.fish once the devenv environment is active (direnv).
+    function __mx_load --on-variable DEVENV_ROOT
+      test -r "$DEVENV_ROOT/nix/completions/mx.fish"; and source $DEVENV_ROOT/nix/completions/mx.fish
+    end
   '';
 
   users.users.liperium = {
