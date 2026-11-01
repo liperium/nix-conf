@@ -13,6 +13,21 @@
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" "electron-39.8.10" ];
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # Compressed RAM swap; used before any disk swap thanks to higher priority.
+  # memoryPercent is a cap, not a reservation: RAM is only taken as pages get swapped.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
+  boot.kernel.sysctl = {
+    # 100 = anon and file pages cost the same to reclaim. Less eager than the usual
+    # zram 180 so a running game's working set isn't compressed while it's still hot.
+    "vm.swappiness" = lib.mkDefault 100;
+    # zram has no seek cost, so don't read ahead neighbouring pages.
+    "vm.page-cluster" = 0;
+  };
+
   users.users.liperium = {
     packages = with pkgs; [
       logseq
