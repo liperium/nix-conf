@@ -10,6 +10,12 @@ let
   guiAskpass = pkgs.writeShellScriptBin "gui-askpass" ''
     exec ${lib.getExe pkgs.zenity} --password --title="''${1:-Authentication required}"
   '';
+  # Only the kded module Dolphin needs for unlock prompts (e.g. BitLocker);
+  # the rest of plasma-workspace's kded modules would fight noctalia (tray, notifications).
+  solidUiServer = pkgs.runCommand "soliduiserver" { } ''
+    mkdir -p $out/lib/qt-6/plugins/kf6/kded
+    ln -s ${pkgs.kdePackages.plasma-workspace}/lib/qt-6/plugins/kf6/kded/soliduiserver.so $out/lib/qt-6/plugins/kf6/kded/
+  '';
 in
 {
   programs.niri = {
@@ -66,7 +72,11 @@ in
     kdePackages.breeze-icons
     kdePackages.qtsvg
     kdePackages.kservice
+    kdePackages.kded
+    solidUiServer
   ];
+  # D-Bus activates kded6 on demand when Dolphin asks for an unlock prompt.
+  services.dbus.packages = [ pkgs.kdePackages.kded ];
 
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
