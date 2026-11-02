@@ -46,32 +46,30 @@ This is a modular, multi-host NixOS Flakes configuration. The design philosophy 
   - Server hosts have a `services/` subdirectory with one service per folder
 - **modules/** - Reusable system modules (drop-in features)
   - `default.nix` - Global base config applied to ALL hosts (Nix settings, networking, locale, shell, git)
-  - `desktop/` - Desktop environment modules (Hyprland, GNOME, Plasma), dev tools, gaming
+  - `desktop/` - Desktop modules: niri environment, dev tools (mapgears, universidad), gaming, printer, kdeconnect
   - `hardware/` - Hardware-specific configs (SSD, Btrfs, dual-boot)
   - `secrets/` - SOPS-encrypted secrets
 - **home/** - Home Manager user configurations (shell, editors, WM configs)
-  - Subdirectories contain app-specific configs (helix/, zsh/, hyprland/, firefox/, etc.)
+  - Subdirectories contain app-specific configs (helix/, niri/, zellij/, hypridle/, etc.); `console.nix` = every host, `desktop.nix` = GUI hosts
 - **templates/** - Development environment templates (rust/, python/, java/)
 
 ### Active Hosts
 
 | Host | Type | Architecture | Desktop |
 |------|------|--------------|---------|
-| frigate | Framework laptop | x86_64 | Hyprland + GNOME |
-| battleship | Gaming desktop | x86_64 | Hyprland |
+| frigate | Framework laptop | x86_64 | Niri |
+| battleship | Gaming desktop | x86_64 | Niri |
 | shuttle-n150 | Intel N150 server | x86_64 | Headless |
 
 ### Package Channels
 
-The flake provides two Nixpkgs overlays accessible in configs:
-- `pkgs.stable.*` - Nixpkgs 25.11 stable
-- `pkgs.unstable.*` - Nixpkgs unstable
+The flake pins Nixpkgs 26.05; `pkgs.unstable.*` (nixos-unstable) is available via an overlay in `modules/default.nix`.
 
 ### Key Patterns
 
 1. **Module Composition**: Each host's `modules.nix` imports the required modules via relative paths
-2. **Home Manager Integration**: Configured per-host in flake.nix with `home-manager-liperium-root` function
-3. **Monitor Configuration**: Hyprland monitor settings passed via `specialArgs.hyprMonitor`
+2. **Hosts**: `mkHost` in flake.nix wires each host with Home Manager (`hmImports`) + sops
+3. **Self-describing modules**: each feature module (e.g. `dev/mapgears.nix`, `environment/niri`) declares everything it needs, even if another module also enables it. Only dedupe boilerplate repeated across host files.
 4. **Secrets**: SOPS with age encryption, secrets accessible at `/run/secrets/...`
 5. **Theming**: Catppuccin (mocha, mauve accent) applied system-wide via catppuccin.homeModules
 
