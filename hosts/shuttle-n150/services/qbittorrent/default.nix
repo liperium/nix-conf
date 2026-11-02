@@ -13,4 +13,13 @@
       };
     };
   };
+  # Runs inside the qvpn namespace (../vpn-namespace).
+  systemd.services.qbittorrent = {
+    vpnConfinement = {
+      enable = true;
+      vpnNamespace = "qvpn";
+    };
+    after = [ "qvpn.service" ];
+    requires = [ "qvpn.service" ];
+  };
 }
