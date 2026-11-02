@@ -24,6 +24,7 @@ in
     "${modDesktop}"
     "${modDesktop}/yubikey.nix"
     "${modDesktop}/printer.nix"
+    "${modDesktop}/kdeconnect"
     "${modDesktop}/virt.nix"
     "${modDesktop}/gaming/default.nix"
 

@@ -13,6 +13,25 @@
   nixpkgs.config.permittedInsecurePackages = [ "electron-27.3.11" "electron-39.8.10" ];
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # Quiet graphical boot; hosts set boot.loader.timeout.
+  boot = {
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+    };
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+  };
+
   # Compressed RAM swap; used before any disk swap thanks to higher priority.
   # memoryPercent is a cap, not a reservation: RAM is only taken as pages get swapped.
   zramSwap = {
@@ -33,6 +52,9 @@
       logseq
     ];
   };
+  environment.systemPackages = [
+    (pkgs.callPackage ./tolaria.nix { })
+  ];
   #Fonts
   fonts = {
     enableDefaultPackages = true;
@@ -52,12 +74,17 @@
     };
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.flatpak.enable = true; # Slack
 
   # AppImage support
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -67,5 +94,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 }

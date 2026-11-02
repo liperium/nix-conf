@@ -15,7 +15,6 @@
     gparted
     rkdeveloptool
     minicom
-    (callPackage ../../modules/desktop/tolaria.nix { })
     # unstable.llmfit
     # unstable.vllm
     # unstable.jan
@@ -23,33 +22,8 @@
   ];
   #virtualisation.waydroid.enable = true;
   #virtualisation.waydroid.package = pkgs.waydroid-nftables;
-  programs.kdeconnect.enable = true;
-  programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
 
   services.vscode-server.enable = true;
-
-  boot = {
-    plymouth = {
-      enable = true;
-      theme = "bgrt";
-    };
-    consoleLogLevel = 0;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "splash"
-      "boot.shell_on_fail"
-      "loglevel=3"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-    ];
-
-    loader.timeout = 5;
-  };
-
-  services.displayManager.gdm.enable = true;
-  services.displayManager.defaultSession = "niri";
 
   services.openssh = {
     enable = true;
@@ -57,9 +31,8 @@
     settings.KbdInteractiveAuthentication = false;
   };
 
-  services.power-profiles-daemon.enable = true;
-
   boot.loader = {
+    timeout = 5;
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = false;
 
@@ -83,13 +56,6 @@
       '';
     };
   };
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
-  services.upower.enable = true;
-
 
   # ROCM
   # nixpkgs.config.rocmSupport = true;
