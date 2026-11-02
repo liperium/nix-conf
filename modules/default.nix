@@ -64,10 +64,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-      "adm" # system76 stuff? https://www.reddit.com/r/System76/comments/1dnfhj4/system76power_on_nixos/
       "video"
       "audio"
-      "input" # fingerprint reader GDM https://wiki.archlinux.org/title/Fprint
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPaXteVeooXltzsHdBDfjwBzqLV+NGcNJ3O25ZbmIKdL liperium@battleship"

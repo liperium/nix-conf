@@ -55,6 +55,9 @@
   services.fwupd.enable = true;
   # Fingerprint
   services.fprintd.enable = true;
+  # Fingerprint reader under GDM: https://wiki.archlinux.org/title/Fprint
+  # adm: was in base as "system76 stuff?", kept here pending a reason to drop it.
+  users.users.liperium.extraGroups = [ "input" "adm" ];
 
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "liperium";

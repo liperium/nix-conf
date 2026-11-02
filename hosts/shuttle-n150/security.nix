@@ -1,4 +1,4 @@
-{ nixpkgs, conf, ... }:
+{ ... }:
 let
   # Edit here when LAN changes; every downstream rule below picks it up.
   lanSubnet = "192.168.1.0/24";
