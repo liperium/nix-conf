@@ -1,3 +1,7 @@
 results/
 result
 .direnv/
+chroma.sqlite3
+entities.json
+mempalace.yaml
+graphify-out/

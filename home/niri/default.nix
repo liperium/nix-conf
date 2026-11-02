@@ -1,11 +1,11 @@
-{ pkgs, inputs, hyprMonitor, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     ./niri-conf.nix
     ../dolphin.nix
     ../noctalia.nix
-    ../hyprland/hypridle
+    ../hypridle
   ];
 
   home.packages = with pkgs; [

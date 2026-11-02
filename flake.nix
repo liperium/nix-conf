@@ -72,104 +72,56 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
+    { nixpkgs
     , home-manager
     , nixos-hardware
     , catppuccin
-      #, chaotic
     , sops-nix
     , vpn-confinement
-    , vscode-server
     , ...
     }@inputs:
     let
       system = "x86_64-linux";
-      lib = nixpkgs.lib;
-      # Imports the RELEVANT home manager module to the system
-      home-manager-liperium-root = { hyprMonitor, userImports ? [ ./home/console.nix ] }: [
-        home-manager.nixosModules.home-manager
-        ({ pkgs, ... }: {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.liperium = {
-              imports = userImports ++ [
-                catppuccin.homeModules.catppuccin
-                inputs.noctalia.homeModules.default
-              ];
-            };
-            users.root = import ./home/root.nix;
-            backupCommand = ''
-              ${pkgs.coreutils}/bin/mv -f "$1" "$1.hm_backup"
-            '';
-            extraSpecialArgs = {
-              inherit system;
-              inherit inputs;
-              inherit hyprMonitor;
-            };
-          };
-        })
-      ];
-      # Global modules to add to ALL confs
-      globalModules = [ sops-nix.nixosModules.sops ];
+      # hmImports: home-manager modules for liperium (root always gets home/root.nix)
+      mkHost = { host, extraModules ? [ ], hmImports ? [ ./home/console.nix ] }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/${host} ] ++ extraModules ++ [
+            home-manager.nixosModules.home-manager
+            ({ pkgs, ... }: {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.liperium.imports = hmImports ++ [
+                  catppuccin.homeModules.catppuccin
+                  inputs.noctalia.homeModules.default
+                ];
+                users.root = import ./home/root.nix;
+                backupCommand = ''
+                  ${pkgs.coreutils}/bin/mv -f "$1" "$1.hm_backup"
+                '';
+                extraSpecialArgs = { inherit system inputs; };
+              };
+            })
+            sops-nix.nixosModules.sops
+          ];
+        };
     in
     {
       nixosConfigurations = {
-        frigate = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/frigate
-            nixos-hardware.nixosModules.framework-intel-core-ultra-series1
-          ]
-          ++ home-manager-liperium-root {
-            hyprMonitor = { };
-            userImports = [
-              ./home/niri.nix
-            ];
-          }
-          ++ globalModules;
+        frigate = mkHost {
+          host = "frigate";
+          extraModules = [ nixos-hardware.nixosModules.framework-intel-core-ultra-series1 ];
+          hmImports = [ ./home/niri.nix ];
         };
-
-        battleship = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/battleship
-            vscode-server.nixosModules.default
-            ({ config, pkgs, ... }: {
-              services.vscode-server.enable = true;
-            })
-          ]
-          ++ home-manager-liperium-root {
-            hyprMonitor = {
-              primary = "DP-1";
-              secondary = "DP-2";
-              settings = [ ];
-            };
-            userImports = [
-              ./home/niri.nix
-            ];
-          }
-          ++ globalModules;
+        battleship = mkHost {
+          host = "battleship";
+          hmImports = [ ./home/niri.nix ];
         };
-
-        atlas = lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/atlas ]
-            ++ globalModules;
-        };
-
-        shuttle-n150 = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/shuttle-n150
-            vpn-confinement.nixosModules.default
-          ]
-          ++ home-manager-liperium-root { hyprMonitor = { }; }
-          ++ globalModules;
+        shuttle-n150 = mkHost {
+          host = "shuttle-n150";
+          extraModules = [ vpn-confinement.nixosModules.default ];
         };
       };
     };

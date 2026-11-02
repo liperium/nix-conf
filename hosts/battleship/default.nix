@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./modules.nix
+    inputs.vscode-server.nixosModules.default
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -25,7 +26,7 @@
   programs.kdeconnect.enable = true;
   programs.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
 
-  services.flatpak.enable = true;
+  services.vscode-server.enable = true;
 
   boot = {
     plymouth = {

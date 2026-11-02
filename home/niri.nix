@@ -1,9 +1,4 @@
-{ config
-, pkgs
-, hyprMonitor
-, inputs
-, ...
-}:
+{ ... }:
 
 {
   imports = [
