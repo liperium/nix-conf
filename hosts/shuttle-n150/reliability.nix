@@ -39,5 +39,5 @@
   # boot -- the single largest log producer on the system. This quiets the
   # routine chatter; the underlying sync failure still needs fixing in the
   # Jellyseerr UI (API key / permissions).
-  systemd.services.jellyseerr.environment.LOG_LEVEL = "warn";
+  systemd.services.seerr.environment.LOG_LEVEL = "warn";
 }

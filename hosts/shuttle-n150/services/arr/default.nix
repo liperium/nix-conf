@@ -6,7 +6,7 @@
   services.radarr.enable = true; # 7878
   services.radarr.group = "users";
   services.flaresolverr.enable = true; # 8191
-  services.jellyseerr.enable = true; # 5055
+  services.seerr.enable = true; # 5055 (was services.jellyseerr; state stays in /var/lib/jellyseerr)
   services.bazarr.enable = true; # 6767
   services.bazarr.group = "users";
 

@@ -35,11 +35,11 @@
         libgcc
         SDL2
         libGL
-        xorg.libX11
+        libx11
         libxcursor
-        xorg.libXrandr
+        libxrandr
         libxi
-        xorg.libXext
+        libxext
         libxkbcommon
         dotnet-runtime
       ];
