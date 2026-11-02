@@ -61,11 +61,6 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-  };
-
   environment.systemPackages = with pkgs; [
     fprintd
     polkit_gnome

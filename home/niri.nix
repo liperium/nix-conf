@@ -3,7 +3,6 @@
 {
   imports = [
     ./desktop.nix
-    ./console.nix
     ./niri/default.nix
   ];
 

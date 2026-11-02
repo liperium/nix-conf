@@ -123,11 +123,9 @@
     sops # Secret encryption/decryption
 
     #Terminal
-    zsh
     any-nix-shell
 
     # Fish plugins
-    fish
     fishPlugins.z
     fishPlugins.tide
     fishPlugins.done
@@ -160,32 +158,7 @@
 
   environment.variables.EDITOR = "hx";
 
-  # zsh default
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" ];
-    };
-    shellAliases = {
-      ls = "lsd";
-      ll = "lsd -l";
-    };
-    promptInit = ''
-      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
-    '';
-    shellInit = ''
-      eval "$(oh-my-posh init zsh --config $HOME/.config/omp/zen.toml)"
-      eval "$(zoxide init zsh)"
-      if command -v direnv >/dev/null 2>&1
-      then
-        eval "$(direnv hook zsh)"
-      fi
-    '';
-  };
-
+  # fish is the login shell; bash stays installed, so `bash script.sh` / shebang scripts still work.
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
     ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
@@ -196,9 +169,17 @@
     ls = "lsd";
   };
 
-  users.defaultUserShell = pkgs.zsh;
-  users.users.liperium.shell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh fish ];
+  users.defaultUserShell = pkgs.fish;
+
+  # Key-only SSH everywhere (keys: users.users.liperium.openssh.authorizedKeys above).
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      PermitRootLogin = "prohibit-password";
+    };
+  };
 
   nixpkgs.overlays = [
     (final: _: {
@@ -207,27 +188,6 @@
         inherit (final.stdenv.hostPlatform) system;
         inherit (final) config;
       };
-    })
-
-    # KF6 apps get no palette out of the qt6ct platform theme: they end up with
-    # Qt's default *light* palette while Kvantum paints the widgets dark, so item
-    # text and the monochrome (breeze) icons render black on black. Forcing the
-    # KDE platform theme makes them read the Catppuccin palette, widget style and
-    # icon theme from ~/.config/kdeglobals instead (see home/dolphin.nix).
-    # QT_QPA_PLATFORMTHEME stays qt6ct for every other Qt app.
-    (final: prev: {
-      kdePackages = prev.kdePackages // lib.genAttrs
-        [ "dolphin" "gwenview" "ark" "kdf" ]
-        (name: final.symlinkJoin {
-          inherit name;
-          paths = [ prev.kdePackages.${name} ];
-          nativeBuildInputs = [ final.makeWrapper ];
-          postBuild = ''
-            for bin in $out/bin/*; do
-              wrapProgram "$bin" --set QT_QPA_PLATFORMTHEME kde
-            done
-          '';
-        });
     })
   ];
 

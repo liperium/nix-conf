@@ -4,7 +4,6 @@
 {
   imports = [
     # Everywhere
-    ./zsh
     ./helix
     ./zellij
   ];

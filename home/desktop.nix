@@ -1,6 +1,5 @@
 { config, inputs, pkgs, lib, ... }:
 
-
 {
   imports = [
     # Everywhere
@@ -10,13 +9,6 @@
     #./kitty
     #./firefox
   ];
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  home.username = "liperium";
-  home.homeDirectory = "/home/liperium";
-
-  home.stateVersion = "23.11"; # Please read the comment before changing.
   home.enableNixpkgsReleaseCheck = false;
 
   home.packages = with pkgs; [

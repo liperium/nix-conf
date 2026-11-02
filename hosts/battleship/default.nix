@@ -25,12 +25,6 @@
 
   services.vscode-server.enable = true;
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-  };
-
   boot.loader = {
     timeout = 5;
     efi.canTouchEfiVariables = true;
