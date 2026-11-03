@@ -41,6 +41,13 @@ in
             for bin in $out/bin/*; do
               wrapProgram "$bin" --set QT_QPA_PLATFORMTHEME kde
             done
+            # D-Bus activation (FileManager1) and the systemd unit hardcode the
+            # unwrapped binary; point them at the wrapper too.
+            for f in $out/share/dbus-1/services/*.service $out/share/systemd/user/*.service; do
+              [ -e "$f" ] || continue
+              src=$(readlink -f "$f"); rm "$f"
+              sed "s|${prev.kdePackages.${name}}/bin/|$out/bin/|g" "$src" > "$f"
+            done
           '';
         });
     })
