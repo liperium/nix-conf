@@ -119,9 +119,9 @@ Test Plan:
 
 **Test**
 - <step>
-- [ ] expect <behavior>
+  - [ ] expect <behavior>
 - <step>
-- [ ] expect <behavior>
+  - [ ] expect <behavior>
 
 **Clean up**
 - <undo the setup>
@@ -156,15 +156,17 @@ otherwise the product area (`Process:`, `Map Editor:`, `Accounts:`), combinable
 - Steps are lowercase imperatives against real routes and UI: `open /library`,
   ``click `Save` ``, ``in `Primary Group`, type ...``. Backticks for UI labels, buttons,
   fields; quotes for data names; real URLs/online resources to paste.
-- Each step's checkbox sits right after it, same indent: `- [ ] expect ...`. Several
+- Each step's checkbox is nested under it, indented two spaces: `  - [ ] expect ...`.
+  At the same indent it renders as a sibling item, flush left of the steps. Several
   expects per step are fine. Include negative/edge expects: buttons disabled at the last
   page, error on an unsupported type, `expect no ... error in the console`.
 - Use existing fixture data by name (`"T2 - Many features 100k Points"`). Data the test
   creates is named after the task (`"T44258 - Process"`) and deleted in `**Clean up**`.
 - Commands go in code blocks labelled with where to run them:
   ```` ```name=override.ini ```` / ```` ```name=~/proj/evvue ````.
-  Use `NOTE:` for environment traps ("test from Darcee, not Vite") and `!!text!!` to
-  highlight a crucial word.
+  Use `NOTE:` for environment traps ("test from Darcee, not Vite"). `!!text!!` renders as
+  a coloured highlight: keep it for the one word a tester must not miss (`!!before!!`
+  saving), never for emphasis or values; use plain text or backticks for those.
 - Backend-only change covered by tests: the test plan is just the command,
   `` `make test_functional_core` `` (or `make test_functional`).
 - `N/A` is normal for refactors, renames, dependency upgrades, i18n text, build config and
@@ -181,7 +183,8 @@ Omit `**Set up**`/`**Clean up**` when nothing is needed.
 
 - `**bold**`, `//italic//`, `` `mono` ``, `__underline__`, `!!highlight!!`
 - Headers: `= H1 =`, `== H2 ==` (or `####Header` inline as seen in existing diffs)
-- Checkbox: `- [ ] item` / `- [x] item`
+- Checkbox: `- [ ] item` / `- [x] item`; nest under a step with two spaces
+- Preview before sending: `echo '{"context":"differential","contents":["<remarkup>"]}' | arc call-conduit -- remarkup.process`
 - Links: `[[ https://url | text ]]`; objects auto-link: `T123`, `D456`, `rMGP<hash>`, `{F123}` embeds a file
 - Code block: ```` ```lang=bash ```` ... ```` ``` ````; `name=<label>` titles it (file or dir)
 - Callouts: `NOTE: ...`, `WARNING: ...`, `IMPORTANT: ...`
