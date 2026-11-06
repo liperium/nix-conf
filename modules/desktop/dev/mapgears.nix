@@ -51,6 +51,8 @@ in
     function __mx_load --on-variable DEVENV_ROOT
       test -r "$DEVENV_ROOT/nix/completions/mx.fish"; and source $DEVENV_ROOT/nix/completions/mx.fish
     end
+    # Already set when fish starts (tmux, devenv shell): the event won't fire.
+    set -q DEVENV_ROOT; and __mx_load
   '';
 
   users.users.liperium = {
