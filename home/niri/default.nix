@@ -15,12 +15,17 @@
     # Region screenshot -> clipboard, notification "Edit" action opens satty
     (writeShellApplication {
       name = "screenshot-region";
-      runtimeInputs = [ grim slurp wl-clipboard libnotify satty coreutils ];
+      runtimeInputs = [ grim slurp wl-clipboard libnotify satty coreutils wayfreeze ];
       text = ''
+        wayfreeze &
+        freeze=$!
+        img=
+        trap 'kill "$freeze" 2>/dev/null; rm -f "$img"' EXIT
+        sleep 0.2 # let the frozen frame appear before slurp starts
         geom=$(slurp -d)
         img=$(mktemp --suffix=.png)
-        trap 'rm -f "$img"' EXIT
         grim -g "$geom" "$img"
+        kill "$freeze" # unfreeze before the notification wait
         wl-copy --type image/png < "$img"
         action=$(notify-send -a Screenshot -i "$img" -A edit=Edit --wait "Screenshot copied" || true)
         if [ "$action" = edit ]; then
