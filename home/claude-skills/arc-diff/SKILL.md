@@ -35,7 +35,7 @@ diff doesn't wait on a single person.
 
 1. If on a main/release branch: `git switch -c T<task>-<Desc>`.
 2. Commit (first line = diff title, e.g. `Technical: ...`, `Roles: ...`).
-   Run the checks first (see "Checks before sending").
+   Rebase onto master (see "Rebase first"), then run the checks (see "Checks before sending").
 3. Write the message file (format below) in the scratchpad.
 4. Create: `arc diff origin/master --create --message-file <file> --`
    Update an existing one: `arc diff origin/master --update D<id> --message-file <file> --`
@@ -65,6 +65,13 @@ Check a reviewer username exists:
 A change that builds on an unlanded one goes on a branch made from that branch, and is
 diffed against it, not master: `arc diff <parent-branch> --create ...`. Put
 `Depends on D<parent>.` in the Summary so Phabricator links the two.
+
+## Rebase first
+
+Before **every** `arc diff`, updates included: `git fetch origin master && git rebase origin/master`
+(stacked diffs: rebase onto the parent branch instead). Commit or stash first so the tree is
+clean. On conflicts, stop and show the user; don't resolve silently. Run the checks after the
+rebase, on the rebased code.
 
 ## Checks before sending
 

@@ -80,6 +80,24 @@
         "url": "ssh://git@github.com/liperium/construct3-hoster"
       }
     },
+    "evbuildnix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1794447823,
+        "narHash": "sha256-K2bcM7xB9vNfRL5tnagvQyZmxmpnZsiO1xHLlR2Au64=",
+        "ref": "refs/heads/master",
+        "rev": "b558edc0958a508dcbc7519dc55f00506963b447",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@proj.mapgears.com/source/evbuildnix.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@proj.mapgears.com/source/evbuildnix.git"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -272,7 +290,7 @@
     },
     "nixos-hardware": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1792491056,
@@ -367,6 +385,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1793726008,
+        "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1789546076,
         "narHash": "sha256-vWkSk5bbfTqdtMoSgD9FshACO8JCvXTFi+3cqEp0mH0=",
         "rev": "b1b875982b17dabde9b4a37f3e229e74913e6db3",
@@ -378,7 +412,7 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1792503283,
         "narHash": "sha256-vhe2jyvRCgufWPqDuDq1S3t3ypE+ka46IFutV02xKso=",
@@ -394,7 +428,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1792094642,
         "narHash": "sha256-LPFRbrCWWyNsdQLO3SX1B/5UMkFK0hfe7bZR6lENvpc=",
@@ -409,7 +443,7 @@
     },
     "noctalia": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1792612254,
@@ -432,13 +466,14 @@
         "catppuccin": "catppuccin",
         "claude-code": "claude-code",
         "construct3-hoster": "construct3-hoster",
+        "evbuildnix": "evbuildnix",
         "home-manager": "home-manager",
         "khronos-go": "khronos-go",
         "ml-production-website": "ml-production-website",
         "mtg-card-scraper": "mtg-card-scraper",
         "mtg-deck-tool": "mtg-deck-tool",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-caddy": "nixpkgs-caddy",
         "nixpkgs-server": "nixpkgs-server",
         "nixpkgs-unstable": "nixpkgs-unstable",

@@ -63,6 +63,8 @@ in
       teleport
       (callPackage ./arc-checkout.nix { arcanist = unstable.arcanist; })
 
+      inputs.evbuildnix.packages.${pkgs.stdenv.hostPlatform.system}.default
+
       khronos
       khronosDesktopItem
     ];
