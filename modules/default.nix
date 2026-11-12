@@ -145,6 +145,7 @@
         prune = "true";
         auto = 1;
       };
+      submodule.recurse = true;
       url = {
         "git@github.com:liperium/" = {
           insteadOf = "https://github.com/liperium/";
