@@ -39,7 +39,10 @@ diff doesn't wait on a single person.
 3. Write the message file (format below) in the scratchpad.
 4. Create: `arc diff origin/master --create --message-file <file> --`
    Update an existing one: `arc diff origin/master --update D<id> --message-file <file> --`
-   (`--draft` to create without notifying; `--nolint --nounit` if the repo has no linters configured).
+   (`--draft` to create without notifying.) **Never pass `--nolint`/`--nounit` when the repo
+   has a devenv**: if lint/unit can't find their tools (`bin/flake8`, `pytest`), run arc
+   through it, `devenv shell -- arc diff ... --`. Only a repo with no `.arclint` /
+   `unit.engine` at all may skip them.
 5. Report the `D#####` URL arc prints. A new revision shows `Draft` until its Harbormaster
    build finishes, then reviewers are notified; if it stays Draft, the user clicks "Request Review".
 
