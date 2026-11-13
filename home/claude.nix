@@ -15,6 +15,7 @@ let
     "Bash(go vet*)"
     "Bash(journalctl *)"
     "Bash(bootctl list *)"
+    "Bash(jenkins-get *)"
   ];
   # Always prompt for these, even in auto mode (ask rules beat allow rules and the classifier).
   globalAskPatterns = [
@@ -26,6 +27,28 @@ let
   askTshHook = pkgs.writeShellScript "claude-ask-tsh" ''
     if ${pkgs.jq}/bin/jq -r '.tool_input.command // ""' | ${pkgs.gnugrep}/bin/grep -qw tsh; then
       echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"ask","permissionDecisionReason":"tsh command: always ask"}}'
+    fi
+  '';
+  # Read-only Jenkins REST access: GET only (no -X/-d passthrough), fixed host, no redirects.
+  # The token is read from $JENKINS_API here and fed to curl on stdin, so it never shows
+  # in a command line, ps or output. Paths that can expose secrets are refused even on GET.
+  jenkinsGet = pkgs.writeShellScriptBin "jenkins-get" ''
+    set -euo pipefail
+    path=''${1:?usage: jenkins-get <path>, e.g. job/<name>/lastBuild/consoleText}
+    if [[ $path =~ (credential|script|manage|configure|systemInfo|[Ee]nvVars|(^|/)cli(/|$)|config\.xml|\.\.) ]]; then
+      echo "jenkins-get: refused path: $path" >&2
+      exit 2
+    fi
+    printf 'user = "%s:%s"\n' "''${JENKINS_USER:?set JENKINS_USER}" "''${JENKINS_API:?set JENKINS_API}" \
+      | ${pkgs.curl}/bin/curl -fsS --globoff --proto =https -K - "https://jenkins3.mapgears.com/''${path#/}"
+  '';
+  # Refuses Bash commands that name $JENKINS_API or dump the environment. Guards against
+  # accidents only: Claude runs as you, so anything jenkins-get can read, Claude can too.
+  # The real limit is the token's own Jenkins permissions.
+  guardJenkinsHook = pkgs.writeShellScript "claude-guard-jenkins" ''
+    if ${pkgs.jq}/bin/jq -r '.tool_input.command // ""' \
+      | ${pkgs.gnugrep}/bin/grep -Eq 'JENKINS_API|printenv|/environ|export -p|declare -[a-z]*x|(^|[;&|(]\s*)(env|set)\s*($|[;&|)])'; then
+      echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"could expose JENKINS_API; use jenkins-get"}}'
     fi
   '';
   staticClaudeMd = pkgs.writeText "claude-md-header" ''
@@ -95,7 +118,7 @@ let
   };
 in
 {
-  home.packages = [ claudeWrapped pkgs.unstable.uv ];
+  home.packages = [ claudeWrapped pkgs.unstable.uv jenkinsGet ];
 
   home.file.".claude/skills/arc-diff/SKILL.md".source = ./claude-skills/arc-diff/SKILL.md;
 
@@ -116,8 +139,8 @@ in
       --argjson ask '${builtins.toJSON globalAskPatterns}' \
       '.permissions.allow = ((.permissions.allow // []) + $allow | map(select(startswith("Bash(rtk ") | not)) | unique)
        | .permissions.ask = ((.permissions.ask // []) + $ask | unique)
-       | .hooks.PreToolUse = ([(.hooks.PreToolUse // [])[] | select(tostring | contains("claude-ask-tsh") | not)]
-           + [{matcher: "Bash", hooks: [{type: "command", command: "${askTshHook}"}]}])' \
+       | .hooks.PreToolUse = ([(.hooks.PreToolUse // [])[] | select(tostring | test("claude-ask-tsh|claude-guard-jenkins") | not)]
+           + [{matcher: "Bash", hooks: [{type: "command", command: "${askTshHook}"}, {type: "command", command: "${guardJenkinsHook}"}]}])' \
       "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
   '';
 }

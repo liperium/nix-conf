@@ -32,6 +32,7 @@ in
   environment.variables.TELEPORT_USER = "mgervais";
   environment.variables.TELEPORT_LOGIN = "mgervais";
   environment.variables.TELEPORT_PROXY = "tsh1.mapgears.com";
+  environment.variables.JENKINS_USER = "mgervais";
 
   sops.secrets."jenkins-api" = {
     sopsFile = ../../secrets/jenkins;
