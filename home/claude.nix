@@ -16,6 +16,18 @@ let
     "Bash(journalctl *)"
     "Bash(bootctl list *)"
   ];
+  # Always prompt for these, even in auto mode (ask rules beat allow rules and the classifier).
+  globalAskPatterns = [
+    "Bash(tsh)"
+    "Bash(tsh *)"
+  ];
+  # Catches tsh anywhere in the command (nix-shell --run, bash -c, pipes...). Word match,
+  # so it over-matches e.g. `echo tsh`; that only costs an extra prompt.
+  askTshHook = pkgs.writeShellScript "claude-ask-tsh" ''
+    if ${pkgs.jq}/bin/jq -r '.tool_input.command // ""' | ${pkgs.gnugrep}/bin/grep -qw tsh; then
+      echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"ask","permissionDecisionReason":"tsh command: always ask"}}'
+    fi
+  '';
   staticClaudeMd = pkgs.writeText "claude-md-header" ''
     # User-level Claude Instructions
 
@@ -101,7 +113,11 @@ in
     [ -f "$SETTINGS" ] || echo '{}' > "$SETTINGS"
     ${pkgs.jq}/bin/jq \
       --argjson allow '${builtins.toJSON globalAllowPatterns}' \
-      '.permissions.allow = ((.permissions.allow // []) + $allow | map(select(startswith("Bash(rtk ") | not)) | unique)' \
+      --argjson ask '${builtins.toJSON globalAskPatterns}' \
+      '.permissions.allow = ((.permissions.allow // []) + $allow | map(select(startswith("Bash(rtk ") | not)) | unique)
+       | .permissions.ask = ((.permissions.ask // []) + $ask | unique)
+       | .hooks.PreToolUse = ([(.hooks.PreToolUse // [])[] | select(tostring | contains("claude-ask-tsh") | not)]
+           + [{matcher: "Bash", hooks: [{type: "command", command: "${askTshHook}"}]}])' \
       "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
   '';
 }
