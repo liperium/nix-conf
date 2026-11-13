@@ -30,7 +30,7 @@ in
 
     # Desktop Additionals
     "${modDev}"
-    "${modDev}/mapgears.nix"
+    (modDev + "/mapgears.nix")
     "${modDev}/universidad.nix"
   ];
 }
