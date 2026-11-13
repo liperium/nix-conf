@@ -33,7 +33,16 @@ in
   environment.variables.TELEPORT_LOGIN = "mgervais";
   environment.variables.TELEPORT_PROXY = "tsh1.mapgears.com";
 
+  sops.secrets."jenkins-api" = {
+    sopsFile = ../../secrets/jenkins;
+    format = "binary";
+    owner = "liperium";
+  };
+
   programs.fish.interactiveShellInit = ''
+    # Read at shell start: sops secrets only exist at runtime, not in the Nix store.
+    test -r ${config.sops.secrets."jenkins-api".path}; and set -gx JENKINS_API (string trim < ${config.sops.secrets."jenkins-api".path})
+
     function tshssh
       set -l nodes (command tsh --proxy=tsh1.mapgears.com ls --format=names)
       or return $status
