@@ -188,8 +188,7 @@ otherwise the product area (`process:`, `map editor:`, `accounts:`), combinable
   the other, and `requires D<id>` in each Summary.
 
 Size the plan to the change's reach: a low-reach change (tooling, docs, config) gets 1-3
-expects, not one per command. If the author already ran the plan, end it with
-`Tested on my end, everything worked as expected.` (ask the user if unsure whether they did).
+expects, not one per command.
 Omit `**Set up**`/`**Clean up**` when nothing is needed.
 
 ## Remarkup cheatsheet
