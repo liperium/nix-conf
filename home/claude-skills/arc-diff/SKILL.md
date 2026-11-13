@@ -26,15 +26,17 @@ Branch naming schemes in these repos:
 - `master`, `v<NN>/main`, `v<NN>.<N>` (main/release branches: never commit here, branch first)
 
 Take the task from `T(\d+)` in the branch name. If it isn't there, or reviewers aren't known,
-ask the user both in one AskUserQuestion before writing the message. Offer the reviewers seen
+ask the user both in one AskUserQuestion before writing the message. If the user gives no
+task number, name the branch `feature/<Desc>` and omit `Maniphest Tasks:`; never invent one. Offer the reviewers seen
 in recent commits as options: `git log -20 --format=%B | grep '^Reviewers:' | sort | uniq -c`.
 Prefer two or more reviewers (multi-select): one reviews, the other can land it, so a
 diff doesn't wait on a single person.
 
 ## Workflow
 
-1. If on a main/release branch: `git switch -c T<task>-<Desc>`.
-2. Commit (first line = diff title, e.g. `Technical: ...`, `Roles: ...`).
+1. If on a main/release branch: `git switch -c T<task>-<Desc>`, or `feature/<Desc>` when
+   there is no task number (same `<Desc>` you'd put after `T<task>-`).
+2. Commit (first line = diff title, all lowercase, e.g. `technical: ...`, `roles: ...`).
    Rebase onto master (see "Rebase first"), then run the checks (see "Checks before sending").
 3. Write the message file (format below) in the scratchpad.
 4. Create: `arc diff origin/master --create --message-file <file> --`
@@ -145,9 +147,10 @@ Maniphest Tasks: T<task>
 
 ### Title
 
-`<Area>: <Description>`, imperative. `Technical:` for anything not user-facing (most diffs);
-otherwise the product area (`Process:`, `Map Editor:`, `Accounts:`), combinable
-(`Process, i18n:`). Reverts keep git's `Revert "..."` title.
+`<area>: <description>`, imperative, **entirely lowercase** (area included: `technical:`,
+never `Technical:`). `technical:` for anything not user-facing (most diffs);
+otherwise the product area (`process:`, `map editor:`, `accounts:`), combinable
+(`process, i18n:`). Reverts keep git's `Revert "..."` title.
 
 ### Summary
 
