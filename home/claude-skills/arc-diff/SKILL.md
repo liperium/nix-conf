@@ -175,8 +175,12 @@ otherwise the product area (`process:`, `map editor:`, `accounts:`), combinable
   page, error on an unsupported type, `expect no ... error in the console`.
 - Use existing fixture data by name (`"T2 - Many features 100k Points"`). Data the test
   creates is named after the task (`"T44258 - Process"`) and deleted in `**Clean up**`.
+- One action per bullet, on one line: `open <url>` and `log in` are two bullets, not
+  `open <url> and log in`; `set X`, `regenerate ev.ini`, `restart darcee` are three.
 - Commands go in code blocks labelled with where to run them:
-  ```` ```name=override.ini ```` / ```` ```name=~/proj/evvue ````.
+  ```` ```name=override.ini ```` / ```` ```name=~/proj/evvue ````. The block goes
+  flush left, not indented under its bullet, with a blank line before and after; the
+  bullet introducing it ends with `:`.
   Use `NOTE:` for environment traps ("test from Darcee, not Vite"). `!!text!!` renders as
   a coloured highlight: keep it for the one word a tester must not miss (`!!before!!`
   saving), never for emphasis or values; use plain text or backticks for those.
@@ -189,7 +193,18 @@ otherwise the product area (`process:`, `map editor:`, `accounts:`), combinable
 
 Size the plan to the change's reach: a low-reach change (tooling, docs, config) gets 1-3
 expects, not one per command.
-Omit `**Set up**`/`**Clean up**` when nothing is needed.
+
+`**Test**` steps are only actions + expects. Anything a tester must change first goes in
+`**Set up**`, with its undo in `**Clean up**`: editing code or a constant, an ini setting
+(`env = prod`), a server restart, a specific host/URL (e.g. a LAN IP because localhost is
+skipped), data to create, another diff to patch. A step that starts with "point X to ...",
+"set ...", or "on a ... host with ..." is setup folded into a test step: split it out, with
+the exact file, value and code block. darcee: an `override.ini` edit only applies once
+`ev.ini` is regenerated (`make ev.ini`, or `mx-ini` in the devenv), so put that command
+right after the edit, in both Set up and Clean up. Omit `**Set up**`/`**Clean up**` only when the test
+runs on a stock dev env with no edits.
+
+No "Tested on my end, everything worked" line: the diff message will be the final commit squash message.
 
 ## Remarkup cheatsheet
 
