@@ -69,7 +69,9 @@ Check a reviewer username exists:
 
 A change that builds on an unlanded one goes on a branch made from that branch, and is
 diffed against it, not master: `arc diff <parent-branch> --create ...`. Put
-`Depends on D<parent>.` in the Summary so Phabricator links the two.
+`Depends on D<parent>.` in the Summary so Phabricator links the two. CI can only apply it
+once the parent's commit is on origin; once the parent lands, rebase onto origin/master
+(see "The base must be on origin").
 
 ## Rebase first
 
@@ -77,6 +79,18 @@ Before **every** `arc diff`, updates included: `git fetch origin master && git r
 (stacked diffs: rebase onto the parent branch instead). Commit or stash first so the tree is
 clean. On conflicts, stop and show the user; don't resolve silently. Run the checks after the
 rebase, on the rebased code.
+
+**The base must be on origin.** CI (Harbormaster) checks out the diff's base commit from
+origin; a local-only base fails with `Could not parse object <hash>` before any test runs.
+Diff against `origin/master` or the release branch (`origin/v<NN>/main`), not a local branch.
+Before every `arc diff`, check that the base is pushed:
+`git branch -r --contains $(git merge-base HEAD <base>)` must list `origin/...`.
+- Stacked on an unlanded diff: check `git log origin/master --grep 'D<parent>'` first. Landed
+  (often under a new hash) → `git rebase --onto origin/master <old-parent-commit>`, then
+  diff against `origin/master`. Still unlanded → its commit isn't on origin either, so stop
+  and tell the user CI can't apply it until the parent lands.
+- After sending, confirm: `differential.querydiffs` on the new diff, its
+  `sourceControlBaseRevision` must be on origin.
 
 ## Checks before sending
 
