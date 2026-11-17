@@ -1,6 +1,12 @@
-{ lib, appimageTools, fetchurl, nodejs }:
+{ lib, appimageTools, fetchurl, nodejs, writeShellScriptBin, xdg-utils }:
 
 let
+  # The AppImage's LD_LIBRARY_PATH (bundled glib 2.72) leaks into xdg-open, so
+  # nixpkgs gdbus exits 127 and links silently never open. Strip it first.
+  xdg-open = writeShellScriptBin "xdg-open" ''
+    unset LD_LIBRARY_PATH LD_PRELOAD GIO_MODULE_DIR GIO_EXTRA_MODULES
+    exec ${xdg-utils}/bin/xdg-open "$@"
+  '';
   pname = "tolaria";
   version = "2026.10.13";
   src = fetchurl {
@@ -18,7 +24,7 @@ appimageTools.wrapType2 {
   profile = ''
     export WEBKIT_DISABLE_COMPOSITING_MODE=0
     export WEBKIT_DISABLE_DMABUF_RENDERER=0
-    export PATH="${lib.makeBinPath [ nodejs ]}:$PATH"
+    export PATH="${lib.makeBinPath [ xdg-open nodejs ]}:$PATH"
   '';
 
   extraPkgs = pkgs: [
