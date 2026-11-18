@@ -32,6 +32,10 @@ in recent commits as options: `git log -20 --format=%B | grep '^Reviewers:' | so
 Prefer two or more reviewers (multi-select): one reviews, the other can land it, so a
 diff doesn't wait on a single person.
 
+mgproto: every diff needs at least two **blocking** reviewers. Suffix each with `!` in the
+message (`Reviewers: adube!, ssodonon!`); on an existing revision, set them with
+`differential.revision.edit`, `reviewers.set` → `["blocking(PHID-USER-...)"]`.
+
 ## Workflow
 
 1. If on a main/release branch: `git switch -c T<task>-<Desc>`, or `feature/<Desc>` when
