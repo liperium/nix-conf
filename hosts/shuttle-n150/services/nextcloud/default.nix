@@ -7,7 +7,7 @@
   services.nextcloud = {
     enable = true;
     configureRedis = true;
-    package = pkgs.nextcloud34;
+    package = pkgs.nextcloud35;
     extraApps = {
       inherit (pkgs.nextcloud33Packages.apps)
         mail
