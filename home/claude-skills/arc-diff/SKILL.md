@@ -13,6 +13,8 @@ Maniphest task (T#####) and its comments, link instead of repeating.
 
 - `arc` runs non-interactively here: **every** arc command needs a trailing `--`
   (`arc diff ... --`, `echo '{...}' | arc call-conduit -- differential.query`).
+  Outside a repo, `call-conduit` has no server URI: pass it before the subcommand,
+  `arc --config phabricator.uri=https://proj.mapgears.com/ call-conduit -- ...`.
 - Creating/updating a revision publishes it and notifies reviewers. Show the user the full
   message and the exact command, and get explicit approval before running it.
 - Commit only the files that belong to the change; check `git status` first.
@@ -21,7 +23,8 @@ Maniphest task (T#####) and its comments, link instead of repeating.
 
 Branch naming schemes in these repos:
 - `T<task>-<Short-Description>` (most common, e.g. `T44442-Documentation-On-importNpmLock`)
-- `feature/<desc>` or `feature/T<task>-<desc>` (long-lived features)
+- `feature/<desc>` or `feature/T<task>-<desc>` (long-lived features; on origin they get
+  force-pushed, not diffed, see "Base branch")
 - `arcpatch-D<id>` (made by `arc patch`, the revision already exists: update it, don't create)
 - `master`, `v<NN>/main`, `v<NN>.<N>` (main/release branches: never commit here, branch first)
 
@@ -44,8 +47,10 @@ message (`Reviewers: adube!, ssodonon!`); on an existing revision, set them with
    Rebase onto master (see "Rebase first"), then run the checks (see "Checks before sending").
 3. Write the message file (format below) in the scratchpad.
 4. Create: `arc diff origin/master --create --message-file <file> --`
-   Update an existing one: `arc diff origin/master --update D<id> --message-file <file> --`
-   (`--draft` to create without notifying.) **Never pass `--nolint`/`--nounit` when the repo
+   Update an existing one: `arc diff origin/master --update D<id> -m "<what changed>" --`
+   (see "Updating a revision"). `--draft` only works on create, to create without
+   notifying; an update moves the revision back to `Needs Review` and notifies the
+   reviewers (a revision still in `Draft` stays Draft). **Never pass `--nolint`/`--nounit` when the repo
    has a devenv**: if lint/unit can't find their tools (`bin/flake8`, `pytest`), run arc
    through it, `devenv shell -- arc diff ... --`. Only a repo with no `.arclint` /
    `unit.engine` at all may skip them.
@@ -68,31 +73,37 @@ Check a reviewer username exists:
   as modified on disk afterwards. Expected; don't redo the commit.
 - To re-run lint/unit on the same code (e.g. after fixing the local env), `--update` with the
   unchanged commit is enough; say so in `-m`.
+- "Re-send" / "re-trigger the build": rebase onto origin/master and `--update` with
+  `-m "rebase onto master"`. The update fires the Herald rules that start the Jenkins
+  build again, on the current master.
+- To change the title, summary or test plan of an existing revision: `--message-file` is
+  ignored on update and `--verbatim` conflicts with `--update`, so edit the fields over
+  conduit (build the JSON with `jq -Rs` so newlines and quotes are escaped):
+  `{"objectIdentifier":"D<id>","transactions":[{"type":"summary","value":"..."},{"type":"testPlan","value":"N/A"}]}`
+  piped to `arc call-conduit -- differential.revision.edit` (`title` works the same way).
 
-## Stacked diffs
+## Base branch
 
-A change that builds on an unlanded one goes on a branch made from that branch, and is
-diffed against it, not master: `arc diff <parent-branch> --create ...`. Put
-`Depends on D<parent>.` in the Summary so Phabricator links the two. CI can only apply it
-once the parent's commit is on origin; once the parent lands, rebase onto origin/master
-(see "The base must be on origin").
+A diff's base is always `origin/master` or a stable branch (`origin/v<NN>/main*`), the
+one the change targets. Examples below use `origin/master`; swap in the stable branch
+when that's the target. Never a feature branch or another diff's branch:
+- feature branches (`feature/...` on origin) get no diffs: commit and force-push to them.
+- never stack diffs, even when one builds on an unlanded one. Put `Depends on D<parent>.`
+  in the Summary so Phabricator links the two, and always create it with `--draft`. If the branch was made from the parent's
+  branch, drop the parent's commit: `git rebase --onto origin/master <parent-commit-or-branch>`.
 
 ## Rebase first
 
-Before **every** `arc diff`, updates included: `git fetch origin master && git rebase origin/master`
-(stacked diffs: rebase onto the parent branch instead). Commit or stash first so the tree is
+Before **every** `arc diff`, updates included: `git fetch origin && git rebase origin/master`
+(or the stable branch). Commit or stash first so the tree is
 clean. On conflicts, stop and show the user; don't resolve silently. Run the checks after the
 rebase, on the rebased code.
 
 **The base must be on origin.** CI (Harbormaster) checks out the diff's base commit from
 origin; a local-only base fails with `Could not parse object <hash>` before any test runs.
-Diff against `origin/master` or the release branch (`origin/v<NN>/main`), not a local branch.
+Diff against `origin/master` or the stable branch (`origin/v<NN>/main*`), not a local branch.
 Before every `arc diff`, check that the base is pushed:
 `git branch -r --contains $(git merge-base HEAD <base>)` must list `origin/...`.
-- Stacked on an unlanded diff: check `git log origin/master --grep 'D<parent>'` first. Landed
-  (often under a new hash) → `git rebase --onto origin/master <old-parent-commit>`, then
-  diff against `origin/master`. Still unlanded → its commit isn't on origin either, so stop
-  and tell the user CI can't apply it until the parent lands.
 - After sending, confirm: `differential.querydiffs` on the new diff, its
   `sourceControlBaseRevision` must be on origin.
 
@@ -178,7 +189,7 @@ otherwise the product area (`process:`, `map editor:`, `accounts:`), combinable
 - Small change: 1-2 sentences of prose instead, with the why when it isn't obvious
   ("Validation is not needed here: values come from server-side drop-downs").
 - Callouts go after the bullets: `NOTE: requires D24907 on \`darcee\`` (cross-repo or
-  stacked dependency), `NOTE:` for what is deliberately kept or left out, and the follow-up
+  dependency on another diff), `NOTE:` for what is deliberately kept or left out, and the follow-up
   ticket for it (`{Q126} has been created to address this topic.`, `See Q131`).
 - `Revert` diffs keep git's "This reverts commit <hash>." line.
 
