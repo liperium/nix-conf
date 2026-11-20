@@ -57,14 +57,12 @@ let
 
     ## Running Code and CLI Tools
 
-    This is a NixOS system. NEVER invoke interpreters or tools directly (python3, node, cargo, pip, etc.).
-    Binaries only exist in PATH if declared in the NixOS configuration.
+    This is a NixOS system: run interpreters and tools (python3, node, cargo, pip, etc.) through Nix,
+    not directly. Binaries only exist in PATH if declared in the NixOS configuration.
 
-    - For one-off commands: `nix-shell -p <package> --run "<command>"`
-    - For projects with a `flake.nix` devShell: `nix develop -c <command>`
-    - For projects use devenv.
-    - For projects with `.envrc` (direnv active): just run commands normally after `direnv allow`
-    - Never use: python, python3, pip, node, cargo directly — always wrap with nix-shell or nix develop
+    - One-off commands: `nix-shell -p <package> --run "<command>"`
+    - Projects: use the project's devenv or `flake.nix` devShell (`nix develop -c <command>`); where
+      `.envrc` is active, run commands normally after `direnv allow`.
     - Never start a full system closure build (`nixos-rebuild switch/build`, or building a host's
       `system.build.toplevel`) without asking first. Build only the specific package/flake output
       you need; deploys are the user's call.
@@ -86,12 +84,6 @@ let
 
     Before proposing a fix for an environment/config issue, confirm the actual state (filesystem
     type, hardware, existing entries) instead of assuming a default.
-
-    ## Communication
-
-    Ponytail skill is active by default (lazy/minimal-diff mode). Use `/ponytail lite|full|ultra` to adjust, or "stop ponytail" to disable.
-    (Caveman skill disabled by default. Use `/caveman` to enable ultra-compressed mode if desired.)
-    Never label code comments "ponytail:" (or with any other skill name); write limitations as plain comments.
 
     ## Notes and Docs
 
