@@ -82,6 +82,19 @@ Check a reviewer username exists:
   `{"objectIdentifier":"D<id>","transactions":[{"type":"summary","value":"..."},{"type":"testPlan","value":"N/A"}]}`
   piped to `arc call-conduit -- differential.revision.edit` (`title` works the same way).
 
+## Landing
+
+The author lands, once the revision is `Accepted` (blocking reviewers included):
+1. In the clone, on the revision's branch (`arc-checkout D<id>` if not), clean tree.
+2. Rebase onto the target and re-run the checks (see "Rebase first", "Checks before sending").
+3. `arc land --onto <master|v<NN>/main> --preview --` and show the user what would land.
+4. With explicit approval: `arc land --onto <target> --`. arc squashes into one commit with the
+   revision's message plus `Reviewed By:` / `Differential Revision:` trailers, pushes, and closes
+   the revision.
+
+A rebase that changed the code (conflicts, not just moving the base) needs an `--update`
+and a fresh accept before landing, not a land.
+
 ## Base branch
 
 A diff's base is always `origin/master` or a stable branch (`origin/v<NN>/main*`), the

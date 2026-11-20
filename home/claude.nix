@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, system, ... }:
+{ config, pkgs, lib, inputs, system, ... }:
 
 let
   # Read-only commands safe to run without a permission prompt, everywhere.
@@ -16,6 +16,7 @@ let
     "Bash(journalctl *)"
     "Bash(bootctl list *)"
     "Bash(jenkins-get *)"
+    "Bash(phab-queue*)"
   ];
   # Always prompt for these, even in auto mode (ask rules beat allow rules and the classifier).
   globalAskPatterns = [
@@ -120,7 +121,10 @@ in
 {
   home.packages = [ claudeWrapped pkgs.unstable.uv jenkinsGet ];
 
-  home.file.".claude/skills/arc-diff/SKILL.md".source = ./claude-skills/arc-diff/SKILL.md;
+  # Out-of-store links: skill edits apply without a rebuild; a new skill dir needs one.
+  home.file = lib.mapAttrs' (name: _: lib.nameValuePair ".claude/skills/${name}" {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-conf/home/claude-skills/${name}";
+  }) (builtins.readDir ./claude-skills);
 
   # Sync CLAUDE.md: write static header
   home.activation.syncClaudeMd = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

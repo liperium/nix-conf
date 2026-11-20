@@ -72,6 +72,7 @@ in
       unstable.devenv
       teleport
       (callPackage ./arc-checkout.nix { arcanist = unstable.arcanist; })
+      (callPackage ./phab-queue.nix { arcanist = unstable.arcanist; })
 
       inputs.evbuildnix.packages.${pkgs.stdenv.hostPlatform.system}.default
 
