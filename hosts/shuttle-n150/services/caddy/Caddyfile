@@ -133,6 +133,9 @@ unifi.mur.mattysgervais.com {
         header_up X-Real-IP {remote_host}
     }
 }
+cache.mur.mattysgervais.com {
+    reverse_proxy 127.0.0.1:8199
+}
 pdf.mur.mattysgervais.com {
     reverse_proxy 127.0.0.1:6666
 }

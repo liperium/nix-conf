@@ -205,6 +205,11 @@ otherwise the product area (`process:`, `map editor:`, `accounts:`), combinable
   dependency on another diff), `NOTE:` for what is deliberately kept or left out, and the follow-up
   ticket for it (`{Q126} has been created to address this topic.`, `See Q131`).
 - `Revert` diffs keep git's "This reverts commit <hash>." line.
+- `no-jenkins`: the Herald rule that starts the Jenkins build only fires when the revision
+  summary does not contain `no-jenkins`. Put a `NOTE: no-jenkins, <why>` line in the
+  Summary for very breaking changes that are tested on their own, not by the current master
+  pipeline (e.g. anything for `feature/python314`, which Jenkins can't build yet), so they
+  don't start builds that are bound to fail. Say in the Test Plan how they were tested.
 
 ### Test Plan
 

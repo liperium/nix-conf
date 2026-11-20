@@ -29,5 +29,6 @@
     ./convertx
     ./pufferpanel
     ./stash
+    ./attic
   ];
 }
