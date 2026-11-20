@@ -72,7 +72,6 @@ in
     xwayland-satellite #xwayland
     libsecret
     gnome-keyring
-    polkit_gnome
     seahorse
     libnotify
     killall

@@ -1,15 +1,18 @@
 { pkgs, ... }:
 
 {
-  # GTK polkit agent: GUI password prompt for pkexec / polkit-authorized actions.
-  systemd.user.services.polkit-gnome-agent = {
+  # KDE polkit agent: starts PAM immediately and shows its info messages, so
+  # fprintd ("Place your finger...") works on frigate. QT_QPA_PLATFORMTHEME=kde
+  # makes it pick up the Catppuccin kdeglobals (same reason as Dolphin's wrapper).
+  systemd.user.services.polkit-kde-agent = {
     Unit = {
-      Description = "polkit-gnome authentication agent";
+      Description = "polkit-kde authentication agent";
       PartOf = [ "graphical-session.target" ];
       After = [ "graphical-session.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      ExecStart = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+      Environment = [ "QT_QPA_PLATFORMTHEME=kde" ];
       Restart = "on-failure";
     };
     Install.WantedBy = [ "graphical-session.target" ];
@@ -106,7 +109,6 @@
     // Screen share / portals: sync env into D-Bus activation + systemd --user.
     spawn-at-startup "${pkgs.dbus}/bin/dbus-update-activation-environment" "--systemd" "--all"
     spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
-    spawn-at-startup "systemctl" "--user" "start" "polkit-gnome-agent"
     spawn-at-startup "systemctl" "--user" "start" "xembed-sni-proxy"
     spawn-at-startup "systemctl" "--user" "start" "noctalia"
     spawn-at-startup "systemctl" "--user" "start" "hypridle"
